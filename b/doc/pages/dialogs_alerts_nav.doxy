@@ -1,0 +1,932 @@
+// ==========================================================================================
+//	
+//	Copyright (C) 2004-2005 Paul Lalonde enrg.
+//	
+//	This program is free software;  you can redistribute it and/or modify it under the 
+//	terms of the GNU General Public License as published by the Free Software Foundation;  
+//	either version 2 of the License, or (at your option) any later version.
+//	
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License along with this 
+//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//	Suite 330, Boston, MA  02111-1307  USA
+//	
+// ==========================================================================================
+
+namespace B {
+
+/*!
+
+@page dialogs_alerts_nav Dialogs, Alerts and Navigation Services
+
+Table of Contents:
+- @ref dialog_modality
+	- @ref dialog_modality_class
+	- @ref generic_lifecycle
+	- @ref generic_example
+- @ref dialog_class
+	- @ref dialog_window_mutation
+- @ref alert_class
+- @ref nav_dialogs
+	- @ref ask_save_changes_dialog_class
+	- @ref ask_discard_changes_dialog_class
+	- @ref ask_review_documents_dialog_class
+	- @ref nav_reply_dialog_class
+	- @ref get_file_dialog_class
+	- @ref put_file_dialog_class
+
+@sa	@ref using_windows
+
+In the present document, dialogs (with a lowercase "d") are defined to be more-or-less 
+short-lived windows, which exist to notify the user of some situation or to receive input 
+from them.  They are dismissed more-or-less automatically, typically by clicking an OK or 
+Cancel button or by typing their keyboard equivalents.  Examples of dialogs in B are the 
+classes Dialog, Alert, and NavDialog and its derivatives.
+
+
+<hr>
+@section dialog_modality Dialog Modality
+
+Dialogs have an interesting characteristic:  modality.  A dialog's modality determines if 
+and how user input is restricted during the time the dialog is displayed.  B supports 
+three kinds of modality:
+
+-# None.  This produces a modeless dialog.  The user is not restricted in any way from 
+   interacting with the application's windows.
+-# Application-modal.  This produces what is commonly known as a modal dialog.  The user 
+   is prevented from interacting with the application's other windows until the dialog 
+   is dismissed.
+-# Window-modal.  This produces a sheet.  The user is prevented from interacting with the 
+   sheet's parent window until the dialog is dismissed.
+
+A design goal of the B framework is to allow applications to interact with dialog objects 
+regardless of their modality.  That means for example that the way a developer sets up, 
+displays, and retrieves a result from an ordinary alert is the same as for an alert sheet.  
+This has important ramifications for the functionality exposed by dialog classes.
+
+
+@subsection dialog_modality_class The DialogModality Class
+
+Dialog modality is represented in B by the DialogModality class.  This is a tiny helper 
+class that contains a @c WindowModality value and possibly a @c WindowRef.  It is used 
+by B's dialog classes to specify a dialog object's desired modality.
+
+There are two ways of constructing a DialogModality object.  The first is to explicitly 
+request a given modality.  For example:
+
+@code
+DialogModality	modality;
+WindowRef		parentWindow;
+
+// Set up modality for modeless dialog.
+modality = DialogModality::Modeless();
+// Set up modality for modal dialog.
+modality = DialogModality::Modal();
+// Set up modality for sheet.
+modality = DialogModality::Sheet(parentWindow);
+@endcode
+
+The second way is to call DialogModality's constructor directly, and is appropriate 
+when the modality is determined elsewhere.  For example:
+
+@code
+void MyShowDialog(WindowModality windowModality, WindowRef parentWindow)
+{
+	DialogModality modality(windowModality, parentWindow);
+	...
+}
+@endcode
+
+
+@subsection generic_lifecycle Dialog Lifecycle
+
+Typically, displaying a dialog involves the following steps:
+
+-# Instantiating the dialog object.
+-# Configuring it, including setting its modality.
+-# Entering it, which means displaying it according to its modality
+-# Receiving results once the dialog is dismissed.
+
+To illustrate this process, let's take Alert as an example.  Here is a portion of its 
+class declaration:
+
+@code
+class Alert
+{
+	// Instantiates and returns an ALERT with the given arguments.
+	template <class ALERT>
+	static std::auto_ptr<ALERT>
+				Make(
+					const String&									inMessageText, 
+					const String&									inInformativeText,
+					const DialogModality&							inModality,
+					boost::function2<void, const ALERT&, Button>	inFunction());
+	
+	// Displays the nav dialog according to its modality.
+	template <class ALERT>
+	static void	Enter(std::auto_ptr<ALERT> inAlertPtr);
+	
+	...
+};
+@endcode
+
+Here, steps 1 and 2 above are performed by the Make() function.  Alert's version of 
+Make() is typical of dialog classes.  It has the following common characteristics:
+
+- It instantiates an object whose class is given in a template parameter.  This allows 
+  clients to instantiate custom classes, as long as they derive from the dialog base 
+  class (Alert in this example).
+- It returns the object wrapped in an @c std::auto_ptr.  This means the ownership of the 
+  dialog object is transferred to the caller.  The object will be destroyed when 
+  the @c auto_ptr goes out of scope in the caller.  This also makes the transfer of 
+  the pointer-to-dialog-object to the caller exception-safe.
+- It takes a DialogModality object as an argument.  This argument, unsurprisingly, 
+  specifies the dialog's modality and determines what happens when the dialog is entered.
+- It takes a callback.  This callback is invoked once the dialog is dismissed.  In order 
+  to write code that's independent of a dialog's modality, it's necessary to retrieve 
+  results only through this callback.
+- It takes other dialog-specific configuration information, in this case the message and 
+  informative text.
+
+Step 3 above is performed by the Enter() function.  Again, Alert's version of Enter() 
+is typical of dialog classes.  It has the following common characteristics:
+
+- It takes an @c std::auto_ptr.  This implies that ownership of the dialog object is 
+  handed over to the Enter() function.  Although an implementation detail, typically 
+  this means that the dialog object will be destroyed when the dialog is dismissed.
+- The exact type of the @c std::auto_ptr is given in a template parameter.  Similarly 
+  to Make(), this allows clients to use custom classes.
+- It displays the dialog object, according to its modality.  Specifically, this means:
+	- For a modeless dialog, the dialog is displayed and the function returns 
+	  immediately.
+	- For a modal dialog, the dialog is displayed and then enters a modal event loop.  
+	  The function returns only once the dialog has been dismissed.
+	- For a sheet, the dialog is displayed and the function returns 
+	  immediately.
+
+Finally, step 4 occurs once the dialog is dismissed.  This is done by having the dialog 
+object invoke the callback it was given in step 2.  Recall that for modal dialogs this 
+will occur from within the Enter() function, whereas for modeless dialogs and sheets 
+it will typically occur after Enter() has returned.
+
+
+@subsection generic_example An Example
+
+Here's a simple example of a class that displays an Alert in a modality-neutral way.
+
+@code
+class MyClass
+{
+	// Display a confirmation alert with the given modality.
+	void	MyAskForUserConfirmationBeforeDoingStuff(
+				const DialogModality&	inModality);
+	// Responds to the user's choice.
+	void	MyAlertCallback(
+				const Alert&			alert, 
+				Alert::Button			button);
+};
+
+void MyClass::MyAskForUserConfirmationBeforeDoingStuff(
+	const DialogModality& inModality)
+{
+	// Make the alert, then enter it.  Note the way the callback is set up.  
+	// The boost::bind library is very convenient for passing in member 
+	// functions as callbacks.
+	
+	Alert::Enter(Alert::Make<Alert>(
+		String("A message text"),
+		String("An informative text"),
+		inModality, 
+		boost::bind(&MyClass::MyAlertCallback, this, _1, _2)));
+	
+	// We can't actually "do" the stuff we want to do here, because depending 
+	// on inModality, the alert might not have been dismissed yet.  The 
+	// logical flow of control continues in MyAlertCallback.
+	// 
+	// Veterans of Classic Mac OS will recognise this as similar to asynchronous 
+	// programming with the old File and Device managers.
+}
+
+void MyClass::MyAlertCallback(
+	const Alert&			alert, 
+	Alert::Button			button)
+{
+	if (button == Alert::kOK)
+	{
+		// do stuff
+		...
+	}
+}
+@endcode
+
+All dialog classes take callbacks that are in fact template instantiations of 
+@c boost::function<>.  This makes it easy to pass in not only free functions, but 
+also member functions of various signatures.  Check out 
+<a href="http://www.boost.org/doc/html/function.html">Boost.Function</a> and 
+<a href="http://www.boost.org/libs/bind/bind.html">boost::bind</a> for more information.
+
+
+<hr>
+@section dialog_class Class Dialog
+
+The Dialog class derives from Window and adds the ability for it to respond to commands 
+such as @c kHICommandOK and @c kHICommandCancel.  Usually, you will want to set up your 
+dialog's nib so that the OK and Cancel buttons send those commands.
+
+If instantiated normally (ie with Dialog::Make()), the dialog's window's class will match 
+its modality.  The manner in which this is done is explained below.  Once the dialog is 
+instantiated, it may be entered via a call to Enter().  If the dialog is very simple, 
+both functions may be combined by calling Start().  For example:
+
+@code
+void MyShowDialog(const B::Nib& nib, B::AEObject* container, const DialogModality& modality)
+{
+	// Instantiates a B::Dialog from the given nib, ensures that the dialog's window 
+	// class matches the given modality, then enters the dialog.  The dialog's result 
+	// (i.e. the command that dismissed it) will be passed to MyCallback.
+	
+	B::Dialog::Start<B::Dialog>(nib, "my_dialog_name", container, modality, &MyCallback);
+}
+
+void MyCallback(B::Dialog& dialog, UInt32 command)
+{
+	if (command == kHICommandOK)
+	{
+		// do stuff...
+	}
+}
+@endcode
+
+For cases where you specifically require an application-modal dialog, you may use Run() 
+instead.  It forces the dialog to be application-modal, enters the dialog, and waits 
+until it's dismissed.  It returns the dismissing command as the function result.  For 
+example:
+
+@code
+bool MyConciseShowDialog(const B::Nib& nib, B::AEObject* container)
+{
+    return (B::Dialog::Run<B::Dialog>(nib, "my_dialog_name", container) == kHICommandOK);
+}
+@endcode
+
+Of course, if you want to create any kind of non-trivial dialog, you will want to derive 
+a class from Dialog in order to manipulate the dialog's contents.  Here is an outline of 
+a class that does just that:
+
+@code
+// forward declaration
+struct MyInfo;
+
+class MyDialog : public B::Dialog
+{
+public:
+
+    // Constructor.  The 'info' argument allows the caller to pass information to the 
+    // dialog object.
+    MyDialog(WindowRef window, B::AEObject* container, const MyInfo& info);
+    
+    // Perform some more initialisation here.
+    void	MyPostConstructorInitialisation();
+    
+protected:
+    
+    // Overrides from Window
+    
+    // This is called when the dialog is first instantiated.  This is a good place to 
+    // call Window::FindView to locate the dialog's controls.
+    virtual void Awaken(const B::Nib* nib);
+    
+    // The window is about to become visible.  You can inject values into your controls 
+    // here.  The difference between this function and Awaken() is that this one is 
+    // called every time the dialog is made visible (useful for recycling dialogs), 
+    // whereas Awaken is only called once.
+    virtual void HandleShowing();
+    
+    // The window has just become invisible.  You can extract your controls' values 
+    // here.
+    virtual void HandleHidden();
+    
+    // Overrides from Dialog
+    
+    // This function is called when the OK button is clicked.  This is the place to commit 
+    // changes made by the user.  Note that Validate() will already have been called.
+    virtual void ConfirmDialog(UInt32 inCommand);
+    
+    // This function is called when the Cancel button is clicked.
+    virtual void CancelDialog(UInt32 inCommand);
+    
+    // Override this function to perform input validation on the dialog's contents.  
+    // The function should return true if validation succeeded.
+    virtual bool Validate(UInt32 inCommand);
+	
+};
+@endcode
+
+The code to display the dialog would look like this:
+
+@code
+bool MyShowDialogWithState()
+{
+	std::pair<OSPtr<WindowRef>, MyDialog*>	dlgPtr;
+	
+	MyInfo	initialisationInfo;
+	
+	// set up initialisationInfo ...
+	
+	// instantiate the dialog
+	dlgPtr = B::Dialog::MakeWithState<MyDialog>(MyGetNib(), "my_dialog_name", 
+												MyGetContainer(), initialisationInfo, 
+												MyGetModality(), &MyCallback);
+	
+	// more initialisation ...
+	dlgPtr.second->MyPostConstructorInitialisation();
+	
+	// enter the dialog.
+	
+	B::Dialog::Enter(dlgPtr);
+}
+
+void MyCallback(MyDialog& dialog, UInt32 command)
+{
+	if (command == kHICommandOK)
+	{
+		// do stuff...
+	}
+}
+@endcode
+
+
+@subsection dialog_window_mutation Dialog Window Mutation
+
+The preceding section mentionned that a dialog's window class is set up to match its 
+modality.  What exactly does that mean?
+
+OS-level windows in Mac OS X (i.e. @c WindowRefs) have a window class, which determines 
+both the appearance and the behaviour of the window.  For example, the window class of 
+application-modal dialogs will typically be @c kMovableModalWindowClass, whereas that of 
+sheets will be @c kSheetWindowClass.  The window class is fixed in the nib file, and 
+can't be changed once the @c WindowRef is created.  Furthermore, various HIToolbox 
+functions will return an error if an attempt is made to display a dialog in a way that 
+contradicts its window class.  For example, calling @c ShowSheetWindow() on a 
+@c WindowRef having class @c kMovableModalWindowClass will result in an error.
+
+This is bad news if one needs to determine a dialog's modality at runtime.  One 
+solution would be to duplicate a dialog's definition (in the nib file) for every 
+modality required by the dialog.  Needless to say, this would be onerous for the 
+application developer.
+
+Instead, B opts for a more sophisticated solution.  At dialog-instantiation time (i.e., 
+within Make() and MakeWithState()), the function checks if the window's class is compatible 
+with its modality.  If so, all is well.  If not, a new @c WindowRef is created with a 
+default window class for the given modality.  The contents of the original @c @WindowRef 
+are copied into the new one, and the old one is released.  The dialog object is then 
+instantiated with the new @c WindowRef.
+
+This approach generally works well and allows applications to determine at run-time 
+whether a dialog should be modeless, modal, or a sheet.  However it does have drawbacks:
+
+- If some of the views in the window don't support being moved between windows, this 
+  approach will obviously cause problems.  Almost all currently supported HIToolbox 
+  controls support being moved between windows.
+- Windows having a custom view ID (as set in Interface Builder) aren't supported.
+- Reasonable defaults are chosen for various window properties.  For example, if 
+  the desired modality is application-modal, the new window's class will be 
+  @c kMovableModalWindowClass and its brush will be @c kThemeBrushMovableModalBackground.
+  This may not be satisfactory in every situation.
+
+
+<hr>
+@section alert_class Class Alert
+
+The Alert class encapsulates functions and data structures in the HIToolbox that are 
+used to display standard alert windows.
+
+Alert follows the typical dialog lifecyle as explained in @ref generic_lifecycle 
+above.  There are several overloads of the Make() function, which allow as little or as 
+much customisation as a developer is likely to need.  If that is not enough, all of 
+the alert's parameters can be set via individual member functions prior to entering the 
+alert.
+
+The simplest overload of Make() is invoked like this:
+
+@code
+std::auto_ptr<B::Alert>	alertPtr;
+
+alertPtr = B::Alert::Make<B::Alert>(
+				B::String("Error Message"), 
+				B::String("Something Informative"), 
+				MyGetModality(), &MyCallback);
+
+// additional customisation may be performed via individual setters.
+alertPtr->SetButtonText(B::Alert::kOK, B::String("Do It"));
+@endcode
+
+This will instantiate an Alert which will display a single OK button.
+
+The next overload of Make() allows for simple two-button alerts:
+
+@code
+std::auto_ptr<B::Alert>	alertPtr;
+
+alertPtr = B::Alert::Make<B::Alert>(
+				B::String("Error Message"), 
+				B::String("Something Informative"), 
+				MyGetModality(), &MyCallback,
+				true, true);
+@endcode
+
+This will instantiate an Alert which will display both the OK and Cancel buttons, as 
+well as the "caution" icon (i.e. the yellow triangle).
+
+The third overload allows one to create three-button alerts, to change the default and 
+cancel buttons, and to change the buttons' text.
+
+Once an alert is instantiated, it may be entered by calling Enter():
+
+@code
+std::auto_ptr<B::Alert>	alertPtr = ... ;	// one of the Make() functions
+
+B::Alert::Enter(alertPtr);
+@endcode
+
+As a convenience, the Start() function is shorthand for a call to Make() followed by 
+a call to Enter().  There are three overloads of Start(), with arguments corresponding 
+to the three overloads of Make().  For example:
+
+@code
+B::Alert::Start<B::Alert>(
+		B::String("Error Message"), 
+		B::String("Something Informative"), 
+		MyGetModality(), &MyCallback);
+@endcode
+
+Finally, there are convenience routines called Run() which allow the developer to 
+instantiate an alert, display it in an application-modal fashion, wait until the 
+alert has been dismissed, and retrieve the dismissing button.  For example:
+
+@code
+B::Alert::Button button;
+
+button = B::Alert::Run<B::Alert>(
+				B::String("Error Message"), 
+				B::String("Something Informative"));
+@endcode
+
+Note that because the alert's modality is predetermined, and that the function returns 
+the dismissing button, there's no need to specify either the alert's modality or a 
+callback.  There are three overloads of Run(), with arguments corresponding 
+to the three overloads of Make().
+
+
+<hr>
+@section nav_dialogs Class NavDialog and its Derivatives
+
+The NavDialog class and its derived classes encapsulate the use of Navigation Services 
+dialogs.
+
+NavDialog itself is an abstract base class.  It provides the common functionality 
+required of all Navigation Services dialogs, but doesn't actually create Navigation 
+Services dialog objects (i.e., @c NavDialogRefs);  that is left to derived classes.
+
+The lifecycle of all NavDialogs follows the explanation in @ref generic_lifecycle above.  
+Note that dialog configuration can be very simple or very complex, depending on the 
+particular dialog.  A lot of the configuration is done via setter functions in NavDialog 
+itself;  however, not all configuration functions have an effect on all nav dialogs.  
+Consult Apple's Navigation Services documentation for more information.  Note that the 
+alert-style dialogs (eg AskSaveChangesDialog) take all of their pertinent configuration 
+information as arguments to their Make/Start/Run functions, so it usually isn't necessary 
+to further configure them.
+
+
+@subsection ask_save_changes_dialog_class Class AskSaveChangesDialog
+
+AskSaveChangesDialog is an alert-style dialog which displays a "Save Changes" alert 
+as per the Aqua HIG.  It's very useful for implementing the Close and Quit commands.  
+It derives directly from NavDialog.
+
+Beyond the usual DialogModality and callback arguments, the Make/Start/Run functions 
+also take as arguments:
+-# The display name of the file that's about to be closed.
+-# A value in the AskSaveChangesDialog::Context enumeration, which indicates why the 
+   file is being closed.
+The dialog's result is a value in the AskSaveChangesDialog::Action enumeration.  An 
+enum is used here because this dialog has three buttons, not just the usual OK/Cancel 
+button pair.
+
+Here's a simple example that works for any dialog modality:
+
+@code
+void MyShowAskSaveChangesDialog(
+	const B::String& name, B::AskSaveChangesDialog::Context context)
+{
+	B::AskSaveChangesDialog::Start<B::AskSaveChangesDialog>(
+		MyGetModality(), name, context, 
+		&MyAskSaveChangesDialogCallback);
+}
+
+void MyAskSaveChangesDialogCallback(
+	const B::AskSaveChangesDialog& dialog, B::AskSaveChangesDialog::Action action)
+{
+	switch (action)
+	{
+	case B::AskSaveChangesDialog::kSave:
+		// save the file
+		break;
+		
+	case B::AskSaveChangesDialog::kDontSave:
+		// don't save the file
+		break;
+		
+	case B::AskSaveChangesDialog::kCancel:
+		// cancel the close
+		break;
+	}
+}
+@endcode
+
+If you specifically require an application-modal alert, the code can be simpler:
+
+@code
+void MyShowAppModalAskSaveChangesDialog(
+	const B::String& name, B::AskSaveChangesDialog::Context context)
+{
+	B::AskSaveChangesDialog::Action action;
+	
+	action = B::AskSaveChangesDialog::Run<B::AskSaveChangesDialog>(name, context);
+	
+	switch (action)
+	{
+	case B::AskSaveChangesDialog::kSave:
+		// save the file
+		break;
+		
+	case B::AskSaveChangesDialog::kDontSave:
+		// don't save the file
+		break;
+		
+	case B::AskSaveChangesDialog::kCancel:
+		// cancel the close
+		break;
+	}
+}
+@endcode
+
+
+@subsection ask_discard_changes_dialog_class Class AskDiscardChangesDialog
+
+AskDiscardChangesDialog is an alert-style dialog which displays a "Discard Changes" 
+dialog, and is therefore useful for implementing the Revert command.  It derives 
+directly from NavDialog.
+
+Beyond the usual DialogModality and callback arguments, the Make/Start/Run functions 
+also take as an argument the display name of the file that's about to be closed.  The 
+dialog returns @c true if the user clicked the Discard button; else it returns @c false.
+
+Here's a simple example that works for any dialog modality:
+
+@code
+void MyShowAskDiscardChangesDialog(
+	const B::String& name)
+{
+	B::AskDiscardChangesDialog::Start<B::AskDiscardChangesDialog>(
+		MyGetModality(), name, 
+		&MyAskDiscardChangesDialogCallback);
+}
+
+void MyAskDiscardChangesDialogCallback(
+	const B::AskDiscardChangesDialog& dialog, bool discard)
+{
+	if (discard)
+	{
+		// revert the file
+	}
+}
+@endcode
+
+If you specifically require an application-modal alert, the code can be simpler:
+
+@code
+void MyShowAppModalAskDiscardChangesDialog(
+	const B::String& name)
+{
+	if (B::AskDiscardChangesDialog::Run<B::AskDiscardChangesDialog>(name))
+	{
+		// revert the file
+	}
+}
+@endcode
+
+
+@subsection ask_review_documents_dialog_class Class AskReviewDocumentsDialog
+
+AskReviewDocumentsDialog is an alert-style dialog which displays a "Review Changes" alert 
+as per the Aqua HIG, which specify it as being part of an application's shutdown 
+sequence.  It derives directly from NavDialog.
+
+Beyond the usual DialogModality and callback arguments, the Make/Start/Run functions 
+also take as an argument the number of documents containing unsaved changes (i.e., the 
+number of "dirty" documents).  The dialog's result is a value in the 
+AskReviewDocumentsDialog::Action enumeration.  An enum is used here because this dialog 
+has three buttons, not just the usual OK/Cancel button pair.
+
+Note that developers will rarely need to invoke this dialog, because 
+MultipleDocumentPolicy already does so automatically.  Note also that the Aqua HIG 
+specify that this alert should always be application-modal;  support for sheets is 
+included for completeness only.
+
+Here's a simple example that works for any dialog modality:
+
+@code
+void MyShowAskReviewDocumentsDialog(UInt32 count)
+{
+	B::AskReviewDocumentsDialog::Start<B::AskReviewDocumentsDialog>(
+		MyGetModality(), inDocumentCount, 
+		&MyAskReviewDocumentsDialogCallback);
+}
+
+void MyAskReviewDocumentsDialogCallback(
+	const B::AskReviewDocumentsDialog& dialog, B::AskReviewDocumentsDialog::Action action)
+{
+	switch (action)
+	{
+	case B::AskReviewDocumentsDialog::kReview:
+		// review the changed documents
+		break;
+		
+	case B::AskReviewDocumentsDialog::kDiscard:
+		// discard all changes
+		break;
+		
+	case B::AskReviewDocumentsDialog::kCancel:
+		// cancel the quit
+		break;
+	}
+}
+@endcode
+
+Normally however, this dialog is displayed in an application-modal fashion, so the 
+code is simpler:
+
+@code
+void MyShowAppModalReviewDocumentsDialog(UInt32 count)
+{
+	switch (B::AskReviewDocumentsDialog::Run<B::AskReviewDocumentsDialog>(count))
+	{
+	case B::AskReviewDocumentsDialog::kReview:
+		// review the changed documents
+		break;
+		
+	case B::AskReviewDocumentsDialog::kDiscard:
+		// discard all changes
+		break;
+		
+	case B::AskReviewDocumentsDialog::kCancel:
+		// cancel the quit
+		break;
+	}
+}
+@endcode
+
+
+@subsection nav_reply_dialog_class Class NavReplyDialog
+
+NavReplyDialog derives from NavDialog and is also an abstract base class.  It provides 
+numerous additional services for the more complex NavServices dialogs.  Its public 
+interface supports:
+
+- Retrieving a @c NavReplyRecord.  The returned structure is wrapped in an AutoNavReply
+  object, which will ensure its proper disposal.
+- Setting up the file type pop-up menu.  This menu is used for two purposes.  In 
+  PutFileDialog, it allows the user to choose which file format to use when saving the 
+  file.  In the other dialogs (eg GetFileDialog) it allows the user to filter the 
+  displayed file system contents.  In all cases, the menu is optional.
+- Setting up a custom view area from a Nib.  This allows clients to insert their own 
+  UI widgets into the dialog.
+
+Since NavReplyDialog's main purpose is to be derived from, it supports a large protected 
+interface, part of which serves as hooks for derived classes.  That interface can be 
+subdivided into the following categories:
+
+- Action notification.  There are numerous virtual functions that are called whenever 
+  interesting things happen in the dialog.  For example, PopupMenuSelect() is called 
+  when the user chooses an item in the file type pop-up menu.
+- Filtering hooks.  A group of virtual functions can be overridden to customize the 
+  filtering that occurs for a given filter type.
+- %Dialog control.  There is a large number of functions that allow the nav dialog to 
+  be controlled in various ways.  These are almost all wrappers around the 
+  @c NavCustomControl() function.
+
+
+@subsection get_file_dialog_class Class GetFileDialog
+
+GetFileDialog displays an "Open" dialog as per the Aqua HIG.  It derives 
+from NavReplyDialog.
+
+Unlike the simpler nav dialogs derived directly from NavDialog, GetFileDialog doesn't 
+allow for passing arguments (beyond the DialogModality and callback) to the 
+Make/Start/Run functions.  That's because the configuration of this dialog can be 
+quite complex;  so the task has been left to clients.  The dialog returns @c true if 
+the user clicked the Open button; else it returns @c false.
+
+Here's a simple example that works for any dialog modality:
+
+@code
+void MyShowGetFileDialog()
+{
+	B::GetFileDialog::Start<B::GetFileDialog>(
+		MyGetModality(), 
+		&MyGetFileDialogCallback);
+}
+
+void MyGetFileDialogCallback(
+	const B::GetFileDialog& dialog, bool good, const NavReplyRecord& reply)
+{
+	if (good)
+	{
+		// the user chose a file, open it.
+		MyOpenFile(reply);
+	}
+}
+@endcode
+
+If you specifically require an application-modal dialog, the code can be simpler:
+
+@code
+bool MyShowAppModalGetFileDialog(NavReplyRecord& reply)
+{
+	return (B::GetFileDialog::Run<B::GetFileDialog>(reply));
+}
+@endcode
+
+GetFileDialog's configuration functions all have to do with the file type pop-up menu.
+A lot of work was put into this menu because Navigation Services' filtering API is 
+inordinately hard to use.  It's based on matching files with creators & file types, 
+and on Mac OS X that's not very useful.
+
+A number of factors affect the file type pop-up menu:
+
+- The @c kNavNoTypePopup flag.  This flag controls the visibility of the 
+  pop-up menu and takes precedence over other options.  If the flag is set, 
+  then each file is matched against all of the entries in the document types 
+  array.  The flag can be changed with SetFlag()/ClearFlag().
+- The document types array.  This array is set with SetDocumentTypes().  There are 
+  various scenarios, depending on the number of elements in the array:
+  -# If the array is empty, then all files will match successfully, regardless 
+     of extension or file type.
+  -# If the array contains only one element, then the pop-up menu is not displayed 
+     (unless other factors cause it to be displayed) and files are matched against 
+     the element.
+  -# If the array contains more than one element, then the pop-up menu is displayed 
+     and contains one item per element.  When one of the items in the pop-up menu 
+     is selected, the files are matched against the corresponding document type 
+     entry.  In addition, an item called "All Readable Documents" is prepended to 
+     the pop-up menu which causes the files to be matched against @e all of the 
+     document type entries.
+
+Here's an example of setting up a GetFileDialog to display all of the document types 
+declared in an application's bundle:
+
+@code
+void MyShowGetFileDialogForAllFileTypes(const B::String& docType)
+{
+	const B::Bundle&				bundle	= B::Bundle::Main();
+	std::auto_ptr<B::GetFileDialog>	dlgPtr;
+	
+	// Instantiate the dialog.
+	dlgPtr = B::GetFileDialog::Make<B::GetFileDialog>(
+					MyGetModality(), &MyGetFileDialogCallback);
+	
+	// Set the document types from the main bundle.  This will read each doc type's 
+	// localised name from the default table (ie "InfoPlist.strings") in the bundle.
+	// The dialog's filter will then be set up to match files that correspond to any 
+	// of our doc types.
+	dlgPtr->SetDocumentTypes(bundle);
+	
+	// We initially allow opening only those files which match docType.  The user 
+	// will however be able to change the filtering to anything that's in the 
+	// pop-up menu.
+	dlgPtr->SelectDocumentType(docType);
+	
+	// Finally, we are ready to enter the dialog.
+	B::NavDialog::Enter(dlgPtr);
+}
+@endcode
+
+Here's a slightly more complex example.  This one sets up a GetFileDialog to display 
+a single document type:
+
+@code
+void MyShowGetFileDialogForOneFileType(const B::String& docType)
+{
+	const B::Bundle&				bundle	= B::Bundle::Main();
+	std::auto_ptr<B::GetFileDialog>	dlgPtr;
+	B::Bundle::Iterator				it;
+	
+	// Find the DocumentType struct with the given name.
+	it = bundle.FindDocumentTypeForTypeName(docType);
+	B_ASSERT(it != bundle.end());
+	
+	// Instantiate the dialog.
+	dlgPtr = B::GetFileDialog::Make<B::GetFileDialog>(
+					MyGetModality(), &MyGetFileDialogCallback);
+	
+	// Set the document types.  This will read the doc type's localised name from 
+	// the default table (ie "InfoPlist.strings") in the main bundle.
+	dlgPtr->SetDocumentTypes(bundle, NULL, it, it+1);
+	
+	// Finally, we are ready to enter the dialog.
+	B::NavDialog::Enter(dlgPtr);
+}
+@endcode
+
+
+@subsection put_file_dialog_class Class PutFileDialog
+
+PutFileDialog displays a "Save" dialog as per the Aqua HIG.  It derives 
+from NavReplyDialog.
+
+Beyond the usual DialogModality and callback arguments, the Make/Start/Run functions 
+also take as an argument the suggest name of the file that's about to be saved.  Note 
+that this must be the actual file name, not the file's display name as is the case for 
+AskSaveChangesDialog and AskDiscardChangesDialog.  The dialog returns @c true if the 
+user clicked the Save button; else it returns @c false.  Note that there are important 
+configuration functions that aren't called when invoking Start() or Run(), so a bit 
+more work is required on the part of clients wishing to use them.
+
+Here's a simple example that works for any dialog modality:
+
+@code
+void MyShowPutFileDialog(const B::String& filename)
+{
+	// "name" becomes the default file name displayed in the dialog.
+	B::PutFileDialog::Start<B::PutFileDialog>(
+		MyGetModality(), filename, 
+		&MyPutFileDialogCallback);
+}
+
+void MyPutFileDialogCallback(
+	const B::PutFileDialog& dialog, bool good, NavReplyRecord& reply, const B::String& docType)
+{
+	if (good)
+	{
+		// the user confirmed the dialog, save the file.
+		MySaveFile(reply);
+	}
+}
+@endcode
+
+If you specifically require an application-modal dialog, the code can be simpler:
+
+@code
+bool MyShowAppModalPutFileDialog(const B::String& name, NavReplyRecord& reply)
+{
+	return (B::PutFileDialog::Run<B::PutFileDialog>(name, reply));
+}
+@endcode
+
+PutFileDialog's configuration functions all have to do with the file type pop-up menu.  
+They are very similar to the functions in GetFileDialog:
+
+- SetDocumentTypes() allows one to specify the document types displayed in the pop-up 
+  menu.  Unlike the version in GetFileDialog however, this one can optionally take an 
+  extra string argument containing the "default" document type.  The default document 
+  type is placed at the top of the pop-up menu and a separator is inserted between it 
+  and the other menu items.
+- SelectDocumentType() allows one to specify the "current" document type.
+
+Note that unlike GetFileDialog, changing the contents of the pop-up menu or the 
+currently selected item doesn't affect the filtering of file system objects in the 
+browser portion of the dialog.
+
+Here's an example of setting up a PutFileDialog that allows the user to save in any of 
+of the document types (i.e., file formats) declared in the application's bundle:
+
+@code
+void MyShowPutFileDialogForAllFileTypes(const B::String& filename, const B::String& docType)
+{
+	const B::Bundle&				bundle	= B::Bundle::Main();
+	std::auto_ptr<B::PutFileDialog>	dlgPtr;
+	
+	// Instantiate the dialog.
+	dlgPtr = B::PutFileDialog::Make<B::PutFileDialog>(
+					MyGetModality(), filename, &MyGetFileDialogCallback);
+	
+	// Set the document types from the main bundle.  This will read each doc type's 
+	// localised name from the default table (ie "InfoPlist.strings") in the bundle.
+	dlgPtr->SetDocumentTypes(bundle);
+	
+	// Initially select the pop-up menu item corresponding to the current doc type of 
+	// our document.
+	dlgPtr->SelectDocumentType(docType);
+	
+	// Finally, we are ready to enter the dialog.
+	B::NavDialog::Enter(dlgPtr);
+}
+@endcode
+
+*/
+
+}   // namespace B

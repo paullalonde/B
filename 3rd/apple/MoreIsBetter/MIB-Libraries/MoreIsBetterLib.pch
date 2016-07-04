@@ -1,0 +1,44 @@
+/*
+ *  MoreIsBetterLib.pch
+ *  MoreIsBetterLib
+ *
+ *  Created by Paul Lalonde on Sun Nov 02 2003.
+ *  Copyright (c) 2003 Paul Lalonde enrg. All rights reserved.
+ *
+ */
+
+/* MoreSCF requires Jaguar */
+#define MAC_OS_X_VERSION_MIN_REQUIRED	1020
+
+/* Only include "MIB_Carbon.h" for Carbon targets. */
+#ifdef __MWERKS__
+#	if __ide_target("InterfaceLib")
+#		pragma precompile_target "InterfaceLibPCH"
+#	elif __ide_target("InterfaceLib++")
+#		pragma precompile_target "InterfaceLibPCH++"
+#	elif __ide_target("Carbon")
+#		pragma precompile_target "CarbonPCH"
+#		include "MIB_Carbon.h"
+#	elif __ide_target("Carbon++")
+#		pragma precompile_target "CarbonPCH++"
+#		include "MIB_Carbon.h"
+#	elif __ide_target("Mach-O")
+#		pragma precompile_target "Mach-OPCH"
+#		include "MIB_Carbon.h"
+#	elif __ide_target("Mach-O++")
+#		pragma precompile_target "Mach-OPCH++"
+#		include "MIB_Carbon.h"
+#	endif
+#else
+#	include "MIB_Carbon.h"
+#endif
+
+#include "MoreSetup.h"
+
+#if TARGET_API_MAC_CARBON && MORE_FRAMEWORK_INCLUDES
+#	include <Carbon/Carbon.h>
+#	ifdef __MWERKS__
+#		pragma warn_emptydecl off
+#	endif
+#	include <SystemConfiguration/SystemConfiguration.h>
+#endif

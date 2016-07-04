@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CustomKeys</key>
+	<dict>
+		<key>BaseLocale</key>
+		<string>en</string>
+		<key>BrowserTickedFilesList</key>
+		<array>
+			<string>PLister.app</string>
+		</array>
+		<key>BrowserWindowHeight</key>
+		<integer>290</integer>
+		<key>BrowserWindowLeft</key>
+		<integer>19</integer>
+		<key>BrowserWindowTop</key>
+		<integer>106</integer>
+		<key>BrowserWindowWidth</key>
+		<integer>1110</integer>
+		<key>FileMatcherIsVisible</key>
+		<false/>
+		<key>InspectorIsVisible</key>
+		<false/>
+		<key>TargetLocale</key>
+		<string>fr</string>
+	</dict>
+	<key>LocSetList</key>
+	<array>
+		<dict>
+			<key>ApplicationDictionary</key>
+			<string>PLister.app.ad</string>
+			<key>LogFile</key>
+			<string>PLister.app</string>
+			<key>NewBase</key>
+			<string>PLister.app</string>
+			<key>NewLoc</key>
+			<string>PLister.app</string>
+			<key>OldBase</key>
+			<string>PLister.app</string>
+			<key>OldLoc</key>
+			<string>PLister.app</string>
+			<key>WorkGlossary</key>
+			<string>PLister.app.wg</string>
+		</dict>
+	</array>
+	<key>ProjectName</key>
+	<string>I18n</string>
+</dict>
+</plist>

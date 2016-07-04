@@ -1,0 +1,7 @@
+.svn/
+*.xcuserdatad/
+*.mode1
+*.mode1v3
+*.pbxuser
+*~.nib/
+

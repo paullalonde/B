@@ -1,0 +1,1060 @@
+Index: AppleEvents/BAEObjectSupport.cpp
+===================================================================
+--- AppleEvents/BAEObjectSupport.cpp	(revision 137)
++++ AppleEvents/BAEObjectSupport.cpp	(working copy)
+@@ -29,6 +29,7 @@
+ 
+ // B headers
+ #include "BAEEvent.h"
++#include "BAEEventHook.h"
+ #include "BAEObject.h"
+ #include "BAEReader.h"
+ #include "BAESDefReader.h"
+@@ -89,6 +90,133 @@
+ 
+ 
+ // ==========================================================================================
++//	AEObjectSupport::EventHookLink
++
++#pragma mark AEObjectSupport::EventHookLink
++
++class AEObjectSupport::EventHookLink : public boost::noncopyable
++{
++public:
++	
++	explicit	EventHookLink(
++					const AEObjectSupport&	inObjSupport, 
++					const AppleEvent&		inEvent,
++					AppleEvent*				ioReply) throw();
++				~EventHookLink() throw();
++	
++	void	SetEventHook(int key, std::auto_ptr<AEEventHook> eventHook);
++	void	Commit();
++	
++private:
++	
++	typedef std::pair<int, AEEventHook*>	HookListElem;
++	typedef std::list<HookListElem>			HookList;
++	
++	struct Committer : std::unary_function<HookListElem, void>
++	{
++		void operator () (const HookListElem& elem) const
++		{
++			elem.second->Commit();
++		}
++	};
++	
++	struct Aborter : std::unary_function<HookListElem, void>
++	{
++		void operator () (const HookListElem& elem) const
++		{
++			elem.second->Abort();
++		}
++	};
++	
++	struct Locator : std::unary_function<HookListElem, bool>
++	{
++		Locator(int key)
++			: mKey(key)  {}
++		
++		bool operator () (const HookListElem& elem) const
++		{
++			return (elem.first == mKey);
++		}
++		
++		const int mKey;
++	};
++	
++	struct Deleter : std::unary_function<HookListElem, void>
++	{
++		void operator () (const HookListElem& elem) const
++		{
++			delete elem.second;
++		}
++	};
++	
++	const AEObjectSupport&	mObjSupport;
++	const AppleEvent&		mEvent;
++	AppleEvent* const		mReply;
++	EventHookLink* const	mNext;
++	HookList				mHooks;
++	bool					mCommitted;
++};
++
++// ------------------------------------------------------------------------------------------
++inline
++AEObjectSupport::EventHookLink::EventHookLink(
++	const AEObjectSupport&	inObjSupport, 
++	const AppleEvent&		inEvent,
++	AppleEvent*				ioReply) throw()
++		: mObjSupport(inObjSupport), mEvent(inEvent), mReply(ioReply), 
++		  mNext(mObjSupport.SetEventHookLink(this)), mCommitted(false)
++{
++}
++
++// ------------------------------------------------------------------------------------------
++inline
++AEObjectSupport::EventHookLink::~EventHookLink() throw()
++{
++	if (!mCommitted)
++	{
++		try
++		{
++			std::for_each(mHooks.begin(), mHooks.end(), Aborter());
++		}
++		catch (...)
++		{
++			// It's very bad to throw from a destructor, so just catch any exceptions here.
++		}
++	}
++	
++	std::for_each(mHooks.begin(), mHooks.end(), Deleter());
++	mObjSupport.SetEventHookLink(mNext);
++}
++
++// ------------------------------------------------------------------------------------------
++inline void
++AEObjectSupport::EventHookLink::SetEventHook(int key, std::auto_ptr<AEEventHook> eventHook)
++{
++	if (mCommitted)
++		throw std::runtime_error("event hook already committed");
++	
++	HookList::iterator it = std::find_if(mHooks.begin(), mHooks.end(), Locator(key));
++	
++	if (it != mHooks.end())
++	{
++		eventHook->Start();
++		mHooks.push_back(HookListElem(key, eventHook.release()));
++	}
++}
++
++// ------------------------------------------------------------------------------------------
++inline void
++AEObjectSupport::EventHookLink::Commit()
++{
++	if (!mCommitted)
++	{
++		mCommitted = true;
++		std::for_each(mHooks.begin(), mHooks.end(), Committer());
++	}
++}
++
++
++// ==========================================================================================
+ //	AEObjectSupport::ExInfo
+ 
+ #pragma mark AEObjectSupport::ExInfo
+@@ -101,12 +229,13 @@
+ 	OSStatus			mError;
+ 	OSPtr<CFStringRef>	mMessage;
+ 	std::string			mState;
+-	ErrorDescLink*		mErrLink;
++	ErrorDescLink*		mErrorDescLink;
++	EventHookLink*		mEventHookLink;
+ };
+ 
+ // ------------------------------------------------------------------------------------------
+ AEObjectSupport::ExInfo::ExInfo()
+-	: mValid(false), mError(noErr), mErrLink(NULL)
++	: mValid(false), mError(noErr), mErrorDescLink(NULL), mEventHookLink(NULL)
+ {
+ }
+ 
+@@ -367,19 +496,7 @@
+ 	return cit->second;
+ }
+ 
+-#if 0
+ // ------------------------------------------------------------------------------------------
+-const AEObjectSupport::ClassInfo&
+-AEObjectSupport::GetClassInfo(
+-	const AEToken&		inToken) const
+-{
+-	B_ASSERT(inToken.ContainsSingleObject());
+-	
+-	return GetClassInfo(inToken.GetObject()->GetClassID());
+-}
+-#endif
+-
+-// ------------------------------------------------------------------------------------------
+ /*!	Given a ClassInfo and a property name, return its property info object (or NULL).
+ 	This function performs a lookup in the given class, as well as all of the class's 
+ 	ancestors.
+@@ -392,21 +509,6 @@
+ 	AEInfo::PropertyMap::const_iterator	pit	= inClass.mProperties.find(inPropertyName);
+ 	
+ 	return ((pit != inClass.mProperties.end()) ? &pit->second : NULL);
+-	
+-#if 0
+-	const ClassInfo*	classInfo	= &inClass;
+-	
+-	do
+-	{
+-		PropertyMap::const_iterator	pit	= classInfo->mProperties.find(inPropertyName);
+-		
+-		if (pit != classInfo->mProperties.end())
+-			return &pit->second;
+-		
+-	} while ((classInfo = classInfo->mInherits) != NULL);
+-	
+-	return NULL;
+-#endif
+ }
+ 
+ // ------------------------------------------------------------------------------------------
+@@ -448,21 +550,6 @@
+ 	AEInfo::ClassEventMap::const_iterator	ceit	= inClass.mEvents.find(inEventKey);
+ 	
+ 	return ((ceit != inClass.mEvents.end()) ? ceit->second : AEInfo::ClassEventHandler());
+-	
+-#if 0
+-	const ClassInfo*	classInfo	= &inClass;
+-	
+-	do
+-	{
+-		ClassEventMap::const_iterator	ceit	= classInfo->mEvents.find(inEventKey);
+-		
+-		if ((ceit != classInfo->mEvents.end()) && (ceit->second != NULL))
+-			return ceit->second;
+-		
+-	} while ((classInfo = classInfo->mInherits) != NULL);
+-	
+-	return ClassEventHandler();
+-#endif
+ }
+ 
+ // ------------------------------------------------------------------------------------------
+@@ -566,58 +653,7 @@
+ 	return (err);
+ }
+ 
+-#if 0
+ // ------------------------------------------------------------------------------------------
+-/*!	Note that in order for this function to work, the following conditions must be met:
+-	
+-	-# The container implements "by-index" access to its elements.
+-	-# The container's elements implement the "name" (a.k.a. pName) property.
+-*/
+-AEObjectPtr
+-AEObjectSupport::GetElementByName(
+-	ConstAEObjectPtr	inContainer, 	//!< The container.
+-	DescType			inElementType, 	//!< The base class ID of the element;  must match the application's AppleScript dictionary.
+-	const String&		inName)			//!< The element's name.
+-	const
+-{
+-	AETypedDescriptor<typeUTF16ExternalRepresentation>	nameDesc(inName);
+-	MOSLToken	token, elemToken;
+-	OSStatus	err;
+-	
+-	ObjectToToken(inContainer, token);
+-	
+-	err = MOSLGeneralAccessByName(&token, inElementType, nameDesc, &elemToken);
+-	B_THROW_IF_STATUS(err);
+-	
+-	return (TokenToObject(elemToken));
+-}
+-
+-// ------------------------------------------------------------------------------------------
+-/*!	Note that in order for this function to work, the following conditions must be met:
+-	
+-	-# The container implements "by-index" access to its elements.
+-	-# The container's elements implement the "id" (a.k.a. pID) property.
+-*/
+-AEObjectPtr
+-AEObjectSupport::GetElementByUniqueID(
+-	ConstAEObjectPtr	inContainer, 	//!< The container.
+-	DescType			inElementType, 	//!< The base class ID of the element;  must match the application's AppleScript dictionary.
+-	SInt32				inUniqueID)		//!< The element's unique id.
+-	const
+-{
+-	MOSLToken	token, elemToken;
+-	OSStatus	err;
+-	
+-	ObjectToToken(inContainer, token);
+-	
+-	err = MOSLGeneralAccessByUniqueID(&token, inElementType, inUniqueID, &elemToken);
+-	B_THROW_IF_STATUS(err);
+-	
+-	return (TokenToObject(elemToken));
+-}
+-#endif
+-
+-// ------------------------------------------------------------------------------------------
+ SInt32
+ AEObjectSupport::CountAllElements(
+ 	ConstAEObjectPtr	/* inContainer */) 	//!< The container.
+@@ -693,81 +729,8 @@
+ 	return inToken.GetObject();
+ }
+ 
+-#if 0
+ // ------------------------------------------------------------------------------------------
+-OSStatus
+-AEObjectSupport::TokenToObject(
+-	const AEToken&		inToken, 
+-	AEObjectPtr&		outObject, 
+-	const std::nothrow_t&) const
+-{
+-#warning stub implementation
+-	return paramErr;
+-	AEObjectPtr	obj;
+-	DescType	theType;
+-	OSStatus	err;
+-	
+-	outObject.reset();
+-	
+-	if (inToken.tokType == typeProperty)
+-	{
+-		theType = inToken.tokObjType;
+-	}
+-	else
+-	{
+-		theType = inToken.tokType;
+-	}
+-	
+-	if (FindClass(theType) != NULL)
+-	{
+-		err = errAENoSuchObject;
+-		
+-		if (theType == cApplication)
+-			obj = AEObject::GetDefaultObject();
+-		else
+-			obj = reinterpret_cast<AEObject*>(inToken.tokData)->GetAEObjectPtr();
+-		
+-		if (obj != NULL)
+-		{
+-			if (inToken.tokType == typeProperty)
+-			{
+-				obj = obj->GetPropertyObject(inToken.tokPropName);
+-			}
+-		}
+-		
+-		if (obj != NULL)
+-			err = noErr;
+-	}
+-	else
+-	{
+-		err = errAECantHandleClass;
+-	}
+-	
+-	if (err == noErr)
+-	{
+-		outObject = obj;
+-	}
+-	
+-	return (err);
+-}
+-
+-// ------------------------------------------------------------------------------------------
+ void
+-AEObjectSupport::ObjectToToken(
+-	ConstAEObjectPtr	inObject, 
+-	AEToken&			outToken) const
+-{
+-	DescType	classID	= inObject->GetClassID();
+-	
+-	if (classID == cApplication)
+-		InitObjectMOSLToken(&outToken, classID, NULL);
+-	else
+-		InitObjectMOSLToken(&outToken, classID, const_cast<AEObject*>(inObject.get()));
+-}
+-#endif
+-
+-// ------------------------------------------------------------------------------------------
+-void
+ AEObjectSupport::CoerceDesc(
+ 	const AEDesc&		inObjectSpecifier,
+ 	DescType			inDesiredType,
+@@ -821,69 +784,6 @@
+ 	{
+ 		std::swap(static_cast<AEDesc&>(outDesc), static_cast<AEDesc&>(resolvedDesc));
+ 	}
+-	
+-#if 0
+-	OSStatus 		err;
+-	AEDesc 			resolvedDesc;
+-	AEDesc 			dataDesc;
+-	MOSLToken 		tok;
+-	DescType 		theType;
+-	MOSLClassIndex  thisClass;
+-
+-	assert(desc != NULL);
+-	assert(coercedDesc != NULL);
+-
+-	MoreAENullDesc(coercedDesc);
+-	MoreAENullDesc(&resolvedDesc);
+-	MoreAENullDesc(&dataDesc);
+-	
+-	// First try to resolve the descriptor.
+-	
+-	err = AEResolve(desc, kAEIDoMinimum, &resolvedDesc);
+-	if (err == errAENotAnObjSpec) {
+-		err = AEDuplicateDesc(desc, &resolvedDesc);
+-	}
+-
+-	// Then, check whether itÕs one of our classes and, if it is,
+-	// call the class getter to get the real data.
+-	
+-	if (err == noErr) {	
+-		if (resolvedDesc.descriptorType == typeProperty) {
+-			DescToMOSLToken(&resolvedDesc, &tok);
+-			theType = tok.tokObjType;
+-		} else {
+-			theType = resolvedDesc.descriptorType;
+-		}
+-		if (ClassIDToClassIndex(theType, &thisClass) == noErr) {
+-			DescToMOSLToken(&resolvedDesc, &tok);
+-			err = GetTokenValue(thisClass, &tok, kReturnTokensAsObjects, &dataDesc);
+-		} else {
+-			dataDesc = resolvedDesc;
+-			MoreAENullDesc(&resolvedDesc);
+-		}
+-	}
+-
+-	// Finally, if the client requested data of a specific type,
+-	// try the coercion.
+-	
+-	if (err == noErr) {
+-		if (desiredType != typeWildCard) {
+-			if (desiredType == cNumber) {
+-				desiredType = typeLongInteger;
+-			}
+-			err = AECoerceDesc(&dataDesc, desiredType, coercedDesc);
+-		} else {
+-			*coercedDesc = dataDesc;
+-			MoreAENullDesc(&dataDesc);
+-		}
+-	}
+-
+-	MoreAENullDesc(&resolvedDesc);
+-	MoreAENullDesc(&dataDesc);
+-	assert((err == noErr) != (coercedDesc->descriptorType == typeNull));
+-			
+-	return err;
+-#endif
+ }
+ 
+ // ------------------------------------------------------------------------------------------
+@@ -1038,18 +938,6 @@
+ 	const AEInfo::ClassInfo& classInfo = GetClassInfo(inClassID);
+ 	
+ 	return (classInfo.mAncestors.find(inBaseClassID) != classInfo.mAncestors.end());
+-	
+-#if 0
+-	for (const ClassInfo* classInfo = &GetClassInfo(inClassID); 
+-		 classInfo != NULL;
+-		 classInfo = classInfo->mInherits)
+-	{
+-		if (classInfo->mCode == inBaseClassID)
+-			return (true);
+-	}
+-	
+-	return (false);
+-#endif
+ }
+ 
+ #pragma mark Reading Scripting Definitions
+@@ -1090,17 +978,7 @@
+ 	B_THROW_IF_STATUS(err);
+ }
+ 
+-#if 0
+ // ------------------------------------------------------------------------------------------
+-DescType
+-AEObjectSupport::MakeElementType(
+-	const ElementMapType&	elementEntry)
+-{
+-	return (elementEntry.first);
+-}
+-#endif
+-
+-// ------------------------------------------------------------------------------------------
+ void
+ AEObjectSupport::PropagateClassEventToClass(
+ 	const ClassEventMapType& inClassEvent, 
+@@ -1110,22 +988,7 @@
+ 	AESDefReader::PropagateClassEvent(inClassEvent, ioClassMap.find(inClassID)->second);
+ }
+ 
+-#if 0
+ // ------------------------------------------------------------------------------------------
+-std::string
+-AEObjectSupport::DescTypeToString(
+-	DescType				inType)
+-{
+-	char	codeBuff[sizeof(inType)+1];
+-	
+-	memset(codeBuff, 0, sizeof(codeBuff));
+-	memcpy(codeBuff, &inType, sizeof(inType));
+-	
+-	return (std::string(codeBuff));
+-}
+-#endif
+-
+-// ------------------------------------------------------------------------------------------
+ AEObjectSupport::ExInfo&
+ AEObjectSupport::GetExInfo() const
+ {
+@@ -1184,21 +1047,37 @@
+ 
+ // ------------------------------------------------------------------------------------------
+ AEObjectSupport::ErrorDescLink*
+-AEObjectSupport::SetErrorDescLink(ErrorDescLink* inLink) const
++AEObjectSupport::SetErrorDescLink(ErrorDescLink* inLink) const throw()
+ {
+ 	ExInfo*			info	= mExInfoPtr.get();
+ 	ErrorDescLink*	oldLink	= NULL;
+ 	
+ 	if (info != NULL)
+ 	{
+-		oldLink			= info->mErrLink;
+-		info->mErrLink	= inLink;
++		oldLink					= info->mErrorDescLink;
++		info->mErrorDescLink	= inLink;
+ 	}
+ 	
+ 	return (oldLink);
+ }
+ 
+ // ------------------------------------------------------------------------------------------
++AEObjectSupport::EventHookLink*
++AEObjectSupport::SetEventHookLink(EventHookLink* inLink) const throw()
++{
++	ExInfo*			info	= mExInfoPtr.get();
++	EventHookLink*	oldLink	= NULL;
++	
++	if (info != NULL)
++	{
++		oldLink					= info->mEventHookLink;
++		info->mEventHookLink	= inLink;
++	}
++	
++	return (oldLink);
++}
++
++// ------------------------------------------------------------------------------------------
+ void
+ AEObjectSupport::AddCachedInfoToAppleEventReply(AppleEvent& ioReply, OSStatus status)
+ {
+@@ -2621,9 +2500,9 @@
+ {
+ 	ExInfo*	info	= sAEObjectSupport->mExInfoPtr.get();
+ 	
+-	if ((info == NULL) && (info->mErrLink != NULL))
++	if ((info == NULL) && (info->mErrorDescLink != NULL))
+ 	{
+-		*appDesc = info->mErrLink->GetErrorDesc();
++		*appDesc = info->mErrorDescLink->GetErrorDesc();
+ 	}
+ 	else
+ 	{
+@@ -2642,8 +2521,11 @@
+ 	AppleEvent*			reply, 
+ 	long				handlerRefcon)
+ {
+-	OSStatus	err	= noErr;
+-	
++	OSStatus		err	= noErr;
++#if 0
++	EventHookLink	eventHook(*sAEObjectSupport, *theAppleEvent, reply);
++#endif
++
+ 	try
+ 	{
+ 		B_ASSERT(theAppleEvent != NULL);
+@@ -2661,8 +2543,12 @@
+ 			B_THROW(ConstantOSStatusException<errAEEventNotHandled>());
+ 		
+ 		AEInfo::EventKey	key	= eventKeys[handlerRefcon];
+-		
++	
+ 		sAEObjectSupport->HandleAppleEvent(key, *theAppleEvent, *reply);
++		
++#if 0
++		eventHook.Commit();
++#endif
+ 	}
+ 	catch (const std::exception& ex)
+ 	{
+Index: AppleEvents/BAEObjectSupport.h
+===================================================================
+--- AppleEvents/BAEObjectSupport.h	(revision 137)
++++ AppleEvents/BAEObjectSupport.h	(working copy)
+@@ -40,6 +40,7 @@
+ 
+ 
+ // forward declarations
++class	AEEventHook;
+ class	AEObject;
+ class	AEToken;
+ class	AEWriter;
+@@ -281,11 +282,6 @@
+ 	const AEInfo::ClassInfo&
+ 				GetClassInfo(
+ 					DescType			inClassID) const;
+-#if 0
+-	const ClassInfo&
+-				GetClassInfo(
+-					const AEToken&		inToken) const;
+-#endif
+ 	const AEInfo::PropertyInfo*
+ 				FindPropertyInfo(
+ 					const AEInfo::ClassInfo&	inClass, 
+@@ -294,55 +290,11 @@
+ 				GetPropertyInfo(
+ 					const AEInfo::ClassInfo&	inClass, 
+ 					DescType					inPropertyName) const;
++
++	bool	DoesCurrentEventContainHook(int key) const;
++	void	AddCurrentEventHook(int key, std::auto_ptr<AEEventHook> eventHook);
+ 	//@}
+ 	
+-protected:
+-	
+-#if 0
+-	//! Helper function for MOSL that counts the elements of a container.
+-	virtual SInt32	ClassCounter(
+-						const MOSLToken&	inContainerToken, 
+-						DescType			inElementType) const;
+-	//! Helper function for MOSL that finds the element in a container that matches a unique id.
+-	virtual void	ClassAccessByUniqueID(
+-						const MOSLToken&	inContainerToken, 
+-						DescType			inElementType, 
+-						SInt32				inUniqueID, 
+-						MOSLToken&			outValueToken) const;
+-	//! Helper function for MOSL that finds the element in a container that matches an index.
+-	virtual void	ClassAccessByIndex(
+-						const MOSLToken&	inContainerToken, 
+-						DescType			inElementType, 
+-						SInt32				inIndex, 
+-						MOSLToken&			outValueToken) const;
+-	//! Helper function for MOSL that finds the element in a container that matches a name.
+-	virtual void	ClassAccessByName(
+-						const MOSLToken&	inContainerToken, 
+-						DescType			inElementType, 
+-						const AEDesc&		inNameDesc, 
+-						MOSLToken&			outValueToken) const;
+-	//! Helper function for MOSL that returns an object's (or one of its properties') data.
+-	virtual void	ClassGetter(
+-						const MOSLToken&	inContainerToken, 
+-						AEDesc&				outDesc) const;
+-	//! Helper function for MOSL that sets one of an object's properties' data.
+-	virtual void	ClassSetter(
+-						const MOSLToken&	inContainerToken, 
+-						const AEDesc&		inDesc) const;
+-	//! Helper function for MOSL.
+-	virtual bool	ClassCoerceToken(
+-						const MOSLToken&	inContainerToken, 
+-						DescType			inToClass, 
+-						MOSLToken&			outCoercedToken) const;
+-
+-	//! Helper function for MOSL.
+-	virtual void	DefaultEventHandler(
+-						const AEDesc&		inDirectObject, 
+-						const AppleEvent&	inEvent, 
+-						MOSLEventIndex		inEventIndex, 
+-						AEDesc&				outResult) const;
+-#endif
+-	
+ private:
+ 	
+ 	enum {
+@@ -354,6 +306,7 @@
+ 	// types
+ 	struct	ExInfo;
+ 	class	ErrorDescLink;
++	class	EventHookLink;
+ 	
+ 	typedef std::vector<AEInfo::EventKey>					EventKeyVector;
+ 	typedef std::map<DescType, AEInfo::DescriptorComparer>	ComparerMap;
+@@ -367,35 +320,18 @@
+ 					const ClassEventMapType&	inClassEvent, 
+ 					AEInfo::ClassMap&			ioClassMap,
+ 					DescType					inClassID);
+-
+-#if 0
+-	void		PropagateClassEvents(
+-					DescType				inClassID);
+-	static std::string
+-				DescTypeToString(
+-					DescType				inType);
+-	
+-	void		ObjectToToken(
+-					ConstAEObjectPtr	inObject, 
+-					AEToken&			outToken) const;
+-#endif
+-
+ 	AEInfo::ClassEventHandler
+ 				FindClassEventHandler(
+ 					const AEInfo::ClassInfo&	inClass, 
+ 					const AEInfo::EventKey&		inEventKey) const;
+ 	
+-	
+-#if 0
+-	static DescType
+-				MakeElementType(
+-					const ElementMapType&	elementEntry);
+-#endif
+ 	ExInfo&		GetExInfo() const;
+ 	void		ClearException() const;
+ 	OSStatus	CacheExceptionInfo(const std::exception& ex) const;
+ 	ErrorDescLink*
+-				SetErrorDescLink(ErrorDescLink* inLink) const;
++				SetErrorDescLink(ErrorDescLink* inLink) const throw();
++	EventHookLink*
++				SetEventHookLink(EventHookLink* inLink) const throw();
+ 	static void	NullDefaultEventHandler(
+ 					const AEDesc&		inDirectObject, 
+ 					const AppleEvent&	inEvent, 
+@@ -483,12 +419,6 @@
+     //! Converts a MoreOSL token into an AEObject.
+ 	AEObjectPtr	TokenToObject(
+ 					const AEToken&		inToken) const;
+-#if 0
+-	void		SubGetTokenValue(
+-					const ClassInfo&	inContainerInfo, 
+-					const AEToken&		inContainerToken, 
+-					AEDesc&				outValue) const;
+-#endif
+ 	bool		HandleCompare(
+ 					DescType			inOperator, 
+ 					const AEDesc&		inTokenDesc1, 
+Index: CarbonEvents/BEventTarget.h
+===================================================================
+--- CarbonEvents/BEventTarget.h	(revision 112)
++++ CarbonEvents/BEventTarget.h	(working copy)
+@@ -143,6 +143,9 @@
+ 	HIObjectRef		GetObjectRef () const	{ return (mObjectRef); }
+ 	//! Retrieves the underlying @c EventTargetRef.
+ 	EventTargetRef	GetEventTarget() const	{ return (HIObjectGetEventTarget(mObjectRef)); }
++	//! Retrieves the @a EventTargetRef associated with @a inObject.
++	template <typename T>
++	static EventTargetRef	GetEventTarget(T inObject);
+ 	//@}
+ 	
+ 	//! The default base class ID, representing @c HIObject.
+Index: CarbonEvents/BEventTarget.cpp
+===================================================================
+--- CarbonEvents/BEventTarget.cpp	(revision 137)
++++ CarbonEvents/BEventTarget.cpp	(working copy)
+@@ -440,5 +440,33 @@
+ 	return (err);
+ }
+ 
++// ------------------------------------------------------------------------------------------
++template <> EventTargetRef
++EventTarget::GetEventTarget(WindowRef inObj)
++{
++	return HIObjectGetEventTarget(reinterpret_cast<HIObjectRef>(inObj));
++}
+ 
++// ------------------------------------------------------------------------------------------
++template <> EventTargetRef
++EventTarget::GetEventTarget(HIViewRef inObj)
++{
++	return HIViewGetEventTarget(inObj);
++}
++
++// ------------------------------------------------------------------------------------------
++template <> EventTargetRef
++EventTarget::GetEventTarget(HIObjectRef inObj)
++{
++	return HIObjectGetEventTarget(inObj);
++}
++
++// ------------------------------------------------------------------------------------------
++template <> EventTargetRef
++EventTarget::GetEventTarget(EventTargetRef inObj)
++{
++	return inObj;
++}
++
++
+ }	// namespace B
+Index: Views/BToolboxViews.cpp
+===================================================================
+--- Views/BToolboxViews.cpp	(revision 137)
++++ Views/BToolboxViews.cpp	(working copy)
+@@ -2463,6 +2463,94 @@
+ }
+ 
+ // ------------------------------------------------------------------------------------------
++/*!	@note	The view is initially invisible.
++*/
++RadioGroup*
++RadioGroup::CreateAndEmbedSubviews(
++	const HIViewID&		inViewID,		//!< The new view's ID; may be zero in which case the view doesn't get an @a HIViewID.
++	UInt32				inCommandID,
++	HIViewRef			inSuperview,	//!< The new view's superview.
++	const std::vector<HIViewID>	inSubviewIDs,
++	Nib*				inFromNib,		//!< The nib from which to load other resources;  may be @c NULL.
++	const ViewFactory*	inFactory)		//!< The factory to use for instantiating the derivative of View;; may be @c NULL, in which case the default view factory is used instead.
++{
++	B_ASSERT(inSuperview != NULL);
++	B_ASSERT(!inSubviewIDs.empty());
++	
++	std::vector<HIViewRef>	views;
++	
++	std::transform(inSubviewIDs.begin(), inSubviewIDs.end(), std::back_inserter(views), 
++				   boost::bind(FindEmbeddedView, inSuperview, _1));
++	
++	Rect	groupFrame = CGRectZero;
++	
++	std::for_each(views.begin(), views.end(), 
++				  boost::bind(MergeEmbeddedViewFrame, _1, boost::ref(groupFrame)));
++	
++	RadioGroup* group = Create(inViewID, inSuperview, &groupFrame, inFromNib, inFactory);
++	OSStatus	err;
++	
++	err = HIViewSetZOrder(group->GetViewRef(), kHIViewZOrderBelow, views[0]);
++	B_THROW_IF_STATUS(err);
++	
++	if (inCommandID != 0)
++	{
++		group->SetCommandID(inCommandID);
++	}
++	
++	std::for_each(views.begin(), views.end(), 
++				  boost::bind(MoveEmbeddedView, _1, groupFrame.origin, group));
++	
++	return group;
++}
++
++// ------------------------------------------------------------------------------------------
++HIViewRef
++RadioGroup::FindEmbeddedView(
++	HIViewRef	inSuperview,
++	HIViewID	inViewID)
++{
++	return ViewUtils::FindSubview(inSuperview, inViewID);
++}
++
++// ------------------------------------------------------------------------------------------
++void
++RadioGroup::MergeEmbeddedViewFrame(
++	HIViewRef	inSubview,
++	B::Rect&	ioGroupFrame)
++{
++	B::Rect		frame;
++	OSStatus	err;
++	
++	err = HIViewGetFrame(inSubview, &frame);
++	B_THROW_IF_STATUS(err);
++	
++	if (ioGroupFrame.empty())
++		ioGroupFrame = frame;
++	else
++		ioGroupFrame |= frame;
++}
++
++// ------------------------------------------------------------------------------------------
++void
++RadioGroup::MoveEmbeddedView(
++	HIViewRef	inSubview,
++	CGPoint		inGroupOrigin,
++	RadioGroup*	inGroup)
++{
++	OSStatus	err;
++	
++	err = HIViewRemoveFromSuperview(inSubview);
++	B_THROW_IF_STATUS(err);
++	
++	err = HIViewAddSubview(inGroup->GetViewRef(), inSubview);
++	B_THROW_IF_STATUS(err);
++	
++	err = HIViewMoveBy(inSubview, -inGroupOrigin.x, -inGroupOrigin.y);
++	B_THROW_IF_STATUS(err);
++}
++
++// ------------------------------------------------------------------------------------------
+ RadioGroup::RadioGroup(HIViewRef inViewRef)
+ 	: PredefinedView(inViewRef)
+ {
+Index: Views/BView.h
+===================================================================
+--- Views/BView.h	(revision 137)
++++ Views/BView.h	(working copy)
+@@ -118,6 +118,7 @@
+ 	void		SetViewID(const HIViewID& inID);
+ 	//! Sets the view's @c HIViewID::id field while preserving its @c HIViewID::signature.
+ 	void		SetID(SInt32 inID);
++	void		SetCommandID(UInt32 inCommandID);
+ 	void		SetFrame(const Rect& inNewFrame);
+ 	void		MoveFrameBy(float deltaX, float deltaY);
+ 	void		MoveFrameTo(float x, float y);
+Index: Views/BToolboxViews.h
+===================================================================
+--- Views/BToolboxViews.h	(revision 133)
++++ Views/BToolboxViews.h	(working copy)
+@@ -1418,6 +1418,15 @@
+ 						const Rect*			inFrame,
+ 						Nib*				inFromNib,
+ 						const ViewFactory*	inFactory);
++	//! Create an object and its HIToolbox view, then embed the given list of views within it.
++	static RadioGroup*
++					CreateAndEmbedSubviews(
++						const HIViewID&		inViewID,
++						UInt32				inCommandID,
++						HIViewRef			inSuperview,
++						const std::vector<HIViewID>	inSubviewIDs,
++						Nib*				inFromNib,
++						const ViewFactory*	inFactory);
+ 	//@}
+ 	
+ 	//! @name Constructor
+@@ -1428,6 +1437,17 @@
+ 	
+ private:
+ 	
++	static HIViewRef	FindEmbeddedView(
++							HIViewRef	inSuperview,
++							HIViewID	inViewID);
++	static void			MergeEmbeddedViewFrame(
++							HIViewRef	inSubview,
++							B::Rect&	ioGroupFrame);
++	static void			MoveEmbeddedView(
++							HIViewRef	inSubview,
++							CGPoint		inGroupOrigin,
++							RadioGroup*	inGroup);
++	
+ 	template <ResType TAG> struct Data : public ViewData<kControlKindSignatureApple, kControlKindRadioGroup, TAG> {};
+ };
+ 
+Index: Views/BView.cpp
+===================================================================
+--- Views/BView.cpp	(revision 137)
++++ Views/BView.cpp	(working copy)
+@@ -218,6 +218,16 @@
+ 
+ // ------------------------------------------------------------------------------------------
+ void
++View::SetCommandID(UInt32 inCommandID)
++{
++	OSStatus	err;
++	
++	err = HIViewSetCommandID(mViewRef, inCommandID);
++	B_THROW_IF_STATUS(err);
++}
++
++// ------------------------------------------------------------------------------------------
++void
+ View::SetID(SInt32 inID)
+ {
+ 	HIViewID	viewID	= GetViewID();
+Index: Graphics/BColor.h
+===================================================================
+--- Graphics/BColor.h	(revision 158)
++++ Graphics/BColor.h	(working copy)
+@@ -69,7 +69,8 @@
+ 	float			alpha() const		{ return (CGColorGetAlpha(mColor)); }
+ 	
+ 	// conversions
+-	operator CGColorRef () const	{ return (mColor); }
++				operator CGColorRef () const	{ return (mColor); }
++	CGColorRef	get() const						{ return (mColor); }
+ 	
+ private:
+ 	
+Index: Graphics/BContext.h
+===================================================================
+--- Graphics/BContext.h	(revision 122)
++++ Graphics/BContext.h	(working copy)
+@@ -80,6 +80,8 @@
+ 	void		SetRGBStrokeColor(float r, float g, float b, float a);
+ 	void		SetGrayStrokeColor(float g, float a);
+ 	void		SetLineWidth(float width);
++	void		SetLineCap(CGLineCap cap);
++	void		SetLineJoin(CGLineJoin join);
+ 	
+ 	// Filling
+ 	void		SetFillColorSpace(CGColorSpaceRef colorSpace);
+@@ -326,6 +328,20 @@
+ 
+ // ------------------------------------------------------------------------------------------
+ inline void
++Context::SetLineCap(CGLineCap cap)
++{
++	CGContextSetLineCap(mContext, cap);
++}
++
++// ------------------------------------------------------------------------------------------
++inline void
++Context::SetLineJoin(CGLineJoin join)
++{
++	CGContextSetLineJoin(mContext, join);
++}
++
++// ------------------------------------------------------------------------------------------
++inline void
+ Context::SetFillColorSpace(CGColorSpaceRef colorSpace)
+ {
+ 	CGContextSetFillColorSpace(mContext, colorSpace);
+Index: Utilities/BAutoreleasePool.h
+===================================================================
+--- Utilities/BAutoreleasePool.h	(revision 110)
++++ Utilities/BAutoreleasePool.h	(working copy)
+@@ -35,7 +35,11 @@
+ 	
+ private:
+ 
++#if 0 && defined(__OBJC__)
+ 	id	mPool;
++#else
++	void* mPool;
++#endif
+ };
+ 
+ }	// namespace B
+Index: Utilities/BAutoreleasePool.mm
+===================================================================
+--- Utilities/BAutoreleasePool.mm	(revision 135)
++++ Utilities/BAutoreleasePool.mm	(working copy)
+@@ -34,7 +34,7 @@
+ // ------------------------------------------------------------------------------------------
+ AutoreleasePool::~AutoreleasePool()
+ {
+-	[mPool release];
++	[((NSAutoreleasePool*) mPool) release];
+ }
+ 
+ 
+Index: Utilities/BOSPtr.h
+===================================================================
+--- Utilities/BOSPtr.h	(revision 137)
++++ Utilities/BOSPtr.h	(working copy)
+@@ -583,6 +583,24 @@
+ 		static unsigned	count(obj_type)			{ return (1); }
+ 	};
+ 
++#	if defined(__OBJC__)
++	/*!
++		@brief	Implementation of the OwnershipTrait policy for NSObject.
++	*/
++	struct NSObjectTrait
++	{
++		//! Declares the type of the data structure whose refcount is manipulated.
++		typedef NSObject*	obj_type;
++		
++		//! Increments the object's reference count.  Throws exceptions where appropriate.
++		static void		retain(obj_type ref)	{ [ref retain]; }
++		//! Decrements the object's reference count.  Throws exceptions where appropriate.
++		static void		release(obj_type ref)	{ [ref release]; }
++		//! Returns the object's reference count.  For APIs that don't support this functionality, a positive integer should be returned.
++		static unsigned	count(obj_type ref)		{ return [ref retainCount]; }
++	};
++#	endif	// __OBJC__
++
+ #endif	// DOXYGEN_SKIP
+ 
+ 
+@@ -643,6 +661,10 @@
+ 	template <> struct TypedOwnershipTrait<CGPDFPageRef>		{ typedef CGPDFPageTrait					trait_type; };
+ 	template <> struct TypedOwnershipTrait<CGShadingRef>		{ typedef CGShadingTrait					trait_type; };
+ 
++#	if defined(__OBJC__)
++	template <> struct TypedOwnershipTrait<NSObject*>			{ typedef NSObjectTrait						trait_type; };
++#	endif	// __OBJC__
++
+ #endif	// DOXYGEN_SKIP
+ 
+ }	// namespace OSPtrOwnership

@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Read Me - B Framework</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="author" content="Paul Lalonde">
+</head>
+<body>
+<h1 align="center" style="margin-bottom: 0pt;">B</h1>
+<h2 align="center" style="margin-top: 0pt;">A Carbon Application
+Framework for Mac OS X</h2>
+<p align="center" style="margin-bottom: 0pt;">Version
+{{B_RELEASE_VERSION}}</p>
+<p align="center" style="margin-top: 0pt;">{{B_RELEASE_DATE}}</p>
+<p align="center"><em>Paul Lalonde</em></p>
+<hr>
+<h3 style="margin-top: 0pt;">Table of Contents</h3>
+<div style="margin-left: 40px;"><a href="#WhatIsIt">What is it?</a><br>
+<a href="#Requirements">Requirements</a><br>
+<a href="#Licensing">Licensing</a><br>
+<a href="#InsideTheDistribution">Inside the Distribution</a><br>
+<a href="#Installation">Installation</a><br>
+<a href="#Documentation">Documentation</a></div>
+<ol>
+</ol>
+<hr>
+<h3 style="margin-top: 0pt;"><a name="WhatIsIt"></a>What is it?</h3>
+<p>B is a C++ application framework for the Carbon environment of Mac
+OS X.&nbsp; It is designed to build applications targeting Jaguar and
+up.&nbsp; It uses nib files to store an application's UI; therefore
+Interface Builder is its UI editor.&nbsp; Its high-level
+characteristics are: </p>
+<ul>
+  <li><strong>Leverage.&nbsp;</strong> Where possible, B attempts to
+build on what others have done, rather than trying to re-write
+everything itself. Examples include the use of classes from the
+Standard C++ Library and the Boost library, as well as sample code from
+Apple (MoreFilesX and MoreIsBetter).</li>
+  <li><strong>Use of modern C++ features</strong> to simplify
+development.&nbsp; Exceptions are used throughout to return error
+conditions.&nbsp; Templates are used to parameterise designs.&nbsp; The
+initialisation-is-acquisition idiom is also used to make code
+exception-safe.</li>
+  <li><strong>STL integration.&nbsp;</strong> A number of
+system-defined data structures (eg <tt>CFStringRef</tt>) are wrapped
+by classes presenting an STL-compatible interface, so that for example
+they can be passed to STL algorithms.</li>
+  <li><strong>Policy-based template classes</strong>.&nbsp; B's major
+components have template policy classes.&nbsp; For example, policy
+classes determine if and how an application supports documents.</li>
+  <li><strong>Use of type traits</strong> to make handling of things
+such as Apple Events and Carbon Events type-safe.</li>
+</ul>
+<p>Here's a quick list of B's features:</p>
+<ul>
+  <li> Application class with template policy classes.</li>
+  <li> Documents. A lot of effort has been put into the document
+subsystem.</li>
+  <li> UI is assumed to be built using IB. UI widgets are implemented
+in terms of HIView. There are classes for talking to system-defined
+views (eg, push buttons, tabs, etc) and others for creating custom
+views (i.e. derived from <span style="font-family: monospace;">kHIViewClassID</span>).
+The DataBrowser is supported
+in a big way.</li>
+  <li> Apple Events. There are many classes for extracting data from AE
+descriptors and writing descriptors and entire events. Provides easy
+support for factored applications. AEOM support is built on top of
+MoreOSL.</li>
+  <li> Carbon Events. Adding a handler for a particular Carbon Event is
+as easy as declaring a member function with the correct signature and
+putting it into a map. There are also many convenience features for
+handling CE parameters.</li>
+  <li> Cocoa-style undo.</li>
+  <li>A unified interface for displaying dialogs, alerts, and
+NavServices dialogs, regardless of whether they are modeless,
+application-modal, or sheets.<br>
+  </li>
+  <li>Nav Services. The filtering function for the GetFile dialog is
+actually coordinated with the contents of the application bundle's
+CFBundleDocumentTypes array.</li>
+  <li> Data exchange. There are some classes (derived from <span
+ style="font-family: monospace;">std::istream/std::ostream</span>)
+for reading &amp; writing drag &amp; scrap
+flavors.</li>
+  <li> Enhanced CF classes. Some CF objects are wrapped by classes that
+provide services beyond that of the raw CF API. Examples: String,
+Bundle, Url.</li>
+</ul>
+You will find a summary of changes <a href="Changes.html">here</a>.<br>
+<hr>
+<h3 style="margin-top: 0pt;"><a name="Requirements"></a>Requirements</h3>
+<p>B requires the following:</p>
+<ol style="margin-bottom: 0pt;">
+  <li><strong>Deployment operating system.&nbsp;</strong> Applications
+built with B require Mac OS X 10.2 (aka Jaguar) at minimum.</li>
+  <li><strong>Development operating system.&nbsp;</strong> Development
+using B is easiest on Mac OS X 10.4 (aka Tiger).&nbsp; However, if
+one uses CodeWarrior or Xcode (or even -- gasp! -- Project 
+Builder) for development, it's possible to develop on Panther or even 
+Jaguar with minor tweaks to the sample projects.</li>
+  <li><strong>Development environment.&nbsp;</strong> Any of these
+may be used:
+    <ul style="margin-top: 0pt; margin-bottom: 0pt;">
+      <li><strong>CodeWarrior 10.0.&nbsp;</strong> The CW projects are
+designed to build out-of-the-box on Tiger.&nbsp; Building on Panther
+will probably require project tweaks.&nbsp; Also, using earlier versions 
+of CodeWarrior will probably be difficult, since CodeWarrior projects 
+aren't downward compatible.&nbsp; Finally, even if
+principal development is done with CodeWarrior, you will still need to
+install Apple's dev tools.</li>
+      <li><strong>Xcode 2.1.</strong> Previous versions may work
+perfectly
+fine, I just haven't used them very much.</li>
+    </ul>
+  </li>
+  <li><strong style="margin-top: 0pt; margin-bottom: 0pt;">Third-party
+libraries: </strong>
+    <ol style="margin-top: 0pt; margin-bottom: 0pt;">
+      <li><strong>MoreFilesX</strong>.&nbsp; Written by Apple.&nbsp;
+It's included in the B distribution, as well as pre-built libraries. </li>
+      <li><strong>MoreIsBetter</strong>. Written by Apple.&nbsp; It's
+included in the B distribution, as well as pre-built libraries.&nbsp; <strong>NOTE:
+        </strong>The version in the distribution has been slightly
+modified to work
+around some of its limitations.&nbsp; Please don't replace it with a
+version directly from Apple!</li>
+      <li><strong>Boost.&nbsp;</strong> This library is not included in
+the distribution. However, you can get the version used to build the
+current version of B <a
+ href="http://homepage.mac.com/paullalonde/b/boost_1_33_0.tar.gz">here</a>.
+Alternately, you can visit the <tt>boost</tt> <a
+ href="http://www.boost.org">web site</a>.</li>
+    </ol>
+  </li>
+</ol>
+<blockquote style="margin-top: 0pt; margin-bottom: 0pt;">&nbsp; </blockquote>
+<hr>
+<h3 style="margin-top: 0pt;"><a name="Licensing"></a>Licensing</h3>
+<p>B is covered by the terms of the GNU General Public License (GPL).
+See the file <a href="COPYING">COPYING</a> for details.</p>
+<p>What this means in a nutshell is that if you use B in your
+application, then that application must be governed by a license not
+more restrictive than the GPL. Also, any changes you make to B must be
+publicly available.</p>
+<p>As the copyright holder of B, I am currently considering a
+dual-licensing scheme which would accomodate the needs of commercial
+software developers.&nbsp; Other development efforts such as <a
+ href="http://www.trolltech.com/products/qt/licensing.html">Qt</a> and <a
+ href="http://www.mysql.com/products/licensing.html">MySQL</a> have
+taken this approach.&nbsp; Please <a href="mailto:paullalonde@mac.com">contact
+me</a> if you have such a need.</p>
+<p>The third-party libraries included in the distribution (MoreFilesX,
+MoreIsBetter) are not covered by this license.&nbsp; They are Apple DTS
+sample code and have a BSD-style license.&nbsp; Likewise, the Boost
+libraries generally have BSD-style licenses. BSD-style licenses are
+compatible with the GPL.</p>
+<hr>
+<h3 style="margin-top: 0pt;"><a name="InsideTheDistribution"></a>Inside
+the Distribution</h3>
+<p style="margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">b/</strong></p>
+<blockquote style="margin-top: 0pt;">
+  <p style="margin-top: 0pt;">Contains all of B:&nbsp;documentation,
+sources, headers, resources, examples, etc.</p>
+</blockquote>
+<blockquote>
+  <p style="margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">doc/</strong></p>
+  <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;">Contains the main <a
+ href="doc/generated_html/index.html">documentation</a>.&nbsp; It also
+contains a
+Doxygen control file, from which the source-code documentation can be
+rebuilt. To do so, open up a Terminal window in this directory, and run
+    <tt>doxygen</tt>.&nbsp; If you don't have <tt>doxygen</tt>
+installed, you can get it <a
+ href="http://www.stack.nl/%7Edimitri/doxygen/">here</a>.</p>
+&nbsp; </blockquote>
+  <p style="margin-top: 0pt; margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">examples/</strong></p>
+  <blockquote style="margin-top: 0pt;">
+    <p style="margin-top: 0pt;">Contains a number of code samples
+demonstrating use of B.&nbsp; Projects are supplied for
+CodeWarrior 8.3, Xcode 1.5, and Project Builder 2.1.</p>
+  </blockquote>
+  <blockquote style="margin-bottom: 0pt;">
+    <p style="margin-bottom: 0pt;"> <a
+ href="examples/DragPeekerX/ReadMe.html"><strong>DragPeekerX</strong></a>
+    </p>
+    <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+      <p style="margin-top: 0pt; margin-bottom: 0pt;">A very simple
+document-less application. Demonstrates how to make a custom scrollable
+view.</p>
+    </blockquote>
+    <p style="margin-top: 0pt; margin-bottom: 0pt;"><a
+ href="examples/Framework/ReadMe.html"><strong>Framework</strong></a></p>
+    <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+      <p style="margin-top: 0pt; margin-bottom: 0pt;">Demonstrates how
+to build B as a private framework.</p>
+    </blockquote>
+    <p style="margin-top: 0pt; margin-bottom: 0pt;"><strong><a
+ href="examples/PLister/ReadMe.html">PLister</a></strong></p>
+    <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+      <p style="margin-top: 0pt; margin-bottom: 0pt;">A property list
+editor. It's a document-based application; its UI is separated from its
+data-manipulation engine via AppleEvents; and it supports Undo.</p>
+    </blockquote>
+    <strong style="margin-top: 0pt; margin-bottom: 0pt;"></strong></blockquote>
+  <p style="margin-top: 0pt; margin-bottom: 0pt; margin-left: 40px;"><strong><a
+ href="examples/Tarabiscoter/ReadMe.html">Tarabiscoter</a><br>
+  </strong></p>
+  <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; margin-left: 40px;">A
+grab-bag application demonstrating various techniques.</p>
+  </blockquote>
+  <strong style="margin-top: 0pt; margin-bottom: 0pt;"></strong>
+  <p style="margin-top: 0pt; margin-bottom: 0pt;"><span
+ style="margin-top: 0pt; margin-bottom: 0pt;"></span><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">make/</strong></p>
+  <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;">Contains a number
+of makefiles and shell scripts, most of them having to do with helping
+to build localised applications.</p>
+  </blockquote>
+  <p style="margin-top: 0pt; margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">prog/</strong></p>
+  <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;">Contains helper
+utilities.</p>
+  </blockquote>
+  <p style="margin-top: 0pt; margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">src/</strong></p>
+  <blockquote style="margin-top: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;">The framework's
+source, header, and resource files.</p>
+  </blockquote>
+</blockquote>
+<p style="margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">3rd/</strong></p>
+<blockquote style="margin-top: 0pt;">
+  <p style="margin-top: 0pt;">Contains third-party libraries.</p>
+  <p style="margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">MoreFilesX/</strong></p>
+  <blockquote style="margin-top: 0pt; margin-bottom: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;">Apple-supplied
+library.&nbsp; The sample projects reference a pre-built binary in this
+directory.</p>
+  </blockquote>
+  <p style="margin-top: 0pt; margin-bottom: 0pt;"><strong
+ style="margin-top: 0pt; margin-bottom: 0pt;">MoreIsBetter/</strong></p>
+  <blockquote style="margin-top: 0pt;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;">Apple-supplied
+library.&nbsp; The sample projects reference a pre-built binary in this
+directory.</p>
+  </blockquote>
+</blockquote>
+<hr>
+<h3 style="margin-top: 0pt;"><a name="Installation"></a>Installation</h3>
+<p>Here are the steps required to get up and running with B:</p>
+<ol>
+  <li>Unpack the distribution.&nbsp; That should be easy enough.</li>
+  <li>Install <tt>boost</tt>.&nbsp; I copy the entire <tt>boost</tt>
+tree under <tt>/usr/local</tt>, but it can be anywhere.</li>
+  <li>Set up your development environment so that it can find the B and
+boost distributions:</li>
+  <br>
+  <ol>
+    <li>Double-click on the
+shell script <span style="font-family: monospace;">b/prog/install.command</span>.&nbsp;
+This will open a Terminal window in which the script will run.&nbsp; It
+creates a few symbolic links under <span
+ style="font-family: monospace;">/usr/local</span> that will allow the
+components of B to find each other. Note that the script
+invokes <span style="font-family: monospace;">sudo</span>, so it may
+prompt you for your password.</li>
+    <br>
+    <li>Gcc needs to know where to find the <span
+ style="font-family: monospace;">boost</span> header files.&nbsp; The
+simplest way
+to do it is to
+hook into one of the places where gcc searches for header files.&nbsp;
+I do this by creating some symbolic links from <span
+ style="font-family: monospace;">/usr/local</span> and <tt>/usr/local/include</tt>
+to my <tt>boost</tt> installation:</li>
+    <ol>
+      <li><span style="margin-top: 0pt; margin-bottom: 0pt;"><tt
+ style="margin-top: 0pt; margin-bottom: 0pt;">cd
+/usr/local</tt></span></li>
+      <li><span style="margin-top: 0pt; margin-bottom: 0pt;"><span
+ style="margin-top: 0pt; margin-bottom: 0pt;"><tt
+ style="margin-top: 0pt; margin-bottom: 0pt;">sudo ln
+-s boost_1_33_0 boost</tt></span></span></li>
+      <li><span style="margin-top: 0pt; margin-bottom: 0pt;"><span
+ style="margin-top: 0pt; margin-bottom: 0pt;"><tt
+ style="margin-top: 0pt; margin-bottom: 0pt;">cd
+/usr/local/include</tt></span></span></li>
+      <li><tt style="margin-top: 0pt; margin-bottom: 0pt;">sudo ln
+-s ../boost/boost boost</tt></li>
+    </ol>
+    <br>
+    <li>If you use <span style="font-weight: bold;">Xcode</span>, you
+need to define some global source trees:
+      <table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+        <tbody>
+          <tr>
+            <th style="vertical-align: top; width: 20%;">Setting Name<br>
+            </th>
+            <th style="vertical-align: top; width: 20%;">Display Name<br>
+            </th>
+            <th style="vertical-align: top;">Path<br>
+            </th>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">B </td>
+            <td style="vertical-align: top; width: 20%;">B Framework </td>
+            <td style="vertical-align: top;">Path to the B
+installation, i.e. the folder containing subfolders "<span
+ style="font-family: monospace;">b</span>" and "<span
+ style="font-family: monospace;">3rd</span>". </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">boost </td>
+            <td style="vertical-align: top; width: 20%;">Boost Library </td>
+            <td style="vertical-align: top;">Path to the boost
+installation (<tt>/usr/local/boost_1_33_0</tt> in the example above). </td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <br>
+    <li>If you use <strong>CodeWarrior</strong>, you also need to
+define
+some global source trees:
+      <table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+        <tbody>
+          <tr>
+            <th style="vertical-align: top; width: 20%;">Name<br>
+            </th>
+            <th style="vertical-align: top;">Path<br>
+            </th>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">B</td>
+            <td style="vertical-align: top;">Path to the B
+installation, i.e. the folder containing subfolders "<span
+ style="font-family: monospace;">b</span>" and "<span
+ style="font-family: monospace;">3rd</span>".</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">boost </td>
+            <td style="vertical-align: top;">Path to the boost
+installation (<tt>/usr/local/boost_1_33_0</tt> in the example above).</td>
+          </tr>
+        </tbody>
+      </table>
+      <span style="font-weight: bold;">IMPORTANT:</span>&nbsp;
+If you are developing with CodeWarrior 8.x under Panther, you will need
+to perform some changes to the CW installation. Click <a
+ href="doc/html/CW_8.3_Mods.html">here</a>
+for details.</li>
+    <br>
+  </ol>
+  <li>The <strong>prog/</strong> directory contains utility programs
+that need to be built.&nbsp; They are enumerated below: </li>
+  <ul>
+    <li><strong>MergeStrings.</strong> This program performs a two-way
+or three-way merge of .strings files.&nbsp; It's only really required
+if
+you want to build the PLister sample with CodeWarrior, although it
+certainly doesn't hurt to build it anyway.&nbsp; To do so, invoke
+"make" from the <tt>MergeStrings</tt> directory.&nbsp; Once complete,
+the binary will be under <tt>build/make/MergeStrings</tt> and should
+be copied to a location in your path.</li>
+  </ul>
+</ol>
+<ol>
+  <ol style="margin-top: 0pt; margin-bottom: 0pt;">
+  </ol>
+</ol>
+<p>You are now ready to build some of the samples.&nbsp; They are under
+the <tt>examples/</tt> directory.</p>
+<hr>
+<h3 style="margin-top: 0pt;"><a name="Documentation"></a>Documentation </h3>
+<p>The main source-code documentation (generated by Doxygen) is
+available <a href="doc/generated_html/index.html">here</a>.</p>
+</body>
+</html>

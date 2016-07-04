@@ -1,0 +1,118 @@
+<CFArray 0x1396e50 [0xa08081c0]>{type = mutable-small, count = 1, values = (
+	0 : mIOService - 0x0
+mIOConnection - 0x0
+mIONotification - 0x0
+Device Address - 00-17-84-d7-68-7b
+mName - Cell Paul
+mServiceClassMajor - 291
+mDeviceClassMajor - 2
+mDeviceClassMinor - 1
+mPageScanRepetitionMode - 1
+mPageScanPeriodMode - 0
+mPageScanMode - 0
+mClockOffset - 14ef
+mConnectionHandle - ffff
+mLinkType - ff
+mEncryptionMode - 0
+mServiceArray - (
+    Address: 0x1387a90
+ServiceName: (null)
+Attributes: <CFDictionary 0x13899b0 [0xa08081c0]>{type = mutable, count = 8, capacity = 8, pairs = (
+	0 : <CFNumber 0x130ed50 [0xa08081c0]>{value = +0, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389300>
+	1 : <CFNumber 0x130ae40 [0xa08081c0]>{value = +1, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1388e50>
+	2 : <CFNumber 0x130d660 [0xa08081c0]>{value = +2, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x13896a0>
+	4 : <CFNumber 0x13496e0 [0xa08081c0]>{value = +4, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389110>
+	5 : <CFNumber 0x130c600 [0xa08081c0]>{value = +5, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389720>
+	6 : <CFNumber 0x13897d0 [0xa08081c0]>{value = +512, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x13897e0>
+	7 : <CFNumber 0x1389860 [0xa08081c0]>{value = +513, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389870>
+	9 : <CFNumber 0x135bc00 [0xa08081c0]>{value = +9, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389890>
+)}
+, 
+    Address: 0x1389a40
+ServiceName: Voice Gateway
+RFCOMM ChannelID: 3
+Attributes: <CFDictionary 0x138a3c0 [0xa08081c0]>{type = mutable, count = 10, capacity = 17, pairs = (
+	0 : <CFNumber 0x130ed50 [0xa08081c0]>{value = +0, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389a80>
+	1 : <CFNumber 0x130ae40 [0xa08081c0]>{value = +1, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389ac0>
+	2 : <CFNumber 0x130d660 [0xa08081c0]>{value = +2, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389bc0>
+	3 : <CFNumber 0x1389bf0 [0xa08081c0]>{value = +256, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389c00>
+	4 : <CFNumber 0x13496e0 [0xa08081c0]>{value = +4, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389c70>
+	5 : <CFNumber 0x130c600 [0xa08081c0]>{value = +5, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389e40>
+	6 : <CFNumber 0x130ed80 [0xa08081c0]>{value = +6, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x1389f00>
+	7 : <CFNumber 0x138a1c0 [0xa08081c0]>{value = +257, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a1d0>
+	8 : <CFNumber 0x138a260 [0xa08081c0]>{value = +258, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a270>
+	9 : <CFNumber 0x135bc00 [0xa08081c0]>{value = +9, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a290>
+)}
+, 
+    Address: 0x138a4b0
+ServiceName: Hands-Free voice gateway
+RFCOMM ChannelID: 7
+Attributes: <CFDictionary 0x138ae10 [0xa08081c0]>{type = mutable, count = 12, capacity = 17, pairs = (
+	0 : <CFNumber 0x130ed50 [0xa08081c0]>{value = +0, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a4c0>
+	1 : <CFNumber 0x130ae40 [0xa08081c0]>{value = +1, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a500>
+	2 : <CFNumber 0x130d660 [0xa08081c0]>{value = +2, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a600>
+	3 : <CFNumber 0x138a630 [0xa08081c0]>{value = +256, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a640>
+	4 : <CFNumber 0x13496e0 [0xa08081c0]>{value = +4, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a690>
+	5 : <CFNumber 0x130c600 [0xa08081c0]>{value = +5, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a850>
+	6 : <CFNumber 0x130ed80 [0xa08081c0]>{value = +6, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138a900>
+	7 : <CFNumber 0x138abd0 [0xa08081c0]>{value = +257, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138abe0>
+	8 : <CFNumber 0x138ac30 [0xa08081c0]>{value = +258, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138ac40>
+	9 : <CFNumber 0x135bc00 [0xa08081c0]>{value = +9, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138ac60>
+	10 : <CFNumber 0x138ada0 [0xa08081c0]>{value = +769, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138adb0>
+	11 : <CFNumber 0x138add0 [0xa08081c0]>{value = +785, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138ade0>
+)}
+, 
+    Address: 0x138ad90
+ServiceName: OBEX Object Push
+RFCOMM ChannelID: 8
+Attributes: <CFDictionary 0x138b880 [0xa08081c0]>{type = mutable, count = 11, capacity = 17, pairs = (
+	0 : <CFNumber 0x130ed50 [0xa08081c0]>{value = +0, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138af00>
+	1 : <CFNumber 0x130ae40 [0xa08081c0]>{value = +1, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138af40>
+	2 : <CFNumber 0x130d660 [0xa08081c0]>{value = +2, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138afe0>
+	3 : <CFNumber 0x138b010 [0xa08081c0]>{value = +256, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b020>
+	4 : <CFNumber 0x13496e0 [0xa08081c0]>{value = +4, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b060>
+	5 : <CFNumber 0x130c600 [0xa08081c0]>{value = +5, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b2d0>
+	6 : <CFNumber 0x130ed80 [0xa08081c0]>{value = +6, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b380>
+	7 : <CFNumber 0x138b650 [0xa08081c0]>{value = +257, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b660>
+	8 : <CFNumber 0x138b6a0 [0xa08081c0]>{value = +258, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b6b0>
+	9 : <CFNumber 0x135bc00 [0xa08081c0]>{value = +9, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b6d0>
+	12 : <CFNumber 0x138b810 [0xa08081c0]>{value = +771, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b820>
+)}
+, 
+    Address: 0x138b970
+ServiceName: OBEX File Transfer
+RFCOMM ChannelID: 9
+Attributes: <CFDictionary 0x138c280 [0xa08081c0]>{type = mutable, count = 10, capacity = 17, pairs = (
+	0 : <CFNumber 0x130ed50 [0xa08081c0]>{value = +0, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b980>
+	1 : <CFNumber 0x130ae40 [0xa08081c0]>{value = +1, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138b9c0>
+	2 : <CFNumber 0x130d660 [0xa08081c0]>{value = +2, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138ba60>
+	3 : <CFNumber 0x138ba90 [0xa08081c0]>{value = +256, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138baa0>
+	4 : <CFNumber 0x13496e0 [0xa08081c0]>{value = +4, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138bae0>
+	5 : <CFNumber 0x130c600 [0xa08081c0]>{value = +5, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138bd50>
+	6 : <CFNumber 0x130ed80 [0xa08081c0]>{value = +6, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138be00>
+	7 : <CFNumber 0x138c0d0 [0xa08081c0]>{value = +257, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c0e0>
+	8 : <CFNumber 0x138c120 [0xa08081c0]>{value = +258, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c130>
+	9 : <CFNumber 0x135bc00 [0xa08081c0]>{value = +9, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c150>
+)}
+, 
+    Address: 0x138c370
+ServiceName: Dial-up networking Gateway
+RFCOMM ChannelID: 1
+Attributes: <CFDictionary 0x138cd10 [0xa08081c0]>{type = mutable, count = 12, capacity = 17, pairs = (
+	0 : <CFNumber 0x130ed50 [0xa08081c0]>{value = +0, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c380>
+	1 : <CFNumber 0x130ae40 [0xa08081c0]>{value = +1, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c3c0>
+	2 : <CFNumber 0x130d660 [0xa08081c0]>{value = +2, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c460>
+	3 : <CFNumber 0x138c490 [0xa08081c0]>{value = +256, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c4a0>
+	4 : <CFNumber 0x13496e0 [0xa08081c0]>{value = +4, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c4f0>
+	5 : <CFNumber 0x130c600 [0xa08081c0]>{value = +5, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c6b0>
+	6 : <CFNumber 0x130ed80 [0xa08081c0]>{value = +6, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138c760>
+	7 : <CFNumber 0x138ca30 [0xa08081c0]>{value = +257, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138ca40>
+	8 : <CFNumber 0x138ca90 [0xa08081c0]>{value = +258, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138caa0>
+	9 : <CFNumber 0x135bc00 [0xa08081c0]>{value = +9, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138cac0>
+	10 : <CFNumber 0x138cc00 [0xa08081c0]>{value = +513, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138cc10>
+	11 : <CFNumber 0x138cc90 [0xa08081c0]>{value = +514, type = kCFNumberSInt32Type} = <IOBluetoothSDPDataElement: 0x138cca0>
+)}
+
+)mRFCOMMConnection - 0x0
+
+)}

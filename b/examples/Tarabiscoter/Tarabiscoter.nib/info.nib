@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBDocumentLocation</key>
+	<string>20 12 656 250 0 0 1280 1002 </string>
+	<key>IBEditorPositions</key>
+	<dict>
+		<key>29</key>
+		<string>161 402 321 44 0 0 2560 1578 </string>
+	</dict>
+	<key>IBFramework Version</key>
+	<string>446.1</string>
+	<key>IBOldestOS</key>
+	<integer>4</integer>
+	<key>IBOpenObjects</key>
+	<array>
+		<integer>290</integer>
+		<integer>29</integer>
+	</array>
+	<key>IBSystem Version</key>
+	<string>8L2127</string>
+	<key>IBUserGuides</key>
+	<dict>
+		<key>280</key>
+		<dict>
+			<key>guideLocations</key>
+			<array>
+				<string>Vertical:129.000000</string>
+				<string>Vertical:122.000000</string>
+				<string>Vertical:20.000000</string>
+			</array>
+			<key>guidesLocked</key>
+			<true/>
+		</dict>
+		<key>614</key>
+		<dict>
+			<key>guideLocations</key>
+			<array>
+				<string>Horizontal:133.000000</string>
+				<string>Vertical:19.000000</string>
+				<string>Vertical:106.000000</string>
+				<string>Vertical:86.000000</string>
+				<string>Vertical:207.000000</string>
+				<string>Vertical:187.000000</string>
+				<string>Horizontal:103.000000</string>
+				<string>Vertical:308.000000</string>
+				<string>Vertical:288.000000</string>
+				<string>Vertical:390.000000</string>
+				<string>Horizontal:71.000000</string>
+				<string>Horizontal:47.000000</string>
+			</array>
+			<key>guidesLocked</key>
+			<true/>
+		</dict>
+		<key>654</key>
+		<dict>
+			<key>guideLocations</key>
+			<array>
+				<string>Vertical:19.000000</string>
+				<string>Vertical:175.000000</string>
+				<string>Vertical:276.000000</string>
+				<string>Vertical:296.000000</string>
+				<string>Vertical:397.000000</string>
+				<string>Vertical:377.000000</string>
+				<string>Vertical:195.000000</string>
+				<string>Vertical:479.000000</string>
+				<string>Horizontal:244.000000</string>
+				<string>Horizontal:212.000000</string>
+				<string>Horizontal:180.000000</string>
+				<string>Horizontal:148.000000</string>
+				<string>Horizontal:116.000000</string>
+				<string>Horizontal:84.000000</string>
+				<string>Horizontal:60.000000</string>
+			</array>
+			<key>guidesLocked</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>targetFramework</key>
+	<string>IBCarbonFramework</string>
+</dict>
+</plist>

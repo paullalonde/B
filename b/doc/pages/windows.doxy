@@ -1,0 +1,165 @@
+// ==========================================================================================
+//	
+//	Copyright (C) 2004-2005 Paul Lalonde enrg.
+//	
+//	This program is free software;  you can redistribute it and/or modify it under the 
+//	terms of the GNU General Public License as published by the Free Software Foundation;  
+//	either version 2 of the License, or (at your option) any later version.
+//	
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License along with this 
+//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//	Suite 330, Boston, MA  02111-1307  USA
+//	
+// ==========================================================================================
+
+namespace B {
+
+/*!
+
+@page using_windows Windows
+
+Windows in B are normally instantiated from a nib file, which contains
+a description of the window and the views it contains.  Nib files
+are edited with the standard Interface Builder tool supplied by Apple.
+
+There a number of advantages to using nib files:
+- I don't have to write a GUI building tool.
+- It's much more convenient to lay out a window and its views visually than 
+  programatically.
+- Interface Builder is integrated into Apple's tool suite.  Xcode and Project Builder 
+  both "know" about nib files.  Also, AppleGlot &amp; nibtool allow for fairly easy 
+  localisation of nib files.
+
+There are also some disadvantages:
+- It makes B dependent on Apple's tools.
+- IB's support for Carbon isn't as good as its support for Cocoa. For example:
+	- IB doesn't support all Carbon views.  The particular views that are supported vary 
+	  with the target platform.  Those that aren't must be instantiated programatically.
+	- Even for the views that it does support, often some view features can't be specified
+	  through IB and must therefore be set programatically.
+
+
+@section instantiating Instantiating a Window Object
+
+Creating a window is accomplished by calling a single member function of Window:
+
+@code
+void MyMakeWindow(B::Nib& inNib, B::AEObject* container)
+{
+	B::OSPtr<WindowRef> winref;
+    MyWindow*           win;
+    
+    boost::tie(winref, win) = B::Window::CreateFromNib<MyWindow>(
+                                  inNib, "MainWindow", container);
+    
+    // Do some processing here ... if an exception occurs, the WindowRef will be 
+    // disposed properly.
+    
+    win->Show(true);
+    
+    // Relenquish ownership of the WindowRef.
+    winref.release();
+}
+@endcode
+
+Window::CreateFromNib() takes a template parameter, @a WINDOW, which is the C/C++ class to 
+instantiate;  it must be Window or derive from Window, and must have a public constructor 
+of the following form:
+
+@code WINDOW(WindowRef inWindowRef, AEObject* inContainer); @endcode
+
+CreateFromNib() returns an @c std::pair, with the first element holding a smart pointer to 
+a @c WindowRef, and the second holding a pointer to the @a WINDOW object.  The reason for 
+this is that the window's lifetime is controlled by the smart pointer;  one can't destroy a 
+window object by calling @c operator @c delete on it.  So if an exception after 
+CreateFromNib() returns but before release() is called on the smart pointer, the window will 
+be disposed properly.  The second part of the pair (the @a WINDOW pointer) is there for 
+convenient type-safe access to the window object.
+
+CreateFromNib() also takes two non-template arguments: a Nib identifying the nib file from 
+which to read the window definition, and the window's name as set it Interface Builder's 
+main window.
+
+
+@section deleting Deleting a Window Object
+
+Once instantiated, the window object's lifetime is tied to that of its underlying 
+@c WindowRef.  It follows that instances of Window (or of classes derived from Window) 
+should never be deleted directly, but rather indirectly by disposing the window.  This can 
+be done by calling Window::Close(), or by letting the standard window handler do its thing 
+when the user clicks the close button.
+
+
+@section finding Finding Views
+
+In order to find views at runtime, you need to name them. Views are named by a signature and 
+an ID number.  Both values may be set in the Control portion of Interface Builder's Info 
+window.  The signature will normally be your application's signature;  it allows various 
+software entities (eg a host app and its plugins) to each place views in a window without 
+fear of naming conflicts.  The ID is up to you.  The important thing is that the signature/ID 
+pair be unique within the window.
+
+Assuming you have filled in the signature and ID fields of your window's views, you can 
+retrieve a window's View objects like this:
+
+@code
+void MyGetViews(MyWindow* window)<
+{
+    StaticTextView* staticTextView;
+    
+    staticTextView = window->FindViewByID<StaticTextView>(kMyStaticTextID);
+}
+@endcode
+
+FindView() locates the @c HIViewRef, extracts its matching View object (instantiating it if 
+necessary), then downcasts it to the requested type.  Exceptions are thrown if the view 
+isn't found, or if the view isn't of the correct type.
+
+
+@section factories View Factories
+
+You may be wondering how B "knows" the correct C/C++ type for a given @c HIViewRef.  The 
+answer resides in the ViewFactory class.  This class manages a set of triples 
+<em>&lt;ControlKind, HIViewID, FactoryProc&gt;</em>.  @c ControlKind identifies the type 
+of view, eg push button, scroll bar, etc.  @c HIViewID identifies a particular view within 
+a window.  Finally, @c FactoryProc is a function that instantiates a C/C++ object (derived 
+from View) appropriate for the @c ControlKind / @c HIViewID pair.
+
+There is a default view factory which contains application-wide triples.  This factory is 
+populated during application initialisation to contain entries for known HIToolbox views, 
+eg push button.
+
+When a window object is instantiated by Window::CreateFromNib(), its HIView hierarchy is 
+traversed and for each the view factory is called to instantiate an object of the correct 
+C/C++ type.  Thus by the time CreateFromNib() returns, the View objects for each of the 
+window's HIViews have already been created.
+
+
+@section nib_tips Nib Tips
+
+Here are a number of nib-related gotcha's that the author learned the hard way.
+
+- When creating windows, always turn on the "Standard handler" check box.  It implements a 
+  lot of the default behaviour for windows.
+- Most of the time, you'll want to turn on compositing. Compositing gives your window a true 
+  hierarchy of views, makes updates much more efficient, and allows refreshes to occur from 
+  within a mouse-tracking loop.  Certain types of windows such as drawers require compositing.  
+  However, there may be times where you must turn off compositing.  For example, the data 
+  browser control didn't support composited windows prior to Panther.  If you have a data 
+  browser in your window and you need to support Jaguar, you will have to turn it off.
+- Most system-supplied views support both composited and non-composited windows.  However, 
+  there are exceptions.  Some views require composited windows (eg HIScrollView), whereas 
+  others require non-composited windows (eg non-Unicode edit text control, pre-Panther data 
+  browser).
+- If you are creating a placeholder window whose contents will be inserted into a Nav dialog, 
+  be very careful which views you put into it.  Nav dialogs are non-composited in Jaguar and 
+  composited in Panther.  If you need to support both system releases, avoid controls which 
+  require one or the other.
+
+*/
+
+}   // namespace B

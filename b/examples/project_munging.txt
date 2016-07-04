@@ -1,0 +1,27 @@
+Search & Replace strings to remove bad paths from Xcode project files: they change the "path" attribute to contain only the file name, and they remove the "name" attribute.
+
+The regexps are for CodeWarrior.
+
+--------------------------------------------------------
+
+Search:
+; name = ([^;]+); path = ../../../[^;]+;
+
+Replace:
+; path = \1;
+
+--------------------------------------------------------
+
+Search:
+; name = ([^;]+); path = /Volumes/[^;]+; sourceTree = "<absolute>";
+
+Replace:
+; path = \1; sourceTree = "<group>";
+
+--------------------------------------------------------
+
+Search:
+; name = ([^;]+); path = /Users/paull/src/bdev/[^;]+; sourceTree = "<absolute>";
+
+Replace:
+; path = \1; sourceTree = "<group>";

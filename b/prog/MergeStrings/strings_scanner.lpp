@@ -1,0 +1,230 @@
+/* ==========================================================================================
+ *	
+ *	Copyright (C) 2003-2005 Paul Lalonde enrg.
+ *	
+ *	This program is free software;  you can redistribute it and/or modify it under the 
+ *	terms of the GNU General Public License as published by the Free Software Foundation;  
+ *	either version 2 of the License, or (at your option) any later version.
+ *	
+ *	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+ *	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ *	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License along with this 
+ *	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+ *	Suite 330, Boston, MA  02111-1307  USA
+ *	
+ * ==========================================================================================
+ */
+%{
+
+#include <algorithm>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+#include <CoreFoundation/CFString.h>
+
+#include "strings_parser.h"
+#include "main.h"
+
+static std::string				sCurrentFile;
+static std::string				sCurrentToken;
+static std::string				sInputString;
+static std::string::size_type	sInputOffset;
+static int						sCurrentLine;
+
+static int	ReadInput(char* buf, size_t max_size);
+
+static void	read_file_into_string(const char* path, std::string& str);
+static void	read_file(const char* path, std::vector<char>& data);
+static std::string&	CFStringToString(
+						CFStringRef			cfstr, 
+						CFStringEncoding	encoding, 
+						std::string&		nstr);
+
+#define YY_NO_UNPUT
+#undef YY_INPUT
+#define YY_INPUT(b, r, max)		{ r = ReadInput(b, max); }
+#define YY_EXIT_FAILURE			3
+
+%}
+
+%x SCMNT SSTR
+
+eol		\r|\n|(\r\n)
+sp		[ \t]+
+nstar	[\x01-\x29\x2b-\xff]
+nquot	[ !#-\xff]
+
+%%
+
+"/*"			{ sCurrentToken  = yytext;  BEGIN SCMNT; }
+<SCMNT>{eol}	{ sCurrentToken += yytext; sCurrentLine++; }
+<SCMNT>{nstar}+	{ sCurrentToken += yytext; }
+<SCMNT>"*/"$	{ sCurrentToken += yytext;  BEGIN 0;  yylval.strval = sCurrentToken.c_str();  return COMMENT; }
+<SCMNT>"*"		{ sCurrentToken += yytext; }
+
+"\""			{ sCurrentToken  = yytext;  BEGIN SSTR; }
+<SSTR>{nquot}+	{ sCurrentToken += yytext; }
+<SSTR>"\""		{
+					sCurrentToken += yytext;
+					
+					if ((sCurrentToken.size() >= 2) && (sCurrentToken[sCurrentToken.size()-2] != '\\'))
+					{
+						BEGIN 0;  yylval.strval = sCurrentToken.c_str();  return STRING;
+					}
+				}
+
+"="				{ return EQUALS; }
+";"				{ return SEMICOLON; }
+{eol}			{ sCurrentLine++; }
+[ \t]+			;
+
+.				{ fatal(3, "bad character 0x%02.2x in %s line %d\n", (yytext[0] & 0x0FF), 
+						sCurrentFile.c_str(), sCurrentLine); }
+
+%%
+
+void		InitScanner(const char* path)
+{
+	read_file_into_string(path, sInputString);
+	
+	sCurrentFile	= path;
+	sCurrentLine	= 1;
+	sInputOffset	= 0;
+	
+	// Put Flex back into an initial state.
+	
+	BEGIN INITIAL;
+	yy_init = 1;
+	
+	if (yy_current_buffer != NULL)
+	{
+		yy_delete_buffer(yy_current_buffer);
+		yy_current_buffer = NULL;
+	}
+}
+
+static int	ReadInput(char* buf, size_t max_size)
+{
+	int	n	= std::min(max_size, sInputString.size() - sInputOffset);
+	
+	if (n > 0)
+	{
+		memcpy(buf, &sInputString[sInputOffset], n);
+		sInputOffset += n;
+	}
+	
+	return (n);
+}
+
+
+static void	read_file_into_string(const char* path, std::string& str)
+{
+	std::vector<char>	data;
+	
+	read_file(path, data);
+	
+	if (data.size() < 2)
+		fatal(2, "%s is too short", path);
+	
+	CFStringRef	dataStr;
+	
+	dataStr = CFStringCreateWithBytes(NULL, (const UInt8 *) &data[0], data.size(), kCFStringEncodingUnicode, true);
+	if (dataStr == NULL)
+		fatal(2, "can't convert %s to unicode", path);
+	
+	try
+	{
+		CFStringToString(dataStr, kCFStringEncodingUTF8, str);
+	}
+	catch (...)
+	{
+		fatal(2, "can't convert %s to UTF-8", path);
+	}
+}
+
+static void	read_file(const char* path, std::vector<char>& data)
+{
+	FILE*	fp	= fopen(path, "rb");
+	long	size;
+	
+	if (fp == NULL)
+		fatal(2, "can't open %s", path);
+	
+	fseek(fp, 0, SEEK_END);
+	size = ftell(fp);
+	fseek(fp, 0, SEEK_SET);
+	
+	data.resize(size);
+	
+	if (fread(&data[0], 1, size, fp) != (size_t) size)
+		fatal(2, "can't read %s", path);
+	
+	fclose(fp);
+}
+
+static std::string&	CFStringToString(
+	CFStringRef			cfstr, 
+	CFStringEncoding	encoding, 
+	std::string&		nstr)
+{
+	const size_t	kBuffSize	= 512;
+	UInt8*			buff		= NULL;
+	CFAllocatorRef	allocator	= CFAllocatorGetDefault();
+	
+	try
+	{
+		UInt8		buffArray[kBuffSize];
+		char*		buffPtr	= (char *) buffArray;
+		CFIndex		buffLen	= kBuffSize;
+		CFIndex		strLen;
+		
+		strLen = CFStringGetLength(cfstr);
+		
+		if (strLen * sizeof(UniChar) > kBuffSize)
+		{
+			buff = (UInt8*) CFAllocatorAllocate(allocator, strLen * sizeof(UniChar), 0);
+			
+			if (buff != NULL)
+			{
+				buffPtr	= (char *) buff;
+				buffLen	= strLen;
+			}
+		}
+		
+		CFRange	range	= CFRangeMake(0, strLen);
+		
+		nstr.clear();
+		
+		while (range.length > 0)
+		{
+			CFIndex	usedLen, numConverted;
+			
+			numConverted = CFStringGetBytes(cfstr, range, encoding, '?', 
+											false, (UInt8 *) buffPtr, 
+											buffLen, &usedLen);
+			if (numConverted == 0)
+				throw std::runtime_error("string conversion error");
+			
+			nstr.append(buffPtr, usedLen);
+			
+			range.location	+= numConverted;
+			range.length	-= numConverted;
+		}
+		
+		if (buff != NULL)
+			CFAllocatorDeallocate(allocator, buff);
+	}
+	catch (...)
+	{
+		if (buff != NULL)
+			CFAllocatorDeallocate(allocator, buff);
+		
+		throw;
+	}
+	
+	return (nstr);
+}
+

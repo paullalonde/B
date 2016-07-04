@@ -1,0 +1,241 @@
+// ==========================================================================================
+//	
+//	Copyright (C) 2004-2005 Paul Lalonde enrg.
+//	
+//	This program is free software;  you can redistribute it and/or modify it under the 
+//	terms of the GNU General Public License as published by the Free Software Foundation;  
+//	either version 2 of the License, or (at your option) any later version.
+//	
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License along with this 
+//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//	Suite 330, Boston, MA  02111-1307  USA
+//	
+// ==========================================================================================
+
+namespace B {
+
+/*!
+
+@page using_events Handling Carbon Events
+
+@section events  Events
+
+Carbon Events in B are represented by the Event class template.  Its two template 
+parameters are the event's class and kind. Event can act 
+in both an incoming (i.e., received by you) and outgoing (i.e. sent by you) fashion. 
+Although the template may be instantiated directly in simple cases, it is most often 
+specialised.  This allows each type of event to have specific member variables and 
+functions.
+
+Suppose you have defined your own event, and want to send it to an event target.  You could 
+do so like this:
+
+@code
+void MyClass::MySendEvent(EventTargetRef target)
+{
+    // construct a new event
+    B::Event<kMyEventClass, kMyEventKind> event;
+	
+	event.Send(target);
+}
+@endcode
+
+And you would typically handle the event in a function like this one:
+
+@code
+bool MyClass::MyHandleEvent(B::Event<kMyEventClass, kMyEventKind>& event)
+{
+    // do stuff here...
+	
+	return (true);  // the event was handled
+}
+@endcode
+
+Note the @c bool return type.  All event handlers need to return @c true if they 
+handled the event completely, or @c false otherwise.  Returning @c false is equivalent 
+to returning @c eventNotHandledErr from a C-style Carbon %Event handler.  If any other 
+abnormal condition arises, the handler should throw an exception.
+
+Of course, most of the interesting Carbon Events have parameters.  Many of 
+the system-defined Carbon Events already have template specialisations of Event, and 
+these specialisations take care of parameter addition and retrieval for you.  For 
+example, the @c kEventClassCommand / @c kEventCommandProcess event contains three 
+parameters:  the @c HICommandExtended struct, the key modifiers, and the menu context.  
+Code to send one of these events to the user input focus could look like this:
+
+@code
+void MyClass::MySendCmdEvent(const HICommandExtended& cmd)
+{
+    // construct a new event with the proper parameters
+    B::Event<kEventClassCommand, kEventCommandProcess> event(cmd, 0, 0);
+    
+    event.SendToUserFocus();
+}
+@endcode
+
+Likewise, to handle the event:
+
+@code
+bool MyClass::MyHandleCmdEvent(B::Event<kEventClassCommand, kEventCommandProcess>& event)
+{
+    UInt32 keyModifiers = event.mKeyModifiers;
+    UInt32 menuContext  = event.mMenuContext;
+    bool   handled      = true;
+	
+    switch (event.mHICommand.commandID)
+    {
+        // handle commands here...
+	}
+    
+    return (handled);
+}
+@endcode
+
+There are times when you need to set or get a parameter that for one reason or another 
+isn't handled by an Event specialisation.  In that case you can use EventParam and 
+related classes.  EventParam maps its @c NAME template 
+parameter onto an @c EventParamType and from there onto a C/C++ language type.
+It provides a very simple and type-safe way of accessing Carbon %Event parameters:
+
+@code
+HIViewRef viewRef;
+B::Rect bounds;
+B::Event<kEventClassControl, kEventControlGetOptimalBounds> event;
+
+// Retrieve a parameter in a type-safe manner.
+bounds = B::EventParam<kEventParamControlOptimalBounds>::Get(event);
+
+// Set a parameter in a type-safe manner.
+B::EventParam<kEventParamControlOptimalBounds>::Set(event, bounds);
+
+// Set the direct parameter in a type-safe manner.
+B::EventDirectParam<typeControlRef>::Set(event, viewRef);
+
+// Same as above, but wordier.
+B::EventParamAndType<kEventParamDirectObject, typeControlRef>::Set(event, viewRef);
+@endcode
+
+The various "EventParam" classes are summarised below:
+
+- EventParamAndType is the class on which the 
+  others are built.  It takes two template parameters, @c NAME and @c TYPE, which 
+  are of type @c EventParamName and @c EventParamType, respectively.  The class maps the 
+  @c TYPE onto a C/C++ language type.  This is the type used to get and set 
+  the parameter's value.
+- EventParam is similar to EventParamAndType except that the @c TYPE template parameter 
+  is implicit in the @c NAME template parameter.  Most Carbon %Event parameters can only 
+  be of a single type, so the @c NAME indirectly determines the C/C++ language type of 
+  the parameter's value.
+- EventDirectParam is similar to EventParamAndType except that the name is implicitly 
+  @c kEventParamDirectObject.  This class is useful because @c kEventParamDirectObject 
+  is one of the few parameters whose type is overloaded;  its type depends on the 
+  particular event.
+- EventResultParam is similar to EventParamAndType except that the name is implicitly 
+  @c kEventParamResult.  The rationale is the same as for EventDirectParam.
+
+@section event_handlers Event Handlers
+
+The preceding section showed how to write a simple function that received an incoming 
+Carbon %Event, but it avoided discussing how that function could ever be called.  
+That's where EventHandler comes in.
+
+EventHandler manages a collection of functions that each receive a specific Carbon 
+%Event.  Each instance of EventHandler is attached to a specific @c EventTargetRef.
+Adding an element to an EventHandler's collection can be done like this:
+
+@code
+// A functor.
+struct MyHandleEventFunctor {
+    bool operator () (B::Event<kMyEventClass, kMyEventKind>& event);
+};
+
+void MyInstallHandler(B::EventHandler& handler)
+{
+    // Add the functor.
+    handler.Add<kMyEventClass, kMyEventKind>(MyHandleEventFunctor());
+}
+@endcode
+
+Of course, most of the time you will be setting up an EventHandler to call member 
+functions, not arbitrary functors.
+
+Here is a fairly complete example.  It shows management of an EventHandler as a 
+member variable of a class, and how to initialise it so member functions perform 
+the event processing.  B's own usage of EventHandler isn't much more complex than 
+this.
+
+@code
+class MyClass
+{
+public:
+    MyClass(EventTargetRef target);
+private:
+    // utility function to fill in the event handler.
+    void InitEventHandler();
+    
+    // the event handling function.
+    bool MyHandleEvent(B::Event<kMyEventClass, kMyEventKind>& event);
+
+    // the event handler.
+    B::EventHandler mEventHandler;
+};
+
+// The EventHandler member variable needs an EventTargetRef in its constructor.
+MyClass::MyClass(EventTargetRef target)
+    : mEventHandler(target)
+{
+    // Tell the EventHandler which events we want to handle.
+    InitEventHandler();
+}
+
+void MyClass::InitEventHandler()
+{
+    // When a kMyEventClass/kMyEventKind event is received, MyHandleEvent will 
+	// be called.  The first argument ('this') is the object which will be 
+	// called -- in this case, ourselves.
+    mEventHandler.Add(this, &MyClass::MyHandleEvent);
+    
+    // As an optimization, EventHandler starts off in a mode where it merely 
+	// builds up its collection of triples.  The Init() call actually 
+	// sets up the EventHandlerRef.
+    mEventHandler.Init();
+}
+
+bool MyClass::MyHandleEvent(B::Event<kMyEventClass, kMyEventKind>& event)
+{
+    // do stuff
+    
+    return (true);
+}
+@endcode
+
+Once you have an EventHandler available, handling more events is a simple matter 
+of declaring an event handling member function with the proper signature, then 
+adding a call to EventHandler::Add during initialisation.
+
+@section handler_chain Event Propagation
+
+Unlike earlier application frameworks that originated on Classic Mac OS, such as 
+MacApp and PowerPlant, B does not provide much functionality for routing Carbon 
+Events to the right objects.  This is because the Carbon %Event mechanism now 
+performs much of the work that used to be done by frameworks.  B relies 
+almost exclusively on the Carbon %Event Manager's event propagation logic.  This 
+has two ramifications:
+
+-# An entity that wants to participate in the propagation of events (eg to intercept 
+   some of them) needs to have an associated @c EventTargetRef.  This is not a huge 
+   problem, since one can easily create new types of Carbon-Event-addressable objects 
+   by deriving from EventTarget.
+-# By default, events are propagated from the user input focus, up through any 
+   containing HIViews, to its owning WindowRef, and on to the application.  Diverting
+   the flow of events to some other, custom event target type requires some work.
+   For an example, see DocumentWindow, which reroutes certain events to its owning 
+   Document.
+
+*/
+
+}   // namespace B

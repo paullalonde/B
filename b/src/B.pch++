@@ -1,0 +1,291 @@
+// ==========================================================================================
+//	
+//	Copyright (C) 2003-2006 Paul Lalonde enrg.
+//	
+//	This program is free software;  you can redistribute it and/or modify it under the 
+//	terms of the GNU General Public License as published by the Free Software Foundation;  
+//	either version 2 of the License, or (at your option) any later version.
+//	
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License along with this 
+//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//	Suite 330, Boston, MA  02111-1307  USA
+//	
+// ==========================================================================================
+//	
+//	This header may be used standalone as the source of a precompiled header, or it may 
+//	be included by a project-specific file.
+//	
+//	We expect two macros to be defined prior to entering this file:
+//	
+//		- NDEBUG should be defined (to an empty value) for release builds.
+//		
+//		- B_MSL_BUILD should be defined if we are building under CodeWarrior using the 
+//		  MSL library.
+//	
+// ==========================================================================================
+
+
+// Make this non-zero to avoid precompiling almost all header files.
+#ifndef MINIMAL_INCLUDES
+#	define MINIMAL_INCLUDES	0
+#endif
+
+// Some parts of B need the C99 specified-width integer type limits.
+#define __STDC_LIMIT_MACROS
+#define __STDC_CONSTANT_MACROS
+
+// This evil, evil header #defines macros with innocuous sounding names like 'check'.
+// Problem is, it causes name clashes with other libraries, Boost in particular.
+// So we include the file (so it won't get included again), then undefine all of the 
+// offending macros.
+#include <AssertMacros.h>
+#undef debug_string
+#undef check
+#undef ncheck
+#undef check_string
+#undef ncheck_string
+#undef check_noerr
+#undef check_noerr_string
+#undef verify
+#undef verify
+#undef nverify
+#undef verify_string
+#undef nverify_string
+#undef verify_noerr
+#undef verify_noerr_string
+#undef verify_action
+#undef require
+#undef nrequire
+#undef require_action
+#undef nrequire_action
+#undef require_quiet
+#undef nrequire_quiet
+#undef require_action_quiet
+#undef nrequire_action_quiet
+#undef require_string
+#undef nrequire_string
+#undef require_action_string
+#undef nrequire_action_string
+#undef require_noerr
+#undef require_noerr_action
+#undef require_noerr_quiet
+#undef require_noerr_action_quiet
+#undef require_noerr_string
+#undef require_noerr_action_string
+
+
+// ------------------------------------------------------------------------------------------
+//	Debug vs. Release
+//
+// We want NDEBUG to be defined for release builds (this is a standard macro in C, and 
+// will for example disable the assert() macro).  Note that tests against NDEBUG use 
+// "#ifdef", "#ifndef", or "#if defined(NDEBUG)", so we can't just set it to zero to 
+// disable it.
+//
+// We also want _DEBUG to be defined for debug builds.  This is not standard, but is quite 
+// common, especially in the Windows world.
+// 
+// Projects will need to #define NDEBUG for release builds.  If it's not defined, we'll 
+// define _DEBUG automatically.
+
+#ifndef NDEBUG
+	// If it's not a release build, then it must be a debug build.
+#   define _DEBUG 1
+#endif
+
+// B's prebuilt MoreIsBetter library is a release build, so make sure we can't see 
+// any debug-only symbols.  Of course, if you make your own debug build of the library, 
+// just set MORE_DEBUG to 1 to make them visible again.
+#define MORE_DEBUG  0
+
+
+// ------------------------------------------------------------------------------------------
+//	Supported deployment platforms
+
+// Make sure everybody understands this is a Carbon build...
+#define TARGET_API_MAC_CARBON				1
+
+// B requires Jaguar.
+#ifndef MAC_OS_X_VERSION_MIN_REQUIRED
+#   define MAC_OS_X_VERSION_MIN_REQUIRED	MAC_OS_X_VERSION_10_2
+#endif
+
+// This will define the values of MAC_OS_X_VERSION_10_x, and will also set 
+// MAC_OS_X_VERSION_MAX_ALLOWED to the OS version we're building on.
+#include <AvailabilityMacros.h> 
+
+// Sanity check.
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_2
+#   error B requires Jaguar !!
+#endif
+
+
+// ------------------------------------------------------------------------------------------
+//	MSL vs. BSD
+
+#ifdef __MWERKS__
+
+	// Workarounds for problems between CW 8.3 and Panther system headers.
+#   define __CHAR_BIT__		8
+#   define __SCHAR_MAX__	0x7f
+
+	// grab some useful C99 stuff
+//	#define __STDC_LIMIT_MACROS		1
+//	#define __STDC_CONSTANT_MACROS	1
+
+#	ifdef B_MSL_BUILD
+#		include <MSLCarbonPrefix.h>
+#		undef __CF_USE_FRAMEWORK_INCLUDES__
+#		define __CF_USE_FRAMEWORK_INCLUDES__	1
+#	else
+#       define __NOEXTENSIONS__
+#       define __CF_USE_FRAMEWORK_INCLUDES__	1
+#		include <TargetConditionals.h>
+#	endif
+
+	// Versions of CodeWarrior up to at least 8.3 choke on boost::bind when the 
+	// "ICO C++ Template Parser" option is turned on (yes, the new parser chokes where 
+	// the old one doesn't).  Test the compiler version so we can enable the workaround 
+	// later.
+
+#	if __MWERKS__ <= 0x3003		// 8.3
+#		define B_NEED_MWERKS_BIND_WORKAROUND	1
+#	elif __MWERKS__ < 0x4100	// The 9.x versions were never tested
+#		error "Untested version of CodeWarrior -- check if it still chokes on boost::bind."
+#	else						// 10.0 works ok
+#		define B_NEED_MWERKS_BIND_WORKAROUND	0
+#	endif
+#endif
+
+
+// ------------------------------------------------------------------------------------------
+//	C/C++ Headers
+
+#if !MINIMAL_INCLUDES
+#	include <ctype.h>
+#	include <errno.h>
+#	include <float.h>
+#	include <limits.h>
+#	include <math.h>
+#	include <stddef.h>
+#	include <stdint.h>
+#	include <stdio.h>
+#	include <stdlib.h>
+#	include <string.h>
+#	include <time.h>
+#	if defined(__cplusplus)
+#		include <algorithm>
+#		include <fstream>
+#		include <functional>
+#		if defined(__MWERKS__)
+#			include <hash_map>
+#			include <hash_set>
+#		elif defined(__GNUC__)
+#			include <ext/hash_map>
+#			include <ext/hash_set>
+#		endif
+#		include <iostream>
+#		include <iterator>
+#		include <map>
+#		include <memory>
+#		include <new>
+#		include <numeric>
+#		include <set>
+#		include <sstream>
+#		include <stack>
+#		include <string>
+#		include <utility>
+#		include <vector>
+#	endif
+#endif
+
+// ------------------------------------------------------------------------------------------
+//	Library Headers
+
+// work-arounds for broken headers
+//#define BOOST_PLATFORM_CONFIG	"boost_config_macos.h"
+
+#if defined(__cplusplus) && !MINIMAL_INCLUDES
+
+	// boost::bind, what a piece of work...
+#   if defined(__MWERKS__)
+#		if B_NEED_MWERKS_BIND_WORKAROUND
+#			pragma parse_func_templ off
+#		endif
+#	elif defined(__GNUC__)
+		// Prevent default declaration of boost::bind placeholders.
+#		define BOOST_BIND_NO_PLACEHOLDERS
+#	endif
+#	include <boost/bind.hpp>
+#   if defined(__MWERKS__)
+#		if B_NEED_MWERKS_BIND_WORKAROUND
+#			pragma parse_func_templ reset
+#		endif
+#		undef B_NEED_MWERKS_BIND_WORKAROUND
+#	elif defined(__GNUC__)
+		// boost::bind's placeholder objects are declared inside an anonymous namespace, 
+		// which unfortunately causes "multiple definition of symbol" errors at link time, 
+		// due to Apple's gcc being broken.  We are reduced to camouflaging the definition 
+		// of the placeholders (by defining BOOST_BIND_NO_PLACEHOLDERS above), then 
+		// declaring them ourselves in a manner which won't cause gcc to barf.  Sigh... 
+		extern boost::arg<1> _1;
+		extern boost::arg<2> _2;
+		extern boost::arg<3> _3;
+		extern boost::arg<4> _4;
+		extern boost::arg<5> _5;
+		extern boost::arg<6> _6;
+		extern boost::arg<7> _7;
+		extern boost::arg<8> _8;
+		extern boost::arg<9> _9;
+#	endif
+
+#   if defined(__MWERKS__)
+#		pragma warn_unusedarg off
+#	endif
+#	include <boost/enable_shared_from_this.hpp>
+#   if defined(__MWERKS__)
+#		pragma warn_unusedarg reset
+#	endif
+#	if !defined(__GNUC__) || (__GNUC__ > 3) || ((__GNUC__ == 3) && (__GNUC_MINOR__ >= 3))
+		// Precompiling <boost/format.hpp> causes GCC to segfault on versions prior to 3.3.
+#		include <boost/format.hpp>
+#	endif
+#	include <boost/concept_check.hpp>
+#	include <boost/function.hpp>
+//#	ifdef __MWERKS__
+//#		pragma warn_unusedarg off
+//#	endif
+//#	include <boost/regex.hpp>
+//#	ifdef __MWERKS__
+//#		pragma warn_unusedarg reset
+//#	endif
+#	include <boost/logic/tribool.hpp>
+#	include <boost/scoped_ptr.hpp>
+#	include <boost/shared_ptr.hpp>
+#   if !defined(__MWERKS__)
+		// CW crashes when precompiling the 1.32.0 & 1.33.0 versions of boost::signal.
+#		include <boost/signal.hpp>
+#	endif
+#	include <boost/thread.hpp>
+#	include <boost/tuple/tuple.hpp>
+#	include <boost/tuple/tuple_comparison.hpp>
+#	include <boost/tuple/tuple_io.hpp>
+#	include <boost/utility.hpp>
+#	include <boost/weak_ptr.hpp>
+#endif
+
+	
+#include "MoreSetup.h"
+
+// ------------------------------------------------------------------------------------------
+//	Toolbox Headers
+
+#if !MINIMAL_INCLUDES
+#	include <CoreServices/CoreServices.h>
+#	include <ApplicationServices/ApplicationServices.h>
+#	include <Carbon/Carbon.h>
+#endif

@@ -1,0 +1,78 @@
+// ==========================================================================================
+//	
+//	Copyright (C) 2003-2005 Paul Lalonde enrg.
+//	
+//	This program is free software;  you can redistribute it and/or modify it under the 
+//	terms of the GNU General Public License as published by the Free Software Foundation;  
+//	either version 2 of the License, or (at your option) any later version.
+//	
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License along with this 
+//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//	Suite 330, Boston, MA  02111-1307  USA
+//	
+// ==========================================================================================
+
+plist
+{
+	dictionary
+	{
+		key "CFBundleVersion" value string "1"
+		
+		key "CFBundleName" value string __OUTPUT_FILENAME__
+		key "LSHasLocalizedDisplayName" value boolean true
+		
+		key "CFBundleSignature" value string __OUTPUT_CREATOR__
+		key "CFBundlePackageType" value string __OUTPUT_TYPE__
+		key "CFBundleExecutable" value string __OUTPUT_FILENAME__
+		
+		key "CFBundleIconFile" value string "PLister"
+		key "CFBundleIdentifier" value string "ca.paullalonde.b.examples.PLister"
+		
+		key "CFBundleDevelopmentRegion" value string "English"
+		key "CFBundleInfoDictionaryVersion" value string "6.0"
+//		key "LSRequiresCarbon" value boolean true
+	
+		key "CSResourcesFileMapped" value boolean true
+		key "NSAppleScriptEnabled" value boolean true
+
+		key "CFBundleShortVersionString" value string "PLister 1.0"
+
+		key "NSMainNibFile" value string "MainNib"
+
+		// help book
+		key "CFBundleHelpBookFolder" value string "PLister Help"
+		// note: help book name is localised, so was put in InfoPlist.strings.
+		
+		key "B::ScriptingDefinition" value string "PLister"
+		
+		 // documents
+		key "CFBundleDocumentTypes" value array
+		[
+			dictionary
+			{
+				key "CFBundleTypeName" value string "PropertyListFile"
+				key "CFBundleTypeIconFile" value string "PropertyListFile"
+				key "CFBundleTypeRole" value string "Editor"
+				key "CFBundleTypeExtensions" value array 
+							[ string "plist" string "strings" ]
+//				key "CFBundleTypeOSTypes" value array [ string 'plst' ]
+				key "B::OSAClass" value string "docu"
+			}
+
+			dictionary
+			{
+				key "CFBundleTypeName" value string "XMLFile"
+//				key "CFBundleTypeIconFile" value string "tdb.icns"
+				key "CFBundleTypeRole" value string "Editor"
+				key "CFBundleTypeExtensions" value array 
+							[ string "plist" string "dict" string "strings" ]
+				key "CFBundleTypeOSTypes" value array [ string '****' ]
+				key "B::OSAClass" value string "docu"
+			}
+		]
+	}
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Read Me - PLister Sample</title>
+  <meta content="text/html; charset=iso-8859-1"
+ http-equiv="Content-Type">
+</head>
+<body>
+<h2>PLister Sample</h2>
+<p>The sample demonstrates the following techniques:</p>
+<ul>
+  <li>Multiple-document application.</li>
+  <li>Simple document file I/O.</li>
+  <li>Strict separation between business logic and user interface
+(MVC-like).</li>
+  <li>Factored design. The UI sends Apple Events to the application's
+data model objects in order to perform any modification on the model.</li>
+  <li>Undo.&nbsp; All user actions in PLister are undoable.</li>
+  <li>Integration of Apple Events and Undo.&nbsp; Event commands sent
+via Apple Events are undoable.</li>
+  <li>DataBrowser support for drag &amp; drop, help tags, and the
+Services menu.</li>
+  <li>Saving &amp; restoring the databrowser's configuration (column
+location and size).</li>
+  <li>Use of <tt>std::istream</tt> &amp; <tt>std::ostream</tt> to
+read/write drag and scrap contents.</li>
+  <li>Localisation. PLister's UI is available in English and French.</li>
+</ul>
+<p>The main classes are described next.</p>
+<h3>ApplicationDocPolicy</h3>
+<p>The document policy class. This class derives from <tt>B::MultipleDocumentPolicy&lt;B::MultipleDocumentFactory&gt;</tt>,
+which is a long way of saying that it supports multiple open documents
+of multiple kinds. </p>
+<h3>Application</h3>
+<p>The main application class. This class derives from <tt>B::Application&lt;ApplicationDocPolicy&gt;,
+B::PrintPolicy&gt;</tt>.</p>
+<h3>Browser</h3>
+<p>This class derives from <tt>B::DataBrowser</tt> and adds a number
+of PLister-specific commands.</p>
+<h3>BrowserItem</h3>
+<p>This class derives from <tt>B::DataBrowserItem</tt> and represents
+one line in the browser.&nbsp; Each such line corresponds to a single <tt>ModelItem</tt>.</p>
+<h3>Document</h3>
+<p>This class represents an open property list document.&nbsp; It
+derives from <tt>B::Document&lt;B::NullPrintPolicy&gt;</tt>, which
+means that it doesn't support printing.</p>
+<h3>ModelItem</h3>
+<p>This class represents one element of a property list.&nbsp; An
+element is a dictionary, array, date, integer, boolean, real, or blob.</p>
+<h3>Window</h3>
+<p>This class derives from <tt>B::Window</tt> and adds a number of
+PLister-specific commands.<br>
+</p>
+<h3>System Requirements</h3>
+<ul>
+  <li>Mac OS X 10.4 (aka Tiger).</li>
+  <li>One of :
+    <ul>
+        <li>Xcode 2.1</li>
+        <li>CodeWarrior 10.0</li>
+    </ul>
+  </li>
+</ul>
+The use of SDKs (to cross compile) has not been tested.&nbsp; YMMV.
+</body>
+</html>

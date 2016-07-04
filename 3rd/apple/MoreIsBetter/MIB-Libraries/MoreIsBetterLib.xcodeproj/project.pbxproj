@@ -1,0 +1,834 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A0C5C9F0555E8C5005E4238 /* MoreAddrToSym.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FDF0555E4F200824720 /* MoreAddrToSym.c */; };
+		6A0C5CA00555E8C6005E4238 /* MoreAEDataModel.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FC60555E4F200824720 /* MoreAEDataModel.c */; };
+		6A0C5CA10555E8C8005E4238 /* MoreAEObjects.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FC80555E4F200824720 /* MoreAEObjects.c */; };
+		6A0C5CA20555E8CA005E4238 /* MoreAppearance.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FFA0555E4F200824720 /* MoreAppearance.cp */; };
+		6A0C5CA30555E8CB005E4238 /* MoreAppleEvents.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FCA0555E4F200824720 /* MoreAppleEvents.cp */; };
+		6A0C5CA60555E902005E4238 /* MoreAppleEventsPlus.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FCD0555E4F200824720 /* MoreAppleEventsPlus.c */; };
+		6A0C5CA80555E904005E4238 /* MoreBacktrace.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FE10555E4F200824720 /* MoreBacktrace.c */; };
+		6A0C5CA90555E905005E4238 /* MoreBBLog.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FEE0555E4F200824720 /* MoreBBLog.c */; };
+		6A0C5CAA0555E907005E4238 /* MoreBlueActions.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060530555E4F300824720 /* MoreBlueActions.c */; };
+		6A0C5CAB0555E908005E4238 /* MoreCarbonEvents.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060500555E4F300824720 /* MoreCarbonEvents.c */; };
+		6A0C5CAC0555E90A005E4238 /* MoreCDs.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605F550555E4F100824720 /* MoreCDs.c */; };
+		6A0C5CAD0555E90B005E4238 /* MoreCFQ.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FAD0555E4F200824720 /* MoreCFQ.c */; };
+		6A0C5CAE0555E90E005E4238 /* MoreControls.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A60602D0555E4F200824720 /* MoreControls.cp */; };
+		6A0C5CAF0555E910005E4238 /* MoreCRC.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605F5D0555E4F100824720 /* MoreCRC.c */; };
+		6A0C5CB00555E911005E4238 /* MoreDialogs.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060640555E4F300824720 /* MoreDialogs.cp */; };
+		6A0C5CB20555E913005E4238 /* MoreErrors.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060040555E4F200824720 /* MoreErrors.c */; };
+		6A0C5CB50555E919005E4238 /* MoreFinderEvents.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FCF0555E4F200824720 /* MoreFinderEvents.c */; };
+		6A0C5CB70555E91F005E4238 /* MoreLists.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060470555E4F300824720 /* MoreLists.c */; };
+		6A0C5CB80555E920005E4238 /* MoreMemory.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FF40555E4F200824720 /* MoreMemory.c */; };
+		6A0C5CB90555E921005E4238 /* MoreMenus.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060590555E4F300824720 /* MoreMenus.c */; };
+		6A0C5CBA0555E922005E4238 /* MoreMPLog.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060550555E4F300824720 /* MoreMPLog.c */; };
+		6A0C5CBB0555E924005E4238 /* MoreNavigation.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060110555E4F200824720 /* MoreNavigation.c */; };
+		6A0C5CBE0555E92A005E4238 /* MoreOSA.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FD10555E4F200824720 /* MoreOSA.c */; };
+		6A0C5CBF0555E92A005E4238 /* MoreOSL.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060760555E4F300824720 /* MoreOSL.c */; };
+		6A0C5CC00555E92B005E4238 /* MoreOSLHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060780555E4F300824720 /* MoreOSLHelpers.c */; };
+		6A0C5CC10555E92C005E4238 /* MoreOSLStringCompare.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A60607B0555E4F300824720 /* MoreOSLStringCompare.c */; };
+		6A0C5CC20555E92E005E4238 /* MoreOSLTokens.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A60607E0555E4F300824720 /* MoreOSLTokens.c */; };
+		6A0C5CC30555E92E005E4238 /* MoreOSUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A60604A0555E4F300824720 /* MoreOSUtils.c */; };
+		6A0C5CC40555E92F005E4238 /* MorePreferences.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A60600B0555E4F200824720 /* MorePreferences.cp */; };
+		6A0C5CC50555E930005E4238 /* MoreProcesses.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A605F4C0555E4F100824720 /* MoreProcesses.cp */; };
+		6A0C5CC60555E932005E4238 /* MoreQuickDraw.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060300555E4F200824720 /* MoreQuickDraw.cp */; };
+		6A0C5CC70555E932005E4238 /* MoreResources.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605F810555E4F200824720 /* MoreResources.c */; };
+		6A0C5CC80555E934005E4238 /* MoreSCF.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060140555E4F200824720 /* MoreSCF.c */; };
+		6A0C5CC90555E934005E4238 /* MoreSCFCCLScanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060160555E4F200824720 /* MoreSCFCCLScanner.c */; };
+		6A0C5CCA0555E939005E4238 /* MoreSCFDigest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060180555E4F200824720 /* MoreSCFDigest.c */; };
+		6A0C5CCB0555E93A005E4238 /* MoreSCFHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A60601A0555E4F200824720 /* MoreSCFHelpers.c */; };
+		6A0C5CCC0555E93A005E4238 /* MoreSCFPortScanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A60601C0555E4F200824720 /* MoreSCFPortScanner.c */; };
+		6A0C5CCE0555E93C005E4238 /* MoreSecurity.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060380555E4F200824720 /* MoreSecurity.c */; };
+		6A0C5CCF0555E93E005E4238 /* MoreSound.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A60600E0555E4F200824720 /* MoreSound.cp */; };
+		6A0C5CD10555E940005E4238 /* MoreTextUtils.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060260555E4F200824720 /* MoreTextUtils.cp */; };
+		6A0C5CD20555E942005E4238 /* MoreToolbox.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FAA0555E4F200824720 /* MoreToolbox.cp */; };
+		6A0C5CD30555E943005E4238 /* MoreUNIX.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A6060080555E4F200824720 /* MoreUNIX.c */; };
+		6A0C5CD40555E944005E4238 /* MoreWindows.cp in Sources */ = {isa = PBXBuildFile; fileRef = 6A605FF10555E4F200824720 /* MoreWindows.cp */; };
+		6A0C5CD70555E949005E4238 /* OTMP.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A605F6B0555E4F200824720 /* OTMP.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		014CEA460018CE2711CA2923 /* Development */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OPTIMIZATION_CFLAGS = "-O0";
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		014CEA470018CE2711CA2923 /* Deployment */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXFileReference section */
+		0249A663FF388D9811CA2CEA /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/libstdc++.a"; sourceTree = "<absolute>"; };
+		6A48F4DE0558304700B8BC2E /* MoreIsBetterLib.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreIsBetterLib.pch; sourceTree = "<group>"; };
+		6A605F440555E46000824720 /* libMoreIsBetterLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMoreIsBetterLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A605F4C0555E4F100824720 /* MoreProcesses.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreProcesses.cp; sourceTree = "<group>"; };
+		6A605F4D0555E4F100824720 /* MoreProcesses.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreProcesses.h; sourceTree = "<group>"; };
+		6A605F550555E4F100824720 /* MoreCDs.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreCDs.c; sourceTree = "<group>"; };
+		6A605F560555E4F100824720 /* MoreCDs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreCDs.h; sourceTree = "<group>"; };
+		6A605F5D0555E4F100824720 /* MoreCRC.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreCRC.c; sourceTree = "<group>"; };
+		6A605F5E0555E4F100824720 /* MoreCRC.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreCRC.h; sourceTree = "<group>"; };
+		6A605F670555E4F100824720 /* OTClassicContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OTClassicContext.h; sourceTree = "<group>"; };
+		6A605F6B0555E4F200824720 /* OTMP.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = OTMP.c; sourceTree = "<group>"; };
+		6A605F6C0555E4F200824720 /* OTMP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OTMP.h; sourceTree = "<group>"; };
+		6A605F7F0555E4F200824720 /* MIB_Carbon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MIB_Carbon.h; sourceTree = "<group>"; };
+		6A605F810555E4F200824720 /* MoreResources.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreResources.c; sourceTree = "<group>"; };
+		6A605F820555E4F200824720 /* MoreResources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreResources.h; sourceTree = "<group>"; };
+		6A605FAA0555E4F200824720 /* MoreToolbox.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreToolbox.cp; sourceTree = "<group>"; };
+		6A605FAB0555E4F200824720 /* MoreToolbox.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreToolbox.h; sourceTree = "<group>"; };
+		6A605FAD0555E4F200824720 /* MoreCFQ.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreCFQ.c; sourceTree = "<group>"; };
+		6A605FAE0555E4F200824720 /* MoreCFQ.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreCFQ.h; sourceTree = "<group>"; };
+		6A605FC60555E4F200824720 /* MoreAEDataModel.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreAEDataModel.c; sourceTree = "<group>"; };
+		6A605FC70555E4F200824720 /* MoreAEDataModel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreAEDataModel.h; sourceTree = "<group>"; };
+		6A605FC80555E4F200824720 /* MoreAEObjects.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreAEObjects.c; sourceTree = "<group>"; };
+		6A605FC90555E4F200824720 /* MoreAEObjects.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreAEObjects.h; sourceTree = "<group>"; };
+		6A605FCA0555E4F200824720 /* MoreAppleEvents.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreAppleEvents.cp; sourceTree = "<group>"; };
+		6A605FCB0555E4F200824720 /* MoreAppleEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreAppleEvents.h; sourceTree = "<group>"; };
+		6A605FCD0555E4F200824720 /* MoreAppleEventsPlus.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreAppleEventsPlus.c; sourceTree = "<group>"; };
+		6A605FCE0555E4F200824720 /* MoreAppleEventsPlus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreAppleEventsPlus.h; sourceTree = "<group>"; };
+		6A605FCF0555E4F200824720 /* MoreFinderEvents.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreFinderEvents.c; sourceTree = "<group>"; };
+		6A605FD00555E4F200824720 /* MoreFinderEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreFinderEvents.h; sourceTree = "<group>"; };
+		6A605FD10555E4F200824720 /* MoreOSA.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreOSA.c; sourceTree = "<group>"; };
+		6A605FD20555E4F200824720 /* MoreOSA.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreOSA.h; sourceTree = "<group>"; };
+		6A605FDD0555E4F200824720 /* MoreEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreEvents.h; sourceTree = "<group>"; };
+		6A605FDF0555E4F200824720 /* MoreAddrToSym.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreAddrToSym.c; sourceTree = "<group>"; };
+		6A605FE00555E4F200824720 /* MoreAddrToSym.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreAddrToSym.h; sourceTree = "<group>"; };
+		6A605FE10555E4F200824720 /* MoreBacktrace.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreBacktrace.c; sourceTree = "<group>"; };
+		6A605FE20555E4F200824720 /* MoreBacktrace.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreBacktrace.h; sourceTree = "<group>"; };
+		6A605FEE0555E4F200824720 /* MoreBBLog.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreBBLog.c; sourceTree = "<group>"; };
+		6A605FEF0555E4F200824720 /* MoreBBLog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreBBLog.h; sourceTree = "<group>"; };
+		6A605FF10555E4F200824720 /* MoreWindows.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreWindows.cp; sourceTree = "<group>"; };
+		6A605FF20555E4F200824720 /* MoreWindows.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreWindows.h; sourceTree = "<group>"; };
+		6A605FF40555E4F200824720 /* MoreMemory.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreMemory.c; sourceTree = "<group>"; };
+		6A605FF50555E4F200824720 /* MoreMemory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreMemory.h; sourceTree = "<group>"; };
+		6A605FFA0555E4F200824720 /* MoreAppearance.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreAppearance.cp; sourceTree = "<group>"; };
+		6A605FFB0555E4F200824720 /* MoreAppearance.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreAppearance.h; sourceTree = "<group>"; };
+		6A605FFE0555E4F200824720 /* MoreInterfaceLib.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreInterfaceLib.h; sourceTree = "<group>"; };
+		6A605FFF0555E4F200824720 /* RemoteAccessInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemoteAccessInterface.h; sourceTree = "<group>"; };
+		6A6060040555E4F200824720 /* MoreErrors.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreErrors.c; sourceTree = "<group>"; };
+		6A6060050555E4F200824720 /* MoreErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreErrors.h; sourceTree = "<group>"; };
+		6A6060080555E4F200824720 /* MoreUNIX.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreUNIX.c; sourceTree = "<group>"; };
+		6A6060090555E4F200824720 /* MoreUNIX.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreUNIX.h; sourceTree = "<group>"; };
+		6A60600B0555E4F200824720 /* MorePreferences.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MorePreferences.cp; sourceTree = "<group>"; };
+		6A60600C0555E4F200824720 /* MorePreferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MorePreferences.h; sourceTree = "<group>"; };
+		6A60600E0555E4F200824720 /* MoreSound.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreSound.cp; sourceTree = "<group>"; };
+		6A60600F0555E4F200824720 /* MoreSound.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSound.h; sourceTree = "<group>"; };
+		6A6060110555E4F200824720 /* MoreNavigation.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreNavigation.c; sourceTree = "<group>"; };
+		6A6060120555E4F200824720 /* MoreNavigation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreNavigation.h; sourceTree = "<group>"; };
+		6A6060140555E4F200824720 /* MoreSCF.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreSCF.c; sourceTree = "<group>"; };
+		6A6060150555E4F200824720 /* MoreSCF.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSCF.h; sourceTree = "<group>"; };
+		6A6060160555E4F200824720 /* MoreSCFCCLScanner.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreSCFCCLScanner.c; sourceTree = "<group>"; };
+		6A6060170555E4F200824720 /* MoreSCFCCLScanner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSCFCCLScanner.h; sourceTree = "<group>"; };
+		6A6060180555E4F200824720 /* MoreSCFDigest.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreSCFDigest.c; sourceTree = "<group>"; };
+		6A6060190555E4F200824720 /* MoreSCFDigest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSCFDigest.h; sourceTree = "<group>"; };
+		6A60601A0555E4F200824720 /* MoreSCFHelpers.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreSCFHelpers.c; sourceTree = "<group>"; };
+		6A60601B0555E4F200824720 /* MoreSCFHelpers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSCFHelpers.h; sourceTree = "<group>"; };
+		6A60601C0555E4F200824720 /* MoreSCFPortScanner.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreSCFPortScanner.c; sourceTree = "<group>"; };
+		6A60601D0555E4F200824720 /* MoreSCFPortScanner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSCFPortScanner.h; sourceTree = "<group>"; };
+		6A6060260555E4F200824720 /* MoreTextUtils.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreTextUtils.cp; sourceTree = "<group>"; };
+		6A6060270555E4F200824720 /* MoreTextUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreTextUtils.h; sourceTree = "<group>"; };
+		6A60602D0555E4F200824720 /* MoreControls.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreControls.cp; sourceTree = "<group>"; };
+		6A60602E0555E4F200824720 /* MoreControls.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreControls.h; sourceTree = "<group>"; };
+		6A6060300555E4F200824720 /* MoreQuickDraw.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreQuickDraw.cp; sourceTree = "<group>"; };
+		6A6060310555E4F200824720 /* MoreQuickDraw.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreQuickDraw.h; sourceTree = "<group>"; };
+		6A6060320555E4F200824720 /* MoreSetup.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSetup.h; sourceTree = "<group>"; };
+		6A6060380555E4F200824720 /* MoreSecurity.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreSecurity.c; sourceTree = "<group>"; };
+		6A6060390555E4F200824720 /* MoreSecurity.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreSecurity.h; sourceTree = "<group>"; };
+		6A6060470555E4F300824720 /* MoreLists.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreLists.c; sourceTree = "<group>"; };
+		6A6060480555E4F300824720 /* MoreLists.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreLists.h; sourceTree = "<group>"; };
+		6A60604A0555E4F300824720 /* MoreOSUtils.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreOSUtils.c; sourceTree = "<group>"; };
+		6A60604B0555E4F300824720 /* MoreOSUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreOSUtils.h; sourceTree = "<group>"; };
+		6A6060500555E4F300824720 /* MoreCarbonEvents.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreCarbonEvents.c; sourceTree = "<group>"; };
+		6A6060510555E4F300824720 /* MoreCarbonEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreCarbonEvents.h; sourceTree = "<group>"; };
+		6A6060530555E4F300824720 /* MoreBlueActions.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreBlueActions.c; sourceTree = "<group>"; };
+		6A6060540555E4F300824720 /* MoreBlueActions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreBlueActions.h; sourceTree = "<group>"; };
+		6A6060550555E4F300824720 /* MoreMPLog.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreMPLog.c; sourceTree = "<group>"; };
+		6A6060560555E4F300824720 /* MoreMPLog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreMPLog.h; sourceTree = "<group>"; };
+		6A6060580555E4F300824720 /* MenuKeyGlyphs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MenuKeyGlyphs.h; sourceTree = "<group>"; };
+		6A6060590555E4F300824720 /* MoreMenus.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreMenus.c; sourceTree = "<group>"; };
+		6A60605A0555E4F300824720 /* MoreMenus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreMenus.h; sourceTree = "<group>"; };
+		6A6060620555E4F300824720 /* MoreIsBetter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreIsBetter.h; sourceTree = "<group>"; };
+		6A6060640555E4F300824720 /* MoreDialogs.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MoreDialogs.cp; sourceTree = "<group>"; };
+		6A6060650555E4F300824720 /* MoreDialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreDialogs.h; sourceTree = "<group>"; };
+		6A6060760555E4F300824720 /* MoreOSL.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreOSL.c; sourceTree = "<group>"; };
+		6A6060770555E4F300824720 /* MoreOSL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreOSL.h; sourceTree = "<group>"; };
+		6A6060780555E4F300824720 /* MoreOSLHelpers.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreOSLHelpers.c; sourceTree = "<group>"; };
+		6A6060790555E4F300824720 /* MoreOSLHelpers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreOSLHelpers.h; sourceTree = "<group>"; };
+		6A60607B0555E4F300824720 /* MoreOSLStringCompare.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreOSLStringCompare.c; sourceTree = "<group>"; };
+		6A60607C0555E4F300824720 /* MoreOSLStringCompare.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreOSLStringCompare.h; sourceTree = "<group>"; };
+		6A60607E0555E4F300824720 /* MoreOSLTokens.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreOSLTokens.c; sourceTree = "<group>"; };
+		6A60607F0555E4F300824720 /* MoreOSLTokens.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreOSLTokens.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0249A662FF388D9811CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0249A663FF388D9811CA2CEA /* libstdc++.a */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		08FB7794FE84155DC02AAC07 /* MoreIsBetterLib */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* MIB-Libraries */,
+				0249A662FF388D9811CA2CEA /* External Frameworks and Libraries */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = MoreIsBetterLib;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* MIB-Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F7F0555E4F200824720 /* MIB_Carbon.h */,
+				6A6060620555E4F300824720 /* MoreIsBetter.h */,
+				6A6060320555E4F200824720 /* MoreSetup.h */,
+				6A48F4DE0558304700B8BC2E /* MoreIsBetterLib.pch */,
+				6A605FF90555E4F200824720 /* MoreAppearance */,
+				6A605FC50555E4F200824720 /* MoreAppleEvents */,
+				6A60604F0555E4F300824720 /* MoreCarbonEvents */,
+				6A605FAC0555E4F200824720 /* MoreCFQ */,
+				6A60602C0555E4F200824720 /* MoreControls */,
+				6A605F5C0555E4F100824720 /* MoreCRC */,
+				6A605FDE0555E4F200824720 /* MoreDebugging */,
+				6A6060630555E4F300824720 /* MoreDialogs */,
+				6A605F540555E4F100824720 /* MoreDisks */,
+				6A6060030555E4F200824720 /* MoreErrors */,
+				6A605FDC0555E4F200824720 /* MoreEvents */,
+				6A605FFC0555E4F200824720 /* MoreInterfaceLib */,
+				6A6060460555E4F300824720 /* MoreLists */,
+				6A605FF30555E4F200824720 /* MoreMemory */,
+				6A6060570555E4F300824720 /* MoreMenus */,
+				6A6060520555E4F300824720 /* MoreMultiprocessing */,
+				6A6060100555E4F200824720 /* MoreNavigation */,
+				6A605F5F0555E4F100824720 /* MoreOpenTransport */,
+				6A6060750555E4F300824720 /* MoreOSL */,
+				6A6060490555E4F300824720 /* MoreOSUtils */,
+				6A60600A0555E4F200824720 /* MorePreferences */,
+				6A605F4B0555E4F100824720 /* MoreProcesses */,
+				6A60602F0555E4F200824720 /* MoreQuickDraw */,
+				6A605F800555E4F200824720 /* MoreResources */,
+				6A6060130555E4F200824720 /* MoreSCF */,
+				6A6060370555E4F200824720 /* MoreSecurity */,
+				6A60600D0555E4F200824720 /* MoreSound */,
+				6A6060250555E4F200824720 /* MoreTextUtils */,
+				6A605FA90555E4F200824720 /* MoreToolbox */,
+				6A6060070555E4F200824720 /* MoreUNIX */,
+				6A605FF00555E4F200824720 /* MoreWindows */,
+			);
+			name = "MIB-Libraries";
+			sourceTree = SOURCE_ROOT;
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F440555E46000824720 /* libMoreIsBetterLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A605F4B0555E4F100824720 /* MoreProcesses */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F4C0555E4F100824720 /* MoreProcesses.cp */,
+				6A605F4D0555E4F100824720 /* MoreProcesses.h */,
+			);
+			path = MoreProcesses;
+			sourceTree = "<group>";
+		};
+		6A605F540555E4F100824720 /* MoreDisks */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F550555E4F100824720 /* MoreCDs.c */,
+				6A605F560555E4F100824720 /* MoreCDs.h */,
+			);
+			path = MoreDisks;
+			sourceTree = "<group>";
+		};
+		6A605F5C0555E4F100824720 /* MoreCRC */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F5D0555E4F100824720 /* MoreCRC.c */,
+				6A605F5E0555E4F100824720 /* MoreCRC.h */,
+			);
+			path = MoreCRC;
+			sourceTree = "<group>";
+		};
+		6A605F5F0555E4F100824720 /* MoreOpenTransport */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F670555E4F100824720 /* OTClassicContext.h */,
+				6A605F6B0555E4F200824720 /* OTMP.c */,
+				6A605F6C0555E4F200824720 /* OTMP.h */,
+			);
+			path = MoreOpenTransport;
+			sourceTree = "<group>";
+		};
+		6A605F800555E4F200824720 /* MoreResources */ = {
+			isa = PBXGroup;
+			children = (
+				6A605F810555E4F200824720 /* MoreResources.c */,
+				6A605F820555E4F200824720 /* MoreResources.h */,
+			);
+			path = MoreResources;
+			sourceTree = "<group>";
+		};
+		6A605FA90555E4F200824720 /* MoreToolbox */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FAA0555E4F200824720 /* MoreToolbox.cp */,
+				6A605FAB0555E4F200824720 /* MoreToolbox.h */,
+			);
+			path = MoreToolbox;
+			sourceTree = "<group>";
+		};
+		6A605FAC0555E4F200824720 /* MoreCFQ */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FAD0555E4F200824720 /* MoreCFQ.c */,
+				6A605FAE0555E4F200824720 /* MoreCFQ.h */,
+			);
+			path = MoreCFQ;
+			sourceTree = "<group>";
+		};
+		6A605FC50555E4F200824720 /* MoreAppleEvents */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FC60555E4F200824720 /* MoreAEDataModel.c */,
+				6A605FC70555E4F200824720 /* MoreAEDataModel.h */,
+				6A605FC80555E4F200824720 /* MoreAEObjects.c */,
+				6A605FC90555E4F200824720 /* MoreAEObjects.h */,
+				6A605FCA0555E4F200824720 /* MoreAppleEvents.cp */,
+				6A605FCB0555E4F200824720 /* MoreAppleEvents.h */,
+				6A605FCD0555E4F200824720 /* MoreAppleEventsPlus.c */,
+				6A605FCE0555E4F200824720 /* MoreAppleEventsPlus.h */,
+				6A605FCF0555E4F200824720 /* MoreFinderEvents.c */,
+				6A605FD00555E4F200824720 /* MoreFinderEvents.h */,
+				6A605FD10555E4F200824720 /* MoreOSA.c */,
+				6A605FD20555E4F200824720 /* MoreOSA.h */,
+			);
+			path = MoreAppleEvents;
+			sourceTree = "<group>";
+		};
+		6A605FDC0555E4F200824720 /* MoreEvents */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FDD0555E4F200824720 /* MoreEvents.h */,
+			);
+			path = MoreEvents;
+			sourceTree = "<group>";
+		};
+		6A605FDE0555E4F200824720 /* MoreDebugging */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FDF0555E4F200824720 /* MoreAddrToSym.c */,
+				6A605FE00555E4F200824720 /* MoreAddrToSym.h */,
+				6A605FE10555E4F200824720 /* MoreBacktrace.c */,
+				6A605FE20555E4F200824720 /* MoreBacktrace.h */,
+				6A605FEE0555E4F200824720 /* MoreBBLog.c */,
+				6A605FEF0555E4F200824720 /* MoreBBLog.h */,
+			);
+			path = MoreDebugging;
+			sourceTree = "<group>";
+		};
+		6A605FF00555E4F200824720 /* MoreWindows */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FF10555E4F200824720 /* MoreWindows.cp */,
+				6A605FF20555E4F200824720 /* MoreWindows.h */,
+			);
+			path = MoreWindows;
+			sourceTree = "<group>";
+		};
+		6A605FF30555E4F200824720 /* MoreMemory */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FF40555E4F200824720 /* MoreMemory.c */,
+				6A605FF50555E4F200824720 /* MoreMemory.h */,
+			);
+			path = MoreMemory;
+			sourceTree = "<group>";
+		};
+		6A605FF90555E4F200824720 /* MoreAppearance */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FFA0555E4F200824720 /* MoreAppearance.cp */,
+				6A605FFB0555E4F200824720 /* MoreAppearance.h */,
+			);
+			path = MoreAppearance;
+			sourceTree = "<group>";
+		};
+		6A605FFC0555E4F200824720 /* MoreInterfaceLib */ = {
+			isa = PBXGroup;
+			children = (
+				6A605FFE0555E4F200824720 /* MoreInterfaceLib.h */,
+				6A605FFF0555E4F200824720 /* RemoteAccessInterface.h */,
+			);
+			path = MoreInterfaceLib;
+			sourceTree = "<group>";
+		};
+		6A6060030555E4F200824720 /* MoreErrors */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060040555E4F200824720 /* MoreErrors.c */,
+				6A6060050555E4F200824720 /* MoreErrors.h */,
+			);
+			path = MoreErrors;
+			sourceTree = "<group>";
+		};
+		6A6060070555E4F200824720 /* MoreUNIX */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060080555E4F200824720 /* MoreUNIX.c */,
+				6A6060090555E4F200824720 /* MoreUNIX.h */,
+			);
+			path = MoreUNIX;
+			sourceTree = "<group>";
+		};
+		6A60600A0555E4F200824720 /* MorePreferences */ = {
+			isa = PBXGroup;
+			children = (
+				6A60600B0555E4F200824720 /* MorePreferences.cp */,
+				6A60600C0555E4F200824720 /* MorePreferences.h */,
+			);
+			path = MorePreferences;
+			sourceTree = "<group>";
+		};
+		6A60600D0555E4F200824720 /* MoreSound */ = {
+			isa = PBXGroup;
+			children = (
+				6A60600E0555E4F200824720 /* MoreSound.cp */,
+				6A60600F0555E4F200824720 /* MoreSound.h */,
+			);
+			path = MoreSound;
+			sourceTree = "<group>";
+		};
+		6A6060100555E4F200824720 /* MoreNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060110555E4F200824720 /* MoreNavigation.c */,
+				6A6060120555E4F200824720 /* MoreNavigation.h */,
+			);
+			path = MoreNavigation;
+			sourceTree = "<group>";
+		};
+		6A6060130555E4F200824720 /* MoreSCF */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060140555E4F200824720 /* MoreSCF.c */,
+				6A6060150555E4F200824720 /* MoreSCF.h */,
+				6A6060160555E4F200824720 /* MoreSCFCCLScanner.c */,
+				6A6060170555E4F200824720 /* MoreSCFCCLScanner.h */,
+				6A6060180555E4F200824720 /* MoreSCFDigest.c */,
+				6A6060190555E4F200824720 /* MoreSCFDigest.h */,
+				6A60601A0555E4F200824720 /* MoreSCFHelpers.c */,
+				6A60601B0555E4F200824720 /* MoreSCFHelpers.h */,
+				6A60601C0555E4F200824720 /* MoreSCFPortScanner.c */,
+				6A60601D0555E4F200824720 /* MoreSCFPortScanner.h */,
+			);
+			path = MoreSCF;
+			sourceTree = "<group>";
+		};
+		6A6060250555E4F200824720 /* MoreTextUtils */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060260555E4F200824720 /* MoreTextUtils.cp */,
+				6A6060270555E4F200824720 /* MoreTextUtils.h */,
+			);
+			path = MoreTextUtils;
+			sourceTree = "<group>";
+		};
+		6A60602C0555E4F200824720 /* MoreControls */ = {
+			isa = PBXGroup;
+			children = (
+				6A60602D0555E4F200824720 /* MoreControls.cp */,
+				6A60602E0555E4F200824720 /* MoreControls.h */,
+			);
+			path = MoreControls;
+			sourceTree = "<group>";
+		};
+		6A60602F0555E4F200824720 /* MoreQuickDraw */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060300555E4F200824720 /* MoreQuickDraw.cp */,
+				6A6060310555E4F200824720 /* MoreQuickDraw.h */,
+			);
+			path = MoreQuickDraw;
+			sourceTree = "<group>";
+		};
+		6A6060370555E4F200824720 /* MoreSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060380555E4F200824720 /* MoreSecurity.c */,
+				6A6060390555E4F200824720 /* MoreSecurity.h */,
+			);
+			path = MoreSecurity;
+			sourceTree = "<group>";
+		};
+		6A6060460555E4F300824720 /* MoreLists */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060470555E4F300824720 /* MoreLists.c */,
+				6A6060480555E4F300824720 /* MoreLists.h */,
+			);
+			path = MoreLists;
+			sourceTree = "<group>";
+		};
+		6A6060490555E4F300824720 /* MoreOSUtils */ = {
+			isa = PBXGroup;
+			children = (
+				6A60604A0555E4F300824720 /* MoreOSUtils.c */,
+				6A60604B0555E4F300824720 /* MoreOSUtils.h */,
+			);
+			path = MoreOSUtils;
+			sourceTree = "<group>";
+		};
+		6A60604F0555E4F300824720 /* MoreCarbonEvents */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060500555E4F300824720 /* MoreCarbonEvents.c */,
+				6A6060510555E4F300824720 /* MoreCarbonEvents.h */,
+			);
+			path = MoreCarbonEvents;
+			sourceTree = "<group>";
+		};
+		6A6060520555E4F300824720 /* MoreMultiprocessing */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060530555E4F300824720 /* MoreBlueActions.c */,
+				6A6060540555E4F300824720 /* MoreBlueActions.h */,
+				6A6060550555E4F300824720 /* MoreMPLog.c */,
+				6A6060560555E4F300824720 /* MoreMPLog.h */,
+			);
+			path = MoreMultiprocessing;
+			sourceTree = "<group>";
+		};
+		6A6060570555E4F300824720 /* MoreMenus */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060580555E4F300824720 /* MenuKeyGlyphs.h */,
+				6A6060590555E4F300824720 /* MoreMenus.c */,
+				6A60605A0555E4F300824720 /* MoreMenus.h */,
+			);
+			path = MoreMenus;
+			sourceTree = "<group>";
+		};
+		6A6060630555E4F300824720 /* MoreDialogs */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060640555E4F300824720 /* MoreDialogs.cp */,
+				6A6060650555E4F300824720 /* MoreDialogs.h */,
+			);
+			path = MoreDialogs;
+			sourceTree = "<group>";
+		};
+		6A6060750555E4F300824720 /* MoreOSL */ = {
+			isa = PBXGroup;
+			children = (
+				6A6060760555E4F300824720 /* MoreOSL.c */,
+				6A6060770555E4F300824720 /* MoreOSL.h */,
+				6A6060780555E4F300824720 /* MoreOSLHelpers.c */,
+				6A6060790555E4F300824720 /* MoreOSLHelpers.h */,
+				6A60607B0555E4F300824720 /* MoreOSLStringCompare.c */,
+				6A60607C0555E4F300824720 /* MoreOSLStringCompare.h */,
+				6A60607E0555E4F300824720 /* MoreOSLTokens.c */,
+				6A60607F0555E4F300824720 /* MoreOSLTokens.h */,
+			);
+			path = MoreOSL;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A605F430555E46000824720 /* MoreIsBetterLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A10088D090F26E700C1D1C8 /* Build configuration list for PBXNativeTarget "MoreIsBetterLib" */;
+			buildPhases = (
+				6A605F410555E46000824720 /* Sources */,
+				6A88BDAF058EF10F002F959D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MoreIsBetterLib.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_STYLE = Static;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = MoreIsBetterLib;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+			};
+			dependencies = (
+			);
+			name = MoreIsBetterLib;
+			productName = "Mach-O";
+			productReference = 6A605F440555E46000824720 /* libMoreIsBetterLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 6A100891090F26E700C1D1C8 /* Build configuration list for PBXProject "MoreIsBetterLib" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				014CEA460018CE2711CA2923 /* Development */,
+				014CEA470018CE2711CA2923 /* Deployment */,
+			);
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* MoreIsBetterLib */;
+			projectDirPath = "";
+			targets = (
+				6A605F430555E46000824720 /* MoreIsBetterLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A88BDAF058EF10F002F959D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "AR_FILE=libMoreIsBetterLib.a\ncp \"$TARGET_BUILD_DIR\"/$AR_FILE .\nranlib $AR_FILE";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A605F410555E46000824720 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A0C5C9F0555E8C5005E4238 /* MoreAddrToSym.c in Sources */,
+				6A0C5CA00555E8C6005E4238 /* MoreAEDataModel.c in Sources */,
+				6A0C5CA10555E8C8005E4238 /* MoreAEObjects.c in Sources */,
+				6A0C5CA20555E8CA005E4238 /* MoreAppearance.cp in Sources */,
+				6A0C5CA30555E8CB005E4238 /* MoreAppleEvents.cp in Sources */,
+				6A0C5CA60555E902005E4238 /* MoreAppleEventsPlus.c in Sources */,
+				6A0C5CA80555E904005E4238 /* MoreBacktrace.c in Sources */,
+				6A0C5CA90555E905005E4238 /* MoreBBLog.c in Sources */,
+				6A0C5CAA0555E907005E4238 /* MoreBlueActions.c in Sources */,
+				6A0C5CAB0555E908005E4238 /* MoreCarbonEvents.c in Sources */,
+				6A0C5CAC0555E90A005E4238 /* MoreCDs.c in Sources */,
+				6A0C5CAD0555E90B005E4238 /* MoreCFQ.c in Sources */,
+				6A0C5CAE0555E90E005E4238 /* MoreControls.cp in Sources */,
+				6A0C5CAF0555E910005E4238 /* MoreCRC.c in Sources */,
+				6A0C5CB00555E911005E4238 /* MoreDialogs.cp in Sources */,
+				6A0C5CB20555E913005E4238 /* MoreErrors.c in Sources */,
+				6A0C5CB50555E919005E4238 /* MoreFinderEvents.c in Sources */,
+				6A0C5CB70555E91F005E4238 /* MoreLists.c in Sources */,
+				6A0C5CB80555E920005E4238 /* MoreMemory.c in Sources */,
+				6A0C5CB90555E921005E4238 /* MoreMenus.c in Sources */,
+				6A0C5CBA0555E922005E4238 /* MoreMPLog.c in Sources */,
+				6A0C5CBB0555E924005E4238 /* MoreNavigation.c in Sources */,
+				6A0C5CBE0555E92A005E4238 /* MoreOSA.c in Sources */,
+				6A0C5CBF0555E92A005E4238 /* MoreOSL.c in Sources */,
+				6A0C5CC00555E92B005E4238 /* MoreOSLHelpers.c in Sources */,
+				6A0C5CC10555E92C005E4238 /* MoreOSLStringCompare.c in Sources */,
+				6A0C5CC20555E92E005E4238 /* MoreOSLTokens.c in Sources */,
+				6A0C5CC30555E92E005E4238 /* MoreOSUtils.c in Sources */,
+				6A0C5CC40555E92F005E4238 /* MorePreferences.cp in Sources */,
+				6A0C5CC50555E930005E4238 /* MoreProcesses.cp in Sources */,
+				6A0C5CC60555E932005E4238 /* MoreQuickDraw.cp in Sources */,
+				6A0C5CC70555E932005E4238 /* MoreResources.c in Sources */,
+				6A0C5CC80555E934005E4238 /* MoreSCF.c in Sources */,
+				6A0C5CC90555E934005E4238 /* MoreSCFCCLScanner.c in Sources */,
+				6A0C5CCA0555E939005E4238 /* MoreSCFDigest.c in Sources */,
+				6A0C5CCB0555E93A005E4238 /* MoreSCFHelpers.c in Sources */,
+				6A0C5CCC0555E93A005E4238 /* MoreSCFPortScanner.c in Sources */,
+				6A0C5CCE0555E93C005E4238 /* MoreSecurity.c in Sources */,
+				6A0C5CCF0555E93E005E4238 /* MoreSound.cp in Sources */,
+				6A0C5CD10555E940005E4238 /* MoreTextUtils.cp in Sources */,
+				6A0C5CD20555E942005E4238 /* MoreToolbox.cp in Sources */,
+				6A0C5CD30555E943005E4238 /* MoreUNIX.c in Sources */,
+				6A0C5CD40555E944005E4238 /* MoreWindows.cp in Sources */,
+				6A0C5CD70555E949005E4238 /* OTMP.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6A10088E090F26E700C1D1C8 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MoreIsBetterLib.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_STYLE = Static;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = MoreIsBetterLib;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		6A10088F090F26E700C1D1C8 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MoreIsBetterLib.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_STYLE = Static;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = MoreIsBetterLib;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		6A100890090F26E700C1D1C8 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MoreIsBetterLib.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_STYLE = Static;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = MoreIsBetterLib;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+			};
+			name = Default;
+		};
+		6A100892090F26E700C1D1C8 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Development;
+		};
+		6A100893090F26E700C1D1C8 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Deployment;
+		};
+		6A100894090F26E700C1D1C8 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A10088D090F26E700C1D1C8 /* Build configuration list for PBXNativeTarget "MoreIsBetterLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A10088E090F26E700C1D1C8 /* Development */,
+				6A10088F090F26E700C1D1C8 /* Deployment */,
+				6A100890090F26E700C1D1C8 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		6A100891090F26E700C1D1C8 /* Build configuration list for PBXProject "MoreIsBetterLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A100892090F26E700C1D1C8 /* Development */,
+				6A100893090F26E700C1D1C8 /* Deployment */,
+				6A100894090F26E700C1D1C8 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

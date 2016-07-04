@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>CW 8.3 Mods</title>
+  <meta content="Paul Lalonde" name="author">
+</head>
+<body>
+<h2 style="text-align: center;">CodeWarrior Pro 8.3 Modifications for
+Panther</h2>
+<div style="text-align: center;">December 18 2003<br>
+<span style="font-style: italic;">Paul Lalonde<br>
+</span>
+<div style="text-align: left;">
+<hr style="width: 100%; height: 2px;">
+<h3>Table of Contents</h3>
+<a href="#Summary">Summary</a><br>
+<a href="#Header_Changes">Header Changes</a><br>
+<div style="margin-left: 40px;"><a href="#ansi.h_changes">Changes to <span
+ style="font-family: monospace;">ansi.h</span></a><br>
+<a href="#time.mac.c_Changes">Changes to <span
+ style="font-family: monospace;">time.mac.c</span></a><a
+ href="#Changes_to_PP_MacHeadersMach-O.c"><span
+ style="font-family: monospace;"></span></a><br>
+</div>
+<a href="#Project_Changes">Project Changes</a><br>
+<a href="#PowerPlant_Changes">PowerPlant Changes</a><span
+ style="font-weight: bold;"><br>
+</span>
+<div style="margin-left: 40px;"><a
+ href="#Changes_to_PP_MacHeadersMach-O.c">Changes to <span
+ style="font-family: monospace;">PP_MacHeadersMach-O.c</span></a><span
+ style="font-weight: bold;"></span><br>
+<span style="font-weight: bold;"></span><a
+ href="#Changes_to_PP_MacHeadersMach-O.c">Changes to <span
+ style="font-family: monospace;">PP_MacHeadersMachO.mcp</span></a></div>
+</div>
+</div>
+<h3><a name="Summary"></a>Summary</h3>
+Versions of CodeWarrior prior to 9 don't work particularly well with
+the
+Panther
+headers, especially when trying to use <span
+ style="font-family: monospace;">wchar_t</span>.&nbsp; This is because
+all <span style="font-family: monospace;">wchar_t</span>-related
+declarations were missing and/or broken in versions of Mac OS X prior
+to
+Panther.&nbsp; This document describes how to modify the CodeWarrior
+Pro 8.3 installation to permit successful building under Panther.&nbsp;
+Although the procedure may work with versions 8.0-8.1, it has only been
+tested with 8.3.<br>
+<h3><a name="Header_Changes"></a>Header Changes</h3>
+Two header files need to have
+their&nbsp; contents modified:&nbsp; <a href="#ansi.h_changes"
+ style="font-family: monospace;">ansi.h</a>
+and <a href="#time.mac.c_Changes" style="font-family: monospace;">time.mac.c</a>.<br>
+<h4><span style="font-family: monospace;"><a name="ansi.h_changes"></a></span>Changes
+to <span style="font-family: monospace;">ansi.h</span><br>
+</h4>
+<ol>
+  <li>Locate the folder "<span style="font-family: monospace;">MacOS X
+Support/Headers/(wchar_t Support fix)</span>" in
+the CodeWarrior Pro 8.3 installation.</li>
+  <li>Duplicate the folder, and rename the duplicate "<span
+ style="font-family: monospace;">(wchar_t Support
+fix.jaguar)</span>".</li>
+  <li>Inside the original folder is the file "<span
+ style="font-family: monospace;">machine/ansi.h</span>".&nbsp; Its
+contents are:
+    <pre style="color: rgb(102, 51, 0);">#ifndef _MW_ANSI_H_<br>#define _MW_ANSI_H_<br><br>#if defined (__ppc__)<br>    #include &lt;ppc/ansi.h&gt;<br>#elif defined (__i386__)<br>    #include &lt;i386/ansi.h&gt;<br>#else<br>    #error architecture not supported<br>#endif<br><br><br>#ifndef _BSD_WCHAR_T_DEFINED_<br>    #define _BSD_WCHAR_T_DEFINED_<br>    <br>    #if !__cplusplus || !__option(wchar_type) <br>        typedef int wchar_t;<br>        #undef __WCHAR_TYPE__<br>        #define __WCHAR_TYPE__ int<br>    #else<br>        #undef __WCHAR_TYPE__<br>        #define __WCHAR_TYPE__ wchar_t<br>    #endif<br>    <br>    #undef _BSD_WCHAR_T_<br>    #define _BSD_WCHAR_T_   __WCHAR_TYPE__            /* wchar_t */<br>    <br>    #undef _BSD_RUNE_T_<br>    #define _BSD_RUNE_T_    __WCHAR_TYPE__            /* rune_t */<br>    <br>    #define WCHAR_MIN  ((wchar_t) 0x80000000U)<br>    #define WCHAR_MAX  ((wchar_t) 0x7FFFFFFFU)<br>    <br>    typedef wchar_t    wint_t;<br>    typedef wchar_t    wctype_t;<br>    typedef int        mbstate_t;<br>    typedef wchar_t    Wint_t;<br>#endif<br><br><br>#ifndef _ANSI_SOURCE<br>    typedef _BSD_WCHAR_T_    rune_t;<br>#endif<br><br><br>#endif /* _MW_ANSI_H_ */<br></pre>
+  </li>
+  <li>Replace the file's contents with the following:
+    <pre style="color: rgb(102, 51, 0);">#ifndef _MW_ANSI_H_<br>#define _MW_ANSI_H_<br><br>#if defined (__ppc__)<br>    #include &lt;ppc/ansi.h&gt;<br>#elif defined (__i386__)<br>    #include &lt;i386/ansi.h&gt;<br>#else<br>    #error architecture not supported<br>#endif<br><br><br>#include &lt;stdint.h&gt;<br><br>#ifndef _BSD_WCHAR_T_DEFINED_<br>    #define _BSD_WCHAR_T_DEFINED_<br>    <br>    #if !__cplusplus || !__option(wchar_type) <br>        typedef int wchar_t;<br>        #undef __WCHAR_TYPE__<br>        #define __WCHAR_TYPE__ int<br>    #else<br>        #undef __WCHAR_TYPE__<br>        #define __WCHAR_TYPE__ wchar_t<br>    #endif<br>    <br>    #undef _BSD_WCHAR_T_<br>    #define _BSD_WCHAR_T_   __WCHAR_TYPE__          /* wchar_t */<br>    <br>    #undef _BSD_RUNE_T_<br>    #define _BSD_RUNE_T_    __WCHAR_TYPE__          /* rune_t */<br>    <br>    #ifndef WCHAR_MIN<br>        #define WCHAR_MIN   ((wchar_t) 0x00000000U)<br>    #endif<br>    <br>    #ifndef WCHAR_MAX<br>        #define WCHAR_MAX   ((wchar_t) 0x7FFFFFFFU)<br>    #endif<br>    <br>    #ifndef _BSD_WINT_T_DEFINED_<br>        #define _BSD_WINT_T_DEFINED_<br>        typedef wchar_t wint_t;<br>    #endif<br>    <br>    typedef wchar_t wctype_t;<br>    typedef int     mbstate_t;<br>    typedef wchar_t Wint_t;<br>#endif<br><br><br>#ifndef _ANSI_SOURCE<br>    #ifndef _BSD_RUNE_T_DEFINED_<br>        #define _BSD_RUNE_T_DEFINED_<br>        typedef _BSD_RUNE_T_    rune_t;<br>    #endif<br>#endif<br><br><br>#endif /* _MW_ANSI_H_ */</pre>
+  </li>
+</ol>
+<h4><a name="time.mac.c_Changes"></a>Changes to <span
+ style="font-family: monospace;">time.mac.c</span><br>
+</h4>
+<ol>
+  <li>Locate the file "<span style="font-family: monospace;">MSL/MSL_C/MSL_MacOS/Src/time.mac.c</span>"
+in the CodeWarrior Pro 8.3 installation.</li>
+  <li>Duplicate the file, and rename the duplicate "<span
+ style="font-family: monospace;">time.mac.jaguar.c</span>".</li>
+  <li>Open the original file in the CodeWarrior IDE, and locate line
+31, which
+looks like this:
+    <pre style="color: rgb(102, 51, 0);">#define TIME2CLOCK(seconds) ((seconds.tv_sec * CLK_TCK) + (seconds.tv_usec / (1000000 / CLK_TCK)))</pre>
+  </li>
+  <li>Replace it with this:
+    <pre style="color: rgb(102, 51, 0);">#ifndef CLK_TCK<br>	#define CLK_TCK 100<br>#endif<br><br>#define TIME2CLOCK(seconds) ((seconds.tv_sec * CLK_TCK) + (seconds.tv_usec / (1000000 / CLK_TCK)))</pre>
+  </li>
+</ol>
+<h3><a name="Project_Changes"></a>Project Changes</h3>
+<ol>
+  <li>In the following projects and targets, check the "Enable wchar_t
+Support" check box in the "C/C++ Language" target settings panel:<br
+ clear="all">
+&nbsp;
+    <div style="margin-left: 40px;">
+    <table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 90%;">
+      <tbody>
+        <tr>
+          <th style="vertical-align: top;">Project<br>
+          </th>
+          <th style="vertical-align: top;">Targets<br>
+          </th>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+          <pre>MacOS&nbsp;X&nbsp;Support/<br>&nbsp; MacHeaders&nbsp;Mach-O/<br>&nbsp;&nbsp;&nbsp; MacHeadersMach-O.mcp</pre>
+          </td>
+          <td style="vertical-align: top;">BSD&nbsp;MacHeadersMach-O&nbsp;(SYM)<br>
+BSD&nbsp;MacHeadersMach-O<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+          <pre>MacOS&nbsp;X&nbsp;Support/<br>&nbsp; Libraries/<br>&nbsp;&nbsp;&nbsp; Runtime/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Projects)/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MSL_Runtime_Mach-O.mcp</pre>
+          </td>
+          <td style="vertical-align: top;">BSD&nbsp;Runtime&nbsp;Mach-O&nbsp;Debug<br>
+BSD&nbsp;Runtime&nbsp;Mach-O&nbsp;Release<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+          <pre>MSL/<br>&nbsp; MSL_C++/<br>&nbsp;&nbsp;&nbsp; MSL_MacOS/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Project/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mach-O/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MSL&nbsp;C++&nbsp;Headers.Mach.mcp</pre>
+          </td>
+          <td style="vertical-align: top;">MSL&nbsp;C++&nbsp;BSD&nbsp;Headers.Mach-O
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+          <pre>MSL/<br>&nbsp; MSL_C++/<br>&nbsp;&nbsp;&nbsp; MSL_MacOS/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Project/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mach-O/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MSL_C++_Mach-O.mcp</pre>
+          </td>
+          <td style="vertical-align: top;">MSL&nbsp;C++&nbsp;BSD&nbsp;Mach-O&nbsp;Debug<br>
+MSL&nbsp;C++&nbsp;BSD&nbsp;Mach-O&nbsp;Release<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    </div>
+  </li>
+  <li>Rebuild the above projects and targets.&nbsp; Of course, you can
+also rebuild all of the CW-supplied libraries (by building the master
+project "<span style="font-family: monospace;">MSL/(MSL_Build_Projects)/BuildLibraries.mcp</span>"),
+which is simpler but more time-consuming.&nbsp; Note that one
+PowerPlant related project doesn't build under Panther, unless it is <a
+ href="#PowerPlant_Changes">fixed</a> as well.<br>
+  </li>
+</ol>
+<h3><a name="PowerPlant_Changes"></a>PowerPlant Changes</h3>
+As supplied by Metrowerks, the "<span style="font-family: monospace;">PP_MacHeadersMachO.mcp</span>"
+project doesn't compile under Panther.&nbsp; Here are the steps
+required to fix it.&nbsp; Of course if you don't use PowerPlant, you
+can ignore this section.<br>
+<h4><a name="Changes_to_PP_MacHeadersMach-O.c"></a>Changes to <span
+ style="font-family: monospace;">PP_MacHeadersMach-O.c</span></h4>
+<ol>
+  <li>Locate the file "<span style="font-family: monospace;">MacOS
+Support/PowerPlant/PP Precompiled Headers/PP_MacHeadersMach-O.c</span>".</li>
+  <li>Duplicate the file, and rename the duplicate "<span
+ style="font-family: monospace;">PP_MacHeadersMach-O.jaguar.c</span>".</li>
+  <li>Open the original file in the CodeWarrior IDE, and locate line
+20, which
+looks like this:
+    <pre style="color: rgb(102, 51, 0);">#include &lt;Carbon/Carbon.h&gt;</pre>
+  </li>
+  <li>Replace it with this:
+    <pre style="color: rgb(102, 51, 0);">#include &lt;Carbon/Carbon.h&gt;<br>#include &lt;QuickTime/QuickTime.h&gt;<br></pre>
+  </li>
+</ol>
+<h4><a name="Changes_to_PP_MacHeadersMach.mcp"></a>Changes to <span
+ style="font-family: monospace;">PP_MacHeadersMachO.mcp</span></h4>
+<ol>
+  <li>Locate the project "<span style="font-family: monospace;">MacOS
+Support/PowerPlant/PP Precompiled Headers/PP_MacHeadersMach.mcp</span>".</li>
+  <li>Add <span style="font-family: monospace;">QuickTime.framework</span>
+to both targets.</li>
+  <li>Copy the system access paths from the "<span
+ style="font-family: monospace;">PP_MacHeadersMach-O (SYM)</span>"
+target to the "<span style="font-family: monospace;">PP_MacHeadersMach-O</span>"
+target.&nbsp; The paths in the latter are incorrect.</li>
+</ol>
+</body>
+</html>

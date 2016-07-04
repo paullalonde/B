@@ -1,0 +1,307 @@
+// ==========================================================================================
+//	
+//	Copyright (C) 2004-2005 Paul Lalonde enrg.
+//	
+//	This program is free software;  you can redistribute it and/or modify it under the 
+//	terms of the GNU General Public License as published by the Free Software Foundation;  
+//	either version 2 of the License, or (at your option) any later version.
+//	
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License along with this 
+//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//	Suite 330, Boston, MA  02111-1307  USA
+//	
+// ==========================================================================================
+
+namespace B {
+
+/*!
+
+@page using_exceptions Exceptions and Error Handling
+
+Exceptions in the B framework are designed to be lightweight.  They contain only the 
+minimal amount of information required by upper layers of software to identify the 
+problem.  In particular, they do @b not contain textual messages meant for 
+display to the user.  There are two reasons for this.  First, the throw site often doesn't 
+have enough information about what the end user is trying to accomplish to formulate a 
+meaningful message, to say nothing of internationalising and localising the message in the 
+appropriate manner.  Second, exception classes need to be robust, and the simpler they are, 
+the smaller the chance that they will themselves introduce bugs (eg, throwing an exception 
+while being constructed).
+
+B contains a number of pre-defined exception classes.  They are either general-purpose, 
+or fill a very specific need in the framework.  Examples of the former are 
+FileNotFoundException and OSStatusException;  an example of the latter is 
+CharacterEncodingException.
+
+
+@section throwing Throwing Exceptions
+
+The code in B never throws directly;  rather, it calls member functions of ErrorHandler 
+to perform the actual @c throw.  This has the advantage of allowing code to be executed 
+prior to any exception being thrown.  Indeed, ErrorHandler does exactly this by displaying 
+an alert prior to throwing an exception (debug builds only).  ErrorHandler's behaviour may 
+be customised by subclassing, so the developer has the flexibility to for example, log all 
+throws to a file or to a system log.
+
+In order to shield the developer from the mechanics of this process, a number of 
+convenience macros are available.  They are the method of choice for throwing exceptions.  
+For example:
+
+- #B_THROW(ex) throws exception object @a ex (eg B_THROW(B::EOFException()) ).
+- #B_THROW_IF_NULL(p) throws @c std::bad_alloc if the pointer @a p is @c NULL.
+- #B_THROW_IF_NULL_RSRC(h) throws a Resource Manager exception if the handle @a h is @c NULL.
+- #B_THROW_IF(c, ex) is like #B_THROW(ex), but only throws if condition @a c is non-zero.
+- #B_THROW_STATUS(stat) throws an OSStatusException with the value @a stat.
+- #B_THROW_IF_STATUS(stat) is like #B_THROW_STATUS(stat), but only throws if @a stat is non-zero.  
+  This is @b very convenient for testing the return value of "Classic" Mac OS functions.
+- #B_THROW_STATUS_IF(c, stat) is like #B_THROW_STATUS(stat), but only throws if condition @a c is 
+  non-zero.
+- #B_THROW_ERRNO_IF(c) throws an ErrnoException with the current value of @c errno if 
+  condition @a c is non-zero.  This is convenient for testing the return value of BSD 
+  functions that set @c errno internally but only return a success-failure indication.
+- #B_THROW_IF_ERRNO(errn) throws an ErrnoException with the value @a errn if @a errn 
+  is non-zero.  This is convenient for testing the return value of BSD functions that 
+  directly return an errno-style value, such as pthreads functions.
+
+Developers are encouraged to use these macros instead of using @c throw directly.  Doing 
+so will allow their throw sites to be integrated into B's error-handling infrastructure.
+
+Also, developers should try to only throw objects of classes deriving from 
+@c std::exception.  Otherwise (i.e. throwing @c OSStatus codes or strings) the 
+error-handling system loses a lot of functionality.  Note that all of B's exception classes 
+derive from @c std::exception.
+
+
+@section catching Catching Exceptions
+
+Catching exceptions in B works the same as in "vanilla" C++ code, however the way the 
+exception classes are designed will affect the organisation of @c catch blocks.  For 
+example:
+
+@code
+void MyDoSomethingForUser()
+{
+    try
+    {
+        // do stuff
+    }
+    catch (FileNotFoundException& ex)
+    {
+        MyDisplayAlert(CFSTR("Couldn't locate the file"));
+    }
+    catch (IOException& ex)
+    {
+        MyDisplayAlert(CFSTR("Couldn't open or read the file"));
+    }
+    catch (OSStatusException& ex)
+    {
+        OSStatus err = ex.GetStatus();
+        
+        MyDisplayAlert(CFSTR("Got Mac OS error #%ld"), err);
+    }
+    catch (...)
+    {
+        MyDisplayAlert(CFSTR("I don't know what happened!"));
+    }
+}
+@endcode
+
+In the example above, the exception's type determines the action to take.  It also allows 
+the error-handling code to access type-specific members (eg, @c GetStatus() ) to 
+retrieve additional information.
+
+Although the example seems to have an excessive number of catch blocks, in practice often 
+only a small number of exceptions are likely to occur with any frequency.  The others 
+can be handled with a catch-all block.
+
+
+@section streaming Streaming Exceptions
+
+Applications written with B are driven by two callback-based event systems:  the Carbon 
+%Event Manager and the Apple %Event Manager.  Neither of these event systems has any 
+built-in functionality for propagating C++ exceptions.  On the contrary, exception 
+propagation must be prevented with <tt>catch (...)</tt> prior to return.
+
+Exacerbating this problem is the fact that B is designed to facilitate writing factored 
+applications, in which UI-level code sends Apple %Events to other parts of the application, 
+which then perform the actual work.  Obviously, the "actual work" is likely to be the place 
+where most business-logic-related exceptions occur.  So we have a situation where only 
+very limited information (i.e. an @c OSStatus code and possibly a string) may be returned 
+to the UI code, which is where an error message should be displayed to the user.
+
+The solution adopted by B is to serialise the exception object into a data stream that is 
+appended to the event (of either the Carbon or Apple variety).  Upon return from the 
+event-sending call, the exception is de-serialised and re-thrown.  This allows exceptions 
+to be thrown "through" either of the two managers without loss of information.  The class 
+that handles this process is ExceptionStreamer.  It's a singleton, and typically 
+developers don't need to deal with it directly very much, since the Carbon %Event and 
+Apple %Event support classes do it already.
+
+
+@section creating Creating Exception Classes
+
+Creating exception classes in B is a two-step process:  writing the class itself, and 
+telling the exception-streaming infrastructure about it.  Of course, if you don't care 
+to have your exception class properly streamed through the Carbon %Event and Apple %Event 
+managers, you can skip the second step.  But that's unlikely.
+
+The way that you "tell" the exception-streaming infrastructure about your exception 
+class depends on how complex your class is.  If it's simple, there is less to do.  At 
+the bottom of the complexity scale, we have exceptions that don't contain any state -- 
+i.e., the only information they contain is their type.  For example:
+
+@code
+// MyExceptions.h
+
+class MySimpleException : public std::exception
+{
+public:
+    virtual ~MySimpleException() throw() {}  // this is here to stop gcc from complaining
+    const char* what() const throw()     { return "MySimpleException"; }
+};
+
+// MyExceptions.cpp
+
+#include "BExceptionStreamer.h"
+#include "MyExceptions.h"
+
+namespace {
+    bool gRegSimpleEx = B::ExceptionStreamer::Register<MySimpleException>();
+}
+@endcode
+
+The call to ExceptionStreamer::Register<MySimpleException>() tells the streaming 
+infrastructure about our class.  If we throw an exception of this type, the infrastructure 
+will know that it doesn't need to extract any information from the exception object prior 
+to returning to the operating system, and during de-serialisation will instantiate the 
+exception object via its default constructor.
+
+At the top of the complexity scale, we have exceptions capable of containing arbitrary 
+state.  For example:
+
+@code
+// MyExceptions.h
+
+class MyFloatException : public std::exception
+{
+public:
+    explicit    MyFloatException(float f) throw() : mFloat(f) {}
+    explicit    MyFloatException(std::istream& istr) { istr >> mFloat; }
+    virtual     ~MyFloatException() throw()      {}
+    float       GetFloat() const throw()         { return (mFloat); }
+    const char* what() const throw()             { return "MyFloatException"; }
+    void        Write(std::ostream& ostr) const  { ostr << mFloat; }
+private:
+    float mFloat;
+};
+
+template <> struct ExceptionTraits<MyFloatException>
+{
+    typedef StreamExceptionTag Category;
+};
+
+// MyExceptions.cpp
+
+#include "BExceptionStreamer.h"
+#include "MyExceptions.h"
+
+namespace {
+    bool gRegFloatEx = B::ExceptionStreamer::Register<MyFloatException>();
+}
+@endcode
+
+In this case, we tell ExceptionStreamer that this is a complex exception class by 
+specialising the ExceptionTraits class template.  ExceptionTraits serves as a means of 
+categorising exception classes.  It contains one typedef, @c Category, 
+which maps to one of three types:  DefaultExceptionTag, StringExceptionTag or 
+StreamExceptionTag.  The default value is DefaultExceptionTag, which is used by simple 
+exception classes.
+
+By typedef'ing ExceptionTraits<MyFloatException>::Category to StreamExceptionTag, 
+we instruct ExceptionStreamer to (1) retrieve the exception's state by calling the 
+@c Write() member function, passing it an @c std::ostream;  and (2) to construct the 
+exception after de-serialisation via a constructor taking an @c std::istream.
+
+There is also an intermediate level of complexity for exception classes.  It's for 
+cases where the exception's state is completely described by its @c what() string.
+For such cases, ExceptionTraits<>::Category should be typedef'd to StringExceptionTag.
+The exception's state will be retrieved by calling @c what(), and the exception object 
+will be re-instantiated via a constructor taking a <tt>const std::string</tt>.
+
+
+@section error_handling Custom Error Handling
+
+As mentionned above, the ThrowXXX() macros end up calling member functions of ErrorHandler, 
+specifically ErrorHandler::AboutToThrow() and ErrorHandler::AssertionFailed().  The 
+default implementations of these functions display an alert in debug builds.  There are 
+three ways of changing this behaviour.
+
+First, the developer can control the amount of information displayed in the 
+exception-thrown alert by defining the @c B_DETAILED_EXCEPTION_INFO macro.  By default, 
+it is non-zero in debug builds and zero in release builds.  Setting 
+@c B_DETAILED_EXCEPTION_INFO to a non-zero value (eg in a prefix file) will cause 
+detailed exception info (file name, line number, and function name) to always be generated 
+when an exception is thrown, even in release builds.  Of course, generating this information 
+will make your executable larger.  The @c B_DETAILED_ASSERT_INFO macro works in the same way, 
+except that if it is zero no asserts are generated at all.
+
+Second, the developer can control the display of alerts at runtime by changing each 
+alert's "quiet flag".  The quiet flags are a hint to @c AboutToThrow() and 
+@c AssertionFailed() as to whether they should display alerts or not.  The 
+flags may be queried via ErrorHandler::GetQuietThrows() and 
+ErrorHandler::GetQuietAsserts(), and changed via ErrorHandler::SetQuietThrows() and 
+ErrorHandler::SetQuietAsserts().
+
+Third, the developer may replace the current error handler by any object derived 
+from ErrorHandler.  The implementations of @c AboutToThrow() and @c AssertionFailed() will 
+be under the developer's complete control, so they can do pretty much anything.  
+For example:
+
+@code
+class MyErrorHandler : public B::ErrorHandler
+{
+public:
+
+    MyErrorHandler(std::ostream& ostr) : mStream(ostr) {}
+
+protected:
+
+    virtual void AboutToThrow(
+        const std::exception& ex,
+        const char*           file,
+        int                   line,
+        const char*           func)
+    {
+        mStream << "exception " << ex.what() << " " << file << " " << line
+                << " " << func << std::endl;
+    }
+
+private:
+
+    std::ostream& mStream;
+};
+
+void MyInstallErrorHandler()
+{
+    ErrorHandler::Set(new MyErrorHandler(std::cout));
+}
+
+@endcode
+
+ErrorHandler is a per-thread singleton, meaning that each thread gets its own distinct 
+ErrorHandler object.  ErrorHandler::Set() only changes the error handler for the current 
+thread, just as ErrorHandler::Get() returns the current thread's error handler.  This 
+means you can use the default implementation in the main thread (where displaying an 
+alert makes sense), and a custom logging implementation in other threads.  Note 
+that there is no concurrency control of any kind around calls to 
+@c AboutToThrow() and @c AssertionFailed(), so the above example 
+would probably not give the expected results in a multi-threaded app (the output from 
+multiple threads might be interleaved).
+
+*/
+
+}   // namespace B

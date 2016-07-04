@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Comment here. (1.0a10c2) -->
+<Proj>
+<ProjName>B_proj</ProjName>
+
+<!--                                -->
+<!--    B.strings                   -->
+<!--                                -->
+<File>
+<Filepath>B_proj/Resources/English.lproj/B.strings</Filepath>
+
+<TextItem>
+<Description></Description>
+<Position>Abort</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Abort</base>
+	<tran loc="fr" origin="OldLoc exact match">Avorter</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>All Readable Files</Position>
+<TranslationSet>
+
+	<base loc="en"                            >All Readable Files</base>
+	<tran loc="fr" origin="OldLoc exact match">Tous les documents lisibles</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Assert Message</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Condition: %s\n\nFunction: %s\nFile: %s\nLine # %d</base>
+	<tran loc="fr" origin="OldLoc exact match">Condition: %s\n\nFonction: %s\nFichier: %s\nLigne # %d</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Asssertion Failed</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Asssertion Failed</base>
+	<tran loc="fr" origin="OldLoc exact match">Asssertion échouée</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>B::PropertyListCreateException</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Can’t read property list file.</base>
+	<tran loc="fr" origin="OldLoc exact match">Incapable de lire un fichier de propriétés.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Can't Redo</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Can’t Redo</base>
+	<tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> Displayed when there's nothing to redo </Description>
+<Position>Can't Redo</Position>
+<TranslationSet>
+
+	<base loc="en"          >Can&apos;t Redo</base>
+	<tran loc="fr" origin="">Impossible de rétablir</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Can't Undo</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Can’t Undo</base>
+	<tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> Displayed when there's nothing to undo </Description>
+<Position>Can't Undo</Position>
+<TranslationSet>
+
+	<base loc="en"          >Can&apos;t Undo</base>
+	<tran loc="fr" origin="">Impossible d’annuler</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Continue</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Continue</base>
+	<tran loc="fr" origin="OldLoc exact match">Continuer</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> The title of the exception-throwing debug alert </Description>
+<Position>Exception Thrown</Position>
+<TranslationSet>
+
+	<base loc="en"          >Exception Thrown</base>
+	<tran loc="fr" origin="">Exception lancée</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> the name of the first untitled document </Description>
+<Position>Line # %d</Position>
+<TranslationSet>
+
+	<base loc="en"          >Line # %d</base>
+	<tran loc="fr" origin="">Ligne # %d</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Out of memory</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Out of memory</base>
+	<tran loc="fr" origin="OldLoc exact match">Plus de mémoire</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Quiet</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Quiet</base>
+	<tran loc="fr" origin="OldLoc exact match">Muet</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Redo %1%</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Redo %1%</base>
+	<tran loc="fr" origin="OldLoc exact match">Rétablir %1%</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> Default 'Redo Foo' menu item text </Description>
+<Position>Redo %@</Position>
+<TranslationSet>
+
+	<base loc="en"          >Redo %@</base>
+	<tran loc="fr" origin="">Rétablir %@</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Redo</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Redo</base>
+	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> The message displayed in the exception-throwing debug alert </Description>
+<Position>Throw Message</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Message: %1%\nWhat: %2%\nError: %3%\n\nFunction: %4%\nFile: %5%\nLine # %6%</base>
+	<tran loc="fr" origin="OldLoc exact match">Message: %1%\nQuoi: %2%\nErreur: %3%\n\nFonction: %4%\nFichier: %5%\nLigne # %6%</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Undo %1%</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Undo %1%</base>
+	<tran loc="fr" origin="OldLoc exact match">Annuler %1%</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> Default 'Undo Foo' menu item text </Description>
+<Position>Undo %@</Position>
+<TranslationSet>
+
+	<base loc="en"          >Undo %@</base>
+	<tran loc="fr" origin="">Annuler %@</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Undo</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Undo</base>
+	<tran loc="fr" origin="OldLoc exact match">Annuler</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>Unknown exception</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown exception.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>boost::bad_format_string</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Bad format string.</base>
+	<tran loc="fr" origin="OldLoc exact match">Chaîne de format incorrecte.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>boost::format_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown boost format error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue de boost::format.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>boost::out_of_range</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Value out of range for format string.</base>
+	<tran loc="fr" origin="OldLoc exact match">Valeur hors-norme dans une chaîne de format.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>boost::too_few_args</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Too few arguments for format string.</base>
+	<tran loc="fr" origin="OldLoc exact match">Trop peu d&apos;arguments furent fournis à une chaîne de format.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>boost::too_many_args</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Too many arguments for format string.</base>
+	<tran loc="fr" origin="OldLoc exact match">Trop d&apos;arguments furent fournis à une chaîne de format.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::domain_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown domain error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue de domaine.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::exception</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::invalid_argument</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Invalid argument.</base>
+	<tran loc="fr" origin="OldLoc exact match">Argument invalide.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::ios_base::failure</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Input/Output error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur d’entrée/sortie.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::length_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Length exceeds maximum.</base>
+	<tran loc="fr" origin="OldLoc exact match">Taille trop grande.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::logic_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown logic error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur de logique inconnue.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::out_of_range</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Value out of range.</base>
+	<tran loc="fr" origin="OldLoc exact match">Valeur hors-norme.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::overflow_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Overflow error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Dépassement de capacité.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::range_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown range error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue d&apos;étendue.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::runtime_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Unknown runtime error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Erreur d’exécution inconnue.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>std::underflow_error</Position>
+<TranslationSet>
+
+	<base loc="en"                            >Underflow error.</base>
+	<tran loc="fr" origin="OldLoc exact match">Soupassement de capacité.</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>untitled %1%</Position>
+<TranslationSet>
+
+	<base loc="en"                            >untitled %1%</base>
+	<tran loc="fr" origin="OldLoc exact match">sans titre %1%</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>untitled %d</Position>
+<TranslationSet>
+
+	<base loc="en"                            >untitled %d</base>
+	<tran loc="fr" origin="OldLoc exact match">sans titre %d</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description></Description>
+<Position>untitled</Position>
+<TranslationSet>
+
+	<base loc="en"                            >untitled</base>
+	<tran loc="fr" origin="OldLoc exact match">sans titre</tran>
+
+</TranslationSet>
+</TextItem>
+
+</File>
+
+<!--                                    -->
+<!--    B.nib.strings                   -->
+<!--                                    -->
+<File>
+<Filepath>B_proj/Resources/English.lproj/B.nib.strings</Filepath>
+
+<TextItem>
+<Description> StaticText (&lt;do not localise Version&gt;) : &lt;title:&lt;do not localise Version&gt;&gt; (oid:180) </Description>
+<Position>180.1</Position>
+<TranslationSet>
+
+	<base loc="en"                            >&lt;do not localise Version&gt;</base>
+	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise Version&gt;</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> StaticText (&lt;do not localise Copyright&gt;) : &lt;title:&lt;do not localise Copyright&gt;&gt; (oid:183) </Description>
+<Position>183.1</Position>
+<TranslationSet>
+
+	<base loc="en"                            >&lt;do not localise Copyright&gt;</base>
+	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise Copyright&gt;</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> StaticText (&lt;do not localise Description&gt;) : &lt;title:&lt;do not localise Description&gt;&gt; (oid:184) </Description>
+<Position>184.1</Position>
+<TranslationSet>
+
+	<base loc="en"                            >&lt;do not localise Description&gt;</base>
+	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise Description&gt;</tran>
+
+</TranslationSet>
+</TextItem>
+
+<TextItem>
+<Description> StaticText (&lt;do not localise App Name&gt;) : &lt;title:&lt;do not localise App Name&gt;&gt; (oid:186) </Description>
+<Position>186.1</Position>
+<TranslationSet>
+
+	<base loc="en"                            >&lt;do not localise App Name&gt;</base>
+	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise App Name&gt;</tran>
+
+</TranslationSet>
+</TextItem>
+
+</File>
+</Proj>
