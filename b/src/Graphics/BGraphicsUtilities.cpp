@@ -1,19 +1,19 @@
 // ==========================================================================================
-//	
-//	Copyright (C) 2006 Paul Lalonde enrg.
-//	
-//	This program is free software;  you can redistribute it and/or modify it under the 
-//	terms of the GNU General Public License as published by the Free Software Foundation;  
-//	either version 2 of the License, or (at your option) any later version.
-//	
-//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//  
+//  Copyright (C) 2006 Paul Lalonde enrg.
+//  
+//  This program is free software;  you can redistribute it and/or modify it under the 
+//  terms of the GNU General Public License as published by the Free Software Foundation;  
+//  either version 2 of the License, or (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//  WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//  PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-//	You should have received a copy of the GNU General Public License along with this 
-//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-//	Suite 330, Boston, MA  02111-1307  USA
-//	
+//  You should have received a copy of the GNU General Public License along with this 
+//  program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//  Suite 330, Boston, MA  02111-1307  USA
+//  
 // ==========================================================================================
 
 // file header
@@ -27,111 +27,111 @@ namespace B {
 namespace Graphics {
 
 // ==========================================================================================
-//	AutoSaveContext
+//  AutoSaveContext
 
 // ------------------------------------------------------------------------------------------
 AutoSaveContext::AutoSaveContext(Context& context)
-	: mContext(context.get())
+    : mContext(context.get())
 {
-	CGContextSaveGState(mContext);
+    CGContextSaveGState(mContext);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoSaveContext::AutoSaveContext(CGContextRef context)
-	: mContext(context)
+    : mContext(context)
 {
-	CGContextSaveGState(mContext);
+    CGContextSaveGState(mContext);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoSaveContext::~AutoSaveContext()
 {
-	CGContextRestoreGState(mContext);
+    CGContextRestoreGState(mContext);
 }
 
 
 // ==========================================================================================
-//	AutoTransparencyLayer
+//  AutoTransparencyLayer
 
 // ------------------------------------------------------------------------------------------
 AutoTransparencyLayer::AutoTransparencyLayer(
-	Context&		context, 
-	CFDictionaryRef	info /* = NULL */)
-	: mContext(context.get())
+    Context&        context, 
+    CFDictionaryRef info /* = NULL */)
+    : mContext(context.get())
 {
-	CGContextBeginTransparencyLayer(mContext, info);
+    CGContextBeginTransparencyLayer(mContext, info);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoTransparencyLayer::AutoTransparencyLayer(
-	CGContextRef	context, 
-	CFDictionaryRef	info /* = NULL */)
-		: mContext(context)
+    CGContextRef    context, 
+    CFDictionaryRef info /* = NULL */)
+        : mContext(context)
 {
-	CGContextBeginTransparencyLayer(mContext, info);
+    CGContextBeginTransparencyLayer(mContext, info);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoTransparencyLayer::~AutoTransparencyLayer()
 {
-	CGContextEndTransparencyLayer(mContext);
+    CGContextEndTransparencyLayer(mContext);
 }
 
 
 // ==========================================================================================
-//	AutoPage
+//  AutoPage
 
 // ------------------------------------------------------------------------------------------
 AutoPage::AutoPage(
-	Context&		context, 
-	const CGRect*	inMediaBox /* = NULL */)
-		: mContext(context.get())
+    Context&        context, 
+    const CGRect*   inMediaBox /* = NULL */)
+        : mContext(context.get())
 {
-	CGContextBeginPage(mContext, inMediaBox);
+    CGContextBeginPage(mContext, inMediaBox);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoPage::AutoPage(
-	CGContextRef	context, 
-	const CGRect*	inMediaBox /* = NULL */)
-		: mContext(context)
+    CGContextRef    context, 
+    const CGRect*   inMediaBox /* = NULL */)
+        : mContext(context)
 {
-	CGContextBeginPage(mContext, inMediaBox);
+    CGContextBeginPage(mContext, inMediaBox);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoPage::~AutoPage()
 {
-	CGContextEndPage(mContext);
+    CGContextEndPage(mContext);
 }
 
 
 // ==========================================================================================
-//	AutoPDFPage
+//  AutoPDFPage
 
 // ------------------------------------------------------------------------------------------
 AutoPDFPage::AutoPDFPage(
-	Context&		context, 
-	CFDictionaryRef	info /* = NULL */)
-		: mContext(context.get())
+    Context&        context, 
+    CFDictionaryRef info /* = NULL */)
+        : mContext(context.get())
 {
-	CGPDFContextBeginPage(mContext, info);
+    CGPDFContextBeginPage(mContext, info);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoPDFPage::AutoPDFPage(
-	CGContextRef	context, 
-	CFDictionaryRef	info /* = NULL */)
-		: mContext(context)
+    CGContextRef    context, 
+    CFDictionaryRef info /* = NULL */)
+        : mContext(context)
 {
-	CGPDFContextBeginPage(mContext, info);
+    CGPDFContextBeginPage(mContext, info);
 }
 
 // ------------------------------------------------------------------------------------------
 AutoPDFPage::~AutoPDFPage()
 {
-	CGPDFContextEndPage(mContext);
+    CGPDFContextEndPage(mContext);
 }
 
-}	// namespace Graphics
-}	// namespace B
+}   // namespace Graphics
+}   // namespace B

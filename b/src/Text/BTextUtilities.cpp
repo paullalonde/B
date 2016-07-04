@@ -1,19 +1,19 @@
 // ==========================================================================================
-//	
-//	Copyright (C) 2006 Paul Lalonde enrg.
-//	
-//	This program is free software;  you can redistribute it and/or modify it under the 
-//	terms of the GNU General Public License as published by the Free Software Foundation;  
-//	either version 2 of the License, or (at your option) any later version.
-//	
-//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//  
+//  Copyright (C) 2006 Paul Lalonde enrg.
+//  
+//  This program is free software;  you can redistribute it and/or modify it under the 
+//  terms of the GNU General Public License as published by the Free Software Foundation;  
+//  either version 2 of the License, or (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//  WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//  PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-//	You should have received a copy of the GNU General Public License along with this 
-//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-//	Suite 330, Boston, MA  02111-1307  USA
-//	
+//  You should have received a copy of the GNU General Public License along with this 
+//  program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//  Suite 330, Boston, MA  02111-1307  USA
+//  
 // ==========================================================================================
 
 // file header
@@ -25,104 +25,104 @@
 
 namespace B {
 
-template <typename T> static void	AddAttribute(
-	ATSUAttributeTag					inTag,
-	T*									inValue,
-	std::vector<ATSUAttributeTag>&		ioTags,
-	std::vector<ByteCount>&				ioSizes,
-	std::vector<ATSUAttributeValuePtr>&	ioValues)
+template <typename T> static void   AddAttribute(
+    ATSUAttributeTag                    inTag,
+    T*                                  inValue,
+    std::vector<ATSUAttributeTag>&      ioTags,
+    std::vector<ByteCount>&             ioSizes,
+    std::vector<ATSUAttributeValuePtr>& ioValues)
 {
-	B_ASSERT(inValue != NULL);
-	
-	ioTags.push_back(inTag);
-	ioSizes.push_back(sizeof(*inValue));
-	ioValues.push_back(inValue);
+    B_ASSERT(inValue != NULL);
+    
+    ioTags.push_back(inTag);
+    ioSizes.push_back(sizeof(*inValue));
+    ioValues.push_back(inValue);
 }
 
-static void	AddQDStyleAttribute(
-	ATSUAttributeTag					inTag,
-	Style								inQDStyleMask,
-	Style								inQDStyle,
-	std::vector<ATSUAttributeTag>&		ioTags,
-	std::vector<ByteCount>&				ioSizes,
-	std::vector<ATSUAttributeValuePtr>&	ioValues)
+static void AddQDStyleAttribute(
+    ATSUAttributeTag                    inTag,
+    Style                               inQDStyleMask,
+    Style                               inQDStyle,
+    std::vector<ATSUAttributeTag>&      ioTags,
+    std::vector<ByteCount>&             ioSizes,
+    std::vector<ATSUAttributeValuePtr>& ioValues)
 {
-	static Boolean	sTrueBool	= true;
-	
-	if (inQDStyle & inQDStyleMask)
-	{
-		AddAttribute(inTag, &sTrueBool, ioTags, ioSizes, ioValues);
-	}
+    static Boolean  sTrueBool   = true;
+    
+    if (inQDStyle & inQDStyleMask)
+    {
+        AddAttribute(inTag, &sTrueBool, ioTags, ioSizes, ioValues);
+    }
 }
 
 // ------------------------------------------------------------------------------------------
 AtsuStylePtr
 MakeAtsuStylePtr()
 {
-	ATSUStyle	style;
-	OSStatus	err;
-	
-	err = ATSUCreateStyle(&style);
-	B_THROW_IF_STATUS(err);
-	
-	return AtsuStylePtr(style);
+    ATSUStyle   style;
+    OSStatus    err;
+    
+    err = ATSUCreateStyle(&style);
+    B_THROW_IF_STATUS(err);
+    
+    return AtsuStylePtr(style);
 }
 
 // ------------------------------------------------------------------------------------------
 AtsuStylePtr
 MakeAtsuStylePtr(ATSUStyle style)
 {
-	B_ASSERT(style != NULL);
-	
-	return AtsuStylePtr(style);
+    B_ASSERT(style != NULL);
+    
+    return AtsuStylePtr(style);
 }
 
 // ------------------------------------------------------------------------------------------
 AtsuStylePtr
 MakeAtsuStylePtr(ThemeFontID inThemeFontID, ScriptCode inScriptCode)
 {
-    Str255		qdFontName;
-	short		qdFontSize;
-	Style		qdFontStyle;
-	OSStatus	err;
-	
+    Str255      qdFontName;
+    short       qdFontSize;
+    Style       qdFontStyle;
+    OSStatus    err;
+    
     err = GetThemeFont(inThemeFontID, inScriptCode, qdFontName, &qdFontSize, &qdFontStyle);
-	B_THROW_IF_STATUS(err);
-	
-    ATSUFontID	atsuFontID;
-	
+    B_THROW_IF_STATUS(err);
+    
+    ATSUFontID  atsuFontID;
+    
     err = ATSUFindFontFromName(qdFontName+1, qdFontName[0], kFontFullName, 
-							   kFontMacintoshPlatform, kFontRomanScript, 
-							   static_cast<FontLanguageCode>(kFontNoLanguage), 
-							   &atsuFontID);
-	B_THROW_IF_STATUS(err);
-	
-	AtsuStylePtr						style(MakeAtsuStylePtr());
-	Fixed								atsuFontSize	= FixRatio(qdFontSize, 1);
-	short								atsuOrientation	= kATSUStronglyHorizontal;
-	std::vector<ATSUAttributeTag>		tags;
-	std::vector<ByteCount>				sizes;
-	std::vector<ATSUAttributeValuePtr>	values;
-	
-	// font ID, font size, and orientation
-	
-	AddAttribute(kATSUFontTag,				&atsuFontID,		tags, sizes, values);
-	AddAttribute(kATSUSizeTag,				&atsuFontSize,		tags, sizes, values);
-	AddAttribute(kATSUVerticalCharacterTag,	&atsuOrientation,	tags, sizes, values);
-	
-	// Quickdraw styles
-	
-	AddQDStyleAttribute(kATSUQDBoldfaceTag,  bold,      qdFontStyle, tags, sizes, values);
-	AddQDStyleAttribute(kATSUQDItalicTag,    italic,    qdFontStyle, tags, sizes, values);
-	AddQDStyleAttribute(kATSUQDUnderlineTag, underline, qdFontStyle, tags, sizes, values);
-	AddQDStyleAttribute(kATSUQDCondensedTag, condense,  qdFontStyle, tags, sizes, values);
-	AddQDStyleAttribute(kATSUQDExtendedTag,  extend,    qdFontStyle, tags, sizes, values);
-	
+                               kFontMacintoshPlatform, kFontRomanScript, 
+                               static_cast<FontLanguageCode>(kFontNoLanguage), 
+                               &atsuFontID);
+    B_THROW_IF_STATUS(err);
+    
+    AtsuStylePtr                        style(MakeAtsuStylePtr());
+    Fixed                               atsuFontSize    = FixRatio(qdFontSize, 1);
+    short                               atsuOrientation = kATSUStronglyHorizontal;
+    std::vector<ATSUAttributeTag>       tags;
+    std::vector<ByteCount>              sizes;
+    std::vector<ATSUAttributeValuePtr>  values;
+    
+    // font ID, font size, and orientation
+    
+    AddAttribute(kATSUFontTag,              &atsuFontID,        tags, sizes, values);
+    AddAttribute(kATSUSizeTag,              &atsuFontSize,      tags, sizes, values);
+    AddAttribute(kATSUVerticalCharacterTag, &atsuOrientation,   tags, sizes, values);
+    
+    // Quickdraw styles
+    
+    AddQDStyleAttribute(kATSUQDBoldfaceTag,  bold,      qdFontStyle, tags, sizes, values);
+    AddQDStyleAttribute(kATSUQDItalicTag,    italic,    qdFontStyle, tags, sizes, values);
+    AddQDStyleAttribute(kATSUQDUnderlineTag, underline, qdFontStyle, tags, sizes, values);
+    AddQDStyleAttribute(kATSUQDCondensedTag, condense,  qdFontStyle, tags, sizes, values);
+    AddQDStyleAttribute(kATSUQDExtendedTag,  extend,    qdFontStyle, tags, sizes, values);
+    
     err = ATSUSetAttributes(style.get(), tags.size(), &tags[0], &sizes[0], &values[0]);
-	B_THROW_IF_STATUS(err);
-	
-	return style;
-	
+    B_THROW_IF_STATUS(err);
+    
+    return style;
+    
 #if 0
 /* MakeThemeATSUIStyle creates a simple ATSUI style record
     that based on the current theme font ID that can be used in
@@ -211,130 +211,130 @@ bail:
 AtsuStylePtr
 CopyAtsuStylePtr(const AtsuStylePtr& src)
 {
-	ATSUStyle	style;
-	OSStatus	err;
-	
-	err = ATSUCreateAndCopyStyle(src.get(), &style);
-	B_THROW_IF_STATUS(err);
-	
-	return AtsuStylePtr(style);
+    ATSUStyle   style;
+    OSStatus    err;
+    
+    err = ATSUCreateAndCopyStyle(src.get(), &style);
+    B_THROW_IF_STATUS(err);
+    
+    return AtsuStylePtr(style);
 }
 
 // ------------------------------------------------------------------------------------------
 AtsuLayoutPtr
 MakeAtsuLayoutPtr()
 {
-	ATSUTextLayout	layout;
-	OSStatus		err;
-	
-	err = ATSUCreateTextLayout(&layout);
-	B_THROW_IF_STATUS(err);
-	
-	return AtsuLayoutPtr(layout);
+    ATSUTextLayout  layout;
+    OSStatus        err;
+    
+    err = ATSUCreateTextLayout(&layout);
+    B_THROW_IF_STATUS(err);
+    
+    return AtsuLayoutPtr(layout);
 }
 
 // ------------------------------------------------------------------------------------------
 AtsuLayoutPtr
 MakeAtsuLayoutPtr(ATSUTextLayout layout)
 {
-	B_ASSERT(layout != NULL);
-	
-	return AtsuLayoutPtr(layout);
+    B_ASSERT(layout != NULL);
+    
+    return AtsuLayoutPtr(layout);
 }
 
 // ------------------------------------------------------------------------------------------
 AtsuLayoutPtr
 CopyAtsuLayoutPtr(const AtsuLayoutPtr& src)
 {
-	ATSUTextLayout	layout;
-	OSStatus		err;
-	
-	err = ATSUCreateAndCopyTextLayout(src.get(), &layout);
-	B_THROW_IF_STATUS(err);
-	
-	return AtsuLayoutPtr(layout);
+    ATSUTextLayout  layout;
+    OSStatus        err;
+    
+    err = ATSUCreateAndCopyTextLayout(src.get(), &layout);
+    B_THROW_IF_STATUS(err);
+    
+    return AtsuLayoutPtr(layout);
 }
 
-}	// namespace B
+}   // namespace B
 
 // ------------------------------------------------------------------------------------------
 void
 intrusive_ptr_add_ref(ATSUStyle style)
 {
-	B_ASSERT(style != NULL);
-	
-	UInt32		refCount;
-	OSStatus	err;
-	
-	err = ATSUGetStyleRefCon(style, &refCount);
-	B_THROW_IF_STATUS(err);
-	
-	err = ATSUSetStyleRefCon(style, ++refCount);
-	B_THROW_IF_STATUS(err);
+    B_ASSERT(style != NULL);
+    
+    UInt32      refCount;
+    OSStatus    err;
+    
+    err = ATSUGetStyleRefCon(style, &refCount);
+    B_THROW_IF_STATUS(err);
+    
+    err = ATSUSetStyleRefCon(style, ++refCount);
+    B_THROW_IF_STATUS(err);
 }
 
 // ------------------------------------------------------------------------------------------
 void
 intrusive_ptr_release(ATSUStyle style)
 {
-	B_ASSERT(style != NULL);
-	
-	UInt32		refCount;
-	OSStatus	err;
-	
-	err = ATSUGetStyleRefCon(style, &refCount);
-	B_THROW_IF_STATUS(err);
-	
-	B_ASSERT(refCount > 0);
-	
-	if (--refCount == 0)
-	{
-		ATSUDisposeStyle(style);
-	}
-	else
-	{
-		err = ATSUSetStyleRefCon(style, refCount);
-		B_THROW_IF_STATUS(err);
-	}
+    B_ASSERT(style != NULL);
+    
+    UInt32      refCount;
+    OSStatus    err;
+    
+    err = ATSUGetStyleRefCon(style, &refCount);
+    B_THROW_IF_STATUS(err);
+    
+    B_ASSERT(refCount > 0);
+    
+    if (--refCount == 0)
+    {
+        ATSUDisposeStyle(style);
+    }
+    else
+    {
+        err = ATSUSetStyleRefCon(style, refCount);
+        B_THROW_IF_STATUS(err);
+    }
 }
 
 // ------------------------------------------------------------------------------------------
 void
 intrusive_ptr_add_ref(ATSUTextLayout layout)
 {
-	B_ASSERT(layout != NULL);
-	
-	UInt32		refCount;
-	OSStatus	err;
-	
-	err = ATSUGetTextLayoutRefCon(layout, &refCount);
-	B_THROW_IF_STATUS(err);
-	
-	err = ATSUSetTextLayoutRefCon(layout, ++refCount);
-	B_THROW_IF_STATUS(err);
+    B_ASSERT(layout != NULL);
+    
+    UInt32      refCount;
+    OSStatus    err;
+    
+    err = ATSUGetTextLayoutRefCon(layout, &refCount);
+    B_THROW_IF_STATUS(err);
+    
+    err = ATSUSetTextLayoutRefCon(layout, ++refCount);
+    B_THROW_IF_STATUS(err);
 }
 
 // ------------------------------------------------------------------------------------------
 void
 intrusive_ptr_release(ATSUTextLayout layout)
 {
-	B_ASSERT(layout != NULL);
-	
-	UInt32		refCount;
-	OSStatus	err;
-	
-	err = ATSUGetTextLayoutRefCon(layout, &refCount);
-	B_THROW_IF_STATUS(err);
-	
-	B_ASSERT(refCount > 0);
-	
-	if (--refCount == 0)
-	{
-		ATSUDisposeTextLayout(layout);
-	}
-	else
-	{
-		err = ATSUSetTextLayoutRefCon(layout, refCount);
-		B_THROW_IF_STATUS(err);
-	}
+    B_ASSERT(layout != NULL);
+    
+    UInt32      refCount;
+    OSStatus    err;
+    
+    err = ATSUGetTextLayoutRefCon(layout, &refCount);
+    B_THROW_IF_STATUS(err);
+    
+    B_ASSERT(refCount > 0);
+    
+    if (--refCount == 0)
+    {
+        ATSUDisposeTextLayout(layout);
+    }
+    else
+    {
+        err = ATSUSetTextLayoutRefCon(layout, refCount);
+        B_THROW_IF_STATUS(err);
+    }
 }
