@@ -1,0 +1,37 @@
+<map id="B::View" name="B::View">
+<area shape="rect" id="node5" href="$classB_1_1HybridView.html" title="Base class for implementations of HIView that can also be used by clients of the view. " alt="" coords="2529,1595,2716,1965"/>
+<area shape="rect" id="node7" href="$classB_1_1PredefinedView.html" title="A client&#39;s&#45;eye&#45;view of HIToolbox&#45;defined HIViewRefs (eg, push button, tabs, etc.) ..." alt="" coords="2740,1723,2880,1837"/>
+<area shape="rect" id="node9" href="$classB_1_1BevelButton.html" title="Bevel button control. " alt="" coords="5,2014,181,3071"/>
+<area shape="rect" id="node11" href="$classB_1_1ChasingArrows.html" title="Chasing Arrows control. " alt="" coords="206,2430,337,2655"/>
+<area shape="rect" id="node13" href="$classB_1_1CheckBoxGroup.html" title="Check Box Group control. " alt="" coords="361,2430,536,2655"/>
+<area shape="rect" id="node15" href="$classB_1_1ClockView.html" title="Clock View control. " alt="" coords="561,2398,683,2687"/>
+<area shape="rect" id="node17" href="$classB_1_1ComboBox.html" title="Combo Box control. " alt="" coords="708,2422,823,2663"/>
+<area shape="rect" id="node19" href="$classB_1_1DataBrowser.html" title="Data Browser control. " alt="" coords="847,2246,1060,2839"/>
+<area shape="rect" id="node21" href="$classB_1_1DisclosureButton.html" title="Disclosure Button control. " alt="" coords="1085,2462,1227,2623"/>
+<area shape="rect" id="node23" href="$classB_1_1DisclosureTriangle.html" title="Disclosure Triangle control. " alt="" coords="1251,2430,1401,2655"/>
+<area shape="rect" id="node25" href="$classB_1_1GenericToggle.html" title="Common implementation for radio buttons and check boxes. " alt="" coords="1427,2270,1604,2815"/>
+<area shape="rect" id="node27" href="$classB_1_1GroupBox.html" title="Group Box control. " alt="" coords="1629,2430,1804,2655"/>
+<area shape="rect" id="node29" href="$classB_1_1IconView.html" title="Icon View control. " alt="" coords="1829,2366,1952,2719"/>
+<area shape="rect" id="node31" href="$classB_1_1ImageView.html" title="Image View control. " alt="" coords="1976,2334,2101,2751"/>
+<area shape="rect" id="node33" href="$classB_1_1ImageWell.html" title="Image Well control. " alt="" coords="2125,2366,2293,2719"/>
+<area shape="rect" id="node35" href="$classB_1_1LittleArrows.html" title="Little Arrows control. " alt="" coords="2317,2430,2439,2655"/>
+<area shape="rect" id="node37" href="$classB_1_1PictureControl.html" title="Picture control. " alt="" coords="2464,2430,2589,2655"/>
+<area shape="rect" id="node39" href="$classB_1_1PlacardView.html" title="Placard View control. " alt="" coords="2614,2462,2729,2623"/>
+<area shape="rect" id="node41" href="$classB_1_1PopupArrow.html" title="Popup Arrow control. " alt="" coords="2753,2462,2868,2623"/>
+<area shape="rect" id="node43" href="$classB_1_1PopupButton.html" title="Popup Button control. " alt="" coords="2893,2366,3037,2719"/>
+<area shape="rect" id="node45" href="$classB_1_1ProgressBar.html" title="Progress Bar control. " alt="" coords="3062,2398,3207,2687"/>
+<area shape="rect" id="node47" href="$classB_1_1PushButton.html" title="Push Button control. " alt="" coords="3231,2398,3341,2687"/>
+<area shape="rect" id="node49" href="$classB_1_1RadioGroup.html" title="Radio Group control. " alt="" coords="3366,2446,3569,2639"/>
+<area shape="rect" id="node51" href="$classB_1_1RelevanceBar.html" title="Relevance Bar control. " alt="" coords="3595,2462,3720,2623"/>
+<area shape="rect" id="node53" href="$classB_1_1RoundButton.html" title="Round Button control. " alt="" coords="3744,2430,3863,2655"/>
+<area shape="rect" id="node55" href="$classB_1_1ScrollBar.html" title="Scroll Bar control. " alt="" coords="3888,2398,4032,2687"/>
+<area shape="rect" id="node57" href="$classB_1_1ScrollView.html" title="Scroll View control. " alt="" coords="4057,2326,4193,2759"/>
+<area shape="rect" id="node59" href="$classB_1_1Slider.html" title="Slider control. " alt="" coords="4218,2462,4320,2623"/>
+<area shape="rect" id="node61" href="$classB_1_1StaticTextView.html" title="Static Text View control. " alt="" coords="4345,2350,4473,2735"/>
+<area shape="rect" id="node63" href="$classB_1_1TabbedView.html" title="Tabbed View control. " alt="" coords="4497,2294,4665,2791"/>
+<area shape="rect" id="node65" href="$classB_1_1TextField.html" title="Text Field control. " alt="" coords="4690,2334,4835,2751"/>
+<area shape="rect" id="node67" href="$classB_1_1TextView.html" title="Text View control. " alt="" coords="4860,2334,5025,2751"/>
+<area shape="rect" id="node69" href="$classB_1_1UserPane.html" title="User Pane view. " alt="" coords="5050,2462,5152,2623"/>
+<area shape="rect" id="node71" href="$classB_1_1VisualSeparator.html" title="Visual Separator control. " alt="" coords="5177,2462,5313,2623"/>
+<area shape="rect" id="node73" href="$classB_1_1WindowHeaderView.html" title="Window Header View control. " alt="" coords="5338,2430,5499,2655"/>
+</map>

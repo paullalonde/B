@@ -1,0 +1,4 @@
+<map id="B::AEObject::UniqueIDSpecifier" name="B::AEObject::UniqueIDSpecifier">
+<area shape="rect" id="node2" href="$classB_1_1AEEventFunctor_1_1UniqueIDSpecifier.html" title="{B::AEEventFunctor::\lUniqueIDSpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt;, AETypedObject\l\&lt; typeSInt32 \&gt; \&gt;\n|+ OBJ_SPEC\l+ OBJ_CLASS\l+ ID\l|+ UniqueIDSpecifier()\l+ operator()()\l* OBJ_SPEC\l* OBJ_CLASS\l* ID\l}" alt="" coords="10,462,208,703"/>
+<area shape="rect" id="node6" href="$classB_1_1AEEventFunctor_1_1UniqueIDSpecifier.html" title="Functor that holds an object specifier with key form formUniqueID. " alt="" coords="125,155,307,365"/>
+</map>

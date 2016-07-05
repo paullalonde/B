@@ -1,0 +1,6 @@
+<map id="B::CustomView" name="B::CustomView">
+<area shape="rect" id="node7" href="$classB_1_1HybridView.html" title="Base class for implementations of HIView that can also be used by clients of the view. " alt="" coords="5,2462,192,2831"/>
+<area shape="rect" id="node9" href="$classB_1_1OpenGLView.html" title="A custom view implementing a OpenGl view. " alt="" coords="217,2502,404,2791"/>
+<area shape="rect" id="node11" href="$classB_1_1SplitView.html" title="A custom view implementing a Help button. " alt="" coords="428,2494,576,2799"/>
+<area shape="rect" id="node2" href="$classB_1_1EventTarget.html" title="Base class for custom derivatives of HIObject. " alt="" coords="219,137,401,1082"/>
+</map>

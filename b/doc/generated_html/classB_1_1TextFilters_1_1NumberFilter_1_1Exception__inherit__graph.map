@@ -1,0 +1,4 @@
+<map id="B::TextFilters::NumberFilter::Exception" name="B::TextFilters::NumberFilter::Exception">
+<area shape="rect" id="node7" href="$classB_1_1TextFilters_1_1NumberRange_1_1Exception.html" title="{B::TextFilters::NumberRange\l::Exception\n||+ Exception()\l+ ~Exception()\l+ what()\l+ GetNumber()\l+ GetMinNumber()\l+ GetMaxNumber()\l}" alt="" coords="5,510,197,687"/>
+<area shape="rect" id="node2" href="$classB_1_1TextValidator_1_1Exception.html" title="{B::TextValidator::Exception\n||+ ~Exception()\l+ what()\l+ Format()\l}" alt="" coords="11,137,191,250"/>
+</map>

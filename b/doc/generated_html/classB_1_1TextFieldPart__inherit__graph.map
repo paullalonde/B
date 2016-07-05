@@ -1,0 +1,6 @@
+<map id="B::TextFieldPart" name="B::TextFieldPart">
+<area shape="rect" id="node5" href="$classB_1_1ComboBox.html" title="Combo Box control. " alt="" coords="5,1091,120,1333"/>
+<area shape="rect" id="node7" href="$classB_1_1TextField.html" title="Text Field control. " alt="" coords="144,1003,289,1421"/>
+<area shape="rect" id="node9" href="$classB_1_1TextView.html" title="Text View control. " alt="" coords="314,1003,480,1421"/>
+<area shape="rect" id="node2" href="$classB_1_1TextSource.html" title="{B::TextSource\n||+ GetText()\l+ Combine()\l}" alt="" coords="165,6,269,103"/>
+</map>

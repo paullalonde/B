@@ -1,0 +1,12 @@
+<map id="B::AEOptionalTypedObject&lt; TYPE &gt;" name="B::AEOptionalTypedObject&lt; TYPE &gt;">
+<area shape="rect" id="node7" href="$classB_1_1AEOptionalTypedObject.html" title="{B::AEOptionalTypedObject\l\&lt; typeFileURL \&gt;\n||+ AEOptionalTypedObject()\l+ HasValue()\l+ operator()()\l* TYPE\l}" alt="" coords="4,547,187,693"/>
+<area shape="rect" id="node11" href="$classB_1_1AEOptionalTypedObject.html" title="{B::AEOptionalTypedObject\l\&lt; typeUTF16ExternalRepresentation \&gt;\n||+ AEOptionalTypedObject()\l+ HasValue()\l+ operator()()\l* TYPE\l}" alt="" coords="211,547,460,693"/>
+<area shape="rect" id="node15" href="$classB_1_1AEOptionalTypedObject.html" title="{B::AEOptionalTypedObject\l\&lt; typeEnumeration \&gt;\n||+ AEOptionalTypedObject()\l+ HasValue()\l+ operator()()\l* TYPE\l}" alt="" coords="490,547,672,693"/>
+<area shape="rect" id="node19" href="$classB_1_1AEOptionalTypedObject.html" title="{B::AEOptionalTypedObject\l\&lt; typeType \&gt;\n||+ AEOptionalTypedObject()\l+ HasValue()\l+ operator()()\l* TYPE\l}" alt="" coords="696,547,879,693"/>
+<area shape="rect" id="node2" href="$classB_1_1AETypedObject.html" title="Functor for writing tagged data to an AEWriter. " alt="" coords="366,155,553,285"/>
+<area shape="rect" id="node9" href="$classB_1_1AEEventFunctor_1_1OptionalUrl.html" title="Functor that holds an optional URL. " alt="" coords="25,745,167,842"/>
+<area shape="rect" id="node13" href="$classB_1_1AEEventFunctor_1_1OptionalObjectType.html" title="Functor that holds an optional object type. " alt="" coords="257,745,415,842"/>
+<area shape="rect" id="node17" href="$classB_1_1AEEventFunctor_1_1OptionalSaveOption.html" title="Functor that holds an optional &quot;save option&quot;. " alt="" coords="501,745,661,842"/>
+<area shape="rect" id="node21" href="$classB_1_1AEEventFunctor_1_1OptionalObjectClass.html" title="Functor that holds an optional &quot;object class&quot;. " alt="" coords="696,745,859,842"/>
+<area shape="rect" id="node23" href="$classB_1_1AEEventFunctor_1_1OptionalRequestedType.html" title="Functor that holds an optional requested data type. " alt="" coords="884,745,1068,842"/>
+</map>

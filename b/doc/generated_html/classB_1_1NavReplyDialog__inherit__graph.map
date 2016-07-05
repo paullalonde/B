@@ -1,0 +1,6 @@
+<map id="B::NavReplyDialog" name="B::NavReplyDialog">
+<area shape="rect" id="node7" href="$classB_1_1ChooseFolderDialog.html" title="Implements the standard &quot;Open&quot; dialog as per the Aqua HIG. " alt="" coords="5,2518,168,2791"/>
+<area shape="rect" id="node9" href="$classB_1_1GetFileDialog.html" title="Implements the standard &quot;Open&quot; dialog as per the Aqua HIG. " alt="" coords="192,2398,408,2911"/>
+<area shape="rect" id="node11" href="$classB_1_1PutFileDialog.html" title="Implements the standard &quot;Save&quot; dialog as per the Aqua HIG. " alt="" coords="432,2334,648,2975"/>
+<area shape="rect" id="node2" href="$classB_1_1NavDialog.html" title="Abstract base class for Navigation Services dialogs. " alt="" coords="213,137,387,1018"/>
+</map>

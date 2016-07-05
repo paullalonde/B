@@ -1,0 +1,21 @@
+<map id="B::AEEventBase" name="B::AEEventBase">
+<area shape="rect" id="node5" href="$classB_1_1AEEvent.html" title="Wrapper class for a single Apple Event. " alt="" coords="5,627,187,757"/>
+<area shape="rect" id="node7" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAEClone_01_4.html" title="Specialisation of AEEvent for the duplicate Apple Event. " alt="" coords="211,587,399,797"/>
+<area shape="rect" id="node9" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAEClose_01_4.html" title="Specialisation of AEEvent for the close Apple Event. " alt="" coords="423,611,611,773"/>
+<area shape="rect" id="node11" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAECountElements_01_4.html" title="Specialisation of AEEvent for the count Apple Event. " alt="" coords="635,603,823,781"/>
+<area shape="rect" id="node13" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAECreateElement_01_4.html" title="Specialisation of AEEvent for the make Apple Event. " alt="" coords="847,571,1035,813"/>
+<area shape="rect" id="node15" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAEDelete_01_4.html" title="Specialisation of AEEvent for the delete Apple Event. " alt="" coords="1059,619,1247,765"/>
+<area shape="rect" id="node17" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAEDoObjectsExist_01_4.html" title="Specialisation of AEEvent for the exists Apple Event. " alt="" coords="1271,611,1459,773"/>
+<area shape="rect" id="node19" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAEGetData_01_4.html" title="Specialisation of AEEvent for the get Apple Event. " alt="" coords="1483,611,1671,773"/>
+<area shape="rect" id="node21" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAEMove_01_4.html" title="Specialisation of AEEvent for the move Apple Event. " alt="" coords="1695,595,1883,789"/>
+<area shape="rect" id="node23" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAESave_01_4.html" title="Specialisation of AEEvent for the save Apple Event. " alt="" coords="1907,611,2095,773"/>
+<area shape="rect" id="node25" href="$classB_1_1AEEvent_3_01kAECoreSuite_00_01kAESetData_01_4.html" title="Specialisation of AEEvent for the set Apple Event. " alt="" coords="2119,619,2307,765"/>
+<area shape="rect" id="node27" href="$classB_1_1AEEvent_3_01kAEMiscStandards_00_01kAERedo_01_4.html" title="Specialisation of AEEvent for the redo Apple Event. " alt="" coords="2331,619,2548,765"/>
+<area shape="rect" id="node29" href="$classB_1_1AEEvent_3_01kAEMiscStandards_00_01kAERevert_01_4.html" title="Specialisation of AEEvent for the revert Apple Event. " alt="" coords="2573,619,2789,765"/>
+<area shape="rect" id="node31" href="$classB_1_1AEEvent_3_01kAEMiscStandards_00_01kAESelect_01_4.html" title="Specialisation of AEEvent for the select Apple Event. " alt="" coords="2814,619,3031,765"/>
+<area shape="rect" id="node33" href="$classB_1_1AEEvent_3_01kAEMiscStandards_00_01kAEUndo_01_4.html" title="Specialisation of AEEvent for the undo Apple Event. " alt="" coords="3055,619,3272,765"/>
+<area shape="rect" id="node35" href="$classB_1_1AEEvent_3_01kASAppleScriptSuite_00_01kASCommentEvent_01_4.html" title="Specialisation of AEEvent for the kASAppleScriptSuite / kASCommentEvent Apple Event. " alt="" coords="3297,611,3489,773"/>
+<area shape="rect" id="node37" href="$classB_1_1AEEvent_3_01kCoreEventClass_00_01kAEOpen_01_4.html" title="Specialisation of AEEvent for the open Apple Event. " alt="" coords="3515,619,3721,765"/>
+<area shape="rect" id="node39" href="$classB_1_1AEEvent_3_01kCoreEventClass_00_01kAEPrint_01_4.html" title="Specialisation of AEEvent for the print Apple Event. " alt="" coords="3747,603,3953,781"/>
+<area shape="rect" id="node41" href="$classB_1_1AEEvent_3_01kCoreEventClass_00_01kAEQuitApplication_01_4.html" title="Specialisation of AEEvent for the quit Apple Event. " alt="" coords="3979,619,4185,765"/>
+</map>

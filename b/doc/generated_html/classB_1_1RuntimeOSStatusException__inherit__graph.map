@@ -1,0 +1,5 @@
+<map id="B::RuntimeOSStatusException" name="B::RuntimeOSStatusException">
+<area shape="rect" id="node7" href="$classB_1_1AEObjectSupport_1_1ObjectResolutionException.html" title="{B::AEObjectSupport\l::ObjectResolutionException\n||+ ObjectResolutionException()\l+ ObjectResolutionException()\l+ ObjectResolutionException()\l+ ~ObjectResolutionException()\l+ operator=()\l+ what()\l+ Write()\l}" alt="" coords="5,526,213,719"/>
+<area shape="rect" id="node9" href="$classB_1_1FSExchangeObjectsException.html" title="FSExchangeObjects exception class. " alt="" coords="239,534,468,711"/>
+<area shape="rect" id="node2" href="$classB_1_1OSStatusException.html" title="Abtract base class for exceptions containing a MacOS error code. " alt="" coords="148,137,312,234"/>
+</map>

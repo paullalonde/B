@@ -1,0 +1,13 @@
+<map id="B::OSStatusException" name="B::OSStatusException">
+<area shape="rect" id="node5" href="$classB_1_1AEBoundaryMustBeObjectException.html" title="&quot;Boundary must be object&quot; exception " alt="" coords="4,315,269,445"/>
+<area shape="rect" id="node7" href="$classB_1_1AECantRelateObjectsException.html" title="&quot;Cant relate objects&quot; exception " alt="" coords="294,323,532,437"/>
+<area shape="rect" id="node9" href="$classB_1_1AEClassHasNoElementsOfThisTypeException.html" title="&quot;Unknown element class&quot; exception " alt="" coords="556,307,783,453"/>
+<area shape="rect" id="node11" href="$classB_1_1AEDirectObjectNotAllowedException.html" title="&quot;Direct object not allowed&quot; exception " alt="" coords="807,307,1005,453"/>
+<area shape="rect" id="node13" href="$classB_1_1AEDirectObjectRequiredException.html" title="&quot;Direct object required&quot; exception " alt="" coords="1031,315,1283,445"/>
+<area shape="rect" id="node15" href="$classB_1_1AEUnrecognisedOperatorException.html" title="&quot;Unrecognised comparison operator&quot; exception " alt="" coords="1308,315,1568,445"/>
+<area shape="rect" id="node17" href="$classB_1_1ConstantOSStatusException.html" title="Hard&#45;wired MacOS&#45;error&#45;code exception class. " alt="" coords="1593,315,1811,445"/>
+<area shape="rect" id="node19" href="$classB_1_1RethrownException.html" title="Internal exception class. " alt="" coords="1836,283,2000,477"/>
+<area shape="rect" id="node21" href="$classB_1_1RuntimeOSStatusException.html" title="Low&#45;level MacOS&#45;error&#45;code exception class. " alt="" coords="2025,283,2239,477"/>
+<area shape="rect" id="node23" href="$classB_1_1AEObjectSupport_1_1ObjectResolutionException.html" title="{B::AEObjectSupport\l::ObjectResolutionException\n||+ ObjectResolutionException()\l+ ObjectResolutionException()\l+ ObjectResolutionException()\l+ ~ObjectResolutionException()\l+ operator=()\l+ what()\l+ Write()\l}" alt="" coords="1906,526,2115,719"/>
+<area shape="rect" id="node25" href="$classB_1_1FSExchangeObjectsException.html" title="FSExchangeObjects exception class. " alt="" coords="2140,534,2369,711"/>
+</map>

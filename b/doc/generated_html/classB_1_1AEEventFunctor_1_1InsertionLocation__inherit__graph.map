@@ -1,0 +1,4 @@
+<map id="B::AEEventFunctor::InsertionLocation&lt; OBJ_SPEC, POSITION &gt;" name="B::AEEventFunctor::InsertionLocation&lt; OBJ_SPEC, POSITION &gt;">
+<area shape="rect" id="node5" href="$classB_1_1AEEventFunctor_1_1InsertionLocation.html" title="{B::AEEventFunctor::\lInsertionLocation\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeEnumeration \&gt; \&gt;\n|+ OBJ_SPEC\l+ POSITION\l|+ InsertionLocation()\l+ operator()()\l* OBJ_SPEC\l* POSITION\l}" alt="" coords="10,414,203,607"/>
+<area shape="rect" id="node7" href="$classB_1_1AEObject_1_1InsertionLocationSpecifier.html" title="Convenience wrapper around AEEventFunctor::InsertionLocation&lt;...&gt;. " alt="" coords="5,659,208,757"/>
+</map>

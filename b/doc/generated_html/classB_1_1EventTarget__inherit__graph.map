@@ -1,0 +1,9 @@
+<map id="B::EventTarget" name="B::EventTarget">
+<area shape="rect" id="node7" href="$classB_1_1CustomView.html" title="Base class for custom derivatives of HIView. " alt="" coords="222,1131,399,2413"/>
+<area shape="rect" id="node15" href="$classB_1_1HelpButton.html" title="A custom view implementing a Help button. " alt="" coords="422,1675,591,1869"/>
+<area shape="rect" id="node17" href="$classB_1_1Toolbar.html" title="An HIToolbox toolbar. " alt="" coords="615,1603,803,1941"/>
+<area shape="rect" id="node19" href="$classB_1_1ToolbarItem.html" title="Wrapper class for toolbar items. " alt="" coords="828,1235,1005,2309"/>
+<area shape="rect" id="node9" href="$classB_1_1HybridView.html" title="Base class for implementations of HIView that can also be used by clients of the view. " alt="" coords="5,2462,192,2831"/>
+<area shape="rect" id="node11" href="$classB_1_1OpenGLView.html" title="A custom view implementing a OpenGl view. " alt="" coords="217,2502,404,2791"/>
+<area shape="rect" id="node13" href="$classB_1_1SplitView.html" title="A custom view implementing a Help button. " alt="" coords="428,2494,576,2799"/>
+</map>

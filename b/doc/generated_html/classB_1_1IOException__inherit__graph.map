@@ -1,0 +1,7 @@
+<map id="B::IOException" name="B::IOException">
+<area shape="rect" id="node5" href="$classB_1_1EOFException.html" title="File/stream end&#45;of&#45;stream exception class. " alt="" coords="4,283,139,381"/>
+<area shape="rect" id="node7" href="$classB_1_1FileNotFoundException.html" title="File&#45;not&#45;found exception class. " alt="" coords="163,283,351,381"/>
+<area shape="rect" id="node9" href="$classB_1_1OpenException.html" title="File/stream open exception class. " alt="" coords="375,283,515,381"/>
+<area shape="rect" id="node11" href="$classB_1_1ReadException.html" title="File/stream read exception class. " alt="" coords="539,283,679,381"/>
+<area shape="rect" id="node13" href="$classB_1_1WriteException.html" title="File/stream write exception class. " alt="" coords="704,283,843,381"/>
+</map>

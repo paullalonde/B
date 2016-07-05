@@ -1,0 +1,8 @@
+<map id="B::EventParamAndType&lt; NAME, TYPE &gt;" name="B::EventParamAndType&lt; NAME, TYPE &gt;">
+<area shape="rect" id="node3" href="$structB_1_1EventParamAndType.html" title="{B::EventParamAndType\l\&lt; kEventParamDirectObject,\l TYPE \&gt;\n||+ Exists()\l+ Get()\l+ Get()\l+ Get()\l+ Set()\l* NAME\l* TYPE\l* IOType\l* ValueType\l* Exists()\l* Get()\l* Get()\l* Get()\l* Set()\l}" alt="" coords="5,393,195,714"/>
+<area shape="rect" id="node7" href="$structB_1_1EventParamAndType.html" title="{B::EventParamAndType\l\&lt; NAME, EventParamNameTrait\l\&lt; NAME \&gt;::kTypeTag \&gt;\n||+ Exists()\l+ Get()\l+ Get()\l+ Get()\l+ Set()\l* NAME\l* TYPE\l* IOType\l* ValueType\l* Exists()\l* Get()\l* Get()\l* Get()\l* Set()\l}" alt="" coords="218,393,432,714"/>
+<area shape="rect" id="node11" href="$structB_1_1EventParamAndType.html" title="{B::EventParamAndType\l\&lt; kEventParamResult,\l TYPE \&gt;\n||+ Exists()\l+ Get()\l+ Get()\l+ Get()\l+ Set()\l* NAME\l* TYPE\l* IOType\l* ValueType\l* Exists()\l* Get()\l* Get()\l* Get()\l* Set()\l}" alt="" coords="464,393,627,714"/>
+<area shape="rect" id="node5" href="$structB_1_1EventDirectParam.html" title="Gets &amp; sets a Carbon Event&#39;s direct parameter in a type&#45;safe manner. " alt="" coords="27,766,172,863"/>
+<area shape="rect" id="node9" href="$structB_1_1EventParam.html" title="Gets &amp; sets a specific Carbon Event parameter in a type&#45;safe manner. " alt="" coords="239,774,411,855"/>
+<area shape="rect" id="node13" href="$structB_1_1EventResultParam.html" title="Gets &amp; sets a Carbon Event&#39;s result parameter in a type&#45;safe manner. " alt="" coords="471,766,619,863"/>
+</map>

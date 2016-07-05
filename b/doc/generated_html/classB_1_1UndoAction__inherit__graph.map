@@ -1,0 +1,5 @@
+<map id="B::UndoAction" name="B::UndoAction">
+<area shape="rect" id="node5" href="$classB_1_1AEUndoAction.html" title="An undoable action that sends an Apple Event. " alt="" coords="5,483,147,597"/>
+<area shape="rect" id="node7" href="$classB_1_1FunctorUndoAction.html" title="An undoable action that delegates to functor. " alt="" coords="171,483,327,597"/>
+<area shape="rect" id="node9" href="$classB_1_1UndoActionGroup.html" title="Helper class for implementing UNDO_POLICY. " alt="" coords="351,315,499,765"/>
+</map>

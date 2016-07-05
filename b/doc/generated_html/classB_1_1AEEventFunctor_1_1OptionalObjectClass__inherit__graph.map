@@ -1,0 +1,5 @@
+<map id="B::AEEventFunctor::OptionalObjectClass" name="B::AEEventFunctor::OptionalObjectClass">
+<area shape="rect" id="node2" href="$classB_1_1AEOptionalTypedObject.html" title="{B::AEOptionalTypedObject\l\&lt; typeType \&gt;\n||+ AEOptionalTypedObject()\l+ HasValue()\l+ operator()()\l* TYPE\l}" alt="" coords="34,547,216,693"/>
+<area shape="rect" id="node4" href="$classB_1_1AETypedObject.html" title="Functor for writing tagged data to an AEWriter. " alt="" coords="5,155,192,285"/>
+<area shape="rect" id="node8" href="$classB_1_1AEOptionalTypedObject.html" title="Functor for optionally writing tagged data to an AEWriter. " alt="" coords="120,337,303,482"/>
+</map>
