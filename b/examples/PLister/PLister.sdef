@@ -1,325 +1,325 @@
 <?xml version="1.0"?>
 <!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
 <dictionary title="PLister Terminology">
-	<suite code="CoRe" description="Common terms for most applications." name="PLister Suite">
-		
-			<!-- These enumerations are handled automatically by B -->
-			<enumeration code="savo" name="save options">
-				<enumerator code="yes " description="Save the file." name="yes"/>
-				<enumerator code="no  " description="Do not save the file." name="no"/>
-				<enumerator code="ask " description="Ask the user whether or not to save the file." name="ask"/>
-			</enumeration>
-			<!-- PLister-specific -->
-		
-		
-			
-			<!-- item -->
-			<class name="item" code="cobj" description="Abstract object provides a base class for scripting classes.  It is never used directly." plural="items">
-				
-					<property name="type class" type="type" code="pcls" access="r" description="The class of the object."/>
-					<property name="properties" type="record" code="pALL" description="All of the object's properties." in-properties="no"/>
-				
-				
-					<responds-to name="count"/>
-					<responds-to name="exists"/>
-					<responds-to name="get"/>
-					<responds-to name="set"/>
-				
-			</class>
-			
-			<!-- application-->
-			<class name="application" code="capp" inherits="item" description="An application's top level scripting object." plural="applications">
-				
-					<!-- These elements and accessors (aka key forms) are handled automatically by B -->
-					<element type="document" access="r">
-						<accessor style="index"/>
-						<accessor style="name"/>
-						<accessor style="id"/>
-						<accessor style="range"/>
-						<accessor style="test"/>
-					</element>
-					<element type="window" access="r">
-						<accessor style="index"/>
-						<accessor style="name"/>
-						<accessor style="range"/>
-						<accessor style="test"/>
-					</element>
-					<!-- PLister-specific -->
-				
-				
-					<!-- These properties are handled automatically by B -->
-					<property name="name" type="Unicode text" code="pnam" access="r" description="The name of the application."/>
-					<property name="frontmost" type="boolean" code="pisf" access="r" description="Is this the frontmost (active) application?"/>
-					<property name="version" type="Unicode text" code="vers" access="r" description="The version of the application."/>
-					<!-- PLister-specific -->
-				
-				
-					<!-- These commands are always handled automatically by B -->
-					<responds-to name="reopen"/>
-					<responds-to name="run"/>
-					<responds-to name="quit"/>
-					<responds-to name="activate"/>
-					
-					<!-- Comment this out if the application doesn't have documents or windows -->
-					<responds-to name="make"/>
-					
-					<!-- Comment this out if the application doesn't have documents -->
-					<responds-to name="open"/>
-					
-					<!-- Comment these out if the application doesn't support undo -->
-					<responds-to name="undo"/>
-					<responds-to name="redo"/>
-					
-					<!-- Uncomment this if the application supports printing.
-					<responds-to name="print"/>
-					-->
-					
-					<!-- Uncomment this if the application responds to the Preferences menu item in the application menu.
-					<responds-to name="show prefs" hidden="yes"/>
-					-->
-					
-					<!-- PLister-specific -->
-				
-			</class>
-			
-			<!-- document -->
-			<class name="document" code="docu" inherits="item" description="A document." plural="documents">
-	            
-	                <element type="document window" access="r">
-	                    <accessor style="index"/>
-						<accessor style="range"/>
-						<accessor style="test"/>
-	                </element>
-	            
-				
-					<!-- These properties are handled automatically by B -->
-					<property name="name" type="Unicode text" code="pnam" access="r" description="The document's name."/>
-					<property name="id" type="integer" code="ID  " access="r" description="The document's unique identifier."/>
-					<property name="modified" type="boolean" code="imod" access="r" description="Has the document been modified since the last save?"/>
-					<!-- Comment this out if the document supports multiple windows
-					<property name="window" type="document window" code="wndw" access="r" 
-						description="The document's window."/>
-					-->
-					<!-- PLister-specific -->
-					<property name="root property item" type="property item" code="RItm" access="r" description="The document's topmost property list item."/>
-					<!--
-					<property name="path" code="ppth" type="text" description="The document's path.">
-					-->
-					<!-- PLister-specific -->
-				
-				
-					<!-- These commands are handled automatically by B -->
-					<responds-to name="close"/>
-					<responds-to name="save"/>
-					<responds-to name="revert"/>
-					<!-- Not Yet Implemented 
-					<responds-to name="print"/>
-					-->
-					<!-- PLister-specific -->
-				
-			</class>
-			
-			<!-- item -->
-			<class name="property item" code="MItm" inherits="item" description="A property list item" plural="property items">
-				
-					<element type="property item">
-						<accessor style="index"/>
-						<accessor style="name"/>
-						<accessor style="range"/>
-						<accessor style="test"/>
-					</element>
-				
-				
-					<property name="container" type="specifier" code="ctnr" access="r" description="The property item's containing object."/>
-					<property name="name" type="Unicode text" code="pnam" description="the property item's name"/>
-					<property name="value" type="any" code="pIVl" description="the property item's value"/>
-				
-				
-					<responds-to name="delete"/>
-					<responds-to name="duplicate"/>
-					<responds-to name="make"/>
-					<responds-to name="move"/>
-				
-			</class>
-			
-			<!-- window -->
-			<class name="window" code="cwin" inherits="item" description="A window." plural="windows">
-				
-					<!-- These properties are handled automatically by B -->
-					<property name="name" type="Unicode text" code="pnam" access="r" description="The full title of the window."/>
-					<property name="bounds" type="rectangle" code="pbnd" description="The bounding rectangle of the window."/>
-					<property name="closeable" type="boolean" code="hclb" access="r" description="Whether the window has a close box."/>
-					<property name="floating" type="boolean" code="isfl" access="r" description="Whether the window floats."/>
-					<!--
-					<property name="index" type="integer" code="pidx"
-						description="The index of the window in the back-to-front window ordering."/>
-					-->
-					<property name="minimizable" type="boolean" code="ismn" access="r" description="Whether the window can be minimized."/>
-					<property name="minimized" type="boolean" code="pmnd" description="Whether the window is currently minimized."/>
-					<property name="modal" type="boolean" code="pmod" access="r" description="Whether the window is the application's current modal window."/>
-					<property name="position" type="point" code="posn" description="The upper left position of the window."/>
-					<property name="resizable" type="boolean" code="prsz" access="r" description="Whether the window can be resized."/>
-					<property name="titled" type="boolean" code="ptit" access="r" description="Whether the window has a title bar."/>
-					<property name="visible" type="boolean" code="pvis" description="Whether the window is currently visible."/>
-					<property name="zoomable" type="boolean" code="iszm" access="r" description="Whether the window can be zoomed."/>
-					<property name="zoomed" type="boolean" code="pzum" description="Whether the window is currently zoomed."/>
-				
-				
-					<!-- These commands are handled automatically by B -->
-					<responds-to name="activate"/>
-					<responds-to name="close"/>
-					<!-- Not Yet Implemented 
-					<responds-to name="print"/>
-					<responds-to name="save"/>
-					-->
-					<!-- PLister-specific -->
-				
-			</class>
-			
-			<!-- Document Window Class -->
-			<class name="document window" code="DocW" inherits="window" description="A document window." plural="document windows">
-				
-					<!-- These properties are handled automatically by B -->
-					<property name="document" type="document" code="docu" access="r" description="The document whose contents are being displayed in the window."/>
-					<!-- PLister-specific -->
-				
-			</class>
-			
-			<!-- Document Or File Class 
-			This class serves as a "union" for commands that take either a document or a file as a parameter.
-			-->
-			<class name="document or file" code="DorF" hidden="yes" plural="documents or files"/>
+    <suite code="CoRe" description="Common terms for most applications." name="PLister Suite">
+        
+            <!-- These enumerations are handled automatically by B -->
+            <enumeration code="savo" name="save options">
+                <enumerator code="yes " description="Save the file." name="yes"/>
+                <enumerator code="no  " description="Do not save the file." name="no"/>
+                <enumerator code="ask " description="Ask the user whether or not to save the file." name="ask"/>
+            </enumeration>
+            <!-- PLister-specific -->
+        
+        
+            
+            <!-- item -->
+            <class name="item" code="cobj" description="Abstract object provides a base class for scripting classes.  It is never used directly." plural="items">
+                
+                    <property name="type class" type="type" code="pcls" access="r" description="The class of the object."/>
+                    <property name="properties" type="record" code="pALL" description="All of the object's properties." in-properties="no"/>
+                
+                
+                    <responds-to name="count"/>
+                    <responds-to name="exists"/>
+                    <responds-to name="get"/>
+                    <responds-to name="set"/>
+                
+            </class>
+            
+            <!-- application-->
+            <class name="application" code="capp" inherits="item" description="An application's top level scripting object." plural="applications">
+                
+                    <!-- These elements and accessors (aka key forms) are handled automatically by B -->
+                    <element type="document" access="r">
+                        <accessor style="index"/>
+                        <accessor style="name"/>
+                        <accessor style="id"/>
+                        <accessor style="range"/>
+                        <accessor style="test"/>
+                    </element>
+                    <element type="window" access="r">
+                        <accessor style="index"/>
+                        <accessor style="name"/>
+                        <accessor style="range"/>
+                        <accessor style="test"/>
+                    </element>
+                    <!-- PLister-specific -->
+                
+                
+                    <!-- These properties are handled automatically by B -->
+                    <property name="name" type="Unicode text" code="pnam" access="r" description="The name of the application."/>
+                    <property name="frontmost" type="boolean" code="pisf" access="r" description="Is this the frontmost (active) application?"/>
+                    <property name="version" type="Unicode text" code="vers" access="r" description="The version of the application."/>
+                    <!-- PLister-specific -->
+                
+                
+                    <!-- These commands are always handled automatically by B -->
+                    <responds-to name="reopen"/>
+                    <responds-to name="run"/>
+                    <responds-to name="quit"/>
+                    <responds-to name="activate"/>
+                    
+                    <!-- Comment this out if the application doesn't have documents or windows -->
+                    <responds-to name="make"/>
+                    
+                    <!-- Comment this out if the application doesn't have documents -->
+                    <responds-to name="open"/>
+                    
+                    <!-- Comment these out if the application doesn't support undo -->
+                    <responds-to name="undo"/>
+                    <responds-to name="redo"/>
+                    
+                    <!-- Uncomment this if the application supports printing.
+                    <responds-to name="print"/>
+                    -->
+                    
+                    <!-- Uncomment this if the application responds to the Preferences menu item in the application menu.
+                    <responds-to name="show prefs" hidden="yes"/>
+                    -->
+                    
+                    <!-- PLister-specific -->
+                
+            </class>
+            
+            <!-- document -->
+            <class name="document" code="docu" inherits="item" description="A document." plural="documents">
+                
+                    <element type="document window" access="r">
+                        <accessor style="index"/>
+                        <accessor style="range"/>
+                        <accessor style="test"/>
+                    </element>
+                
+                
+                    <!-- These properties are handled automatically by B -->
+                    <property name="name" type="Unicode text" code="pnam" access="r" description="The document's name."/>
+                    <property name="id" type="integer" code="ID  " access="r" description="The document's unique identifier."/>
+                    <property name="modified" type="boolean" code="imod" access="r" description="Has the document been modified since the last save?"/>
+                    <!-- Comment this out if the document supports multiple windows
+                    <property name="window" type="document window" code="wndw" access="r" 
+                        description="The document's window."/>
+                    -->
+                    <!-- PLister-specific -->
+                    <property name="root property item" type="property item" code="RItm" access="r" description="The document's topmost property list item."/>
+                    <!--
+                    <property name="path" code="ppth" type="text" description="The document's path.">
+                    -->
+                    <!-- PLister-specific -->
+                
+                
+                    <!-- These commands are handled automatically by B -->
+                    <responds-to name="close"/>
+                    <responds-to name="save"/>
+                    <responds-to name="revert"/>
+                    <!-- Not Yet Implemented 
+                    <responds-to name="print"/>
+                    -->
+                    <!-- PLister-specific -->
+                
+            </class>
+            
+            <!-- item -->
+            <class name="property item" code="MItm" inherits="item" description="A property list item" plural="property items">
+                
+                    <element type="property item">
+                        <accessor style="index"/>
+                        <accessor style="name"/>
+                        <accessor style="range"/>
+                        <accessor style="test"/>
+                    </element>
+                
+                
+                    <property name="container" type="specifier" code="ctnr" access="r" description="The property item's containing object."/>
+                    <property name="name" type="Unicode text" code="pnam" description="the property item's name"/>
+                    <property name="value" type="any" code="pIVl" description="the property item's value"/>
+                
+                
+                    <responds-to name="delete"/>
+                    <responds-to name="duplicate"/>
+                    <responds-to name="make"/>
+                    <responds-to name="move"/>
+                
+            </class>
+            
+            <!-- window -->
+            <class name="window" code="cwin" inherits="item" description="A window." plural="windows">
+                
+                    <!-- These properties are handled automatically by B -->
+                    <property name="name" type="Unicode text" code="pnam" access="r" description="The full title of the window."/>
+                    <property name="bounds" type="rectangle" code="pbnd" description="The bounding rectangle of the window."/>
+                    <property name="closeable" type="boolean" code="hclb" access="r" description="Whether the window has a close box."/>
+                    <property name="floating" type="boolean" code="isfl" access="r" description="Whether the window floats."/>
+                    <!--
+                    <property name="index" type="integer" code="pidx"
+                        description="The index of the window in the back-to-front window ordering."/>
+                    -->
+                    <property name="minimizable" type="boolean" code="ismn" access="r" description="Whether the window can be minimized."/>
+                    <property name="minimized" type="boolean" code="pmnd" description="Whether the window is currently minimized."/>
+                    <property name="modal" type="boolean" code="pmod" access="r" description="Whether the window is the application's current modal window."/>
+                    <property name="position" type="point" code="posn" description="The upper left position of the window."/>
+                    <property name="resizable" type="boolean" code="prsz" access="r" description="Whether the window can be resized."/>
+                    <property name="titled" type="boolean" code="ptit" access="r" description="Whether the window has a title bar."/>
+                    <property name="visible" type="boolean" code="pvis" description="Whether the window is currently visible."/>
+                    <property name="zoomable" type="boolean" code="iszm" access="r" description="Whether the window can be zoomed."/>
+                    <property name="zoomed" type="boolean" code="pzum" description="Whether the window is currently zoomed."/>
+                
+                
+                    <!-- These commands are handled automatically by B -->
+                    <responds-to name="activate"/>
+                    <responds-to name="close"/>
+                    <!-- Not Yet Implemented 
+                    <responds-to name="print"/>
+                    <responds-to name="save"/>
+                    -->
+                    <!-- PLister-specific -->
+                
+            </class>
+            
+            <!-- Document Window Class -->
+            <class name="document window" code="DocW" inherits="window" description="A document window." plural="document windows">
+                
+                    <!-- These properties are handled automatically by B -->
+                    <property name="document" type="document" code="docu" access="r" description="The document whose contents are being displayed in the window."/>
+                    <!-- PLister-specific -->
+                
+            </class>
+            
+            <!-- Document Or File Class 
+            This class serves as a "union" for commands that take either a document or a file as a parameter.
+            -->
+            <class name="document or file" code="DorF" hidden="yes" plural="documents or files"/>
 
-			<!-- Miscellaneous synonyms -->
-			<value-type name="file" code="file" hidden="yes"/>
-			<value-type name="alias" code="alis" hidden="yes" plural="aliases"/>
-			<value-type name="Unicode text" code="ut16" hidden="yes" plural="Unicode text"/>
-		
-		
-			<!-- =========================================================== -->
-			<!-- The old Standard Suite: run, reopen, open, print, and quit. -->
+            <!-- Miscellaneous synonyms -->
+            <value-type name="file" code="file" hidden="yes"/>
+            <value-type name="alias" code="alis" hidden="yes" plural="aliases"/>
+            <value-type name="Unicode text" code="ut16" hidden="yes" plural="Unicode text"/>
+        
+        
+            <!-- =========================================================== -->
+            <!-- The old Standard Suite: run, reopen, open, print, and quit. -->
 
-			<!-- run -->
-			<command name="run" code="aevtoapp" description="Run the application." hidden="yes"/>
-			
-			<!-- reopen -->
-			<command name="reopen" code="aevtrapp" description="Re-open the application." hidden="yes"/>
-			
-			<!-- Remove this comment if the application supports preferences
-			<command name="show prefs" code="aevtpref" hidden="yes" description="Display the Preferences window."/>
-			-->
+            <!-- run -->
+            <command name="run" code="aevtoapp" description="Run the application." hidden="yes"/>
+            
+            <!-- reopen -->
+            <command name="reopen" code="aevtrapp" description="Re-open the application." hidden="yes"/>
+            
+            <!-- Remove this comment if the application supports preferences
+            <command name="show prefs" code="aevtpref" hidden="yes" description="Display the Preferences window."/>
+            -->
 
-			<!-- activate -->
-			<command name="activate" code="miscactv" hidden="yes" description="Bring the application or one of its windows to the front.">
-				<direct-parameter type="window" optional="yes" description="the window to activate."/>
-			</command>
-			
-			<!-- close -->
-			<command name="close" code="coreclos" description="Close an object.">
-				<direct-parameter type="specifier" description="the object to close"/>
-				<parameter name="saving" type="save options" code="savo" optional="yes" description="Specifies whether changes should be saved before closing."/>
-				<parameter name="saving in" type="alias" code="kfil" optional="yes" description="The file in which to save the object."/>
-			</command>
-			
-			<!-- count -->
-			<command name="count" code="corecnte" description="Return the number of elements of a particular class within an object.">
-				<direct-parameter type="specifier" description="the object whose elements are to be counted"/>
-				<parameter name="each" type="type" code="kocl" optional="yes" description="The class of objects to be counted."/>
-				<result type="integer" description="the number of elements"/>
-			</command>
-			
-			<!-- delete -->
-			<command name="delete" code="coredelo" description="Delete an object.">
-				<direct-parameter type="specifier" description="the element to delete"/>
-			</command>
-			
-			<!-- duplicate -->
-			<command name="duplicate" code="coreclon" description="Copy object(s) and put the copies at a new location.">
-				<direct-parameter type="specifier" description="the object to duplicate"/>
-				<parameter name="to" type="location specifier" code="insh" optional="yes" description="The location for the new object(s)."/>
-				<parameter name="with properties" type="record" code="prdt" optional="yes" description="Properties to be set in the new duplicated object(s)."/>
-				<result type="specifier" description="to the duplicated object(s)"/>
-			</command>
-			
-			<!-- exists -->
-			<command name="exists" code="coredoex" description="Verify if an object exists.">
-				<direct-parameter type="specifier" description="the object in question"/>
-				<result type="boolean" description="true if the object exists, false if not"/>
-			</command>
-			
-			<!-- get -->
-			<command name="get" code="coregetd" hidden="yes" description="Get the data for an object.">
-				<direct-parameter type="specifier" description="the object in question"/>
-				<parameter name="as" type="type" code="rtyp" optional="yes" description="the desired type of the result."/>
-				<result type="any" description="The data of the specified object."/>
-			</command>
-			
-			<!-- make -->
-			<command name="make" code="corecrel" description="Make a new object.">
-				<parameter name="with properties" type="record" code="prdt" optional="yes" description="The initial values for properties of the object."/>
-				<parameter name="new" type="type" code="kocl" description="The class of the new object."/>
-				<parameter name="with data" type="any" code="data" optional="yes" description="The initial data for the object."/>
-				<parameter name="at" type="location specifier" code="insh" optional="yes" description="The location at which to insert the object."/>
-				<result type="specifier" description="to the new object(s)."/>
-			</command>
-			
-			<!-- move -->
-			<command name="move" code="coremove" description="Move object(s) to a new location.">
-				<direct-parameter type="specifier" description="the object(s) to move"/>
-				<parameter name="to" type="location specifier" code="insh" description="The new location for the object(s)."/>
-				<result type="specifier" description="to the object(s) after they have been moved"/>
-			</command>
-			
-			<!-- Comment this out if the application doesn't have documents and doesn't otherwise support opening things -->
-			<!-- open -->
-			<command name="open" code="aevtodoc" description="Open an object.">
-				<direct-parameter description="The document(s) or file(s) to be opened.">
-					<type type="document or file" list="yes"/>
-				</direct-parameter>
-			</command>
+            <!-- activate -->
+            <command name="activate" code="miscactv" hidden="yes" description="Bring the application or one of its windows to the front.">
+                <direct-parameter type="window" optional="yes" description="the window to activate."/>
+            </command>
+            
+            <!-- close -->
+            <command name="close" code="coreclos" description="Close an object.">
+                <direct-parameter type="specifier" description="the object to close"/>
+                <parameter name="saving" type="save options" code="savo" optional="yes" description="Specifies whether changes should be saved before closing."/>
+                <parameter name="saving in" type="alias" code="kfil" optional="yes" description="The file in which to save the object."/>
+            </command>
+            
+            <!-- count -->
+            <command name="count" code="corecnte" description="Return the number of elements of a particular class within an object.">
+                <direct-parameter type="specifier" description="the object whose elements are to be counted"/>
+                <parameter name="each" type="type" code="kocl" optional="yes" description="The class of objects to be counted."/>
+                <result type="integer" description="the number of elements"/>
+            </command>
+            
+            <!-- delete -->
+            <command name="delete" code="coredelo" description="Delete an object.">
+                <direct-parameter type="specifier" description="the element to delete"/>
+            </command>
+            
+            <!-- duplicate -->
+            <command name="duplicate" code="coreclon" description="Copy object(s) and put the copies at a new location.">
+                <direct-parameter type="specifier" description="the object to duplicate"/>
+                <parameter name="to" type="location specifier" code="insh" optional="yes" description="The location for the new object(s)."/>
+                <parameter name="with properties" type="record" code="prdt" optional="yes" description="Properties to be set in the new duplicated object(s)."/>
+                <result type="specifier" description="to the duplicated object(s)"/>
+            </command>
+            
+            <!-- exists -->
+            <command name="exists" code="coredoex" description="Verify if an object exists.">
+                <direct-parameter type="specifier" description="the object in question"/>
+                <result type="boolean" description="true if the object exists, false if not"/>
+            </command>
+            
+            <!-- get -->
+            <command name="get" code="coregetd" hidden="yes" description="Get the data for an object.">
+                <direct-parameter type="specifier" description="the object in question"/>
+                <parameter name="as" type="type" code="rtyp" optional="yes" description="the desired type of the result."/>
+                <result type="any" description="The data of the specified object."/>
+            </command>
+            
+            <!-- make -->
+            <command name="make" code="corecrel" description="Make a new object.">
+                <parameter name="with properties" type="record" code="prdt" optional="yes" description="The initial values for properties of the object."/>
+                <parameter name="new" type="type" code="kocl" description="The class of the new object."/>
+                <parameter name="with data" type="any" code="data" optional="yes" description="The initial data for the object."/>
+                <parameter name="at" type="location specifier" code="insh" optional="yes" description="The location at which to insert the object."/>
+                <result type="specifier" description="to the new object(s)."/>
+            </command>
+            
+            <!-- move -->
+            <command name="move" code="coremove" description="Move object(s) to a new location.">
+                <direct-parameter type="specifier" description="the object(s) to move"/>
+                <parameter name="to" type="location specifier" code="insh" description="The new location for the object(s)."/>
+                <result type="specifier" description="to the object(s) after they have been moved"/>
+            </command>
+            
+            <!-- Comment this out if the application doesn't have documents and doesn't otherwise support opening things -->
+            <!-- open -->
+            <command name="open" code="aevtodoc" description="Open an object.">
+                <direct-parameter description="The document(s) or file(s) to be opened.">
+                    <type type="document or file" list="yes"/>
+                </direct-parameter>
+            </command>
 
-			<!-- Comment this out if the application doesn't support printing -->
-			<!-- print -->
-			<command name="print" code="aevtpdoc" description="Print an object.">
-				<direct-parameter description="The document(s) or file(s) to be opened.">
-					<type type="document or file" list="yes"/>
-				</direct-parameter>
-				<parameter name="with properties" type="record" code="prdt" description="The print settings"/>
-				<parameter name="print dialog" type="boolean" code="pdlg" description="Should the application show the Print dialog?"/>
-			</command>
-			
-			<!-- quit -->
-			<command name="quit" code="aevtquit" description="Quit the application.">
-				<parameter name="saving" type="save options" code="savo" description="Specifies whether changes should be saved before quitting."/>
-			</command>
+            <!-- Comment this out if the application doesn't support printing -->
+            <!-- print -->
+            <command name="print" code="aevtpdoc" description="Print an object.">
+                <direct-parameter description="The document(s) or file(s) to be opened.">
+                    <type type="document or file" list="yes"/>
+                </direct-parameter>
+                <parameter name="with properties" type="record" code="prdt" description="The print settings"/>
+                <parameter name="print dialog" type="boolean" code="pdlg" description="Should the application show the Print dialog?"/>
+            </command>
+            
+            <!-- quit -->
+            <command name="quit" code="aevtquit" description="Quit the application.">
+                <parameter name="saving" type="save options" code="savo" description="Specifies whether changes should be saved before quitting."/>
+            </command>
 
-			<!-- Comment this out if the application doesn't support undo -->
-			<!-- redo -->
-			<command name="redo" code="miscredo" description="Reverse the action of the immediately preceeding undo."/>
-			
-			<!-- Comment this out if the application doesn't have documents and doesn't otherwise support saving things -->
-			<!-- save -->
-			<command name="save" code="coresave" description="Save an object.">
-				<direct-parameter type="specifier" description="the object to save"/>
-				<parameter name="as" type="type" code="fltp" optional="yes" description="The file type in which to save the data."/>
-				<parameter name="in" type="alias" code="kfil" optional="yes" description="The file in which to save the object."/>
-			</command>
-			
-			<!-- Comment this out if the application doesn't have documents and doesn't otherwise support reverting things -->
-			<!-- revert -->
-			<command name="revert" code="miscrvrt" description="Restore the object to its last saved state.">
-				<direct-parameter type="specifier" description="The object to revert"/>
-			</command>
-			
-			<!-- set -->
-			<command name="set" code="coresetd" description="Set an object's data.">
-				<direct-parameter type="specifier" description="the object in question"/>
-				<parameter name="to" type="any" code="data" description="The new value."/>
-			</command>
-			
-			<!-- Comment this out if the application doesn't support undo -->
-			<!-- undo -->
-			<command name="undo" code="miscundo" description="Undo the action of the previous event or user interaction."/>
-		
-	</suite>
+            <!-- Comment this out if the application doesn't support undo -->
+            <!-- redo -->
+            <command name="redo" code="miscredo" description="Reverse the action of the immediately preceeding undo."/>
+            
+            <!-- Comment this out if the application doesn't have documents and doesn't otherwise support saving things -->
+            <!-- save -->
+            <command name="save" code="coresave" description="Save an object.">
+                <direct-parameter type="specifier" description="the object to save"/>
+                <parameter name="as" type="type" code="fltp" optional="yes" description="The file type in which to save the data."/>
+                <parameter name="in" type="alias" code="kfil" optional="yes" description="The file in which to save the object."/>
+            </command>
+            
+            <!-- Comment this out if the application doesn't have documents and doesn't otherwise support reverting things -->
+            <!-- revert -->
+            <command name="revert" code="miscrvrt" description="Restore the object to its last saved state.">
+                <direct-parameter type="specifier" description="The object to revert"/>
+            </command>
+            
+            <!-- set -->
+            <command name="set" code="coresetd" description="Set an object's data.">
+                <direct-parameter type="specifier" description="the object in question"/>
+                <parameter name="to" type="any" code="data" description="The new value."/>
+            </command>
+            
+            <!-- Comment this out if the application doesn't support undo -->
+            <!-- undo -->
+            <command name="undo" code="miscundo" description="Undo the action of the previous event or user interaction."/>
+        
+    </suite>
 </dictionary>
