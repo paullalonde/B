@@ -1,4 +1,5 @@
 3rd/* linguist-vendored
 b/docs/* linguist-documentation
 *.h linguist-language=C++
+*.r linguist-language=Rez
 
