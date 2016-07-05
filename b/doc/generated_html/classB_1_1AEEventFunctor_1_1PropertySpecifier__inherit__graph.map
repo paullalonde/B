@@ -1,4 +1,0 @@
-<map id="B::AEEventFunctor::PropertySpecifier&lt; OBJ_SPEC, PROP_ID &gt;" name="B::AEEventFunctor::PropertySpecifier&lt; OBJ_SPEC, PROP_ID &gt;">
-<area shape="rect" id="node5" href="$classB_1_1AEEventFunctor_1_1PropertySpecifier.html" title="{B::AEEventFunctor::\lPropertySpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt; \&gt;\n|+ OBJ_SPEC\l+ PROP_ID\l|+ PropertySpecifier()\l+ operator()()\l* OBJ_SPEC\l* PROP_ID\l}" alt="" coords="10,414,203,607"/>
-<area shape="rect" id="node7" href="$classB_1_1AEObject_1_1PropertySpecifier.html" title="Convenience wrapper around AEEventBase::PropertySpecifier&lt;...&gt;. " alt="" coords="5,659,208,741"/>
-</map>

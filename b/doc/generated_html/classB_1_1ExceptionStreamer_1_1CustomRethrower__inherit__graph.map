@@ -1,6 +1,0 @@
-<map id="B::ExceptionStreamer::CustomRethrower&lt; EXCEPTION &gt;" name="B::ExceptionStreamer::CustomRethrower&lt; EXCEPTION &gt;">
-<area shape="rect" id="node5" href="$classB_1_1ExceptionStreamer_1_1CustomRethrower.html" title="{B::ExceptionStreamer\l::CustomRethrower\&lt; boost\l::io::too_few_args \&gt;\n||}" alt="" coords="38,366,217,479"/>
-<area shape="rect" id="node9" href="$classB_1_1ExceptionStreamer_1_1CustomRethrower.html" title="{B::ExceptionStreamer\l::CustomRethrower\&lt; boost\l::io::bad_format_string \&gt;\n||}" alt="" coords="253,366,432,479"/>
-<area shape="rect" id="node13" href="$classB_1_1ExceptionStreamer_1_1CustomRethrower.html" title="{B::ExceptionStreamer\l::CustomRethrower\&lt; boost\l::io::out_of_range \&gt;\n||}" alt="" coords="467,366,647,479"/>
-<area shape="rect" id="node17" href="$classB_1_1ExceptionStreamer_1_1CustomRethrower.html" title="{B::ExceptionStreamer\l::CustomRethrower\&lt; boost\l::io::too_many_args \&gt;\n||}" alt="" coords="697,366,876,479"/>
-</map>

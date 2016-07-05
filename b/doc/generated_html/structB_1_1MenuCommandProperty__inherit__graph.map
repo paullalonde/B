@@ -1,6 +1,0 @@
-<map id="B::MenuCommandProperty&lt; SIG, TAG, T &gt;" name="B::MenuCommandProperty&lt; SIG, TAG, T &gt;">
-<area shape="rect" id="node2" href="$structB_1_1ToolboxObjectProperty.html" title="{B::ToolboxObjectProperty\l\&lt; SIG, TAG, T, ToolboxObjectProperty\lMenuCommandObjectTraits \&gt;\n||+ Get()\l+ Get()\l+ Get()\l+ Set()\l* SIG\l* TAG\l* T\l* OBJTR\l* ObjectTraits\l* ObjectType\l* TypeTraits\l* PropertyType\l* Get()\l* Get()\l* Get()\l* Set()\l}" alt="" coords="76,827,320,1181"/>
-<area shape="rect" id="node4" href="$structB_1_1ToolboxObjectPropertyBase.html" title="{B::ToolboxObjectProperty\lBase\&lt; SIG, TAG, ToolboxObject\lPropertyMenuCommandObjectTraits \&gt;\n||+ Exists()\l+ Size()\l+ Remove()\l+ GetAttrs()\l+ SetAttrs()\l* SIG\l* TAG\l* OBJTR\l* ObjectTraits\l* ObjectType\l* Exists()\l* Size()\l* Remove()\l* GetAttrs()\l* SetAttrs()\l}" alt="" coords="5,409,253,746"/>
-<area shape="rect" id="node6" href="$structB_1_1ToolboxObjectPropertyBase.html" title="Helper class that serves as the common ancestor of instantiations of ToolboxObjectProperty. " alt="" coords="159,6,341,327"/>
-<area shape="rect" id="node8" href="$structB_1_1ToolboxObjectProperty.html" title="Accesses a toolbox object property in a type&#45;safe manner. " alt="" coords="284,409,456,746"/>
-</map>

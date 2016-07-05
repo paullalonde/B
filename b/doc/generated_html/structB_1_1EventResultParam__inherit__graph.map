@@ -1,4 +1,0 @@
-<map id="B::EventResultParam&lt; TYPE &gt;" name="B::EventResultParam&lt; TYPE &gt;">
-<area shape="rect" id="node2" href="$structB_1_1EventParamAndType.html" title="{B::EventParamAndType\l\&lt; kEventParamResult,\l TYPE \&gt;\n||+ Exists()\l+ Get()\l+ Get()\l+ Get()\l+ Set()\l* NAME\l* TYPE\l* IOType\l* ValueType\l* Exists()\l* Get()\l* Get()\l* Get()\l* Set()\l}" alt="" coords="5,393,168,714"/>
-<area shape="rect" id="node4" href="$structB_1_1EventParamAndType.html" title="Gets &amp; sets a specific Carbon Event parameter of a specific type in a type&#45;safe manner. " alt="" coords="5,6,168,311"/>
-</map>

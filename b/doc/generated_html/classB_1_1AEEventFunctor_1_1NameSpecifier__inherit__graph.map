@@ -1,4 +1,0 @@
-<map id="B::AEEventFunctor::NameSpecifier&lt; OBJ_SPEC, OBJ_CLASS, NAME &gt;" name="B::AEEventFunctor::NameSpecifier&lt; OBJ_SPEC, OBJ_CLASS, NAME &gt;">
-<area shape="rect" id="node5" href="$classB_1_1AEEventFunctor_1_1NameSpecifier.html" title="{B::AEEventFunctor::\lNameSpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt;, const String &amp; \&gt;\n|+ OBJ_SPEC\l+ OBJ_CLASS\l+ NAME\l|+ NameSpecifier()\l+ operator()()\l* OBJ_SPEC\l* OBJ_CLASS\l* NAME\l}" alt="" coords="5,462,205,687"/>
-<area shape="rect" id="node7" href="$classB_1_1AEObject_1_1NameSpecifier.html" title="Convenience wrapper around AEEventFunctor::NameSpecifier&lt;...&gt;. " alt="" coords="11,739,199,821"/>
-</map>

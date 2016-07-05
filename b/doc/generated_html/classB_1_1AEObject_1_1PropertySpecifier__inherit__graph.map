@@ -1,4 +1,0 @@
-<map id="B::AEObject::PropertySpecifier" name="B::AEObject::PropertySpecifier">
-<area shape="rect" id="node2" href="$classB_1_1AEEventFunctor_1_1PropertySpecifier.html" title="{B::AEEventFunctor::\lPropertySpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt; \&gt;\n|+ OBJ_SPEC\l+ PROP_ID\l|+ PropertySpecifier()\l+ operator()()\l* OBJ_SPEC\l* PROP_ID\l}" alt="" coords="10,414,203,607"/>
-<area shape="rect" id="node6" href="$classB_1_1AEEventFunctor_1_1PropertySpecifier.html" title="Functor that holds an object specifier for a property of an object. " alt="" coords="122,155,283,333"/>
-</map>

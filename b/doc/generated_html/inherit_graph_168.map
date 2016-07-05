@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structB_1_1ToolboxObjectPropertyBase.html" title="B::ToolboxObjectProperty\lBase\&lt; SIG, TAG, ToolboxObject\lPropertyWindowObjectTraits \&gt;" alt="" coords="6,5,218,65"/>
-<area shape="rect" id="node3" href="$structB_1_1ToolboxObjectProperty.html" title="B::ToolboxObjectProperty\l\&lt; SIG, TAG, T, ToolboxObjectProperty\lWindowObjectTraits \&gt;" alt="" coords="267,5,512,65"/>
-<area shape="rect" id="node5" href="$structB_1_1WindowProperty.html" title="Gets &amp; sets a window property in a type&#45;safe manner. " alt="" coords="560,13,704,57"/>
-</map>

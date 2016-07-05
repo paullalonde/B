@@ -1,9 +1,0 @@
-<map id="B::NavDialog" name="B::NavDialog">
-<area shape="rect" id="node5" href="$classB_1_1AskDiscardChangesDialog.html" title="Implements the standard &quot;Discard Changes&quot; alert. " alt="" coords="4,1515,203,1837"/>
-<area shape="rect" id="node7" href="$classB_1_1AskReviewDocumentsDialog.html" title="Implements the standard &quot;Review Changes&quot; alert as per the Aqua HIG. " alt="" coords="227,1491,439,1861"/>
-<area shape="rect" id="node9" href="$classB_1_1AskSaveChangesDialog.html" title="Implements the standard &quot;Save Changes&quot; alert as per the Aqua HIG. " alt="" coords="464,1483,648,1869"/>
-<area shape="rect" id="node11" href="$classB_1_1NavReplyDialog.html" title="Abstract base class for complex Navigation Services dialogs. " alt="" coords="673,1067,865,2285"/>
-<area shape="rect" id="node13" href="$classB_1_1ChooseFolderDialog.html" title="Implements the standard &quot;Open&quot; dialog as per the Aqua HIG. " alt="" coords="475,2518,637,2791"/>
-<area shape="rect" id="node15" href="$classB_1_1GetFileDialog.html" title="Implements the standard &quot;Open&quot; dialog as per the Aqua HIG. " alt="" coords="661,2398,877,2911"/>
-<area shape="rect" id="node17" href="$classB_1_1PutFileDialog.html" title="Implements the standard &quot;Save&quot; dialog as per the Aqua HIG. " alt="" coords="901,2334,1117,2975"/>
-</map>

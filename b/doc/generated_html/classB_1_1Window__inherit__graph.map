@@ -1,7 +1,0 @@
-<map id="B::Window" name="B::Window">
-<area shape="rect" id="node9" href="$classB_1_1AboutBox.html" title="A simple, self&#45;contained about box. " alt="" coords="5,3654,131,3799"/>
-<area shape="rect" id="node11" href="$classB_1_1Dialog.html" title="Modal Dialogs, Modeless Dialogs, and Sheets. " alt="" coords="155,3534,340,3919"/>
-<area shape="rect" id="node13" href="$classB_1_1DocumentWindow.html" title="Document&#45;related window class. " alt="" coords="365,3502,579,3951"/>
-<area shape="rect" id="node15" href="$classB_1_1Drawer.html" title="Wrapper class for drawers. " alt="" coords="604,3438,753,4015"/>
-<area shape="rect" id="node2" href="$classB_1_1AEObject.html" title="The root class for objects visible to AppleScript. " alt="" coords="244,153,475,2442"/>
-</map>

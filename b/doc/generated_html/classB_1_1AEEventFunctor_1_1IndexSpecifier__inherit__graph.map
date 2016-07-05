@@ -1,4 +1,0 @@
-<map id="B::AEEventFunctor::IndexSpecifier&lt; OBJ_SPEC, OBJ_CLASS, INDEX &gt;" name="B::AEEventFunctor::IndexSpecifier&lt; OBJ_SPEC, OBJ_CLASS, INDEX &gt;">
-<area shape="rect" id="node5" href="$classB_1_1AEEventFunctor_1_1IndexSpecifier.html" title="{B::AEEventFunctor::\lIndexSpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt;, AETypedObject\l\&lt; typeSInt32 \&gt; \&gt;\n|+ OBJ_SPEC\l+ OBJ_CLASS\l+ INDEX\l|+ IndexSpecifier()\l+ operator()()\l* OBJ_SPEC\l* OBJ_CLASS\l* INDEX\l}" alt="" coords="10,462,208,703"/>
-<area shape="rect" id="node7" href="$classB_1_1AEObject_1_1IndexSpecifier.html" title="Convenience wrapper around AEEventFunctor::IndexSpecifier&lt;...&gt;. " alt="" coords="16,755,201,837"/>
-</map>

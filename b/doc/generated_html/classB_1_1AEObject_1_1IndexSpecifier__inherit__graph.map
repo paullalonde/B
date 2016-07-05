@@ -1,4 +1,0 @@
-<map id="B::AEObject::IndexSpecifier" name="B::AEObject::IndexSpecifier">
-<area shape="rect" id="node2" href="$classB_1_1AEEventFunctor_1_1IndexSpecifier.html" title="{B::AEEventFunctor::\lIndexSpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt;, AETypedObject\l\&lt; typeSInt32 \&gt; \&gt;\n|+ OBJ_SPEC\l+ OBJ_CLASS\l+ INDEX\l|+ IndexSpecifier()\l+ operator()()\l* OBJ_SPEC\l* OBJ_CLASS\l* INDEX\l}" alt="" coords="5,462,203,703"/>
-<area shape="rect" id="node6" href="$classB_1_1AEEventFunctor_1_1IndexSpecifier.html" title="Functor that holds an object specifier with key form formAbsolutePosition. " alt="" coords="119,155,328,365"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="B::AEEventFunctor::UniqueIDSpecifier&lt; OBJ_SPEC, OBJ_CLASS, ID &gt;" name="B::AEEventFunctor::UniqueIDSpecifier&lt; OBJ_SPEC, OBJ_CLASS, ID &gt;">
-<area shape="rect" id="node5" href="$classB_1_1AEEventFunctor_1_1UniqueIDSpecifier.html" title="{B::AEEventFunctor::\lUniqueIDSpecifier\&lt; const\l AEObject &amp;, AETypedObject\l\&lt; typeType \&gt;, AETypedObject\l\&lt; typeSInt32 \&gt; \&gt;\n|+ OBJ_SPEC\l+ OBJ_CLASS\l+ ID\l|+ UniqueIDSpecifier()\l+ operator()()\l* OBJ_SPEC\l* OBJ_CLASS\l* ID\l}" alt="" coords="10,462,208,703"/>
-<area shape="rect" id="node7" href="$classB_1_1AEObject_1_1UniqueIDSpecifier.html" title="Convenience wrapper around AEEventFunctor::UniqueIDSpecifier&lt;...&gt;. " alt="" coords="5,755,213,837"/>
-</map>

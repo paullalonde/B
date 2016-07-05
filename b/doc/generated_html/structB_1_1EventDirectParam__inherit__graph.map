@@ -1,4 +1,0 @@
-<map id="B::EventDirectParam&lt; TYPE &gt;" name="B::EventDirectParam&lt; TYPE &gt;">
-<area shape="rect" id="node2" href="$structB_1_1EventParamAndType.html" title="{B::EventParamAndType\l\&lt; kEventParamDirectObject,\l TYPE \&gt;\n||+ Exists()\l+ Get()\l+ Get()\l+ Get()\l+ Set()\l* NAME\l* TYPE\l* IOType\l* ValueType\l* Exists()\l* Get()\l* Get()\l* Get()\l* Set()\l}" alt="" coords="5,393,195,714"/>
-<area shape="rect" id="node4" href="$structB_1_1EventParamAndType.html" title="Gets &amp; sets a specific Carbon Event parameter of a specific type in a type&#45;safe manner. " alt="" coords="18,6,181,311"/>
-</map>
