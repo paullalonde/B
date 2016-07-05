@@ -17,16 +17,16 @@
 #       
 # ==========================================================================================
 #
-#	Simple shell script that builds all sample projects.
-#	
-#	This script should be run from the main B directory.
+#   Simple shell script that builds all sample projects.
+#   
+#   This script should be run from the main B directory.
 
 if [ -d /usr/local/b/b ]
 then
-	cd /usr/local/b/b
+    cd /usr/local/b/b
 else
-	echo "Can't find installation location of B !!"
-	exit 1
+    echo "Can't find installation location of B !!"
+    exit 1
 fi
 
 asfile="/tmp/build_all_$$.applescript"
@@ -38,107 +38,107 @@ cw=0
 
 for arg
 do
-	case "$arg" in
-	--help)
-		echo "Builds the Xcode and CodeWarrior sample projects that come with B."
-		echo "usage:  `basename $0` [options]"
-		echo "options:"
-		echo "    --help         This message."
-		echo "    --clean        Removes build products and intermediate files."
-		echo "    --cleanbuild   Clean before building."
-		echo "    --development  Build Development configuration."
-		echo "    --deployment   Build Deployment configuration (default)."
-		echo "    --cw           Build CodeWarrior projects."
-		echo "    --no-cw        Do not build CodeWarrior projects (default)."
-		echo "    --xc           Build Xcode projects (default)."
-		echo "    --no-xc        Do not build Xcode projects."
-		exit
-		;;
-	--clean)
-		clean="clean"
-		build=
-		;;
-	--cleanbuild)
-		clean="clean"
-		build="build"
-		;;
-	--development)
-		style="Development"
-		;;
-	--deployment)
-		style="Deployment"
-		;;
-	--cw)
-		cw=1
-		;;
-	--no-cw)
-		cw=0
-		;;
-	--xc)
-		xc=1
-		;;
-	--no-xc)
-		xc=0
-		;;
-	esac
+    case "$arg" in
+    --help)
+        echo "Builds the Xcode and CodeWarrior sample projects that come with B."
+        echo "usage:  `basename $0` [options]"
+        echo "options:"
+        echo "    --help         This message."
+        echo "    --clean        Removes build products and intermediate files."
+        echo "    --cleanbuild   Clean before building."
+        echo "    --development  Build Development configuration."
+        echo "    --deployment   Build Deployment configuration (default)."
+        echo "    --cw           Build CodeWarrior projects."
+        echo "    --no-cw        Do not build CodeWarrior projects (default)."
+        echo "    --xc           Build Xcode projects (default)."
+        echo "    --no-xc        Do not build Xcode projects."
+        exit
+        ;;
+    --clean)
+        clean="clean"
+        build=
+        ;;
+    --cleanbuild)
+        clean="clean"
+        build="build"
+        ;;
+    --development)
+        style="Development"
+        ;;
+    --deployment)
+        style="Deployment"
+        ;;
+    --cw)
+        cw=1
+        ;;
+    --no-cw)
+        cw=0
+        ;;
+    --xc)
+        xc=1
+        ;;
+    --no-xc)
+        xc=0
+        ;;
+    esac
 done
 
 # Map Xcode build style to CodeWarrior target.
 
 if [ "$style" = "Development" ]
 then
-	targ="Debug"
+    targ="Debug"
 else
-	targ="Release"
+    targ="Release"
 fi
 
 for sample in DragPeekerX Framework PLister Tarabiscoter
 do
-	echo
-	echo Building Sample Project $sample ...
-	echo
+    echo
+    echo Building Sample Project $sample ...
+    echo
 
-	if [ $xc != 0 ]
-	then
-		# Build XCode project
-			
-		cd examples/$sample
-		xcodebuild -project *.xcodeproj -target "$sample" -configuration "$style" $clean $build
-		cd -
-	fi
-	
-	if [ $cw != 0 ]
-	then
-		# Build an AppleScript file that will open, build & close the CodeWarrior project.
+    if [ $xc != 0 ]
+    then
+        # Build XCode project
+            
+        cd examples/$sample
+        xcodebuild -project *.xcodeproj -target "$sample" -configuration "$style" $clean $build
+        cd -
+    fi
+    
+    if [ $cw != 0 ]
+    then
+        # Build an AppleScript file that will open, build & close the CodeWarrior project.
 
-		rm -f "$asfile"
-	
-		echo >>"$asfile"		"tell application \"Finder\"" 
-		echo >>"$asfile"		"    set bpath to (startup disk as string) & \"usr:local:b:\""
-		echo >>"$asfile"		"end tell" 
-		echo >>"$asfile"		"set spath to bpath & \"b:examples:$sample:$sample.mcp\"" 
-		echo >>"$asfile"		"tell application \"CodeWarrior IDE\"" 
-		echo >>"$asfile"		"    open file spath" 
-		echo >>"$asfile"		"    Set Current Target \"$targ\"" 
-		if [ "$clean" != "" ]
-		then
-			echo >>"$asfile"	"    Remove Binaries" 
-		fi
-		if [ "$build" != "" ]
-		then
-			echo >>"$asfile"	"end tell" 
-			echo >>"$asfile"	"with timeout of 20 * 60 seconds" 
-			echo >>"$asfile"	"    tell application \"CodeWarrior IDE\"" 
-			echo >>"$asfile"	"        Make Project" 
-			echo >>"$asfile"	"    end tell" 
-			echo >>"$asfile"	"end timeout" 
-			echo >>"$asfile"	"tell application \"CodeWarrior IDE\"" 
-		fi
-		echo >>"$asfile"		"    Close Project" 
-		echo >>"$asfile"		"end tell" 
-		
-		osascript "$asfile"
-	fi
+        rm -f "$asfile"
+    
+        echo >>"$asfile"        "tell application \"Finder\"" 
+        echo >>"$asfile"        "    set bpath to (startup disk as string) & \"usr:local:b:\""
+        echo >>"$asfile"        "end tell" 
+        echo >>"$asfile"        "set spath to bpath & \"b:examples:$sample:$sample.mcp\"" 
+        echo >>"$asfile"        "tell application \"CodeWarrior IDE\"" 
+        echo >>"$asfile"        "    open file spath" 
+        echo >>"$asfile"        "    Set Current Target \"$targ\"" 
+        if [ "$clean" != "" ]
+        then
+            echo >>"$asfile"    "    Remove Binaries" 
+        fi
+        if [ "$build" != "" ]
+        then
+            echo >>"$asfile"    "end tell" 
+            echo >>"$asfile"    "with timeout of 20 * 60 seconds" 
+            echo >>"$asfile"    "    tell application \"CodeWarrior IDE\"" 
+            echo >>"$asfile"    "        Make Project" 
+            echo >>"$asfile"    "    end tell" 
+            echo >>"$asfile"    "end timeout" 
+            echo >>"$asfile"    "tell application \"CodeWarrior IDE\"" 
+        fi
+        echo >>"$asfile"        "    Close Project" 
+        echo >>"$asfile"        "end tell" 
+        
+        osascript "$asfile"
+    fi
 done
 
 # Clean up

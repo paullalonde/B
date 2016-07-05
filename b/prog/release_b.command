@@ -12,10 +12,10 @@
 
 # usage: ReplaceTokenInFile() token replacement-text 
 ReplaceTokenInFiles() {
-	# We match either {{$1}} or %7B%7B$1%7D%7D, which is the URI-encoded equivalent.
-	echo "Replacing {{$1}} with '$2' ..."
-	grep -Zlr "{{$1}}"         . | xargs -0 -n1 inplace_token_replace "{{$1}}"         "$2"
-	grep -Zlr "%7B%7B$1%7D%7D" . | xargs -0 -n1 inplace_token_replace "%7B%7B$1%7D%7D" "$2"
+    # We match either {{$1}} or %7B%7B$1%7D%7D, which is the URI-encoded equivalent.
+    echo "Replacing {{$1}} with '$2' ..."
+    grep -Zlr "{{$1}}"         . | xargs -0 -n1 inplace_token_replace "{{$1}}"         "$2"
+    grep -Zlr "%7B%7B$1%7D%7D" . | xargs -0 -n1 inplace_token_replace "%7B%7B$1%7D%7D" "$2"
 }
 
 # important vars for later
@@ -31,8 +31,8 @@ DISTRO_ROOT="$IDISK_ROOT/Sites/b"
 # Sanity checks
 if [ ! -d "$IDISK_ROOT" ]
 then
-	echo "My iDisk isn't mounted !!"
-	exit 1
+    echo "My iDisk isn't mounted !!"
+    exit 1
 fi
 
 # To make sure we start with a clean slate, remove output directory, then 

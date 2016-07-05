@@ -1,19 +1,19 @@
 // ==========================================================================================
-//	
-//	Copyright (C) 2004-2005 Paul Lalonde enrg.
-//	
-//	This program is free software;  you can redistribute it and/or modify it under the 
-//	terms of the GNU General Public License as published by the Free Software Foundation;  
-//	either version 2 of the License, or (at your option) any later version.
-//	
-//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//  
+//  Copyright (C) 2004-2005 Paul Lalonde enrg.
+//  
+//  This program is free software;  you can redistribute it and/or modify it under the 
+//  terms of the GNU General Public License as published by the Free Software Foundation;  
+//  either version 2 of the License, or (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//  WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//  PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-//	You should have received a copy of the GNU General Public License along with this 
-//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-//	Suite 330, Boston, MA  02111-1307  USA
-//	
+//  You should have received a copy of the GNU General Public License along with this 
+//  program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//  Suite 330, Boston, MA  02111-1307  USA
+//  
 // ==========================================================================================
 
 namespace B {
@@ -26,7 +26,7 @@ Table of Contents:
 - @ref undo_policies
 - @ref undo_actions
 - @ref undo_action_groups
-	- @ref nested_groups
+    - @ref nested_groups
 - @ref undo_action_class
 - @ref policy_coupling
 
@@ -65,9 +65,9 @@ classes which take an UNDO_POLICY template parameter:
   So instantiating Application different undo policy classes will give you 
   varying levels of undo support:
   @code
-  Application<..., NullUndoPolicy, ...>		// No undo support
-  Application<..., SingleUndoPolicy, ...>	// 1-level-deep undo support, app-wide
-  Application<..., MultipleUndoPolicy, ...>	// arbitrary-depth undo support, app-wide
+  Application<..., NullUndoPolicy, ...>     // No undo support
+  Application<..., SingleUndoPolicy, ...>   // 1-level-deep undo support, app-wide
+  Application<..., MultipleUndoPolicy, ...> // arbitrary-depth undo support, app-wide
   @endcode
 - Document.  This is the most interesting one.  Documents are usually the locus of %Undo 
   support, so it's natural that each document object have an associated undo policy 
@@ -78,9 +78,9 @@ classes which take an UNDO_POLICY template parameter:
   As with Application, instantiating Document with different undo policy classes will 
   give you varying levels of undo support:
   @code
-  Document<NullUndoPolicy, ...>		// No undo support
-  Document<SingleUndoPolicy, ...>	// 1-level-deep undo support, per document
-  Document<MultipleUndoPolicy, ...>	// arbitrary-depth undo support, per document
+  Document<NullUndoPolicy, ...>     // No undo support
+  Document<SingleUndoPolicy, ...>   // 1-level-deep undo support, per document
+  Document<MultipleUndoPolicy, ...> // arbitrary-depth undo support, per document
   @endcode
 
 So, with these two class templates, one can imagine a number of combinations:
@@ -106,21 +106,21 @@ Here's a simple example that changes a member variable called @c mThingy:
 // ### INCOMPLETE EXAMPLE ###
 void MyClass::MyUndoableSetThingy(int inNewThingy)
 {
-	B::AutoUndo	undo(...);
-	
-	// Creates an undo action that will be invoked when the user does Undo.  This 
-	// function will be called with the old value of mThingy.
-	undo.Add(boost::bind(&MyClass::MyUndoableSetThingy, this, mThingy));
-	
-	MySetThingy(inNewThingy);
-	
-	// ...
+    B::AutoUndo undo(...);
+    
+    // Creates an undo action that will be invoked when the user does Undo.  This 
+    // function will be called with the old value of mThingy.
+    undo.Add(boost::bind(&MyClass::MyUndoableSetThingy, this, mThingy));
+    
+    MySetThingy(inNewThingy);
+    
+    // ...
 }
 
 // A very simple "setter" function.
 void MyClass::MySetThingy(int inNewThingy)
 {
-	mThingy = inNewThingy;
+    mThingy = inNewThingy;
 }
 @endcode
 
@@ -165,22 +165,22 @@ Here's a simple example of using an undo action group:
 @code
 void MyUndoableSetThingies(std::vector<MyClass*>& vec, int inNewThingy)
 {
-	// Open an undo action group.
-	B::AutoUndo	undo(B::String("Change Thingies"));		// should be localised.
-	
-	for (std::vector<MyClass*>::iterator it = vec.begin(); 
-		 it != vec.end(); 
-		 ++it)
-	{
-		// Add the action to the group.
-		undo.Add(boost::bind(&MyClass::MySetThingy, *it, inNewThingy));
-		
-		// Execute the first state change.
-		(*it)->MySetThingy(inNewThingy);
-	}
-	
-	// VERY IMPORTANT:  Commit the group.
-	undo.Commit();
+    // Open an undo action group.
+    B::AutoUndo undo(B::String("Change Thingies"));     // should be localised.
+    
+    for (std::vector<MyClass*>::iterator it = vec.begin(); 
+         it != vec.end(); 
+         ++it)
+    {
+        // Add the action to the group.
+        undo.Add(boost::bind(&MyClass::MySetThingy, *it, inNewThingy));
+        
+        // Execute the first state change.
+        (*it)->MySetThingy(inNewThingy);
+    }
+    
+    // VERY IMPORTANT:  Commit the group.
+    undo.Commit();
 }
 @endcode
 
@@ -202,34 +202,34 @@ The previous example could easily be rewritten to use nesting:
 @code
 void MyUndoableSetThingies(std::vector<MyClass*>& vec, int inNewThingy)
 {
-	// Open an undo action group.
-	B::AutoUndo	undo(B::String("Change Thingies"));		// should be localised.
-	
-	for (std::vector<MyClass*>::iterator it = vec.begin(); 
-		 it != vec.end(); 
-		 ++it)
-	{
-		// Add an undo action & perform the state change.
-		(*it)->MyUndoableSetThingy(inNewThingy);
-	}
-	
-	// VERY IMPORTANT:  Commit the group.
-	undo.Commit();
+    // Open an undo action group.
+    B::AutoUndo undo(B::String("Change Thingies"));     // should be localised.
+    
+    for (std::vector<MyClass*>::iterator it = vec.begin(); 
+         it != vec.end(); 
+         ++it)
+    {
+        // Add an undo action & perform the state change.
+        (*it)->MyUndoableSetThingy(inNewThingy);
+    }
+    
+    // VERY IMPORTANT:  Commit the group.
+    undo.Commit();
 }
 
 void MyClass::MyUndoableSetThingy(int inNewThingy)
 {
-	B::AutoUndo	undo(B::String("Change Thingy"));		// should be localised.
-	
-	// Creates an undo action that will be invoked when the user does Undo.  This 
-	// function will be called with the old value of mThingy.
-	undo.Add(boost::bind(&MyClass::MyUndoableSetThingy, this, mThingy));
-	
-	// No need for MySetThingy() any more.
-	mThingy = inNewThingy;
-	
-	// VERY IMPORTANT:  Commit the group.
-	undo.Commit();
+    B::AutoUndo undo(B::String("Change Thingy"));       // should be localised.
+    
+    // Creates an undo action that will be invoked when the user does Undo.  This 
+    // function will be called with the old value of mThingy.
+    undo.Add(boost::bind(&MyClass::MyUndoableSetThingy, this, mThingy));
+    
+    // No need for MySetThingy() any more.
+    mThingy = inNewThingy;
+    
+    // VERY IMPORTANT:  Commit the group.
+    undo.Commit();
 }
 @endcode
 
@@ -245,20 +245,20 @@ By using an STL algorithm, the code can be made even shorter:
 @code
 void MyUndoableSetThingies(std::vector<MyClass*>& vec, int inNewThingy)
 {
-	// Open an undo action group.
-	B::AutoUndo	undo(B::String("Change Thingies"));		// should be localised.
-	
-	// Add an undo action & perform the state change for each object.
-	std::for_each(vec.begin(), vec.end(), 
-				  boost::bind(&MyClass::MyUndoableSetThingy, _1, inNewThingy));
-	
-	// VERY IMPORTANT:  Commit the group.
-	undo.Commit();
+    // Open an undo action group.
+    B::AutoUndo undo(B::String("Change Thingies"));     // should be localised.
+    
+    // Add an undo action & perform the state change for each object.
+    std::for_each(vec.begin(), vec.end(), 
+                  boost::bind(&MyClass::MyUndoableSetThingy, _1, inNewThingy));
+    
+    // VERY IMPORTANT:  Commit the group.
+    undo.Commit();
 }
 @endcode
 
 
-@subsection undo_action_class	Class UndoAction
+@subsection undo_action_class   Class UndoAction
 
 Until now, the adding of undo actions has been accomplished by passing a @c boost::bind 
 object to AutoUndo::Add().  This is actually a convenience function.  The primitive 
@@ -270,17 +270,17 @@ Here is a slightly simplified version of UndoAction's class declaration:
 class UndoAction
 {
 public:
-	
-	virtual	~UndoAction() throw();
-	
-	// Invocation.  The object should perform its action.
-	virtual void	Perform() = 0;
-	
-	...
-	
+    
+    virtual ~UndoAction() throw();
+    
+    // Invocation.  The object should perform its action.
+    virtual void    Perform() = 0;
+    
+    ...
+    
 protected:
-	
-	UndoAction();
+    
+    UndoAction();
 };
 @endcode
 
@@ -294,27 +294,27 @@ from UndoAction:
 class MyUndoThingyChange : public B::UndoAction
 {
 public:
-			MyUndoStateChange(MyClass* obj, int inOldThingy)
-				: mObj(obj), mOldThingy(inOldThingy) {}
+            MyUndoStateChange(MyClass* obj, int inOldThingy)
+                : mObj(obj), mOldThingy(inOldThingy) {}
 
-	void	Perform() { mObj->MyChangeState(mOldThingy); }
-	
+    void    Perform() { mObj->MyChangeState(mOldThingy); }
+    
 private:
-	
-	MyClass* mObj;
-	int      mOldThingy;
+    
+    MyClass* mObj;
+    int      mOldThingy;
 };
 
 void MyClass::MyUndoableSetThingy(int inNewThingy)
 {
-	B::AutoUndo	undo(B::String("Change Thingy"));		// should be localised.
-	
-	// Creates an custom undo action that will be invoked when the user does Undo.
-	undo.Add(std::auto_ptr<B::UndoAction>(new MyUndoThingyChange(this, mThingy));
-	
-	MySetThingy(inNewThingy);
-	
-	undo.Commit();
+    B::AutoUndo undo(B::String("Change Thingy"));       // should be localised.
+    
+    // Creates an custom undo action that will be invoked when the user does Undo.
+    undo.Add(std::auto_ptr<B::UndoAction>(new MyUndoThingyChange(this, mThingy));
+    
+    MySetThingy(inNewThingy);
+    
+    undo.Commit();
 }
 @endcode
 
@@ -345,24 +345,24 @@ provide access to those class' policy objects.  For example:
 @code
 void MyClass::MyUndoableSetThingy(int inNewThingy)
 {
-	MultipleUndoPolicy&	policy	= MyGetUndoPolicy();
-	
-	policy.BeginGroup(B::String("Change Thingy"));
-	
-	try
-	{
-		policy.Add(boost::bind(&MyClass::MyUndoableSetThingy, this, mThingy));
-		
-		mThingy = inNewThingy;
-		
-		policy.CommitGroup();
-	}
-	catch (...)
-	{
-		policy.AbortGroup();
-		
-		throw;
-	}
+    MultipleUndoPolicy& policy  = MyGetUndoPolicy();
+    
+    policy.BeginGroup(B::String("Change Thingy"));
+    
+    try
+    {
+        policy.Add(boost::bind(&MyClass::MyUndoableSetThingy, this, mThingy));
+        
+        mThingy = inNewThingy;
+        
+        policy.CommitGroup();
+    }
+    catch (...)
+    {
+        policy.AbortGroup();
+        
+        throw;
+    }
 }
 @endcode
 

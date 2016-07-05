@@ -24,10 +24,10 @@ region as an HIShapeRef if the caller requests it.<br></h4>
 tool sets:<br>
 </h4>
 <ol>
-	<li>Mac OS X 10.4 (aka Tiger)</li>
-	<li>Xcode 2.1</li>
-	<li>CodeWarrior 10.0</li>
-	<li>Boost 1.33.0</li>
+    <li>Mac OS X 10.4 (aka Tiger)</li>
+    <li>Xcode 2.1</li>
+    <li>CodeWarrior 10.0</li>
+    <li>Boost 1.33.0</li>
 </ol>
 <h3>Changes from version 0.4.1 to 0.5.0</h3>
 <h4>Completely revamped Apple Event Object Model initialization logic<br>
@@ -40,13 +40,13 @@ or
 during application startup.&nbsp; This was necessary because:
 <br>
 <ol>
-	<li>B needed to know which Apple Events an application supported, in
-	order to install AE handlers for them.</li>
-	<li>B needed to know which AE classes an application supported, in
-	order to install AEOM callbacks for them. It also needed to know how
-	the classes were related by inheritance.<br>
-	</li>
-	<li>B needed to know which classes supported which Apple Events.</li>
+    <li>B needed to know which Apple Events an application supported, in
+    order to install AE handlers for them.</li>
+    <li>B needed to know which AE classes an application supported, in
+    order to install AEOM callbacks for them. It also needed to know how
+    the classes were related by inheritance.<br>
+    </li>
+    <li>B needed to know which classes supported which Apple Events.</li>
 </ol>
 This tedious set-up has been almost completely eliminated.&nbsp; The way
 it works now is that B reads a
@@ -67,23 +67,23 @@ Application projects need to be modified to use the new setup.&nbsp; You
 will need to:
 <br>
 <ol>
-	<li>Add an <span style="font-family: monospace;">.sdef</span> file to
-	the project.</li>
-	<li>Copy the <span style="font-family: monospace;">.sdef</span> file
-	into the application bundle.</li>
-	<li>Feed the <span style="font-family: monospace;">.sdef</span> file to
-	the <span style="font-family: monospace;">sdp</span> command-line tool,
-	which in turn generates a <span style="font-family: monospace;">.r</span>
-	file containing an <span style="font-family: monospace;">'AETE'</span>
-	resource. This resource needs to be merged into your application's
-	resource file.&nbsp; This is because various parts of the operating
-	system still expect an <span style="font-family: monospace;">'AETE'</span>
-	resource and can't read an <span style="font-family: monospace;">.sdef</span>
-	file directly.</li>
-	<li>Add an entry in your <span style="font-family: monospace;">Info.plist</span>
-	file that points to the <span style="font-family: monospace;">.sdef</span>
-	file in the application bundle.<br>
-	</li>
+    <li>Add an <span style="font-family: monospace;">.sdef</span> file to
+    the project.</li>
+    <li>Copy the <span style="font-family: monospace;">.sdef</span> file
+    into the application bundle.</li>
+    <li>Feed the <span style="font-family: monospace;">.sdef</span> file to
+    the <span style="font-family: monospace;">sdp</span> command-line tool,
+    which in turn generates a <span style="font-family: monospace;">.r</span>
+    file containing an <span style="font-family: monospace;">'AETE'</span>
+    resource. This resource needs to be merged into your application's
+    resource file.&nbsp; This is because various parts of the operating
+    system still expect an <span style="font-family: monospace;">'AETE'</span>
+    resource and can't read an <span style="font-family: monospace;">.sdef</span>
+    file directly.</li>
+    <li>Add an entry in your <span style="font-family: monospace;">Info.plist</span>
+    file that points to the <span style="font-family: monospace;">.sdef</span>
+    file in the application bundle.<br>
+    </li>
 </ol>
 Consult the sample projects, most notably PLister, for the specifics of
 project setup.
@@ -122,25 +122,25 @@ migration steps:
 <span style="font-family: monospace;"><br>
 </span>
 <ol>
-	<li>Change the symbolic link in <span style="font-family: monospace;">/usr/local</span>
-	to point to the new installation.&nbsp; Assuming the new installation
-	is at <span
-		style="margin-top: 0pt; margin-bottom: 0pt; font-family: monospace;">/usr/local/boost_1_32_0</span>,
-	follow these steps:
-	<ol>
-		<li><span style="font-family: monospace;">cd /usr/local</span></li>
-		<li><span style="font-family: monospace;">sudo rm boost</span>&nbsp;&nbsp;&nbsp;
-		# remove old symlink</li>
-		<li><span style="font-family: monospace;">sudo ln -s boost_1_32_0
-		boost</span></li>
-	</ol>
-	</li>
-	<li>In CodeWarrior, change the global "boost" source tree to point to
-	the new installation.</li>
-	<li>In Xcode, change the global "boost" source tree to point to the new
-	installation.</li>
-	<li>Trash all build folders (Xcode "build" folder, CW "Data" folder,
-	etc) and rebuild from scratch.</li>
+    <li>Change the symbolic link in <span style="font-family: monospace;">/usr/local</span>
+    to point to the new installation.&nbsp; Assuming the new installation
+    is at <span
+        style="margin-top: 0pt; margin-bottom: 0pt; font-family: monospace;">/usr/local/boost_1_32_0</span>,
+    follow these steps:
+    <ol>
+        <li><span style="font-family: monospace;">cd /usr/local</span></li>
+        <li><span style="font-family: monospace;">sudo rm boost</span>&nbsp;&nbsp;&nbsp;
+        # remove old symlink</li>
+        <li><span style="font-family: monospace;">sudo ln -s boost_1_32_0
+        boost</span></li>
+    </ol>
+    </li>
+    <li>In CodeWarrior, change the global "boost" source tree to point to
+    the new installation.</li>
+    <li>In Xcode, change the global "boost" source tree to point to the new
+    installation.</li>
+    <li>Trash all build folders (Xcode "build" folder, CW "Data" folder,
+    etc) and rebuild from scratch.</li>
 </ol>
 <h4>Now using Xcode 1.5</h4>
 There's nothing to report here, as there haven't been any problems at
@@ -154,59 +154,59 @@ MoreIsBetter library (on which B relies for its AEOM support).
 <br>
 <h4>Miscellaneous Changes</h4>
 <ul>
-	<li>The "parent" property of the Apple Event class "document window"
-	has been renamed to "document".&nbsp; Previously, if you had an
-	Applescript that accessed this property, you would say <br>
-	"parent of document window foo".&nbsp; Now you say "document of
-	document window foo".<br>
-	<span style="font-family: monospace;"></span></li>
-	<li><span style="font-family: monospace;">AEObject::GetProperty()</span>
-	and <span style="font-family: monospace;">AEObject::SetProperty()</span>
-	have been replaced by&nbsp; <span style="font-family: monospace;">AEObject::ReadProperty()</span>
-	and <span style="font-family: monospace;">AEObject::ReadProperty()</span>,
-	respectively.&nbsp; The latter take <span
-		style="font-family: monospace;">AEReader</span> and <span
-		style="font-family: monospace;">AEWriter</span> objects as arguments
-	instead of an <span style="font-family: monospace;">AEDesc</span>.<br>
-	</li>
-	<li>The singletons managed by <span style="font-family: monospace;">ErrorHandler</span>
-	and <span style="font-family: monospace;">ExceptionStreamer</span> are
-	now wrapped inside a <span style="font-family: monospace;">boost::intrusive_ptr</span>
-	instead of <span style="font-family: monospace;">boost::shared_ptr</span>.&nbsp;
-	This will affect clients&nbsp; that directly access these singletons.<span
-		style="font-family: monospace;"><br>
-	</span></li>
-	<li>Changed the internals of <span style="font-family: monospace;">Cursor</span>
-	to use <span style="font-family: monospace;">boost::intrusive_ptr</span>
-	instead of <span style="font-family: monospace;">boost::shared_ptr</span>.&nbsp;
-	This shouldn't have any impact on clients.</li>
-	<li>Ditto for <span style="font-family: monospace;">EventHandler</span>
-	and <span style="font-family: monospace;">UndoAction</span>.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">AutoMacResourceHandle</span>
-	to <span style="font-family: monospace;">BMemoryUtilities.h</span>.<br>
-	</li>
-	<li>Removed <span style="font-family: monospace;">BCOM.cpp</span>/<span
-		style="font-family: monospace;">.h</span>, which wasn't used and was
-	marked as "not ready for prime time".</li>
-	<li><span style="font-family: monospace;">EventHandler</span><span
-		style="font-family: monospace;">::Add()</span> now has an overload
-	that takes a <span style="font-family: monospace;">boost::function</span>.&nbsp;
-	This probably won't affect clients.&nbsp; This means greater
-	flexibility for clients, because of <span
-		style="font-family: monospace;">boost::function</span>'s nice
-	integration with <span style="font-family: monospace;">boost::bind</span>.</li>
-	<li>Internally, <span style="font-family: monospace;">EventHandler</span>'s
-	functor map now uses <span style="font-family: monospace;">boost::intrusive_ptr</span>
-	instead of <span style="font-family: monospace;">boost::shared_ptr</span>.&nbsp;
-	The former is a lot less resource-hungry than the latter.&nbsp; This
-	change won't affect clients.<br>
-	</li>
-	<li>Don't forget to re-run the <span style="font-family: monospace;">install.command</span>
-	shell script (under <span style="font-family: monospace;">b/prog</span>).&nbsp;
-	This will set up some symlinks under <span
-		style="font-family: monospace;">/usr/local</span> to point to the B
-	installation.</li>
+    <li>The "parent" property of the Apple Event class "document window"
+    has been renamed to "document".&nbsp; Previously, if you had an
+    Applescript that accessed this property, you would say <br>
+    "parent of document window foo".&nbsp; Now you say "document of
+    document window foo".<br>
+    <span style="font-family: monospace;"></span></li>
+    <li><span style="font-family: monospace;">AEObject::GetProperty()</span>
+    and <span style="font-family: monospace;">AEObject::SetProperty()</span>
+    have been replaced by&nbsp; <span style="font-family: monospace;">AEObject::ReadProperty()</span>
+    and <span style="font-family: monospace;">AEObject::ReadProperty()</span>,
+    respectively.&nbsp; The latter take <span
+        style="font-family: monospace;">AEReader</span> and <span
+        style="font-family: monospace;">AEWriter</span> objects as arguments
+    instead of an <span style="font-family: monospace;">AEDesc</span>.<br>
+    </li>
+    <li>The singletons managed by <span style="font-family: monospace;">ErrorHandler</span>
+    and <span style="font-family: monospace;">ExceptionStreamer</span> are
+    now wrapped inside a <span style="font-family: monospace;">boost::intrusive_ptr</span>
+    instead of <span style="font-family: monospace;">boost::shared_ptr</span>.&nbsp;
+    This will affect clients&nbsp; that directly access these singletons.<span
+        style="font-family: monospace;"><br>
+    </span></li>
+    <li>Changed the internals of <span style="font-family: monospace;">Cursor</span>
+    to use <span style="font-family: monospace;">boost::intrusive_ptr</span>
+    instead of <span style="font-family: monospace;">boost::shared_ptr</span>.&nbsp;
+    This shouldn't have any impact on clients.</li>
+    <li>Ditto for <span style="font-family: monospace;">EventHandler</span>
+    and <span style="font-family: monospace;">UndoAction</span>.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">AutoMacResourceHandle</span>
+    to <span style="font-family: monospace;">BMemoryUtilities.h</span>.<br>
+    </li>
+    <li>Removed <span style="font-family: monospace;">BCOM.cpp</span>/<span
+        style="font-family: monospace;">.h</span>, which wasn't used and was
+    marked as "not ready for prime time".</li>
+    <li><span style="font-family: monospace;">EventHandler</span><span
+        style="font-family: monospace;">::Add()</span> now has an overload
+    that takes a <span style="font-family: monospace;">boost::function</span>.&nbsp;
+    This probably won't affect clients.&nbsp; This means greater
+    flexibility for clients, because of <span
+        style="font-family: monospace;">boost::function</span>'s nice
+    integration with <span style="font-family: monospace;">boost::bind</span>.</li>
+    <li>Internally, <span style="font-family: monospace;">EventHandler</span>'s
+    functor map now uses <span style="font-family: monospace;">boost::intrusive_ptr</span>
+    instead of <span style="font-family: monospace;">boost::shared_ptr</span>.&nbsp;
+    The former is a lot less resource-hungry than the latter.&nbsp; This
+    change won't affect clients.<br>
+    </li>
+    <li>Don't forget to re-run the <span style="font-family: monospace;">install.command</span>
+    shell script (under <span style="font-family: monospace;">b/prog</span>).&nbsp;
+    This will set up some symlinks under <span
+        style="font-family: monospace;">/usr/local</span> to point to the B
+    installation.</li>
 </ul>
 <h3>Changes from version 0.4.0 to 0.4.1<br>
 </h3>
@@ -280,24 +280,24 @@ migration steps:
 <span style="font-family: monospace;"><br>
 </span>
 <ol>
-	<li>Change the symbolic link in <span style="font-family: monospace;">/usr/local</span>
-	to point to the new installation.&nbsp; Assuming the new installation
-	is at <span
-		style="margin-top: 0pt; margin-bottom: 0pt; font-family: monospace;">/usr/local/boost_1_31_0</span>,
-	follow these steps:
-	<ol>
-		<li><span style="font-family: monospace;">cd /usr/local</span></li>
-		<li><span style="font-family: monospace;">sudo rm boost</span>&nbsp;&nbsp;&nbsp;
-		# remove old symlink</li>
-		<li><span style="font-family: monospace;">sudo ln -s boost_1_31_0
-		boost</span></li>
-	</ol>
-	</li>
-	<li>In CodeWarrior, change the global "boost" source tree to point to
-	the new installation.</li>
-	<li>Trash all build folders (Xcode "build" folder, CW "Data" folder,
-	etc) and rebuild from scratch.<br>
-	</li>
+    <li>Change the symbolic link in <span style="font-family: monospace;">/usr/local</span>
+    to point to the new installation.&nbsp; Assuming the new installation
+    is at <span
+        style="margin-top: 0pt; margin-bottom: 0pt; font-family: monospace;">/usr/local/boost_1_31_0</span>,
+    follow these steps:
+    <ol>
+        <li><span style="font-family: monospace;">cd /usr/local</span></li>
+        <li><span style="font-family: monospace;">sudo rm boost</span>&nbsp;&nbsp;&nbsp;
+        # remove old symlink</li>
+        <li><span style="font-family: monospace;">sudo ln -s boost_1_31_0
+        boost</span></li>
+    </ol>
+    </li>
+    <li>In CodeWarrior, change the global "boost" source tree to point to
+    the new installation.</li>
+    <li>Trash all build folders (Xcode "build" folder, CW "Data" folder,
+    etc) and rebuild from scratch.<br>
+    </li>
 </ol>
 <h4>Completely Revamped Support for Sheets<br>
 </h4>
@@ -329,13 +329,13 @@ Because sheet functionality has been subsumed in other classes, the
 following files are now gone:
 <br>
 <ul>
-	<li><span style="font-family: monospace;">Documents/BDocumentSheets.h</span></li>
-	<li><span style="font-family: monospace;">Documents/BDocumentSheets.tpl.h</span></li>
-	<li style="font-family: monospace;">Sheets/BAlertSheets.cpp</li>
-	<li style="font-family: monospace;">Sheets/BAlertSheets.h</li>
-	<li><span style="font-family: monospace;">Sheets/BNavSheet.h</span></li>
-	<li style="font-family: monospace;">Sheets/BSheetParentState.cpp</li>
-	<li style="font-family: monospace;">Sheets/BSheetParentState.h</li>
+    <li><span style="font-family: monospace;">Documents/BDocumentSheets.h</span></li>
+    <li><span style="font-family: monospace;">Documents/BDocumentSheets.tpl.h</span></li>
+    <li style="font-family: monospace;">Sheets/BAlertSheets.cpp</li>
+    <li style="font-family: monospace;">Sheets/BAlertSheets.h</li>
+    <li><span style="font-family: monospace;">Sheets/BNavSheet.h</span></li>
+    <li style="font-family: monospace;">Sheets/BSheetParentState.cpp</li>
+    <li style="font-family: monospace;">Sheets/BSheetParentState.h</li>
 </ul>
 If you get errors in Xcode or CodeWarrior relating to one of these
 deleted files, you can safely remove them from your project.&nbsp; While
@@ -365,21 +365,21 @@ Navigation Services" overview article for more information.&nbsp; Other
 changes include:
 <br>
 <ul>
-	<li>The <span style="font-family: monospace;">Run()</span> function is
-	gone.&nbsp; Actually, it's gone from <span
-		style="font-family: monospace;">NavDialog</span> and has now become a
-	template member function in the derived classes such as <span
-		style="font-family: monospace;">AskSaveChangesDialog</span>.&nbsp;
-	Attempting to call the old <span style="font-family: monospace;">Run()</span>
-	function will almost certainly lead to compilation errors.&nbsp; There
-	is no one function that does the same thing, but <span
-		style="font-family: monospace;">NavDialog::Enter()</span> (the
-	non-static variant) is good as a first approximation.&nbsp; The
-	overview article may help you decide the best way to migrate your
-	code;&nbsp; the Doxygen documentation can also be of help here.</li>
-	<li>The <span style="font-family: monospace;">Display()</span> function
-	is also gone.&nbsp; Again, the overview article will be of help here.<br>
-	</li>
+    <li>The <span style="font-family: monospace;">Run()</span> function is
+    gone.&nbsp; Actually, it's gone from <span
+        style="font-family: monospace;">NavDialog</span> and has now become a
+    template member function in the derived classes such as <span
+        style="font-family: monospace;">AskSaveChangesDialog</span>.&nbsp;
+    Attempting to call the old <span style="font-family: monospace;">Run()</span>
+    function will almost certainly lead to compilation errors.&nbsp; There
+    is no one function that does the same thing, but <span
+        style="font-family: monospace;">NavDialog::Enter()</span> (the
+    non-static variant) is good as a first approximation.&nbsp; The
+    overview article may help you decide the best way to migrate your
+    code;&nbsp; the Doxygen documentation can also be of help here.</li>
+    <li>The <span style="font-family: monospace;">Display()</span> function
+    is also gone.&nbsp; Again, the overview article will be of help here.<br>
+    </li>
 </ul>
 <h4>Changes to <span style="font-family: monospace;">Alert</span><br>
 </h4>
@@ -390,101 +390,101 @@ Navigation Services" overview article for more information.&nbsp; Other
 changes include:
 <br>
 <ul>
-	<li>The files <span style="font-family: monospace;">BAlerts.cpp/.h</span>
-	were renamed to <span style="font-family: monospace;">BAlert.cpp/.h</span>,
-	since there is now one <span style="font-family: monospace;">Alert</span>
-	class instead of many.</li>
-	<li><span style="font-family: monospace;">SetError()</span> and <span
-		style="font-family: monospace;">SetExplanation()</span> have been
-	renamed to <span style="font-family: monospace;">SetMessageText()</span>
-	and <span style="font-family: monospace;">SetInformativeText()</span>,
-	respectively.&nbsp; The new names better reflect their purpose, and
-	match the nomenclature in the Aqua HIG.</li>
-	<li>Likewise <span style="font-family: monospace;">SetConfirmButton()</span>
-	and <span style="font-family: monospace;">SetInfirmButton()</span> have
-	been renamed to <span style="font-family: monospace;">SetDefaultButton()</span>
-	and <span style="font-family: monospace;">SetCancelButton()</span>.</li>
+    <li>The files <span style="font-family: monospace;">BAlerts.cpp/.h</span>
+    were renamed to <span style="font-family: monospace;">BAlert.cpp/.h</span>,
+    since there is now one <span style="font-family: monospace;">Alert</span>
+    class instead of many.</li>
+    <li><span style="font-family: monospace;">SetError()</span> and <span
+        style="font-family: monospace;">SetExplanation()</span> have been
+    renamed to <span style="font-family: monospace;">SetMessageText()</span>
+    and <span style="font-family: monospace;">SetInformativeText()</span>,
+    respectively.&nbsp; The new names better reflect their purpose, and
+    match the nomenclature in the Aqua HIG.</li>
+    <li>Likewise <span style="font-family: monospace;">SetConfirmButton()</span>
+    and <span style="font-family: monospace;">SetInfirmButton()</span> have
+    been renamed to <span style="font-family: monospace;">SetDefaultButton()</span>
+    and <span style="font-family: monospace;">SetCancelButton()</span>.</li>
 </ul>
 <h4>Miscellaneous Changes</h4>
 <ul>
-	<li>Since <span style="font-family: monospace;">SheetParentState </span>is
-	gone, a new mechanism was required to allow a sheet's parent's state to
-	be saved when the sheet is displayed and restored when it is
-	hidden.&nbsp; This is now accomplished by sending custom Carbon Events
-	to the parent window.&nbsp; That way, if the parent needs to
-	save/restore stuff, it can do so itself.&nbsp; <span
-		style="font-family: monospace;">Window</span> includes built-in
-	handlers for these events that save &amp; restore the state of the
-	close button.&nbsp; This isn't actually required on Panther but it is
-	on Jaguar.<br>
-	</li>
-	<li>When running on Panther or later, <span
-		style="font-family: monospace;">SplitView</span> will draw the
-	splitter image via <span style="font-family: monospace;">HIThemeDrawPaneSplitter()</span>,
-	if no custom image has been specified.<br>
-	</li>
-	<li>Changed the global constants in <span
-		style="font-family: monospace;">BEventCustomParams.h</span> so they
-	all begin with "B".&nbsp; This may affect clients, especially if they
-	have nibs containing command IDs defined in this file.&nbsp; For
-	example, the PLister sample was affected by this because it has an
-	"Open Recent" item in its menus.<br>
-	</li>
-	<li>Changed the definition of some of B's custom Carbon Events to use
-	lower-level parameter types (<span style="font-family: monospace;">WindowRef</span>
-	instead of <span style="font-family: monospace;">B::Window*</span>, <span
-		style="font-family: monospace;">EventTargetRef</span> instead of <span
-		style="font-family: monospace;">B::AbstractDocument*</span>).&nbsp;
-	Clients of B are unlikely to be affected by this change.<br>
-	</li>
-	<li>The Dialogs test window in the Tarabiscoter sample has been
-	revamped to also show off alerts.</li>
-	<li>Added a Navigation Services test window to the Tarabiscoter sample;
-	it demonstrates the use of the various Nav dialogs with all supported
-	window modalities.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">WindowUtils::WindowIterator</span>,
-	an iterator class similar to <span style="font-family: monospace;">ViewUtils::SubviewIterator</span>,
-	but for iterating over windows instead.&nbsp; The iterator's
-	constructor takes a <span style="font-family: monospace;">WindowClass</span>
-	and a return-only-visible-windows flag, which helps when iterating over
-	a subset of the windows.</li>
-	<li>Added <span style="font-family: monospace;">WindowUtils::begin()</span>
-	and <span style="font-family: monospace;">WindowUtils::end()</span>
-	which return iterators pointing to the beginning and end of a sequence
-	of <span style="font-family: monospace;">WindowRefs</span>,
-	respectively.</li>
-	<li>Added <span style="font-family: monospace;">WindowUtils::IsMetal()</span>,
-	<span style="font-family: monospace;"><span
-		style="font-family: monospace;"><span style="font-family: monospace;">WindowUtils::GetClass()</span>,
-	<span style="font-family: monospace;"><span
-		style="font-family: monospace;"></span></span></span></span><span
-		style="font-family: monospace;"><span style="font-family: monospace;">WindowUtils::</span></span><span
-		style="font-family: monospace;"><span style="font-family: monospace;"><span
-		style="font-family: monospace;">GetAttributes</span></span></span><span
-		style="font-family: monospace;"><span style="font-family: monospace;">()</span></span><span
-		style="font-family: monospace;"></span> and <span
-		style="font-family: monospace;">WindowUtils::GetModality()</span>.</li>
-	<li>Removed <span style="font-family: monospace;">Window::GetModality()</span>,
-	since it's really too low-level for this class. <span
-		style="font-family: monospace;">WindowUtils::GetModality()</span> can
-	be used instead.</li>
-	<li><span style="font-family: monospace;">InteractWithUserDialog::Run()</span>
-	doesn't return a <span style="font-family: monospace;">bool</span>
-	anymore.&nbsp; If a timeout occurs, an <span
-		style="font-family: monospace;">InteractionTimeoutException</span> is
-	thrown instead.<br>
-	</li>
-	<li><span style="font-family: monospace;">TaggedTypeTrait&lt;typeQDPoint</span>&gt;
-	is now mapped to <span style="font-family: monospace;">Point</span>
-	instead of <span style="font-family: monospace;">::Point</span> (aka
-	Quickdraw point);&nbsp; likewise <span style="font-family: monospace;">TaggedTypeTrait&lt;typeQDRectangle</span>&gt;
-	is mapped to <span style="font-family: monospace;">Rect</span>.</li>
-	<li>The throwing variants of the <span style="font-family: monospace;">AEReader::ReadXXX()</span>
-	member functions now return a reference to their output argument as the
-	function result.&nbsp; This makes it easier to chain function calls.<span
-		style="font-family: monospace;"><br>
-	</span></li>
+    <li>Since <span style="font-family: monospace;">SheetParentState </span>is
+    gone, a new mechanism was required to allow a sheet's parent's state to
+    be saved when the sheet is displayed and restored when it is
+    hidden.&nbsp; This is now accomplished by sending custom Carbon Events
+    to the parent window.&nbsp; That way, if the parent needs to
+    save/restore stuff, it can do so itself.&nbsp; <span
+        style="font-family: monospace;">Window</span> includes built-in
+    handlers for these events that save &amp; restore the state of the
+    close button.&nbsp; This isn't actually required on Panther but it is
+    on Jaguar.<br>
+    </li>
+    <li>When running on Panther or later, <span
+        style="font-family: monospace;">SplitView</span> will draw the
+    splitter image via <span style="font-family: monospace;">HIThemeDrawPaneSplitter()</span>,
+    if no custom image has been specified.<br>
+    </li>
+    <li>Changed the global constants in <span
+        style="font-family: monospace;">BEventCustomParams.h</span> so they
+    all begin with "B".&nbsp; This may affect clients, especially if they
+    have nibs containing command IDs defined in this file.&nbsp; For
+    example, the PLister sample was affected by this because it has an
+    "Open Recent" item in its menus.<br>
+    </li>
+    <li>Changed the definition of some of B's custom Carbon Events to use
+    lower-level parameter types (<span style="font-family: monospace;">WindowRef</span>
+    instead of <span style="font-family: monospace;">B::Window*</span>, <span
+        style="font-family: monospace;">EventTargetRef</span> instead of <span
+        style="font-family: monospace;">B::AbstractDocument*</span>).&nbsp;
+    Clients of B are unlikely to be affected by this change.<br>
+    </li>
+    <li>The Dialogs test window in the Tarabiscoter sample has been
+    revamped to also show off alerts.</li>
+    <li>Added a Navigation Services test window to the Tarabiscoter sample;
+    it demonstrates the use of the various Nav dialogs with all supported
+    window modalities.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">WindowUtils::WindowIterator</span>,
+    an iterator class similar to <span style="font-family: monospace;">ViewUtils::SubviewIterator</span>,
+    but for iterating over windows instead.&nbsp; The iterator's
+    constructor takes a <span style="font-family: monospace;">WindowClass</span>
+    and a return-only-visible-windows flag, which helps when iterating over
+    a subset of the windows.</li>
+    <li>Added <span style="font-family: monospace;">WindowUtils::begin()</span>
+    and <span style="font-family: monospace;">WindowUtils::end()</span>
+    which return iterators pointing to the beginning and end of a sequence
+    of <span style="font-family: monospace;">WindowRefs</span>,
+    respectively.</li>
+    <li>Added <span style="font-family: monospace;">WindowUtils::IsMetal()</span>,
+    <span style="font-family: monospace;"><span
+        style="font-family: monospace;"><span style="font-family: monospace;">WindowUtils::GetClass()</span>,
+    <span style="font-family: monospace;"><span
+        style="font-family: monospace;"></span></span></span></span><span
+        style="font-family: monospace;"><span style="font-family: monospace;">WindowUtils::</span></span><span
+        style="font-family: monospace;"><span style="font-family: monospace;"><span
+        style="font-family: monospace;">GetAttributes</span></span></span><span
+        style="font-family: monospace;"><span style="font-family: monospace;">()</span></span><span
+        style="font-family: monospace;"></span> and <span
+        style="font-family: monospace;">WindowUtils::GetModality()</span>.</li>
+    <li>Removed <span style="font-family: monospace;">Window::GetModality()</span>,
+    since it's really too low-level for this class. <span
+        style="font-family: monospace;">WindowUtils::GetModality()</span> can
+    be used instead.</li>
+    <li><span style="font-family: monospace;">InteractWithUserDialog::Run()</span>
+    doesn't return a <span style="font-family: monospace;">bool</span>
+    anymore.&nbsp; If a timeout occurs, an <span
+        style="font-family: monospace;">InteractionTimeoutException</span> is
+    thrown instead.<br>
+    </li>
+    <li><span style="font-family: monospace;">TaggedTypeTrait&lt;typeQDPoint</span>&gt;
+    is now mapped to <span style="font-family: monospace;">Point</span>
+    instead of <span style="font-family: monospace;">::Point</span> (aka
+    Quickdraw point);&nbsp; likewise <span style="font-family: monospace;">TaggedTypeTrait&lt;typeQDRectangle</span>&gt;
+    is mapped to <span style="font-family: monospace;">Rect</span>.</li>
+    <li>The throwing variants of the <span style="font-family: monospace;">AEReader::ReadXXX()</span>
+    member functions now return a reference to their output argument as the
+    function result.&nbsp; This makes it easier to chain function calls.<span
+        style="font-family: monospace;"><br>
+    </span></li>
 </ul>
 <h3>Changes from version 0.3.0 to 0.3.1</h3>
 <h4>Changes to View <span style="font-family: monospace;">Create()</span>
@@ -500,33 +500,33 @@ object in a manner much closer to when views are loaded from a nib
 file.&nbsp; The functions now take identical initial arguments:
 <br>
 <ol>
-	<li>The view's ID.&nbsp; If non-zero, the view is given an <span
-		style="font-family: monospace;">HIViewID</span> with the given value
-	and the main bundle's creator as the signature.&nbsp; If zero is passed
-	in, the view doesn't get a view ID.</li>
-	<li>The view's superview.&nbsp; This is more convenient than a <span
-		style="font-family: monospace;">WindowRef</span>, because it allows
-	the caller to set up the view hierarchy in fewer steps.&nbsp; If <span
-		style="font-family: monospace;">NULL</span> is passed in, the view is
-	created "standalone".&nbsp; To place the new view at the top level of a
-	window, pass in the return value of <span
-		style="font-family: monospace;">Window::GetContentView()</span> or <span
-		style="font-family: monospace;">WindowUtils::GetContentView()</span>.</li>
-	<li>A pointer to the view's frame.&nbsp; If non-<span
-		style="font-family: monospace;">NULL</span>, it specifies the location
-	of the view in its superview's coordinates.&nbsp; If <span
-		style="font-family: monospace;">NULL</span> is passed in, the view
-	doesn't get any specific size or location.&nbsp; This is actually
-	convenient, especially when you are adding the new view to a superview
-	that automatically places and resizes its child views (eg <span
-		style="font-family: monospace;">ScrollView</span>).</li>
-	<li>A pointer to a <span style="font-family: monospace;">Nib</span>.&nbsp;
-	If non-<span style="font-family: monospace;">NULL</span>, it's assumed
-	that the new view can load auxiliary resources from it.</li>
-	<li>A pointer to a <span style="font-family: monospace;">ViewFactory</span>.&nbsp;
-	If non-<span style="font-family: monospace;">NULL</span>, it's used to
-	instantiate the <span style="font-family: monospace;">View</span>
-	object;&nbsp; else, the default view factory is used instead.</li>
+    <li>The view's ID.&nbsp; If non-zero, the view is given an <span
+        style="font-family: monospace;">HIViewID</span> with the given value
+    and the main bundle's creator as the signature.&nbsp; If zero is passed
+    in, the view doesn't get a view ID.</li>
+    <li>The view's superview.&nbsp; This is more convenient than a <span
+        style="font-family: monospace;">WindowRef</span>, because it allows
+    the caller to set up the view hierarchy in fewer steps.&nbsp; If <span
+        style="font-family: monospace;">NULL</span> is passed in, the view is
+    created "standalone".&nbsp; To place the new view at the top level of a
+    window, pass in the return value of <span
+        style="font-family: monospace;">Window::GetContentView()</span> or <span
+        style="font-family: monospace;">WindowUtils::GetContentView()</span>.</li>
+    <li>A pointer to the view's frame.&nbsp; If non-<span
+        style="font-family: monospace;">NULL</span>, it specifies the location
+    of the view in its superview's coordinates.&nbsp; If <span
+        style="font-family: monospace;">NULL</span> is passed in, the view
+    doesn't get any specific size or location.&nbsp; This is actually
+    convenient, especially when you are adding the new view to a superview
+    that automatically places and resizes its child views (eg <span
+        style="font-family: monospace;">ScrollView</span>).</li>
+    <li>A pointer to a <span style="font-family: monospace;">Nib</span>.&nbsp;
+    If non-<span style="font-family: monospace;">NULL</span>, it's assumed
+    that the new view can load auxiliary resources from it.</li>
+    <li>A pointer to a <span style="font-family: monospace;">ViewFactory</span>.&nbsp;
+    If non-<span style="font-family: monospace;">NULL</span>, it's used to
+    instantiate the <span style="font-family: monospace;">View</span>
+    object;&nbsp; else, the default view factory is used instead.</li>
 </ol>
 The view-awakening logic has been modified a bit to accomodate this
 change.
@@ -537,51 +537,51 @@ classes.&nbsp; Fortunately, for the most part the changes should have
 minimal impact on clients.
 <br>
 <ul>
-	<li>Class <span style="font-family: monospace;">Exception</span> is
-	gone.&nbsp; B's exception classes now form small trees rooted in <span
-		style="font-family: monospace;">std::exception</span>.</li>
-	<li>There is now an <span style="font-family: monospace;">IOException</span>
-	class deriving from <span style="font-family: monospace;">std::exception</span>
-	and the file-I/O related exceptions derive from it:&nbsp; <span
-		style="font-family: monospace;">EOFException</span>, <span
-		style="font-family: monospace;">FileNotFoundException</span>, <span
-		style="font-family: monospace;">OpenException</span>, <span
-		style="font-family: monospace;">ReadException</span>, <span
-		style="font-family: monospace;">WriteException</span>.&nbsp; These are
-	meant to be more generic and higher-level than throwing <span
-		style="font-family: monospace;">OSStatusException</span>.</li>
-	<li><span style="font-family: monospace;">OSStatusException</span> is
-	now an abstract base class.&nbsp; There are two principal derived
-	classes: <span style="font-family: monospace;">RuntimeOSStatusException</span>
-	which fills the role that <span style="font-family: monospace;">OSStatusException</span>
-	used to have, and <span style="font-family: monospace;">ConstantOSStatusException&lt;&gt;</span>,
-	which is class template containing a constant <span
-		style="font-family: monospace;">OSStatus</span> value.</li>
-	<li>The classes derived from <span style="font-family: monospace;">Exception</span>
-	that need to mantain an internal string have been refactored to use a
-	common class, called <span style="font-family: monospace;">ExceptionStringHolder</span>.<br>
-	</li>
-	<li>A more sophisticated mechanism for determined how to serialise an
-	exception object has been introduced.&nbsp; It uses a "traits" class
-	called (unsurprisingly) <span style="font-family: monospace;">ExceptionTraits</span>.<br>
-	</li>
-	<li>A portion of the functionality that used to be in <span
-		style="font-family: monospace;">ErrorHandler</span> has been spun off
-	to a new class, <span style="font-family: monospace;">ExceptionStreamer</span>.
-	This class takes care of serialising and deserialising exception
-	objects, and takes full advantage of <span
-		style="font-family: monospace;">ExceptionTraits</span>.</li>
-	<li><span style="font-family: monospace;">ErrorHandler</span> is now a
-	real object instead of a collection of static functions.&nbsp; The
-	functions that display alerts are virtual, so it's possible to change
-	that behaviour, eg to log the information to a file or system log
-	instead.&nbsp; Furthermore, <span style="font-family: monospace;">ErrorHandler</span>
-	is now a per-thread singleton.&nbsp; That is, every distinct thread
-	gets a new instance of <span style="font-family: monospace;">ErrorHandler</span>.&nbsp;
-	It's possible to change the instance of <span
-		style="font-family: monospace;">ErrorHandler</span> for the current
-	thread.<br>
-	</li>
+    <li>Class <span style="font-family: monospace;">Exception</span> is
+    gone.&nbsp; B's exception classes now form small trees rooted in <span
+        style="font-family: monospace;">std::exception</span>.</li>
+    <li>There is now an <span style="font-family: monospace;">IOException</span>
+    class deriving from <span style="font-family: monospace;">std::exception</span>
+    and the file-I/O related exceptions derive from it:&nbsp; <span
+        style="font-family: monospace;">EOFException</span>, <span
+        style="font-family: monospace;">FileNotFoundException</span>, <span
+        style="font-family: monospace;">OpenException</span>, <span
+        style="font-family: monospace;">ReadException</span>, <span
+        style="font-family: monospace;">WriteException</span>.&nbsp; These are
+    meant to be more generic and higher-level than throwing <span
+        style="font-family: monospace;">OSStatusException</span>.</li>
+    <li><span style="font-family: monospace;">OSStatusException</span> is
+    now an abstract base class.&nbsp; There are two principal derived
+    classes: <span style="font-family: monospace;">RuntimeOSStatusException</span>
+    which fills the role that <span style="font-family: monospace;">OSStatusException</span>
+    used to have, and <span style="font-family: monospace;">ConstantOSStatusException&lt;&gt;</span>,
+    which is class template containing a constant <span
+        style="font-family: monospace;">OSStatus</span> value.</li>
+    <li>The classes derived from <span style="font-family: monospace;">Exception</span>
+    that need to mantain an internal string have been refactored to use a
+    common class, called <span style="font-family: monospace;">ExceptionStringHolder</span>.<br>
+    </li>
+    <li>A more sophisticated mechanism for determined how to serialise an
+    exception object has been introduced.&nbsp; It uses a "traits" class
+    called (unsurprisingly) <span style="font-family: monospace;">ExceptionTraits</span>.<br>
+    </li>
+    <li>A portion of the functionality that used to be in <span
+        style="font-family: monospace;">ErrorHandler</span> has been spun off
+    to a new class, <span style="font-family: monospace;">ExceptionStreamer</span>.
+    This class takes care of serialising and deserialising exception
+    objects, and takes full advantage of <span
+        style="font-family: monospace;">ExceptionTraits</span>.</li>
+    <li><span style="font-family: monospace;">ErrorHandler</span> is now a
+    real object instead of a collection of static functions.&nbsp; The
+    functions that display alerts are virtual, so it's possible to change
+    that behaviour, eg to log the information to a file or system log
+    instead.&nbsp; Furthermore, <span style="font-family: monospace;">ErrorHandler</span>
+    is now a per-thread singleton.&nbsp; That is, every distinct thread
+    gets a new instance of <span style="font-family: monospace;">ErrorHandler</span>.&nbsp;
+    It's possible to change the instance of <span
+        style="font-family: monospace;">ErrorHandler</span> for the current
+    thread.<br>
+    </li>
 </ul>
 An overview article covering error handling in B has been added to the
 main documentation page.
@@ -594,19 +594,19 @@ thread library.&nbsp; For the moment, said support is limited to the
 following:
 <br>
 <ul>
-	<li><span style="font-family: monospace;">AEObjectSupport</span> uses a
-	helper object (<span style="font-family: monospace;">ExInfo</span>) to
-	put exception information into Apple Event replies.&nbsp; This object
-	is in thread-specific storage and is now managed by <span
-		style="font-family: monospace;">boost::thread_specific_ptr&lt;&gt;</span>.</li>
-	<li><span style="font-family: monospace;">ErrorHandler</span> is a
-	per-thread singleton managed by <span style="font-family: monospace;">boost::thread_specific_ptr&lt;&gt;</span>.&nbsp;
-	Its truly global state is initialised via <span
-		style="font-family: monospace;">boost::call_once</span>, so even its
-	initialisation sequence is thread-safe.</li>
-	<li><span style="font-family: monospace;">ExceptionStreamer</span>'s
-	singleton object is also initialised via <span
-		style="font-family: monospace;">boost::call_once</span>.</li>
+    <li><span style="font-family: monospace;">AEObjectSupport</span> uses a
+    helper object (<span style="font-family: monospace;">ExInfo</span>) to
+    put exception information into Apple Event replies.&nbsp; This object
+    is in thread-specific storage and is now managed by <span
+        style="font-family: monospace;">boost::thread_specific_ptr&lt;&gt;</span>.</li>
+    <li><span style="font-family: monospace;">ErrorHandler</span> is a
+    per-thread singleton managed by <span style="font-family: monospace;">boost::thread_specific_ptr&lt;&gt;</span>.&nbsp;
+    Its truly global state is initialised via <span
+        style="font-family: monospace;">boost::call_once</span>, so even its
+    initialisation sequence is thread-safe.</li>
+    <li><span style="font-family: monospace;">ExceptionStreamer</span>'s
+    singleton object is also initialised via <span
+        style="font-family: monospace;">boost::call_once</span>.</li>
 </ul>
 All sample projects have been updated to contain the
 <span style="font-family: monospace;">boost</span>
@@ -632,108 +632,108 @@ Thanks to David Dunham for this important information!
 <br>
 <h4>Miscellaneous Changes</h4>
 <ul>
-	<li>Tidied up some code having to do with the interrelationships
-	between <span style="font-family: monospace;">View</span>, <span
-		style="font-family: monospace;">CustomView</span>, and <span
-		style="font-family: monospace;">HybridView</span>.</li>
-	<li>Fixed bugs in the view layout code.&nbsp; Replaced <span
-		style="font-family: monospace;">MoveControl()</span>/<span
-		style="font-family: monospace;">SizeControl()</span> with <span
-		style="font-family: monospace;">HIViewSetFrame()</span> in
-	non-compositing windows.<br>
-	</li>
-	<li>Added specialisations of <span style="font-family: monospace;">Event</span>
-	for <span style="font-family: monospace;">kEventWindowUpdate</span> and
-	<span style="font-family: monospace;">kEventWindowDrawContent</span>.</li>
-	<li>Added <span style="font-family: monospace;">WindowRef</span>
-	constructors to the specialisations of Event <span
-		style="font-family: monospace;">kEventWindowUpdate,kEventWindowDrawContent</span>,
-	<span style="font-family: monospace;">kEventWindowActivated</span>, <span
-		style="font-family: monospace;">kEventWindowDeactivated</span>, <span
-		style="font-family: monospace;">kEventWindowShowing</span>, <span
-		style="font-family: monospace;">kEventWindowHiding</span>, <span
-		style="font-family: monospace;">kEventWindowShown</span> and <span
-		style="font-family: monospace;">kEventWindowHidden</span>.<span
-		style="font-family: monospace;"><br>
-	</span></li>
-	<li>Member functions of <span style="font-family: monospace;">AEWriter</span>
-	and <span style="font-family: monospace;">AEEvent&lt;XXX, YYY&gt;</span>
-	that create &amp; send AppleEvents have been modified to take an
-	additional template parameter:&nbsp; <span
-		style="font-family: monospace;">TARGET</span>.&nbsp; This parameter is
-	an object that specifies which process will receive the event.&nbsp; A
-	number of predefined target classes have been added:&nbsp; <span
-		style="font-family: monospace;">AESelfTarget</span>, <span
-		style="font-family: monospace;">AEPsnTarget</span>, <span
-		style="font-family: monospace;">AEPidTarget</span>, <span
-		style="font-family: monospace;">AEUrlTarget</span>.&nbsp; Developers
-	using <span style="font-family: monospace;">AEObject</span> to send
-	events won't be affected, since that class uses <span
-		style="font-family: monospace;">AESelfTarget</span> behind the scenes.<br>
-	</li>
-	<li><span style="font-family: monospace;">String</span> and <span
-		style="font-family: monospace;">Mutable</span> string will now throw <span
-		style="font-family: monospace;">CharacterEncodingException</span> in
-	most cases if an encoding error occurs (eg, when asked to return a C
-	string in an encoding to which the string can't be converted).&nbsp;
-	Previously, this was mis-diagnosed as an out-of-memory condition.<br>
-	</li>
-	<li>Added a second templated <span style="font-family: monospace;">CustomView::Create()</span>
-	function.&nbsp; The new one takes an <span
-		style="font-family: monospace;">EventRef</span> instead of a <span
-		style="font-family: monospace;">Collection</span>, and instantiates
-	the view via <span style="font-family: monospace;">HIObjectCreate()</span>
-	instead of <span style="font-family: monospace;">CreateCustomControl()</span>.<span
-		style="font-family: monospace;"></span></li>
-	<li><span style="font-family: monospace;">HybridView</span> now has
-	templated <span style="font-family: monospace;">Create()</span> helper
-	functions.</li>
-	<li>Added <span style="font-family: monospace;">DataBrowser::Create()</span>.
-	</li>
-	<li>Added <span style="font-family: monospace;">Window::GetContentView()</span>.</li>
-	<li>Added a new helper class, <span style="font-family: monospace;">ViewUtils::ImageContent</span>,
-	which allows implementers of custom views to add support for image
-	content (icons, PICTs, CGImages, etc) without too much fuss.&nbsp; This
-	new class allows <span style="font-family: monospace;">SplitView</span>
-	to support drawing an image in the middle of the splitter area.<br>
-	</li>
-	<li>All unique strings (bundle identifiers, HIObject class IDs, etc.)
-	have been changed from "enrg.paullallonde.*" to "ca.paullalonde.*".</li>
-	<li>Added relational operators for <span
-		style="font-family: monospace;">HIViewID</span> and <span
-		style="font-family: monospace;">ControlKind</span> to <span
-		style="font-family: monospace;">ViewUtils</span>.<br>
-	</li>
-	<li>Renamed <span style="font-family: monospace;">View::GetControlKind()</span>
-	and <span style="font-family: monospace;"><span
-		style="font-family: monospace;">CustomView::GetControlKind()</span></span><span
-		style="font-family: monospace;"></span> to <span
-		style="font-family: monospace;">GetKind()</span>.&nbsp; In both cases
-	the kind is now returned as the function result instead of an output
-	argument.</li>
-	<li>Added <span style="font-family: monospace;">View::GetViewID()</span>,
-	<span style="font-family: monospace;">View::GetID()</span>, <span
-		style="font-family: monospace;">View::SetViewID()</span>, <span
-		style="font-family: monospace;">View::SetID()</span>, and <span
-		style="font-family: monospace;">CustomView::GetViewID()</span> to get
-	&amp; set a view's <span style="font-family: monospace;">HIViewID</span>.&nbsp;
-	The "<span style="font-family: monospace;">ID</span>" variants only
-	deal with the <span style="font-family: monospace;">HIViewID::id</span>
-	field, where the "<span style="font-family: monospace;">ViewID</span>"
-	variants handle the whole structure.</li>
-	<li>Fixed a performance problem where one of the overloads of <span
-		style="font-family: monospace;">ToolboxObjectProperty&lt;&gt;::Get()</span>
-	was using exceptions as a return mechanism.&nbsp; Because this function
-	is called quite often, it was generating a lot of spurious
-	throws.&nbsp; Note that in the unlikely case where a developer was
-	specialising the <span style="font-family: monospace;">ToolboxObjectPropertyTypeTrait&lt;&gt;</span>
-	class template, they will need to add a non-throwing version of the <span
-		style="font-family: monospace;">Get()</span> function.<br>
-	</li>
+    <li>Tidied up some code having to do with the interrelationships
+    between <span style="font-family: monospace;">View</span>, <span
+        style="font-family: monospace;">CustomView</span>, and <span
+        style="font-family: monospace;">HybridView</span>.</li>
+    <li>Fixed bugs in the view layout code.&nbsp; Replaced <span
+        style="font-family: monospace;">MoveControl()</span>/<span
+        style="font-family: monospace;">SizeControl()</span> with <span
+        style="font-family: monospace;">HIViewSetFrame()</span> in
+    non-compositing windows.<br>
+    </li>
+    <li>Added specialisations of <span style="font-family: monospace;">Event</span>
+    for <span style="font-family: monospace;">kEventWindowUpdate</span> and
+    <span style="font-family: monospace;">kEventWindowDrawContent</span>.</li>
+    <li>Added <span style="font-family: monospace;">WindowRef</span>
+    constructors to the specialisations of Event <span
+        style="font-family: monospace;">kEventWindowUpdate,kEventWindowDrawContent</span>,
+    <span style="font-family: monospace;">kEventWindowActivated</span>, <span
+        style="font-family: monospace;">kEventWindowDeactivated</span>, <span
+        style="font-family: monospace;">kEventWindowShowing</span>, <span
+        style="font-family: monospace;">kEventWindowHiding</span>, <span
+        style="font-family: monospace;">kEventWindowShown</span> and <span
+        style="font-family: monospace;">kEventWindowHidden</span>.<span
+        style="font-family: monospace;"><br>
+    </span></li>
+    <li>Member functions of <span style="font-family: monospace;">AEWriter</span>
+    and <span style="font-family: monospace;">AEEvent&lt;XXX, YYY&gt;</span>
+    that create &amp; send AppleEvents have been modified to take an
+    additional template parameter:&nbsp; <span
+        style="font-family: monospace;">TARGET</span>.&nbsp; This parameter is
+    an object that specifies which process will receive the event.&nbsp; A
+    number of predefined target classes have been added:&nbsp; <span
+        style="font-family: monospace;">AESelfTarget</span>, <span
+        style="font-family: monospace;">AEPsnTarget</span>, <span
+        style="font-family: monospace;">AEPidTarget</span>, <span
+        style="font-family: monospace;">AEUrlTarget</span>.&nbsp; Developers
+    using <span style="font-family: monospace;">AEObject</span> to send
+    events won't be affected, since that class uses <span
+        style="font-family: monospace;">AESelfTarget</span> behind the scenes.<br>
+    </li>
+    <li><span style="font-family: monospace;">String</span> and <span
+        style="font-family: monospace;">Mutable</span> string will now throw <span
+        style="font-family: monospace;">CharacterEncodingException</span> in
+    most cases if an encoding error occurs (eg, when asked to return a C
+    string in an encoding to which the string can't be converted).&nbsp;
+    Previously, this was mis-diagnosed as an out-of-memory condition.<br>
+    </li>
+    <li>Added a second templated <span style="font-family: monospace;">CustomView::Create()</span>
+    function.&nbsp; The new one takes an <span
+        style="font-family: monospace;">EventRef</span> instead of a <span
+        style="font-family: monospace;">Collection</span>, and instantiates
+    the view via <span style="font-family: monospace;">HIObjectCreate()</span>
+    instead of <span style="font-family: monospace;">CreateCustomControl()</span>.<span
+        style="font-family: monospace;"></span></li>
+    <li><span style="font-family: monospace;">HybridView</span> now has
+    templated <span style="font-family: monospace;">Create()</span> helper
+    functions.</li>
+    <li>Added <span style="font-family: monospace;">DataBrowser::Create()</span>.
+    </li>
+    <li>Added <span style="font-family: monospace;">Window::GetContentView()</span>.</li>
+    <li>Added a new helper class, <span style="font-family: monospace;">ViewUtils::ImageContent</span>,
+    which allows implementers of custom views to add support for image
+    content (icons, PICTs, CGImages, etc) without too much fuss.&nbsp; This
+    new class allows <span style="font-family: monospace;">SplitView</span>
+    to support drawing an image in the middle of the splitter area.<br>
+    </li>
+    <li>All unique strings (bundle identifiers, HIObject class IDs, etc.)
+    have been changed from "enrg.paullallonde.*" to "ca.paullalonde.*".</li>
+    <li>Added relational operators for <span
+        style="font-family: monospace;">HIViewID</span> and <span
+        style="font-family: monospace;">ControlKind</span> to <span
+        style="font-family: monospace;">ViewUtils</span>.<br>
+    </li>
+    <li>Renamed <span style="font-family: monospace;">View::GetControlKind()</span>
+    and <span style="font-family: monospace;"><span
+        style="font-family: monospace;">CustomView::GetControlKind()</span></span><span
+        style="font-family: monospace;"></span> to <span
+        style="font-family: monospace;">GetKind()</span>.&nbsp; In both cases
+    the kind is now returned as the function result instead of an output
+    argument.</li>
+    <li>Added <span style="font-family: monospace;">View::GetViewID()</span>,
+    <span style="font-family: monospace;">View::GetID()</span>, <span
+        style="font-family: monospace;">View::SetViewID()</span>, <span
+        style="font-family: monospace;">View::SetID()</span>, and <span
+        style="font-family: monospace;">CustomView::GetViewID()</span> to get
+    &amp; set a view's <span style="font-family: monospace;">HIViewID</span>.&nbsp;
+    The "<span style="font-family: monospace;">ID</span>" variants only
+    deal with the <span style="font-family: monospace;">HIViewID::id</span>
+    field, where the "<span style="font-family: monospace;">ViewID</span>"
+    variants handle the whole structure.</li>
+    <li>Fixed a performance problem where one of the overloads of <span
+        style="font-family: monospace;">ToolboxObjectProperty&lt;&gt;::Get()</span>
+    was using exceptions as a return mechanism.&nbsp; Because this function
+    is called quite often, it was generating a lot of spurious
+    throws.&nbsp; Note that in the unlikely case where a developer was
+    specialising the <span style="font-family: monospace;">ToolboxObjectPropertyTypeTrait&lt;&gt;</span>
+    class template, they will need to add a non-throwing version of the <span
+        style="font-family: monospace;">Get()</span> function.<br>
+    </li>
 </ul>
 <h3>Changes from version 0.2.3 to 0.3.0</h3>
 <h4><span style="font-weight: bold; font-family: monospace;"></span><span
-	style="font-family: monospace;">ObservationCenter</span> Replaced by
+    style="font-family: monospace;">ObservationCenter</span> Replaced by
 Boost.Signals<br>
 </h4>
 <span style="font-family: monospace;">ObservationCenter</span>
@@ -796,13 +796,13 @@ contains functions operating on
 and covers these areas:
 <br>
 <ul>
-	<li>Determining if a window is composited.</li>
-	<li>Retrieving a window's content view.</li>
-	<li>Retrieving the bounds of a window's content view.</li>
-	<li>Retrieving the global bounds, origin &amp; size of a window's
-	structure region.</li>
-	<li>Retrieving the global bounds, origin &amp; size of a window's
-	content region.</li>
+    <li>Determining if a window is composited.</li>
+    <li>Retrieving a window's content view.</li>
+    <li>Retrieving the bounds of a window's content view.</li>
+    <li>Retrieving the global bounds, origin &amp; size of a window's
+    structure region.</li>
+    <li>Retrieving the global bounds, origin &amp; size of a window's
+    content region.</li>
 </ul>
 <span style="font-family: monospace;">ViewUtils</span>
 contains functions operating on
@@ -810,23 +810,23 @@ contains functions operating on
 and covers these areas:
 <br>
 <ul>
-	<li>Coordinate conversions.&nbsp; One can convert between two views, or
-	between a view and local, window or global coordinates.&nbsp; The
-	conversions operate on <span style="font-family: monospace;">Point</span>,
-	or on any type that implements <span style="font-family: monospace;">operator
-	+= (B::Point)</span> (that includes <span
-		style="font-family: monospace;">Rect</span> and <span
-		style="font-family: monospace;">MutableShape</span>).</li>
-	<li>Retrieving the content view of a view's owning window.<br>
-	</li>
-	<li>Retrieving the bounds of the content view of a view's owning
-	window.</li>
-	<li>Finding a subview of a given view.</li>
-	<li>Two iterator classes for iterating over the subviews of a
-	view.&nbsp; One class iterates forward, the other backward.&nbsp; Both
-	classes fall into the "forward iterator" category of STL iterators.</li>
-	<li>Performs view layout.<br>
-	</li>
+    <li>Coordinate conversions.&nbsp; One can convert between two views, or
+    between a view and local, window or global coordinates.&nbsp; The
+    conversions operate on <span style="font-family: monospace;">Point</span>,
+    or on any type that implements <span style="font-family: monospace;">operator
+    += (B::Point)</span> (that includes <span
+        style="font-family: monospace;">Rect</span> and <span
+        style="font-family: monospace;">MutableShape</span>).</li>
+    <li>Retrieving the content view of a view's owning window.<br>
+    </li>
+    <li>Retrieving the bounds of the content view of a view's owning
+    window.</li>
+    <li>Finding a subview of a given view.</li>
+    <li>Two iterator classes for iterating over the subviews of a
+    view.&nbsp; One class iterates forward, the other backward.&nbsp; Both
+    classes fall into the "forward iterator" category of STL iterators.</li>
+    <li>Performs view layout.<br>
+    </li>
 </ul>
 All of the B classes have been changed where appropriate to take
 advantage of the new utilities.
@@ -842,29 +842,29 @@ has been rewritten to be compatible with the one in Panther.&nbsp;
 Here's how it works:
 <br>
 <ul>
-	<li>In composited windows on Panther, the layout is performed by the
-	HIView system.</li>
-	<li>On Jaguar and in non-composited windows on Panther, the layout is
-	performed by B.&nbsp; Only a subset of the layout facility is currently
-	available, but it's more than adequate for simple needs.</li>
+    <li>In composited windows on Panther, the layout is performed by the
+    HIView system.</li>
+    <li>On Jaguar and in non-composited windows on Panther, the layout is
+    performed by B.&nbsp; Only a subset of the layout facility is currently
+    available, but it's more than adequate for simple needs.</li>
 </ul>
 You can specify a view's layout information either through Interface
 Builder or programatically.&nbsp; The method you choose depends on a
 number of criterion:
 <br>
 <ul>
-	<li>If your application needs to run on Jaguar, specify it
-	programatically.&nbsp; This is because the Interface Builder runtime
-	only supports layout information on Panther.&nbsp; You will be limited
-	to a subset of the layout facility as noted above.</li>
-	<li>If your application needs sophisticated view layout (ie anything
-	beyond what Interface Builder supports), specify it
-	programatically.&nbsp; You may be limited to a subset of the layout
-	facility as noted above, depending on the type of window and OS
-	version.</li>
-	<li>If your application runs only on Panther or later, and it needs
-	only simple layout support, specify it with Interface Builder. You can
-	enjoy the benefits of not having to write any code!</li>
+    <li>If your application needs to run on Jaguar, specify it
+    programatically.&nbsp; This is because the Interface Builder runtime
+    only supports layout information on Panther.&nbsp; You will be limited
+    to a subset of the layout facility as noted above.</li>
+    <li>If your application needs sophisticated view layout (ie anything
+    beyond what Interface Builder supports), specify it
+    programatically.&nbsp; You may be limited to a subset of the layout
+    facility as noted above, depending on the type of window and OS
+    version.</li>
+    <li>If your application runs only on Panther or later, and it needs
+    only simple layout support, specify it with Interface Builder. You can
+    enjoy the benefits of not having to write any code!</li>
 </ul>
 To use the layout facility programatically, call one of a number of
 <span style="font-family: monospace;">View</span>
@@ -873,126 +873,126 @@ To use the layout facility programatically, call one of a number of
 <pre>&nbsp;&nbsp;&nbsp; HILayoutInfo layout;<br>    B::View*     myView;<br>    <br>    // This gives you complete control over the layout<br>    myView-&gt;SetLayout(layout);<br>    // This is shorthand for binding one side of the view to its parent.<br>    myView-&gt;SetRightBinding(kHILayoutBindRight);<br></pre>
 <h4>Miscellaneous Changes</h4>
 <ul>
-	<li>Added <span style="font-family: monospace;">Window::GetModality()</span>,
-	which returns a window's <span style="font-family: monospace;">WindowModality</span>.</li>
-	<li>Added virtual functions to <span style="font-family: monospace;">Window</span>
-	that allow derived classes to know when a window is being shown or
-	hidden:&nbsp; <span style="font-family: monospace;">HandleShowing()</span>,
-	<span style="font-family: monospace;">HandleHiding()</span>, <span
-		style="font-family: monospace;">HandleShown()</span>, <span
-		style="font-family: monospace;">HandleHidden()</span>.<br>
-	</li>
-	<li>Added a new sample application, <a
-		href="examples/Tarabiscoter/ReadMe.html">Tarabiscoter</a>.</li>
-	<li>Added support for more Boost exceptions to <span
-		style="font-family: monospace;">ErrorHandler</span>'s exception
-	serialisation mechanism.</li>
-	<li>Reorganised the precompiled headers in the sample projects.&nbsp;
-	They now #include a common header, "B.pch++", which contains common
-	stuff.<br>
-	<span style="font-family: monospace;"></span></li>
-	<li><span style="font-family: monospace;">Window</span>'s constructor
-	arguments have been swapped.&nbsp; Now the <span
-		style="font-family: monospace;">WindowRef</span> is first, and the <span
-		style="font-family: monospace;">AEObject*</span> second.&nbsp; This
-	makes the argument sequence more sensical when one adds extra arguments
-	(such as when calling <span style="font-family: monospace;">Window::CreateFromNibWithState).</span></li>
-	<li><span style="font-family: monospace;"></span><span
-		style="font-family: monospace;">Window::CreateFromNib</span> now takes
-	only one template parameter, the window class.&nbsp; A second function,
-	<span style="font-family: monospace;">Window::CreateFromNibWithState</span>,
-	has been added which can be used to pass state information to the
-	window object's constructor.</li>
-	<li>Added missing specialisations of <span
-		style="font-family: monospace;">Event</span> for Carbon Events of
-	class <span style="font-family: monospace;">kEventClassMouse</span>.</li>
-	<li>Added overview article for Carbon Events.</li>
-	<li>Revamped the "Using Windows" overview article.&nbsp; It now has
-	handy links to Doxygen-generated documentation.</li>
-	<li>Removed the overloads of <span style="font-family: monospace;">EventBase::Send()</span>
-	for classes <span style="font-family: monospace;">Window</span>, <span
-		style="font-family: monospace;">View</span> and <span
-		style="font-family: monospace;">Menu</span>.&nbsp; They were
-	superfluous and introduced needless coupling between the Carbon Event
-	code and those classes.</li>
-	<li>Added some member functions to <span
-		style="font-family: monospace;">Window</span>, <span
-		style="font-family: monospace;">View</span>, <span
-		style="font-family: monospace;">Menu</span>, <span
-		style="font-family: monospace;">EventTarget</span>, and <span
-		style="font-family: monospace;">Toolbar</span> to give clients more
-	consistent access to their underlying (ie HIToolbox) data structures:</li>
-	<ul>
-		<li>Each class now has a conversion operator to the underlying OS data
-		structure (eg <span style="font-family: monospace;">WindowRef</span>).</li>
-		<li>Each has a member function which also returns the OS data
-		structure. For example <span style="font-family: monospace;">Menu</span>
-		has a <span style="font-family: monospace;">GetMenu()</span> function
-		returning its <span style="font-family: monospace;">MenuRef.</span></li>
-		<li>Each has a <span style="font-family: monospace;">GetObjectRef()</span>
-		function which returns the OS data structure typecast as an <span
-			style="font-family: monospace;">HIObjectRef</span>.</li>
-		<li>Each has a <span style="font-family: monospace;">GetEventTarget()</span>
-		function which returns the OS data structure's <span
-			style="font-family: monospace;">EventTargetRef</span>.<br>
-		</li>
-	</ul>
-	<li><span style="font-family: monospace;">View</span> now has member
-	functions for returning iterators over its subviews.</li>
-	<li>Added template <span style="font-family: monospace;">FindSubview()</span>
-	member functions to <span style="font-family: monospace;">View</span>.&nbsp;
-	They are similar to the <span style="font-family: monospace;">FindView()</span>
-	functions in <span style="font-family: monospace;">Window</span>,
-	except they can start finding at an arbitrary location in the view
-	tree.<br>
-	</li>
-	<li>Added support in <span style="font-family: monospace;">SplitView</span>
-	for orientation and content tags.</li>
-	<li>Fixed bugs in <span style="font-family: monospace;">HelpButton</span>
-	and <span style="font-family: monospace;">SplitView</span> where we
-	weren't expecting a null <span style="font-family: monospace;">Collection</span>.</li>
-	<li>Added <span style="font-family: monospace;">operator WindowRef ()</span>
-	to <span style="font-family: monospace;">Window</span>.</li>
-	<li><span style="font-family: monospace;">EventBase::Send()</span> now
-	takes an optional argument that specifies sending options (eg <span
-		style="font-family: monospace;">kEventTargetDontPropagate</span>).&nbsp;
-	The implementation now uses <span style="font-family: monospace;">SendEventToEventTargetWithOptions()</span>.<br>
-	</li>
-	<li>Added a <span style="font-family: monospace;">Bundle</span> member
-	variable to <span style="font-family: monospace;">Nib</span>, and a
-	function to access it.&nbsp; This is handy for <span
-		style="font-family: monospace;">Awaken()</span> functions that want to
-	load resource from the same bundle as the one they themselves were
-	loaded from.</li>
-	<li>Removed the <span style="font-family: monospace;">IBNibRef</span>
-	constructor from <span style="font-family: monospace;">Nib</span>.&nbsp;
-	It was only used by the old <span style="font-family: monospace;">Loaded()</span>
-	implementation.<br>
-	</li>
-	<li>Propagation of the <span style="font-family: monospace;">Awaken()</span>
-	(<span style="font-style: italic;">n&eacute;e</span> <span
-		style="font-family: monospace;">Loaded()</span>) functions has been
-	redone.&nbsp; The previous implementation was prone to conflicts
-	between <span style="font-family: monospace;">View</span> and <span
-		style="font-family: monospace;">CustomView</span>.<br>
-	</li>
-	<li>The "loaded" functions (<span style="font-family: monospace;">View::Loaded()</span>,
-	<span style="font-family: monospace;">CustomView::Loaded()</span>, <span
-		style="font-family: monospace;">Window::Loaded()</span>) have been
-	renamed to <span style="font-family: monospace;">Awaken()</span>, which
-	I think is more poetic.&nbsp; <span style="font-family: monospace;">Its
-	Nib</span> argument is now optional, in order to allow the function to
-	be called when a <span style="font-family: monospace;">View</span>/<span
-		style="font-family: monospace;">CustomView</span>/<span
-		style="font-family: monospace;">Window</span> is created
-	programatically.</li>
-	<li>Well, I've finally determined that B's use of C++ is a bit too
-	advanced for lame old ZeroLink.&nbsp; The option has been turned off in
-	all of the Xcode projects.</li>
-	<li>Changed <span style="font-family: monospace;">AEObject::PrintObject</span>
-	and <span style="font-family: monospace;">AEEvent&lt;kCoreEventClass,
-	kAEPrint&gt;</span> to support the extended print options in Panther.<br>
-	</li>
+    <li>Added <span style="font-family: monospace;">Window::GetModality()</span>,
+    which returns a window's <span style="font-family: monospace;">WindowModality</span>.</li>
+    <li>Added virtual functions to <span style="font-family: monospace;">Window</span>
+    that allow derived classes to know when a window is being shown or
+    hidden:&nbsp; <span style="font-family: monospace;">HandleShowing()</span>,
+    <span style="font-family: monospace;">HandleHiding()</span>, <span
+        style="font-family: monospace;">HandleShown()</span>, <span
+        style="font-family: monospace;">HandleHidden()</span>.<br>
+    </li>
+    <li>Added a new sample application, <a
+        href="examples/Tarabiscoter/ReadMe.html">Tarabiscoter</a>.</li>
+    <li>Added support for more Boost exceptions to <span
+        style="font-family: monospace;">ErrorHandler</span>'s exception
+    serialisation mechanism.</li>
+    <li>Reorganised the precompiled headers in the sample projects.&nbsp;
+    They now #include a common header, "B.pch++", which contains common
+    stuff.<br>
+    <span style="font-family: monospace;"></span></li>
+    <li><span style="font-family: monospace;">Window</span>'s constructor
+    arguments have been swapped.&nbsp; Now the <span
+        style="font-family: monospace;">WindowRef</span> is first, and the <span
+        style="font-family: monospace;">AEObject*</span> second.&nbsp; This
+    makes the argument sequence more sensical when one adds extra arguments
+    (such as when calling <span style="font-family: monospace;">Window::CreateFromNibWithState).</span></li>
+    <li><span style="font-family: monospace;"></span><span
+        style="font-family: monospace;">Window::CreateFromNib</span> now takes
+    only one template parameter, the window class.&nbsp; A second function,
+    <span style="font-family: monospace;">Window::CreateFromNibWithState</span>,
+    has been added which can be used to pass state information to the
+    window object's constructor.</li>
+    <li>Added missing specialisations of <span
+        style="font-family: monospace;">Event</span> for Carbon Events of
+    class <span style="font-family: monospace;">kEventClassMouse</span>.</li>
+    <li>Added overview article for Carbon Events.</li>
+    <li>Revamped the "Using Windows" overview article.&nbsp; It now has
+    handy links to Doxygen-generated documentation.</li>
+    <li>Removed the overloads of <span style="font-family: monospace;">EventBase::Send()</span>
+    for classes <span style="font-family: monospace;">Window</span>, <span
+        style="font-family: monospace;">View</span> and <span
+        style="font-family: monospace;">Menu</span>.&nbsp; They were
+    superfluous and introduced needless coupling between the Carbon Event
+    code and those classes.</li>
+    <li>Added some member functions to <span
+        style="font-family: monospace;">Window</span>, <span
+        style="font-family: monospace;">View</span>, <span
+        style="font-family: monospace;">Menu</span>, <span
+        style="font-family: monospace;">EventTarget</span>, and <span
+        style="font-family: monospace;">Toolbar</span> to give clients more
+    consistent access to their underlying (ie HIToolbox) data structures:</li>
+    <ul>
+        <li>Each class now has a conversion operator to the underlying OS data
+        structure (eg <span style="font-family: monospace;">WindowRef</span>).</li>
+        <li>Each has a member function which also returns the OS data
+        structure. For example <span style="font-family: monospace;">Menu</span>
+        has a <span style="font-family: monospace;">GetMenu()</span> function
+        returning its <span style="font-family: monospace;">MenuRef.</span></li>
+        <li>Each has a <span style="font-family: monospace;">GetObjectRef()</span>
+        function which returns the OS data structure typecast as an <span
+            style="font-family: monospace;">HIObjectRef</span>.</li>
+        <li>Each has a <span style="font-family: monospace;">GetEventTarget()</span>
+        function which returns the OS data structure's <span
+            style="font-family: monospace;">EventTargetRef</span>.<br>
+        </li>
+    </ul>
+    <li><span style="font-family: monospace;">View</span> now has member
+    functions for returning iterators over its subviews.</li>
+    <li>Added template <span style="font-family: monospace;">FindSubview()</span>
+    member functions to <span style="font-family: monospace;">View</span>.&nbsp;
+    They are similar to the <span style="font-family: monospace;">FindView()</span>
+    functions in <span style="font-family: monospace;">Window</span>,
+    except they can start finding at an arbitrary location in the view
+    tree.<br>
+    </li>
+    <li>Added support in <span style="font-family: monospace;">SplitView</span>
+    for orientation and content tags.</li>
+    <li>Fixed bugs in <span style="font-family: monospace;">HelpButton</span>
+    and <span style="font-family: monospace;">SplitView</span> where we
+    weren't expecting a null <span style="font-family: monospace;">Collection</span>.</li>
+    <li>Added <span style="font-family: monospace;">operator WindowRef ()</span>
+    to <span style="font-family: monospace;">Window</span>.</li>
+    <li><span style="font-family: monospace;">EventBase::Send()</span> now
+    takes an optional argument that specifies sending options (eg <span
+        style="font-family: monospace;">kEventTargetDontPropagate</span>).&nbsp;
+    The implementation now uses <span style="font-family: monospace;">SendEventToEventTargetWithOptions()</span>.<br>
+    </li>
+    <li>Added a <span style="font-family: monospace;">Bundle</span> member
+    variable to <span style="font-family: monospace;">Nib</span>, and a
+    function to access it.&nbsp; This is handy for <span
+        style="font-family: monospace;">Awaken()</span> functions that want to
+    load resource from the same bundle as the one they themselves were
+    loaded from.</li>
+    <li>Removed the <span style="font-family: monospace;">IBNibRef</span>
+    constructor from <span style="font-family: monospace;">Nib</span>.&nbsp;
+    It was only used by the old <span style="font-family: monospace;">Loaded()</span>
+    implementation.<br>
+    </li>
+    <li>Propagation of the <span style="font-family: monospace;">Awaken()</span>
+    (<span style="font-style: italic;">n&eacute;e</span> <span
+        style="font-family: monospace;">Loaded()</span>) functions has been
+    redone.&nbsp; The previous implementation was prone to conflicts
+    between <span style="font-family: monospace;">View</span> and <span
+        style="font-family: monospace;">CustomView</span>.<br>
+    </li>
+    <li>The "loaded" functions (<span style="font-family: monospace;">View::Loaded()</span>,
+    <span style="font-family: monospace;">CustomView::Loaded()</span>, <span
+        style="font-family: monospace;">Window::Loaded()</span>) have been
+    renamed to <span style="font-family: monospace;">Awaken()</span>, which
+    I think is more poetic.&nbsp; <span style="font-family: monospace;">Its
+    Nib</span> argument is now optional, in order to allow the function to
+    be called when a <span style="font-family: monospace;">View</span>/<span
+        style="font-family: monospace;">CustomView</span>/<span
+        style="font-family: monospace;">Window</span> is created
+    programatically.</li>
+    <li>Well, I've finally determined that B's use of C++ is a bit too
+    advanced for lame old ZeroLink.&nbsp; The option has been turned off in
+    all of the Xcode projects.</li>
+    <li>Changed <span style="font-family: monospace;">AEObject::PrintObject</span>
+    and <span style="font-family: monospace;">AEEvent&lt;kCoreEventClass,
+    kAEPrint&gt;</span> to support the extended print options in Panther.<br>
+    </li>
 </ul>
 <hr style="width: 100%; height: 2px;">
 <h3>Changes from version 0.2.2 to 0.2.3</h3>
@@ -1015,24 +1015,24 @@ return value.&nbsp; Here are the new functions:
 <br>
 <div style="margin-left: 40px;"><span style="font-family: monospace;">template
 &lt;class VIEW&gt; </span><span style="font-family: monospace;"><span
-	style="font-family: monospace;">VIEW*</span></span><br
-	style="font-family: monospace;">
+    style="font-family: monospace;">VIEW*</span></span><br
+    style="font-family: monospace;">
 <span style="font-family: monospace;">FindView(int inID) const;<br>
 <br>
 </span>
 <div style="margin-left: 40px;">Returns the view matching the main
 bundle's signature and <span style="font-style: italic;">inID</span>.<span
-	style="font-family: monospace;"></span><br>
+    style="font-family: monospace;"></span><br>
 <span style="font-family: monospace;"></span></div>
 <span style="font-family: monospace;"><span
-	style="font-family: monospace;"></span><br>
+    style="font-family: monospace;"></span><br>
 </span><span style="font-family: monospace;">template &lt;class VIEW&gt;
 </span><span style="font-family: monospace;"><span
-	style="font-family: monospace;">VIEW*</span></span><br
-	style="font-family: monospace;">
+    style="font-family: monospace;">VIEW*</span></span><br
+    style="font-family: monospace;">
 <span style="font-family: monospace;">FindView(</span><span
-	style="font-family: monospace;">int inID, </span><span
-	style="font-family: monospace;">const std::nothrow_t&amp;) const;<br>
+    style="font-family: monospace;">int inID, </span><span
+    style="font-family: monospace;">const std::nothrow_t&amp;) const;<br>
 <br>
 </span>
 <div style="margin-left: 40px;">Returns the view matching the main
@@ -1041,8 +1041,8 @@ bundle's signature and <span style="font-style: italic;">inID</span>, or
 </div>
 <span style="font-family: monospace;"></span><br>
 <span style="font-family: monospace;">template &lt;class VIEW&gt; </span><span
-	style="font-family: monospace;"><span style="font-family: monospace;">VIEW*</span></span><br
-	style="font-family: monospace;">
+    style="font-family: monospace;"><span style="font-family: monospace;">VIEW*</span></span><br
+    style="font-family: monospace;">
 <span style="font-family: monospace;">FindView(OSType inSignature, int
 inID) const;</span><br style="font-family: monospace;">
 <div style="margin-left: 40px;"><br>
@@ -1051,20 +1051,20 @@ and <span style="font-style: italic;">inID</span>.<br>
 </div>
 <span style="font-family: monospace;"></span><br>
 <span style="font-family: monospace;">template &lt;class VIEW&gt; </span><span
-	style="font-family: monospace;"><span style="font-family: monospace;">VIEW*</span></span><br
-	style="font-family: monospace;">
+    style="font-family: monospace;"><span style="font-family: monospace;">VIEW*</span></span><br
+    style="font-family: monospace;">
 <span style="font-family: monospace;">FindView(OSType inSignature, int
 inID, const std::nothrow_t&amp;) const;<br>
 <br>
 </span>
 <div style="margin-left: 40px;">Returns the view matching <span
-	style="font-style: italic;">inSignature</span> and <span
-	style="font-style: italic;">inID</span>, or <span
-	style="font-family: monospace;">NULL</span>.<br>
+    style="font-style: italic;">inSignature</span> and <span
+    style="font-style: italic;">inID</span>, or <span
+    style="font-family: monospace;">NULL</span>.<br>
 <span style="font-family: monospace;"></span></div>
 <span style="font-family: monospace;"><span
-	style="font-family: monospace;"></span><span
-	style="font-family: monospace;"></span></span><br>
+    style="font-family: monospace;"></span><span
+    style="font-family: monospace;"></span></span><br>
 </div>
 Calling
 <span style="font-family: monospace;">FindView()</span>
@@ -1075,29 +1075,29 @@ parameter:
 <pre style="margin-left: 40px;">myView = myWindow-&gt;FindView&lt;StaticTextView&gt;(kMyViewID);</pre>
 <h4>Miscellaneous Changes</h4>
 <ul>
-	<li>In order to make the sample projects independent of the exact
-	location of the B installation, the way that the projects refer to the
-	B sources has changed.&nbsp; The exact method is depends on whether you
-	use CodeWarrior or Xcode/PB.&nbsp; For CW you need to define a new
-	global source tree;&nbsp; for Xcode/PB, you need to create symlinks
-	under <span style="font-family: monospace;">/usr/local</span>.&nbsp;
-	Refer to the <a href="ReadMe.html#Installation">ReadMe</a> for more
-	information.<br>
-	</li>
-	<li>Changed the layout of the html documentation files on disk.</li>
-	<li>Documented <span style="font-family: monospace;">ViewFactory</span>.</li>
-	<li>Doxygen docs.</li>
-	<li>Member functions of <span style="font-family: monospace;">AEObject</span>
-	that contained "Model" were renamed to use "Object" instead.&nbsp; For
-	example, <span style="font-family: monospace;">CloneModel()</span>
-	became <span style="font-family: monospace;">CloneObject()</span>.&nbsp;
-	The term "Model" was a holdover from an earlier nomenclature.<br>
-	</li>
-	<li>Made it easier to build the CodeWarrior projects on Jaguar.</li>
-	<li>Fixed lingering problems in building Project Builder projects on
-	Jaguar.<br>
-	</li>
-	<li>Upgraded the sample projects to Xcode 1.1.</li>
+    <li>In order to make the sample projects independent of the exact
+    location of the B installation, the way that the projects refer to the
+    B sources has changed.&nbsp; The exact method is depends on whether you
+    use CodeWarrior or Xcode/PB.&nbsp; For CW you need to define a new
+    global source tree;&nbsp; for Xcode/PB, you need to create symlinks
+    under <span style="font-family: monospace;">/usr/local</span>.&nbsp;
+    Refer to the <a href="ReadMe.html#Installation">ReadMe</a> for more
+    information.<br>
+    </li>
+    <li>Changed the layout of the html documentation files on disk.</li>
+    <li>Documented <span style="font-family: monospace;">ViewFactory</span>.</li>
+    <li>Doxygen docs.</li>
+    <li>Member functions of <span style="font-family: monospace;">AEObject</span>
+    that contained "Model" were renamed to use "Object" instead.&nbsp; For
+    example, <span style="font-family: monospace;">CloneModel()</span>
+    became <span style="font-family: monospace;">CloneObject()</span>.&nbsp;
+    The term "Model" was a holdover from an earlier nomenclature.<br>
+    </li>
+    <li>Made it easier to build the CodeWarrior projects on Jaguar.</li>
+    <li>Fixed lingering problems in building Project Builder projects on
+    Jaguar.<br>
+    </li>
+    <li>Upgraded the sample projects to Xcode 1.1.</li>
 </ul>
 <hr style="width: 100%; height: 2px;">
 <h3>Changes from version 0.2.1 to 0.2.2</h3>
@@ -1113,130 +1113,130 @@ macros, click
 <a href="http://developer.apple.com/technotes/tn2002/tn2064.html">here</a>
 .
 <ul>
-	<li><span style="font-weight: bold;"><span
-		style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>.</span>&nbsp;
-	This is non-zero if the current project is being built on
-	Panther.&nbsp; Note that the default value is 1.&nbsp; If you are not
-	building on Panther, you should set this to zero in your prefix file.</li>
-	<li><span style="font-weight: bold;"><span
-		style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS</span>.</span>&nbsp;
-	This is non-zero if you are allowed to access declarations (including
-	function declarations) that were introduced in Panther.&nbsp; It's
-	non-zero if <span style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>
-	is non-zero and <span style="font-family: monospace;">MAC_OS_X_VERSION_MAX_ALLOWED</span>
-	is greater than or equal to <span style="font-family: monospace;">MAC_OS_X_VERSION_10_3</span>.&nbsp;
-	Note that even if this macro is non-zero, you may still need to check
-	for API availability at runtime.</li>
-	<li><span style="font-weight: bold;"><span
-		style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS_ONLY</span>.</span>&nbsp;
-	This is non-zero if you are allowed to access declarations (including
-	function declarations) that were introduced in Panther.&nbsp; It's
-	non-zero if <span style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>
-	is non-zero and <span style="font-family: monospace;">MAC_OS_X_VERSION_MIN_REQUIRED</span>
-	is greater than or equal to <span style="font-family: monospace;">MAC_OS_X_VERSION_10_3</span>.&nbsp;
-	Note that unlike <span style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS</span>,
-	this doesn't require any runtime checks for API availability, because
-	in effect in sets the app's minimum required system to Panther.</li>
+    <li><span style="font-weight: bold;"><span
+        style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>.</span>&nbsp;
+    This is non-zero if the current project is being built on
+    Panther.&nbsp; Note that the default value is 1.&nbsp; If you are not
+    building on Panther, you should set this to zero in your prefix file.</li>
+    <li><span style="font-weight: bold;"><span
+        style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS</span>.</span>&nbsp;
+    This is non-zero if you are allowed to access declarations (including
+    function declarations) that were introduced in Panther.&nbsp; It's
+    non-zero if <span style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>
+    is non-zero and <span style="font-family: monospace;">MAC_OS_X_VERSION_MAX_ALLOWED</span>
+    is greater than or equal to <span style="font-family: monospace;">MAC_OS_X_VERSION_10_3</span>.&nbsp;
+    Note that even if this macro is non-zero, you may still need to check
+    for API availability at runtime.</li>
+    <li><span style="font-weight: bold;"><span
+        style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS_ONLY</span>.</span>&nbsp;
+    This is non-zero if you are allowed to access declarations (including
+    function declarations) that were introduced in Panther.&nbsp; It's
+    non-zero if <span style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>
+    is non-zero and <span style="font-family: monospace;">MAC_OS_X_VERSION_MIN_REQUIRED</span>
+    is greater than or equal to <span style="font-family: monospace;">MAC_OS_X_VERSION_10_3</span>.&nbsp;
+    Note that unlike <span style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS</span>,
+    this doesn't require any runtime checks for API availability, because
+    in effect in sets the app's minimum required system to Panther.</li>
 </ul>
 <h4>Miscellaneous Changes</h4>
 <ul>
-	<li>Several changes to the PLister sample:</li>
-	<ul>
-		<li>The undo support had suffered quite a bit of bitrot over time.</li>
-		<li>The tree of <span style="font-family: monospace;">ModelItems</span>
-		is now stored using <span style="font-family: monospace;">boost::shared_ptr</span>,
-		which helps with lifetime management, especially when items are being
-		deleted.</li>
-		<li>Added the "duplicate" event to the terminology resource (aka <span
-			style="font-family: monospace;">'aete'</span>).</li>
-		<li>Made the Duplicate menu command work more like in the Finder (the
-		duplicates of all selected items end up in the same container as their
-		original item, instead of having all of the duplicates end up in the
-		same container).</li>
-	</ul>
-	<li>Added supported for the optional "with properties" parameter to the
-	"duplicate" Apple Event.</li>
-	<li><span style="font-family: monospace;">AEObject::CountElements()</span>
-	now handles the case where the requested element type is <span
-		style="font-family: monospace;">cObject</span>.&nbsp; It iterates over
-	all of the container's declared element types, and counts each in turn.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">AEClassInfo::AddElement()</span>,
-	which allows derivatives of <span style="font-family: monospace;">AEObject</span>
-	to declare their element class IDs.</li>
-	<li>References to <span style="font-family: monospace;">typeCString</span>
-	and <span style="font-family: monospace;">typePString</span> have been
-	removed, since those descriptor types are now deprecated by Apple.</li>
-	<li>Changed the "exception-thrown" alert so that displays <span
-		style="font-family: monospace;">inException.what()</span>.</li>
-	<li>Added <span style="font-family: monospace;">ErrnoException</span>,
-	which is an exception class that represents a UNIX <span
-		style="font-family: monospace;">errno</span> value.&nbsp; Matching
-	exception-throwing macros have been added to BErrorHandler.h (<span
-		style="font-family: monospace;">ThrowIfErrno(errn)</span>, <span
-		style="font-family: monospace;">ThrowErrnoIf(c)</span>).<br>
-	</li>
-	<li>The throw and assert handlers in <span
-		style="font-family: monospace;">ErrorHandler</span> are now kept in
-	thread-specific storage.</li>
-	<li>Added concept checks to the Apple Event and Carbon Event classes.</li>
-	<li>Added <span style="font-family: monospace;">Window::ClearProxy()</span>.</li>
-	<li>Added a new view flag to <span style="font-family: monospace;">CustomView</span>:&nbsp;
-	<span style="font-family: monospace;">kViewClickActivation</span>.&nbsp;
-	When it's turned on, the view gets called for the <span
-		style="font-family: monospace;">kEventClassControl</span> / <span
-		style="font-family: monospace;">kEventControlGetClickActivation</span>
-	event.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">Bundle::FindDocumentTypeForMIMEType()</span>
-	and <span style="font-family: monospace;">Bundle::DoesMIMETypeMatchDocumentType()</span>.</li>
-	<li><span style="font-family: monospace;">Bundle::DocumentType</span>
-	now contains the document type's list of MIME types (if any), as well
-	as flag indicating if the document is a package.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">Document::GetIcon()</span>.<br>
-	</li>
-	<li>Added support in <span style="font-family: monospace;">Icon</span>
-	for icons that don't have an associated file.</li>
-	<li>A window belonging to a never-before-saved document doesn't get a
-	proxy icon any more, as per the Panther HIG.<br>
-	</li>
-	<li>Fixed a bug where the About Box was appearing in the Window menu.</li>
-	<li>Replaced uses of <span style="font-family: monospace;">MAC_OS_X_VERSION_MIN_REQUIRED</span>
-	and <span style="font-family: monospace;">MAC_OS_X_VERSION_MIN_REQUIRED</span>
-	with <span style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>,
-	<span style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS</span>
-	or <span style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS_ONLY</span>
-	as appropriate.</li>
-	<li>Ensured the source as well as the sample projects can compile under
-	Jaguar.&nbsp; Their deployment targets were set to 10.2 as well.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">'CURS'</span> resources
-	for the up, down, and up-down cursors.&nbsp; These cursors weren't
-	available via <span style="font-family: monospace;">SetThemeCursor()</span>
-	until Panther, and <span style="font-family: monospace;">SplitView</span>
-	needed them.&nbsp; They are only used when running on Jaguar.</li>
-	<li>Fixed a bug in the definition of the <span
-		style="font-family: monospace;">ThrowIfNULLRsrc()</span> macro.<br>
-	</li>
+    <li>Several changes to the PLister sample:</li>
+    <ul>
+        <li>The undo support had suffered quite a bit of bitrot over time.</li>
+        <li>The tree of <span style="font-family: monospace;">ModelItems</span>
+        is now stored using <span style="font-family: monospace;">boost::shared_ptr</span>,
+        which helps with lifetime management, especially when items are being
+        deleted.</li>
+        <li>Added the "duplicate" event to the terminology resource (aka <span
+            style="font-family: monospace;">'aete'</span>).</li>
+        <li>Made the Duplicate menu command work more like in the Finder (the
+        duplicates of all selected items end up in the same container as their
+        original item, instead of having all of the duplicates end up in the
+        same container).</li>
+    </ul>
+    <li>Added supported for the optional "with properties" parameter to the
+    "duplicate" Apple Event.</li>
+    <li><span style="font-family: monospace;">AEObject::CountElements()</span>
+    now handles the case where the requested element type is <span
+        style="font-family: monospace;">cObject</span>.&nbsp; It iterates over
+    all of the container's declared element types, and counts each in turn.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">AEClassInfo::AddElement()</span>,
+    which allows derivatives of <span style="font-family: monospace;">AEObject</span>
+    to declare their element class IDs.</li>
+    <li>References to <span style="font-family: monospace;">typeCString</span>
+    and <span style="font-family: monospace;">typePString</span> have been
+    removed, since those descriptor types are now deprecated by Apple.</li>
+    <li>Changed the "exception-thrown" alert so that displays <span
+        style="font-family: monospace;">inException.what()</span>.</li>
+    <li>Added <span style="font-family: monospace;">ErrnoException</span>,
+    which is an exception class that represents a UNIX <span
+        style="font-family: monospace;">errno</span> value.&nbsp; Matching
+    exception-throwing macros have been added to BErrorHandler.h (<span
+        style="font-family: monospace;">ThrowIfErrno(errn)</span>, <span
+        style="font-family: monospace;">ThrowErrnoIf(c)</span>).<br>
+    </li>
+    <li>The throw and assert handlers in <span
+        style="font-family: monospace;">ErrorHandler</span> are now kept in
+    thread-specific storage.</li>
+    <li>Added concept checks to the Apple Event and Carbon Event classes.</li>
+    <li>Added <span style="font-family: monospace;">Window::ClearProxy()</span>.</li>
+    <li>Added a new view flag to <span style="font-family: monospace;">CustomView</span>:&nbsp;
+    <span style="font-family: monospace;">kViewClickActivation</span>.&nbsp;
+    When it's turned on, the view gets called for the <span
+        style="font-family: monospace;">kEventClassControl</span> / <span
+        style="font-family: monospace;">kEventControlGetClickActivation</span>
+    event.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">Bundle::FindDocumentTypeForMIMEType()</span>
+    and <span style="font-family: monospace;">Bundle::DoesMIMETypeMatchDocumentType()</span>.</li>
+    <li><span style="font-family: monospace;">Bundle::DocumentType</span>
+    now contains the document type's list of MIME types (if any), as well
+    as flag indicating if the document is a package.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">Document::GetIcon()</span>.<br>
+    </li>
+    <li>Added support in <span style="font-family: monospace;">Icon</span>
+    for icons that don't have an associated file.</li>
+    <li>A window belonging to a never-before-saved document doesn't get a
+    proxy icon any more, as per the Panther HIG.<br>
+    </li>
+    <li>Fixed a bug where the About Box was appearing in the Window menu.</li>
+    <li>Replaced uses of <span style="font-family: monospace;">MAC_OS_X_VERSION_MIN_REQUIRED</span>
+    and <span style="font-family: monospace;">MAC_OS_X_VERSION_MIN_REQUIRED</span>
+    with <span style="font-family: monospace;">B_BUILDING_ON_10_3_OR_LATER</span>,
+    <span style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS</span>
+    or <span style="font-family: monospace;">B_BUILDING_CAN_USE_10_3_APIS_ONLY</span>
+    as appropriate.</li>
+    <li>Ensured the source as well as the sample projects can compile under
+    Jaguar.&nbsp; Their deployment targets were set to 10.2 as well.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">'CURS'</span> resources
+    for the up, down, and up-down cursors.&nbsp; These cursors weren't
+    available via <span style="font-family: monospace;">SetThemeCursor()</span>
+    until Panther, and <span style="font-family: monospace;">SplitView</span>
+    needed them.&nbsp; They are only used when running on Jaguar.</li>
+    <li>Fixed a bug in the definition of the <span
+        style="font-family: monospace;">ThrowIfNULLRsrc()</span> macro.<br>
+    </li>
 </ul>
 <hr style="width: 100%; height: 2px;">
 <h3>Changes from version 0.2.0 to 0.2.1<br>
 </h3>
 <ul>
-	<li>Fixed bug in <span style="font-family: monospace;">CustomView::ControlDraw</span>
-	where sometimes the <span style="font-family: monospace;">Draw()</span>
-	function wouldn't be given a <span style="font-family: monospace;">GrafPtr</span>
-	even if it requested one in the view flags.</li>
-	<li>The PLister and DragPeeker Xcode projects (still) contained a few
-	absolute paths, which caused builds to break on every machine except
-	the author's!&nbsp; It's altogether too easy to mistakenly attribute an
-	absolute path to a file in Xcode...</li>
-	<li>Changed the release-building process to work around a bug in
-	libtool where linking against a library archive (aka .a file) whose mod
-	date had been changed would fail.</li>
-	<li>Added a Project Builder project for the PLister sample.</li>
-	<li>Removed COM constructs from <span style="font-family: monospace;">PlugIn</span>.</li>
+    <li>Fixed bug in <span style="font-family: monospace;">CustomView::ControlDraw</span>
+    where sometimes the <span style="font-family: monospace;">Draw()</span>
+    function wouldn't be given a <span style="font-family: monospace;">GrafPtr</span>
+    even if it requested one in the view flags.</li>
+    <li>The PLister and DragPeeker Xcode projects (still) contained a few
+    absolute paths, which caused builds to break on every machine except
+    the author's!&nbsp; It's altogether too easy to mistakenly attribute an
+    absolute path to a file in Xcode...</li>
+    <li>Changed the release-building process to work around a bug in
+    libtool where linking against a library archive (aka .a file) whose mod
+    date had been changed would fail.</li>
+    <li>Added a Project Builder project for the PLister sample.</li>
+    <li>Removed COM constructs from <span style="font-family: monospace;">PlugIn</span>.</li>
 </ul>
 <hr style="width: 100%; height: 2px;">
 <h3>Changes from version 0.1.0 to 0.2.0<br>
@@ -1283,14 +1283,14 @@ class that is scrollable and supports drag &amp; drop.
 class hierarchy rooted in <tt>UndoManager</tt>, we now have a policy
 "class" called <tt>UNDO_POLICY</tt> with three concrete implementations:</p>
 <ul>
-	<li><tt>NullUndoPolicy</tt>, for applications that don't need to
-	support Undo.</li>
-	<li><tt>MultipleUndoPolicy</tt>, for applications that need separate
-	Undo and Redo <br>
-	stacks of arbitrary size.</li>
-	<li><tt>SingleUndoPolicy</tt>, for applications that only need a simple
-	1-level-deep <br>
-	Undo.</li>
+    <li><tt>NullUndoPolicy</tt>, for applications that don't need to
+    support Undo.</li>
+    <li><tt>MultipleUndoPolicy</tt>, for applications that need separate
+    Undo and Redo <br>
+    stacks of arbitrary size.</li>
+    <li><tt>SingleUndoPolicy</tt>, for applications that only need a simple
+    1-level-deep <br>
+    Undo.</li>
 </ul>
 <p><tt>UNDO_POLICY</tt> also specifies transaction-like semantics.&nbsp;
 An "action group" (the <tt>UNDO_POLICY</tt>'s term for transaction) may
@@ -1311,59 +1311,59 @@ added:&nbsp; <tt>UnaryUndoAction</tt>, <tt>BinaryUndoAction</tt>, and <tt>AEUndo
 <h4>Miscellaneous changes<br>
 </h4>
 <ul>
-	<li>Added <span style="font-family: monospace;">Array&lt;&gt;</span>
-	and <span style="font-family: monospace;">MutableArray&lt;&gt;</span>.</li>
-	<li><span style="font-family: monospace;">Region</span> has been
-	replaced by <span style="font-family: monospace;">Shape</span>, <span
-		style="font-family: monospace;">MutableShape</span> and <span
-		style="font-family: monospace;">AutoRegion</span>.<br>
-	</li>
-	<li>Added <span style="font-family: monospace;">ViewProperties&lt;&gt;</span>,
-	<span style="font-family: monospace;">MenuItemProperties&lt;&gt;</span>,
-	<span style="font-family: monospace;">MenuCommandProperties&lt;&gt;</span>,
-	and <span style="font-family: monospace;">WindowProperties&lt;&gt;</span>.&nbsp;
-	These classes allow type-safe access to client-defined properties of
-	toolbox objects.&nbsp; They share a common templated implementation,
-	which is now also shared by <span style="font-family: monospace;">CollectionItem&lt;&gt;</span>.</li>
-	<li><span style="font-family: monospace;"></span>Added more Doxygen
-	comments.</li>
-	<li>Fixed problems in the Xcode projects</li>
-	<li>The localisation aspect of the PLister sample was quite
-	broken.&nbsp; Some of its .plist files weren't in the correct encoding.</li>
-	<li>Changed the Apple Event functor to be true functors, i.e. they
-	implement <span style="font-family: monospace;">operator ()</span>.</li>
-	<li><span style="font-family: monospace;">Toolbar</span> has been
-	enhanced quite a bit.&nbsp; It's possible now to initialise it with the
-	contents of a property list.&nbsp; This makes it very easy to whip up
-	simple toolbars, without having to subclass anything.</li>
-	<li>Added some boost-style concept checking.&nbsp; This work is
-	ongoing.</li>
-	<li>Simplified the <span style="font-family: monospace;">EventHandler</span>
-	classes.&nbsp; <span style="font-family: monospace;">EventHandler</span>
-	is no longer a template class.&nbsp; <span
-		style="font-family: monospace;">EventHandlerBase</span> is gone, as
-	are the <span style="font-family: monospace;">EventFunctorMap</span>
-	classes.</li>
-	<li>Changed <span style="font-family: monospace;">Application::ShowAboutBox()</span>
-	so it gets the app description from a pre-defined key in <span
-		style="font-family: monospace;">InfoPlist.strings</span> instead of <span
-		style="font-family: monospace;">Localizable.strings</span>.</li>
-	<li>Renamed <span style="font-family: monospace;">CustomObject</span>
-	to <span style="font-family: monospace;">EventTarget</span>, which
-	better explains what it does.</li>
-	<li>Exceptions are now serialised when leaving a Carbon Event handler,
-	and deserialised after sending a Carbon Event.</li>
-	<li>Added more template specialisations of <span
-		style="font-family: monospace;">Event&lt;&gt;</span>.</li>
-	<li>Fixed bugs in <span style="font-family: monospace;">HelpButton</span>
-	where the focus ring was leaving artifacts behind.</li>
-	<li>Changed <span style="font-family: monospace;">HelpButton</span> so
-	that if it's running under Panther and it's been given a CGContextRef,
-	it will draw using the new HITheme APIs.<br>
-	</li>
-	<li><span style="font-family: monospace;">CustomView</span> wasn't
-	correctly invalidating the view when in a non-composited window.<br>
-	</li>
+    <li>Added <span style="font-family: monospace;">Array&lt;&gt;</span>
+    and <span style="font-family: monospace;">MutableArray&lt;&gt;</span>.</li>
+    <li><span style="font-family: monospace;">Region</span> has been
+    replaced by <span style="font-family: monospace;">Shape</span>, <span
+        style="font-family: monospace;">MutableShape</span> and <span
+        style="font-family: monospace;">AutoRegion</span>.<br>
+    </li>
+    <li>Added <span style="font-family: monospace;">ViewProperties&lt;&gt;</span>,
+    <span style="font-family: monospace;">MenuItemProperties&lt;&gt;</span>,
+    <span style="font-family: monospace;">MenuCommandProperties&lt;&gt;</span>,
+    and <span style="font-family: monospace;">WindowProperties&lt;&gt;</span>.&nbsp;
+    These classes allow type-safe access to client-defined properties of
+    toolbox objects.&nbsp; They share a common templated implementation,
+    which is now also shared by <span style="font-family: monospace;">CollectionItem&lt;&gt;</span>.</li>
+    <li><span style="font-family: monospace;"></span>Added more Doxygen
+    comments.</li>
+    <li>Fixed problems in the Xcode projects</li>
+    <li>The localisation aspect of the PLister sample was quite
+    broken.&nbsp; Some of its .plist files weren't in the correct encoding.</li>
+    <li>Changed the Apple Event functor to be true functors, i.e. they
+    implement <span style="font-family: monospace;">operator ()</span>.</li>
+    <li><span style="font-family: monospace;">Toolbar</span> has been
+    enhanced quite a bit.&nbsp; It's possible now to initialise it with the
+    contents of a property list.&nbsp; This makes it very easy to whip up
+    simple toolbars, without having to subclass anything.</li>
+    <li>Added some boost-style concept checking.&nbsp; This work is
+    ongoing.</li>
+    <li>Simplified the <span style="font-family: monospace;">EventHandler</span>
+    classes.&nbsp; <span style="font-family: monospace;">EventHandler</span>
+    is no longer a template class.&nbsp; <span
+        style="font-family: monospace;">EventHandlerBase</span> is gone, as
+    are the <span style="font-family: monospace;">EventFunctorMap</span>
+    classes.</li>
+    <li>Changed <span style="font-family: monospace;">Application::ShowAboutBox()</span>
+    so it gets the app description from a pre-defined key in <span
+        style="font-family: monospace;">InfoPlist.strings</span> instead of <span
+        style="font-family: monospace;">Localizable.strings</span>.</li>
+    <li>Renamed <span style="font-family: monospace;">CustomObject</span>
+    to <span style="font-family: monospace;">EventTarget</span>, which
+    better explains what it does.</li>
+    <li>Exceptions are now serialised when leaving a Carbon Event handler,
+    and deserialised after sending a Carbon Event.</li>
+    <li>Added more template specialisations of <span
+        style="font-family: monospace;">Event&lt;&gt;</span>.</li>
+    <li>Fixed bugs in <span style="font-family: monospace;">HelpButton</span>
+    where the focus ring was leaving artifacts behind.</li>
+    <li>Changed <span style="font-family: monospace;">HelpButton</span> so
+    that if it's running under Panther and it's been given a CGContextRef,
+    it will draw using the new HITheme APIs.<br>
+    </li>
+    <li><span style="font-family: monospace;">CustomView</span> wasn't
+    correctly invalidating the view when in a non-composited window.<br>
+    </li>
 </ul>
 </body>
 </html>

@@ -14,8 +14,8 @@
 <Position>B::AboutBoxDescription</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister is a very nifty scriptable property list editor supporting drag &amp; drop and other cool things.</base>
-	<tran loc="fr" origin="OldLoc exact match">PListeur est un petit appli sympa qui permet d&apos;éditer les listes de propriétés, est scriptable, et supporte le drag &amp; drop et autres technologies cools.</tran>
+    <base loc="en"                            >PLister is a very nifty scriptable property list editor supporting drag &amp; drop and other cool things.</base>
+    <tran loc="fr" origin="OldLoc exact match">PListeur est un petit appli sympa qui permet d&apos;éditer les listes de propriétés, est scriptable, et supporte le drag &amp; drop et autres technologies cools.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -25,8 +25,8 @@
 <Position>CFBundleGetInfoString</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister 1.0, a sample app for the B framework.</base>
-	<tran loc="fr" origin="OldLoc exact match">PListeur 1.0, un exemple d&apos;appli pour le cadre d&apos;applications B.</tran>
+    <base loc="en"                            >PLister 1.0, a sample app for the B framework.</base>
+    <tran loc="fr" origin="OldLoc exact match">PListeur 1.0, un exemple d&apos;appli pour le cadre d&apos;applications B.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -36,8 +36,8 @@
 <Position>CFBundleHelpBookName</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister Help</base>
-	<tran loc="fr" origin="OldLoc exact match">Aide PListeur</tran>
+    <base loc="en"                            >PLister Help</base>
+    <tran loc="fr" origin="OldLoc exact match">Aide PListeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -47,8 +47,8 @@
 <Position>CFBundleName</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister</base>
-	<tran loc="fr" origin="OldLoc exact match">PListeur</tran>
+    <base loc="en"                            >PLister</base>
+    <tran loc="fr" origin="OldLoc exact match">PListeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -58,8 +58,8 @@
 <Position>NSHumanReadableCopyright</Position>
 <TranslationSet>
 
-	<base loc="en"                            >© 2003 Paul Lalonde enrg.</base>
-	<tran loc="fr" origin="OldLoc exact match">© 2003 Paul Lalonde enrg.</tran>
+    <base loc="en"                            >© 2003 Paul Lalonde enrg.</base>
+    <tran loc="fr" origin="OldLoc exact match">© 2003 Paul Lalonde enrg.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -69,8 +69,8 @@
 <Position>PropertyListFile</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister Property List</base>
-	<tran loc="fr" origin="OldLoc exact match">Liste de propriétés PListeur</tran>
+    <base loc="en"                            >PLister Property List</base>
+    <tran loc="fr" origin="OldLoc exact match">Liste de propriétés PListeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -80,8 +80,8 @@
 <Position>XMLFile</Position>
 <TranslationSet>
 
-	<base loc="en"                            >XML Property List</base>
-	<tran loc="fr" origin="OldLoc exact match">Liste de propriétés XML</tran>
+    <base loc="en"                            >XML Property List</base>
+    <tran loc="fr" origin="OldLoc exact match">Liste de propriétés XML</tran>
 
 </TranslationSet>
 </TextItem>
@@ -99,8 +99,8 @@
 <Position>Abort</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Abort</base>
-	<tran loc="fr" origin="OldLoc exact match">Avorter</tran>
+    <base loc="en"                            >Abort</base>
+    <tran loc="fr" origin="OldLoc exact match">Avorter</tran>
 
 </TranslationSet>
 </TextItem>
@@ -110,8 +110,8 @@
 <Position>All Readable Files</Position>
 <TranslationSet>
 
-	<base loc="en"                            >All Readable Files</base>
-	<tran loc="fr" origin="OldLoc exact match">Tous les documents lisibles</tran>
+    <base loc="en"                            >All Readable Files</base>
+    <tran loc="fr" origin="OldLoc exact match">Tous les documents lisibles</tran>
 
 </TranslationSet>
 </TextItem>
@@ -121,8 +121,8 @@
 <Position>Assert Message</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Condition: %s\n\nFunction: %s\nFile: %s\nLine # %d</base>
-	<tran loc="fr" origin="OldLoc exact match">Condition: %s\n\nFonction: %s\nFichier: %s\nLigne # %d</tran>
+    <base loc="en"                            >Condition: %s\n\nFunction: %s\nFile: %s\nLine # %d</base>
+    <tran loc="fr" origin="OldLoc exact match">Condition: %s\n\nFonction: %s\nFichier: %s\nLigne # %d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -132,8 +132,8 @@
 <Position>Asssertion Failed</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Asssertion Failed</base>
-	<tran loc="fr" origin="OldLoc exact match">Asssertion échouée</tran>
+    <base loc="en"                            >Asssertion Failed</base>
+    <tran loc="fr" origin="OldLoc exact match">Asssertion échouée</tran>
 
 </TranslationSet>
 </TextItem>
@@ -143,8 +143,8 @@
 <Position>B::PropertyListCreateException</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t read property list file.</base>
-	<tran loc="fr" origin="OldLoc exact match">Incapable de lire un fichier de propriétés.</tran>
+    <base loc="en"                            >Can’t read property list file.</base>
+    <tran loc="fr" origin="OldLoc exact match">Incapable de lire un fichier de propriétés.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -154,8 +154,8 @@
 <Position>Can't Redo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
+    <base loc="en"                            >Can’t Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -165,8 +165,8 @@
 <Position>Can't Undo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
+    <base loc="en"                            >Can’t Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -176,8 +176,8 @@
 <Position>Continue</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Continue</base>
-	<tran loc="fr" origin="OldLoc exact match">Continuer</tran>
+    <base loc="en"                            >Continue</base>
+    <tran loc="fr" origin="OldLoc exact match">Continuer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -187,8 +187,8 @@
 <Position>Out of memory</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Out of memory</base>
-	<tran loc="fr" origin="OldLoc exact match">Plus de mémoire</tran>
+    <base loc="en"                            >Out of memory</base>
+    <tran loc="fr" origin="OldLoc exact match">Plus de mémoire</tran>
 
 </TranslationSet>
 </TextItem>
@@ -198,8 +198,8 @@
 <Position>Quiet</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Quiet</base>
-	<tran loc="fr" origin="OldLoc exact match">Muet</tran>
+    <base loc="en"                            >Quiet</base>
+    <tran loc="fr" origin="OldLoc exact match">Muet</tran>
 
 </TranslationSet>
 </TextItem>
@@ -209,8 +209,8 @@
 <Position>Redo %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Redo %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir %1%</tran>
+    <base loc="en"                            >Redo %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -220,8 +220,8 @@
 <Position>Redo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+    <base loc="en"                            >Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -231,8 +231,8 @@
 <Position>Throw Message</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Message: %1%\nError: %2%\n\nFunction: %3%\nFile: %4%\nLine # %5%</base>
-	<tran loc="fr" origin="OldLoc exact match">Message: %1%\nErreur: %2%\n\nFonction: %3%\nFichier: %4%\nLigne # %5%</tran>
+    <base loc="en"                            >Message: %1%\nError: %2%\n\nFunction: %3%\nFile: %4%\nLine # %5%</base>
+    <tran loc="fr" origin="OldLoc exact match">Message: %1%\nErreur: %2%\n\nFonction: %3%\nFichier: %4%\nLigne # %5%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -242,8 +242,8 @@
 <Position>Throw Message</Position>
 <TranslationSet>
 
-	<base loc="en"          >Message: %1%\nWhat: %2%\nError: %3%\n\nFunction: %4%\nFile: %5%\nLine # %6%</base>
-	<tran loc="fr" origin="">Message: %1%\nQuoi: %2%\nErreur: %3%\n\nFonction: %4%\nFichier: %5%\nLigne # %6%</tran>
+    <base loc="en"          >Message: %1%\nWhat: %2%\nError: %3%\n\nFunction: %4%\nFile: %5%\nLine # %6%</base>
+    <tran loc="fr" origin="">Message: %1%\nQuoi: %2%\nErreur: %3%\n\nFonction: %4%\nFichier: %5%\nLigne # %6%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -253,8 +253,8 @@
 <Position>Undo %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Undo %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">Annuler %1%</tran>
+    <base loc="en"                            >Undo %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">Annuler %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -264,8 +264,8 @@
 <Position>Undo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Annuler</tran>
+    <base loc="en"                            >Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -275,8 +275,8 @@
 <Position>Unknown exception</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown exception.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
+    <base loc="en"                            >Unknown exception.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -286,8 +286,8 @@
 <Position>boost::bad_format_string</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Bad format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Chaîne de format incorrecte.</tran>
+    <base loc="en"                            >Bad format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Chaîne de format incorrecte.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -297,8 +297,8 @@
 <Position>boost::format_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown boost format error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue de boost::format.</tran>
+    <base loc="en"                            >Unknown boost format error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue de boost::format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -308,8 +308,8 @@
 <Position>boost::out_of_range</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Value out of range for format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Valeur hors-norme dans une chaîne de format.</tran>
+    <base loc="en"                            >Value out of range for format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Valeur hors-norme dans une chaîne de format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -319,8 +319,8 @@
 <Position>boost::too_few_args</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Too few arguments for format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Trop peu d&apos;arguments furent fournis à une chaîne de format.</tran>
+    <base loc="en"                            >Too few arguments for format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Trop peu d&apos;arguments furent fournis à une chaîne de format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -330,8 +330,8 @@
 <Position>boost::too_many_args</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Too many arguments for format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Trop d&apos;arguments furent fournis à une chaîne de format.</tran>
+    <base loc="en"                            >Too many arguments for format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Trop d&apos;arguments furent fournis à une chaîne de format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -341,8 +341,8 @@
 <Position>std::domain_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown domain error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue de domaine.</tran>
+    <base loc="en"                            >Unknown domain error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue de domaine.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -352,8 +352,8 @@
 <Position>std::exception</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
+    <base loc="en"                            >Unknown error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -363,8 +363,8 @@
 <Position>std::invalid_argument</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Invalid argument.</base>
-	<tran loc="fr" origin="OldLoc exact match">Argument invalide.</tran>
+    <base loc="en"                            >Invalid argument.</base>
+    <tran loc="fr" origin="OldLoc exact match">Argument invalide.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -374,8 +374,8 @@
 <Position>std::ios_base::failure</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Input/Output error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur d’entrée/sortie.</tran>
+    <base loc="en"                            >Input/Output error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur d’entrée/sortie.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -385,8 +385,8 @@
 <Position>std::length_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Length exceeds maximum.</base>
-	<tran loc="fr" origin="OldLoc exact match">Taille trop grande.</tran>
+    <base loc="en"                            >Length exceeds maximum.</base>
+    <tran loc="fr" origin="OldLoc exact match">Taille trop grande.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -396,8 +396,8 @@
 <Position>std::logic_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown logic error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur de logique inconnue.</tran>
+    <base loc="en"                            >Unknown logic error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur de logique inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -407,8 +407,8 @@
 <Position>std::out_of_range</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Value out of range.</base>
-	<tran loc="fr" origin="OldLoc exact match">Valeur hors-norme.</tran>
+    <base loc="en"                            >Value out of range.</base>
+    <tran loc="fr" origin="OldLoc exact match">Valeur hors-norme.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -418,8 +418,8 @@
 <Position>std::overflow_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Overflow error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Dépassement de capacité.</tran>
+    <base loc="en"                            >Overflow error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Dépassement de capacité.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -429,8 +429,8 @@
 <Position>std::range_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown range error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue d&apos;étendue.</tran>
+    <base loc="en"                            >Unknown range error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue d&apos;étendue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -440,8 +440,8 @@
 <Position>std::runtime_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown runtime error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur d’exécution inconnue.</tran>
+    <base loc="en"                            >Unknown runtime error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur d’exécution inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -451,8 +451,8 @@
 <Position>std::underflow_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Underflow error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Soupassement de capacité.</tran>
+    <base loc="en"                            >Underflow error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Soupassement de capacité.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -462,8 +462,8 @@
 <Position>untitled %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >untitled %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">sans titre %1%</tran>
+    <base loc="en"                            >untitled %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">sans titre %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -473,8 +473,8 @@
 <Position>untitled</Position>
 <TranslationSet>
 
-	<base loc="en"                            >untitled</base>
-	<tran loc="fr" origin="OldLoc exact match">sans titre</tran>
+    <base loc="en"                            >untitled</base>
+    <tran loc="fr" origin="OldLoc exact match">sans titre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -492,8 +492,8 @@
 <Position>127.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >File</base>
-	<tran loc="fr" origin="OldLoc exact match">Fichier</tran>
+    <base loc="en"                            >File</base>
+    <tran loc="fr" origin="OldLoc exact match">Fichier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -503,8 +503,8 @@
 <Position>130.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Close</base>
-	<tran loc="fr" origin="OldLoc exact match">Fermer</tran>
+    <base loc="en"                            >Close</base>
+    <tran loc="fr" origin="OldLoc exact match">Fermer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -514,8 +514,8 @@
 <Position>131</Position>
 <TranslationSet>
 
-	<base loc="en"                            >File</base>
-	<tran loc="fr" origin="OldLoc exact match">Fichier</tran>
+    <base loc="en"                            >File</base>
+    <tran loc="fr" origin="OldLoc exact match">Fichier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -525,8 +525,8 @@
 <Position>132.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Revert</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+    <base loc="en"                            >Revert</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -536,8 +536,8 @@
 <Position>134.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Open…</base>
-	<tran loc="fr" origin="OldLoc exact match">Ouvrir…</tran>
+    <base loc="en"                            >Open…</base>
+    <tran loc="fr" origin="OldLoc exact match">Ouvrir…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -547,8 +547,8 @@
 <Position>135.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Page Setup…</base>
-	<tran loc="fr" origin="OldLoc exact match">Format d’impression…</tran>
+    <base loc="en"                            >Page Setup…</base>
+    <tran loc="fr" origin="OldLoc exact match">Format d’impression…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -558,8 +558,8 @@
 <Position>136.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Print…</base>
-	<tran loc="fr" origin="OldLoc exact match">Imprimer…</tran>
+    <base loc="en"                            >Print…</base>
+    <tran loc="fr" origin="OldLoc exact match">Imprimer…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -569,8 +569,8 @@
 <Position>137.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Save As…</base>
-	<tran loc="fr" origin="OldLoc exact match">Enregistrer sous…</tran>
+    <base loc="en"                            >Save As…</base>
+    <tran loc="fr" origin="OldLoc exact match">Enregistrer sous…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -580,8 +580,8 @@
 <Position>138.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Save</base>
-	<tran loc="fr" origin="OldLoc exact match">Enregistrer</tran>
+    <base loc="en"                            >Save</base>
+    <tran loc="fr" origin="OldLoc exact match">Enregistrer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -591,8 +591,8 @@
 <Position>139.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouveau</tran>
+    <base loc="en"                            >New</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouveau</tran>
 
 </TranslationSet>
 </TextItem>
@@ -602,8 +602,8 @@
 <Position>141.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Annuler</tran>
+    <base loc="en"                            >Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -613,8 +613,8 @@
 <Position>141.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
+    <base loc="en"                            >Can’t Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -624,8 +624,8 @@
 <Position>143.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Cut</base>
-	<tran loc="fr" origin="OldLoc exact match">Couper</tran>
+    <base loc="en"                            >Cut</base>
+    <tran loc="fr" origin="OldLoc exact match">Couper</tran>
 
 </TranslationSet>
 </TextItem>
@@ -635,8 +635,8 @@
 <Position>144.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Paste</base>
-	<tran loc="fr" origin="OldLoc exact match">Coller</tran>
+    <base loc="en"                            >Paste</base>
+    <tran loc="fr" origin="OldLoc exact match">Coller</tran>
 
 </TranslationSet>
 </TextItem>
@@ -646,8 +646,8 @@
 <Position>146.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+    <base loc="en"                            >Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -657,8 +657,8 @@
 <Position>146.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
+    <base loc="en"                            >Can’t Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -668,8 +668,8 @@
 <Position>147</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Edit</base>
-	<tran loc="fr" origin="OldLoc exact match">Édition</tran>
+    <base loc="en"                            >Edit</base>
+    <tran loc="fr" origin="OldLoc exact match">Édition</tran>
 
 </TranslationSet>
 </TextItem>
@@ -679,8 +679,8 @@
 <Position>148.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Select All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout sélectionner</tran>
+    <base loc="en"                            >Select All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout sélectionner</tran>
 
 </TranslationSet>
 </TextItem>
@@ -690,8 +690,8 @@
 <Position>149.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Copy</base>
-	<tran loc="fr" origin="OldLoc exact match">Copier</tran>
+    <base loc="en"                            >Copy</base>
+    <tran loc="fr" origin="OldLoc exact match">Copier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -701,8 +701,8 @@
 <Position>151.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Clear</base>
-	<tran loc="fr" origin="OldLoc exact match">Effacer</tran>
+    <base loc="en"                            >Clear</base>
+    <tran loc="fr" origin="OldLoc exact match">Effacer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -712,8 +712,8 @@
 <Position>152.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Edit</base>
-	<tran loc="fr" origin="OldLoc exact match">Édition</tran>
+    <base loc="en"                            >Edit</base>
+    <tran loc="fr" origin="OldLoc exact match">Édition</tran>
 
 </TranslationSet>
 </TextItem>
@@ -723,8 +723,8 @@
 <Position>153.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
+    <base loc="en"                            >Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -734,8 +734,8 @@
 <Position>154</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
+    <base loc="en"                            >Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -745,8 +745,8 @@
 <Position>155.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Minimize Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Masquer la fenêtre</tran>
+    <base loc="en"                            >Minimize Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Masquer la fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -756,8 +756,8 @@
 <Position>157.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Bring All to Front</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout ramener au premier plan</tran>
+    <base loc="en"                            >Bring All to Front</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout ramener au premier plan</tran>
 
 </TranslationSet>
 </TextItem>
@@ -767,8 +767,8 @@
 <Position>166.2</Position>
 <TranslationSet>
 
-	<base loc="en"                            >this is my help tag</base>
-	<tran loc="fr" origin="OldLoc exact match">ceci est mon étiquette d’aide</tran>
+    <base loc="en"                            >this is my help tag</base>
+    <tran loc="fr" origin="OldLoc exact match">ceci est mon étiquette d’aide</tran>
 
 </TranslationSet>
 </TextItem>
@@ -778,8 +778,8 @@
 <Position>166</Position>
 <TranslationSet>
 
-	<base loc="en"                            >##NOTR Doc Window</base>
-	<tran loc="fr" origin="OldLoc exact match">##NOTR Doc Window</tran>
+    <base loc="en"                            >##NOTR Doc Window</base>
+    <tran loc="fr" origin="OldLoc exact match">##NOTR Doc Window</tran>
 
 </TranslationSet>
 </TextItem>
@@ -789,8 +789,8 @@
 <Position>166</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Doc Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Doc Window</tran>
+    <base loc="en"                            >Doc Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Doc Window</tran>
 
 </TranslationSet>
 </TextItem>
@@ -800,8 +800,8 @@
 <Position>184</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister</base>
-	<tran loc="fr" origin="OldLoc exact match">PLister</tran>
+    <base loc="en"                            >PLister</base>
+    <tran loc="fr" origin="OldLoc exact match">PLister</tran>
 
 </TranslationSet>
 </TextItem>
@@ -811,8 +811,8 @@
 <Position>185.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister</base>
-	<tran loc="fr" origin="OldLoc exact match">PLister</tran>
+    <base loc="en"                            >PLister</base>
+    <tran loc="fr" origin="OldLoc exact match">PLister</tran>
 
 </TranslationSet>
 </TextItem>
@@ -822,8 +822,8 @@
 <Position>187.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >About PLister…</base>
-	<tran loc="fr" origin="OldLoc exact match">À propos de PListeur…</tran>
+    <base loc="en"                            >About PLister…</base>
+    <tran loc="fr" origin="OldLoc exact match">À propos de PListeur…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -833,8 +833,8 @@
 <Position>188.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Minimize All Windows</base>
-	<tran loc="fr" origin="OldLoc exact match">Masquer toutes les fenêtres</tran>
+    <base loc="en"                            >Minimize All Windows</base>
+    <tran loc="fr" origin="OldLoc exact match">Masquer toutes les fenêtres</tran>
 
 </TranslationSet>
 </TextItem>
@@ -844,8 +844,8 @@
 <Position>189.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Arrange in Front</base>
-	<tran loc="fr" origin="OldLoc exact match">Mettre au premier plan</tran>
+    <base loc="en"                            >Arrange in Front</base>
+    <tran loc="fr" origin="OldLoc exact match">Mettre au premier plan</tran>
 
 </TranslationSet>
 </TextItem>
@@ -855,8 +855,8 @@
 <Position>292.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+    <base loc="en"                            >Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -866,8 +866,8 @@
 <Position>293</Position>
 <TranslationSet>
 
-	<base loc="en"                            >File</base>
-	<tran loc="fr" origin="OldLoc exact match">Fichier</tran>
+    <base loc="en"                            >File</base>
+    <tran loc="fr" origin="OldLoc exact match">Fichier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -877,8 +877,8 @@
 <Position>294</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Edit</base>
-	<tran loc="fr" origin="OldLoc exact match">Édition</tran>
+    <base loc="en"                            >Edit</base>
+    <tran loc="fr" origin="OldLoc exact match">Édition</tran>
 
 </TranslationSet>
 </TextItem>
@@ -888,8 +888,8 @@
 <Position>295.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Page Setup…</base>
-	<tran loc="fr" origin="OldLoc exact match">Format d’impression…</tran>
+    <base loc="en"                            >Page Setup…</base>
+    <tran loc="fr" origin="OldLoc exact match">Format d’impression…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -899,8 +899,8 @@
 <Position>296.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Clear</base>
-	<tran loc="fr" origin="OldLoc exact match">Effacer</tran>
+    <base loc="en"                            >Clear</base>
+    <tran loc="fr" origin="OldLoc exact match">Effacer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -910,8 +910,8 @@
 <Position>298.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Close</base>
-	<tran loc="fr" origin="OldLoc exact match">Fermer</tran>
+    <base loc="en"                            >Close</base>
+    <tran loc="fr" origin="OldLoc exact match">Fermer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -921,8 +921,8 @@
 <Position>29</Position>
 <TranslationSet>
 
-	<base loc="en"                            >MainMenu.X</base>
-	<tran loc="fr" origin="OldLoc exact match">MainMenu.X</tran>
+    <base loc="en"                            >MainMenu.X</base>
+    <tran loc="fr" origin="OldLoc exact match">MainMenu.X</tran>
 
 </TranslationSet>
 </TextItem>
@@ -932,8 +932,8 @@
 <Position>300.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Minimize Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Masquer la fenêtre</tran>
+    <base loc="en"                            >Minimize Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Masquer la fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -943,8 +943,8 @@
 <Position>301.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Cut</base>
-	<tran loc="fr" origin="OldLoc exact match">Couper</tran>
+    <base loc="en"                            >Cut</base>
+    <tran loc="fr" origin="OldLoc exact match">Couper</tran>
 
 </TranslationSet>
 </TextItem>
@@ -954,8 +954,8 @@
 <Position>303.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Edit</base>
-	<tran loc="fr" origin="OldLoc exact match">Édition</tran>
+    <base loc="en"                            >Edit</base>
+    <tran loc="fr" origin="OldLoc exact match">Édition</tran>
 
 </TranslationSet>
 </TextItem>
@@ -965,8 +965,8 @@
 <Position>304.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >File</base>
-	<tran loc="fr" origin="OldLoc exact match">Fichier</tran>
+    <base loc="en"                            >File</base>
+    <tran loc="fr" origin="OldLoc exact match">Fichier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -976,8 +976,8 @@
 <Position>305.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Minimize All Windows</base>
-	<tran loc="fr" origin="OldLoc exact match">Masquer toutes les fenêtres</tran>
+    <base loc="en"                            >Minimize All Windows</base>
+    <tran loc="fr" origin="OldLoc exact match">Masquer toutes les fenêtres</tran>
 
 </TranslationSet>
 </TextItem>
@@ -987,8 +987,8 @@
 <Position>306.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Annuler</tran>
+    <base loc="en"                            >Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -998,8 +998,8 @@
 <Position>307.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouveau</tran>
+    <base loc="en"                            >New</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouveau</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1009,8 +1009,8 @@
 <Position>308.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Save As…</base>
-	<tran loc="fr" origin="OldLoc exact match">Enregistrer sous…</tran>
+    <base loc="en"                            >Save As…</base>
+    <tran loc="fr" origin="OldLoc exact match">Enregistrer sous…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1020,8 +1020,8 @@
 <Position>309</Position>
 <TranslationSet>
 
-	<base loc="en"                            >MainMenu</base>
-	<tran loc="fr" origin="OldLoc exact match">MainMenu</tran>
+    <base loc="en"                            >MainMenu</base>
+    <tran loc="fr" origin="OldLoc exact match">MainMenu</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1031,8 +1031,8 @@
 <Position>310.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Revert</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+    <base loc="en"                            >Revert</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1042,8 +1042,8 @@
 <Position>311.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
+    <base loc="en"                            >Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1053,8 +1053,8 @@
 <Position>312.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Paste</base>
-	<tran loc="fr" origin="OldLoc exact match">Coller</tran>
+    <base loc="en"                            >Paste</base>
+    <tran loc="fr" origin="OldLoc exact match">Coller</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1064,8 +1064,8 @@
 <Position>313.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Bring All to Front</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout ramener au premier plan</tran>
+    <base loc="en"                            >Bring All to Front</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout ramener au premier plan</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1075,8 +1075,8 @@
 <Position>314.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Arrange in Front</base>
-	<tran loc="fr" origin="OldLoc exact match">Mettre au premier plan</tran>
+    <base loc="en"                            >Arrange in Front</base>
+    <tran loc="fr" origin="OldLoc exact match">Mettre au premier plan</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1086,8 +1086,8 @@
 <Position>315.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >About PLister…</base>
-	<tran loc="fr" origin="OldLoc exact match">À propos de PListeur…</tran>
+    <base loc="en"                            >About PLister…</base>
+    <tran loc="fr" origin="OldLoc exact match">À propos de PListeur…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1097,8 +1097,8 @@
 <Position>316</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister</base>
-	<tran loc="fr" origin="OldLoc exact match">PLister</tran>
+    <base loc="en"                            >PLister</base>
+    <tran loc="fr" origin="OldLoc exact match">PLister</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1108,8 +1108,8 @@
 <Position>317.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PLister</base>
-	<tran loc="fr" origin="OldLoc exact match">PLister</tran>
+    <base loc="en"                            >PLister</base>
+    <tran loc="fr" origin="OldLoc exact match">PLister</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1119,8 +1119,8 @@
 <Position>319.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Select All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout sélectionner</tran>
+    <base loc="en"                            >Select All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout sélectionner</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1130,8 +1130,8 @@
 <Position>320.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Save</base>
-	<tran loc="fr" origin="OldLoc exact match">Enregistrer</tran>
+    <base loc="en"                            >Save</base>
+    <tran loc="fr" origin="OldLoc exact match">Enregistrer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1141,8 +1141,8 @@
 <Position>321.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Copy</base>
-	<tran loc="fr" origin="OldLoc exact match">Copier</tran>
+    <base loc="en"                            >Copy</base>
+    <tran loc="fr" origin="OldLoc exact match">Copier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1152,8 +1152,8 @@
 <Position>322</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
+    <base loc="en"                            >Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1163,8 +1163,8 @@
 <Position>323.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Print…</base>
-	<tran loc="fr" origin="OldLoc exact match">Imprimer…</tran>
+    <base loc="en"                            >Print…</base>
+    <tran loc="fr" origin="OldLoc exact match">Imprimer…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1174,8 +1174,8 @@
 <Position>324.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Open…</base>
-	<tran loc="fr" origin="OldLoc exact match">Ouvrir…</tran>
+    <base loc="en"                            >Open…</base>
+    <tran loc="fr" origin="OldLoc exact match">Ouvrir…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1185,8 +1185,8 @@
 <Position>326.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Preferences…</base>
-	<tran loc="fr" origin="OldLoc exact match">Préférences…</tran>
+    <base loc="en"                            >Preferences…</base>
+    <tran loc="fr" origin="OldLoc exact match">Préférences…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1196,8 +1196,8 @@
 <Position>328.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Quit</base>
-	<tran loc="fr" origin="OldLoc exact match">Quitter</tran>
+    <base loc="en"                            >Quit</base>
+    <tran loc="fr" origin="OldLoc exact match">Quitter</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1207,8 +1207,8 @@
 <Position>330.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Preferences…</base>
-	<tran loc="fr" origin="OldLoc exact match">Préférences…</tran>
+    <base loc="en"                            >Preferences…</base>
+    <tran loc="fr" origin="OldLoc exact match">Préférences…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1218,8 +1218,8 @@
 <Position>358.0</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Property List</base>
-	<tran loc="fr" origin="OldLoc exact match">Liste de propriétés</tran>
+    <base loc="en"                            >Property List</base>
+    <tran loc="fr" origin="OldLoc exact match">Liste de propriétés</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1229,8 +1229,8 @@
 <Position>358.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Class</base>
-	<tran loc="fr" origin="OldLoc exact match">Classe</tran>
+    <base loc="en"                            >Class</base>
+    <tran loc="fr" origin="OldLoc exact match">Classe</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1240,8 +1240,8 @@
 <Position>358.2</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Value</base>
-	<tran loc="fr" origin="OldLoc exact match">Valeur</tran>
+    <base loc="en"                            >Value</base>
+    <tran loc="fr" origin="OldLoc exact match">Valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1251,8 +1251,8 @@
 <Position>359</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Class</base>
-	<tran loc="fr" origin="OldLoc exact match">Classe</tran>
+    <base loc="en"                            >Class</base>
+    <tran loc="fr" origin="OldLoc exact match">Classe</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1262,8 +1262,8 @@
 <Position>360.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Dictionary</base>
-	<tran loc="fr" origin="OldLoc exact match">Dictionnaire</tran>
+    <base loc="en"                            >Dictionary</base>
+    <tran loc="fr" origin="OldLoc exact match">Dictionnaire</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1273,8 +1273,8 @@
 <Position>361.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >String</base>
-	<tran loc="fr" origin="OldLoc exact match">Chaîne</tran>
+    <base loc="en"                            >String</base>
+    <tran loc="fr" origin="OldLoc exact match">Chaîne</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1284,8 +1284,8 @@
 <Position>362.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Array</base>
-	<tran loc="fr" origin="OldLoc exact match">Tableau</tran>
+    <base loc="en"                            >Array</base>
+    <tran loc="fr" origin="OldLoc exact match">Tableau</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1295,8 +1295,8 @@
 <Position>363.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Number</base>
-	<tran loc="fr" origin="OldLoc exact match">Nombre</tran>
+    <base loc="en"                            >Number</base>
+    <tran loc="fr" origin="OldLoc exact match">Nombre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1306,8 +1306,8 @@
 <Position>363.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Integer</base>
-	<tran loc="fr" origin="OldLoc exact match">Entier</tran>
+    <base loc="en"                            >Integer</base>
+    <tran loc="fr" origin="OldLoc exact match">Entier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1317,8 +1317,8 @@
 <Position>364.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Boolean</base>
-	<tran loc="fr" origin="OldLoc exact match">Booléen</tran>
+    <base loc="en"                            >Boolean</base>
+    <tran loc="fr" origin="OldLoc exact match">Booléen</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1328,8 +1328,8 @@
 <Position>365.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Date</base>
-	<tran loc="fr" origin="OldLoc exact match">Date</tran>
+    <base loc="en"                            >Date</base>
+    <tran loc="fr" origin="OldLoc exact match">Date</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1339,8 +1339,8 @@
 <Position>366.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Data</base>
-	<tran loc="fr" origin="OldLoc exact match">Donnée</tran>
+    <base loc="en"                            >Data</base>
+    <tran loc="fr" origin="OldLoc exact match">Donnée</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1350,8 +1350,8 @@
 <Position>367.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
+    <base loc="en"                            >Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1361,8 +1361,8 @@
 <Position>374.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Zoom</base>
-	<tran loc="fr" origin="OldLoc exact match">Agrandir la fenêtre</tran>
+    <base loc="en"                            >Zoom</base>
+    <tran loc="fr" origin="OldLoc exact match">Agrandir la fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1372,8 +1372,8 @@
 <Position>375.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Zoom</base>
-	<tran loc="fr" origin="OldLoc exact match">Agrandir la fenêtre</tran>
+    <base loc="en"                            >Zoom</base>
+    <tran loc="fr" origin="OldLoc exact match">Agrandir la fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1383,8 +1383,8 @@
 <Position>377.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >File</base>
-	<tran loc="fr" origin="OldLoc exact match">Fichier</tran>
+    <base loc="en"                            >File</base>
+    <tran loc="fr" origin="OldLoc exact match">Fichier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1394,8 +1394,8 @@
 <Position>388.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Close All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout fermer</tran>
+    <base loc="en"                            >Close All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout fermer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1405,8 +1405,8 @@
 <Position>389.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Save All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout enregistrer</tran>
+    <base loc="en"                            >Save All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout enregistrer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1416,8 +1416,8 @@
 <Position>390.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Close All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout fermer</tran>
+    <base loc="en"                            >Close All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout fermer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1427,8 +1427,8 @@
 <Position>391.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Save All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout enregistrer</tran>
+    <base loc="en"                            >Save All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout enregistrer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1438,8 +1438,8 @@
 <Position>392.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Open Recent</base>
-	<tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
+    <base loc="en"                            >Open Recent</base>
+    <tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1449,8 +1449,8 @@
 <Position>393</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Open Recent</base>
-	<tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
+    <base loc="en"                            >Open Recent</base>
+    <tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1460,8 +1460,8 @@
 <Position>395.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Open Recent</base>
-	<tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
+    <base loc="en"                            >Open Recent</base>
+    <tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1471,8 +1471,8 @@
 <Position>396</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Open Recent</base>
-	<tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
+    <base loc="en"                            >Open Recent</base>
+    <tran loc="fr" origin="OldLoc exact match">Ouvrir récent</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1482,8 +1482,8 @@
 <Position>398.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Sibling</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel Item</tran>
+    <base loc="en"                            >New Sibling</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel Item</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1493,8 +1493,8 @@
 <Position>399.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Delete</base>
-	<tran loc="fr" origin="OldLoc exact match">Supprimer</tran>
+    <base loc="en"                            >Delete</base>
+    <tran loc="fr" origin="OldLoc exact match">Supprimer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1504,8 +1504,8 @@
 <Position>400.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Child</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel Enfant</tran>
+    <base loc="en"                            >New Child</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel Enfant</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1515,8 +1515,8 @@
 <Position>401</Position>
 <TranslationSet>
 
-	<base loc="en"                         >Window</base>
-	<tran loc="fr" origin="AD matched text">Fenêtre</tran>
+    <base loc="en"                         >Window</base>
+    <tran loc="fr" origin="AD matched text">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1526,8 +1526,8 @@
 <Position>430.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Customize Toolbar</base>
-	<tran loc="fr" origin="OldLoc exact match">Personnaliser la barre d’outils…</tran>
+    <base loc="en"                            >Customize Toolbar</base>
+    <tran loc="fr" origin="OldLoc exact match">Personnaliser la barre d’outils…</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1537,8 +1537,8 @@
 <Position>453.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Window</base>
-	<tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
+    <base loc="en"                            >Window</base>
+    <tran loc="fr" origin="OldLoc exact match">Fenêtre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1548,8 +1548,8 @@
 <Position>458.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Sibling</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel Item</tran>
+    <base loc="en"                            >New Sibling</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel Item</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1559,8 +1559,8 @@
 <Position>459.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Child</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel Enfant</tran>
+    <base loc="en"                            >New Child</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel Enfant</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1570,8 +1570,8 @@
 <Position>467.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Change Value</base>
-	<tran loc="fr" origin="OldLoc exact match">Éditer la valeur</tran>
+    <base loc="en"                            >Change Value</base>
+    <tran loc="fr" origin="OldLoc exact match">Éditer la valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1581,8 +1581,8 @@
 <Position>467.1</Position>
 <TranslationSet>
 
-	<base loc="en"                         >Duplicate</base>
-	<tran loc="fr" origin="AD matched text">Dupliquer</tran>
+    <base loc="en"                         >Duplicate</base>
+    <tran loc="fr" origin="AD matched text">Dupliquer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1592,8 +1592,8 @@
 <Position>504.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Clear Menu</base>
-	<tran loc="fr" origin="OldLoc exact match">Effacer le menu</tran>
+    <base loc="en"                            >Clear Menu</base>
+    <tran loc="fr" origin="OldLoc exact match">Effacer le menu</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1603,8 +1603,8 @@
 <Position>506</Position>
 <TranslationSet>
 
-	<base loc="en"          >Menu</base>
-	<tran loc="fr" origin="">Menu</tran>
+    <base loc="en"          >Menu</base>
+    <tran loc="fr" origin="">Menu</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1614,8 +1614,8 @@
 <Position>511.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Cut</base>
-	<tran loc="fr" origin="OldLoc exact match">Couper</tran>
+    <base loc="en"                            >Cut</base>
+    <tran loc="fr" origin="OldLoc exact match">Couper</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1625,8 +1625,8 @@
 <Position>512.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Copy</base>
-	<tran loc="fr" origin="OldLoc exact match">Copier</tran>
+    <base loc="en"                            >Copy</base>
+    <tran loc="fr" origin="OldLoc exact match">Copier</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1636,8 +1636,8 @@
 <Position>513.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Paste</base>
-	<tran loc="fr" origin="OldLoc exact match">Coller</tran>
+    <base loc="en"                            >Paste</base>
+    <tran loc="fr" origin="OldLoc exact match">Coller</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1647,8 +1647,8 @@
 <Position>514.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Clear</base>
-	<tran loc="fr" origin="OldLoc exact match">Effacer</tran>
+    <base loc="en"                            >Clear</base>
+    <tran loc="fr" origin="OldLoc exact match">Effacer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1658,8 +1658,8 @@
 <Position>515.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Select All</base>
-	<tran loc="fr" origin="OldLoc exact match">Tout sélectionner</tran>
+    <base loc="en"                            >Select All</base>
+    <tran loc="fr" origin="OldLoc exact match">Tout sélectionner</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1669,8 +1669,8 @@
 <Position>516.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Duplicate</base>
-	<tran loc="fr" origin="OldLoc exact match">Dupliquer</tran>
+    <base loc="en"                            >Duplicate</base>
+    <tran loc="fr" origin="OldLoc exact match">Dupliquer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1680,8 +1680,8 @@
 <Position>517.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Sibling</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel Item</tran>
+    <base loc="en"                            >New Sibling</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel Item</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1691,8 +1691,8 @@
 <Position>518.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Child</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel Enfant</tran>
+    <base loc="en"                            >New Child</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel Enfant</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1702,8 +1702,8 @@
 <Position>528.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Real</base>
-	<tran loc="fr" origin="OldLoc exact match">Réel</tran>
+    <base loc="en"                            >Real</base>
+    <tran loc="fr" origin="OldLoc exact match">Réel</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1713,8 +1713,8 @@
 <Position>531.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >PListerHelp.html</base>
-	<tran loc="fr" origin="OldLoc exact match">PListerHelp.html</tran>
+    <base loc="en"                            >PListerHelp.html</base>
+    <tran loc="fr" origin="OldLoc exact match">PListerHelp.html</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1724,8 +1724,8 @@
 <Position>531.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >LonguePage.html#InvitationAuVoyage</base>
-	<tran loc="fr" origin="OldLoc exact match">LonguePage.html#InvitationAuVoyage</tran>
+    <base loc="en"                            >LonguePage.html#InvitationAuVoyage</base>
+    <tran loc="fr" origin="OldLoc exact match">LonguePage.html#InvitationAuVoyage</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1735,8 +1735,8 @@
 <Position>532.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >text 1:</base>
-	<tran loc="fr" origin="OldLoc exact match">text 1:</tran>
+    <base loc="en"                            >text 1:</base>
+    <tran loc="fr" origin="OldLoc exact match">text 1:</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1746,8 +1746,8 @@
 <Position>534.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >text 3:</base>
-	<tran loc="fr" origin="OldLoc exact match">text 3:</tran>
+    <base loc="en"                            >text 3:</base>
+    <tran loc="fr" origin="OldLoc exact match">text 3:</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1757,8 +1757,8 @@
 <Position>535</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test 1</base>
-	<tran loc="fr" origin="OldLoc exact match">Test 1</tran>
+    <base loc="en"                            >Test 1</base>
+    <tran loc="fr" origin="OldLoc exact match">Test 1</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1768,8 +1768,8 @@
 <Position>539.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >text 2:</base>
-	<tran loc="fr" origin="OldLoc exact match">text 2:</tran>
+    <base loc="en"                            >text 2:</base>
+    <tran loc="fr" origin="OldLoc exact match">text 2:</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1779,8 +1779,8 @@
 <Position>540.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >text 4:</base>
-	<tran loc="fr" origin="OldLoc exact match">text 4:</tran>
+    <base loc="en"                            >text 4:</base>
+    <tran loc="fr" origin="OldLoc exact match">text 4:</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1790,8 +1790,8 @@
 <Position>543.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test 2</base>
-	<tran loc="fr" origin="OldLoc exact match">Test 2</tran>
+    <base loc="en"                            >Test 2</base>
+    <tran loc="fr" origin="OldLoc exact match">Test 2</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1801,8 +1801,8 @@
 <Position>544.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test 1</base>
-	<tran loc="fr" origin="OldLoc exact match">Test 1</tran>
+    <base loc="en"                            >Test 1</base>
+    <tran loc="fr" origin="OldLoc exact match">Test 1</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1812,8 +1812,8 @@
 <Position>546.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test 3</base>
-	<tran loc="fr" origin="OldLoc exact match">Test 3</tran>
+    <base loc="en"                            >Test 3</base>
+    <tran loc="fr" origin="OldLoc exact match">Test 3</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1823,8 +1823,8 @@
 <Position>547</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test</base>
-	<tran loc="fr" origin="OldLoc exact match">Test</tran>
+    <base loc="en"                            >Test</base>
+    <tran loc="fr" origin="OldLoc exact match">Test</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1834,8 +1834,8 @@
 <Position>549.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test 4</base>
-	<tran loc="fr" origin="OldLoc exact match">Test 4</tran>
+    <base loc="en"                            >Test 4</base>
+    <tran loc="fr" origin="OldLoc exact match">Test 4</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1845,8 +1845,8 @@
 <Position>550.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Test</base>
-	<tran loc="fr" origin="OldLoc exact match">Test</tran>
+    <base loc="en"                            >Test</base>
+    <tran loc="fr" origin="OldLoc exact match">Test</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1856,8 +1856,8 @@
 <Position>553.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Duplicate</base>
-	<tran loc="fr" origin="OldLoc exact match">Dupliquer</tran>
+    <base loc="en"                            >Duplicate</base>
+    <tran loc="fr" origin="OldLoc exact match">Dupliquer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1867,8 +1867,8 @@
 <Position>554.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Change Value</base>
-	<tran loc="fr" origin="OldLoc exact match">Éditer la valeur</tran>
+    <base loc="en"                            >Change Value</base>
+    <tran loc="fr" origin="OldLoc exact match">Éditer la valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1886,8 +1886,8 @@
 <Position>%1$@ %2$d</Position>
 <TranslationSet>
 
-	<base loc="en"          >%1$@ %2$d</base>
-	<tran loc="fr" origin="">%1$@ %2$d</tran>
+    <base loc="en"          >%1$@ %2$d</base>
+    <tran loc="fr" origin="">%1$@ %2$d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1897,8 +1897,8 @@
 <Position>%1$@ copy %2$d</Position>
 <TranslationSet>
 
-	<base loc="en"          >%1$@ copy %2$d</base>
-	<tran loc="fr" origin="">%1$@ copie %2$d</tran>
+    <base loc="en"          >%1$@ copy %2$d</base>
+    <tran loc="fr" origin="">%1$@ copie %2$d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1908,8 +1908,8 @@
 <Position>%1$@ copy</Position>
 <TranslationSet>
 
-	<base loc="en"          >%1$@ copy</base>
-	<tran loc="fr" origin="">%1$@ copie</tran>
+    <base loc="en"          >%1$@ copy</base>
+    <tran loc="fr" origin="">%1$@ copie</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1919,8 +1919,8 @@
 <Position>%1% copy %2%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%1% copy %2%</base>
-	<tran loc="fr" origin="OldLoc exact match">%1% copie %2%</tran>
+    <base loc="en"                            >%1% copy %2%</base>
+    <tran loc="fr" origin="OldLoc exact match">%1% copie %2%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1930,8 +1930,8 @@
 <Position>%1% copy</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%1% copy</base>
-	<tran loc="fr" origin="OldLoc exact match">%1% copie</tran>
+    <base loc="en"                            >%1% copy</base>
+    <tran loc="fr" origin="OldLoc exact match">%1% copie</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1941,8 +1941,8 @@
 <Position>%1% key/value pair</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%1% key/value pair</base>
-	<tran loc="fr" origin="OldLoc exact match">%1% paire clef/valeur</tran>
+    <base loc="en"                            >%1% key/value pair</base>
+    <tran loc="fr" origin="OldLoc exact match">%1% paire clef/valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1952,8 +1952,8 @@
 <Position>%1% key/value pairs</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%1% key/value pairs</base>
-	<tran loc="fr" origin="OldLoc exact match">%1% paires clef/valeur</tran>
+    <base loc="en"                            >%1% key/value pairs</base>
+    <tran loc="fr" origin="OldLoc exact match">%1% paires clef/valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1963,8 +1963,8 @@
 <Position>%1% ordered object</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%1% ordered object</base>
-	<tran loc="fr" origin="OldLoc exact match">%1% objet ordonné</tran>
+    <base loc="en"                            >%1% ordered object</base>
+    <tran loc="fr" origin="OldLoc exact match">%1% objet ordonné</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1974,8 +1974,8 @@
 <Position>%1% ordered objects</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%1% ordered objects</base>
-	<tran loc="fr" origin="OldLoc exact match">%1% objets ordonnés</tran>
+    <base loc="en"                            >%1% ordered objects</base>
+    <tran loc="fr" origin="OldLoc exact match">%1% objets ordonnés</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1985,8 +1985,8 @@
 <Position>%d key/value pair</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%d key/value pair</base>
-	<tran loc="fr" origin="OldLoc exact match">%d paire clef/valeur</tran>
+    <base loc="en"                            >%d key/value pair</base>
+    <tran loc="fr" origin="OldLoc exact match">%d paire clef/valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -1996,8 +1996,8 @@
 <Position>%d key/value pairs</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%d key/value pairs</base>
-	<tran loc="fr" origin="OldLoc exact match">%d paires clef/valeur</tran>
+    <base loc="en"                            >%d key/value pairs</base>
+    <tran loc="fr" origin="OldLoc exact match">%d paires clef/valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2007,8 +2007,8 @@
 <Position>%d ordered object</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%d ordered object</base>
-	<tran loc="fr" origin="OldLoc exact match">%d objet ordonné</tran>
+    <base loc="en"                            >%d ordered object</base>
+    <tran loc="fr" origin="OldLoc exact match">%d objet ordonné</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2018,8 +2018,8 @@
 <Position>%d ordered objects</Position>
 <TranslationSet>
 
-	<base loc="en"                            >%d ordered objects</base>
-	<tran loc="fr" origin="OldLoc exact match">%d objets ordonnés</tran>
+    <base loc="en"                            >%d ordered objects</base>
+    <tran loc="fr" origin="OldLoc exact match">%d objets ordonnés</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2029,8 +2029,8 @@
 <Position>An item can't be moved into one of its children.</Position>
 <TranslationSet>
 
-	<base loc="en"                            >An item can&apos;t be moved into one of its children.</base>
-	<tran loc="fr" origin="OldLoc exact match">Un item ne peut être déplacé vers un de ses enfants.</tran>
+    <base loc="en"                            >An item can&apos;t be moved into one of its children.</base>
+    <tran loc="fr" origin="OldLoc exact match">Un item ne peut être déplacé vers un de ses enfants.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2040,8 +2040,8 @@
 <Position>Can't complete the requested operation</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can&apos;t complete the requested operation</base>
-	<tran loc="fr" origin="OldLoc exact match">Incapable de compléter l’opération</tran>
+    <base loc="en"                            >Can&apos;t complete the requested operation</base>
+    <tran loc="fr" origin="OldLoc exact match">Incapable de compléter l’opération</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2051,8 +2051,8 @@
 <Position>Can't move an item into one of its children.</Position>
 <TranslationSet>
 
-	<base loc="en"          >Can&apos;t move an item into one of its children.</base>
-	<tran loc="fr" origin="">Incapable de déplacer un item vers un de ses enfants.</tran>
+    <base loc="en"          >Can&apos;t move an item into one of its children.</base>
+    <tran loc="fr" origin="">Incapable de déplacer un item vers un de ses enfants.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2062,8 +2062,8 @@
 <Position>Class Change</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Class Change</base>
-	<tran loc="fr" origin="OldLoc exact match">Changement de classe</tran>
+    <base loc="en"                            >Class Change</base>
+    <tran loc="fr" origin="OldLoc exact match">Changement de classe</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2073,8 +2073,8 @@
 <Position>Delete</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Delete</base>
-	<tran loc="fr" origin="OldLoc exact match">Supprimer</tran>
+    <base loc="en"                            >Delete</base>
+    <tran loc="fr" origin="OldLoc exact match">Supprimer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2084,8 +2084,8 @@
 <Position>Duplicate item name</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Duplicate item name</base>
-	<tran loc="fr" origin="OldLoc exact match">Nom dupliqué</tran>
+    <base loc="en"                            >Duplicate item name</base>
+    <tran loc="fr" origin="OldLoc exact match">Nom dupliqué</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2095,8 +2095,8 @@
 <Position>Duplicate</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Duplicate</base>
-	<tran loc="fr" origin="OldLoc exact match">Dupliquer</tran>
+    <base loc="en"                            >Duplicate</base>
+    <tran loc="fr" origin="OldLoc exact match">Dupliquer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2106,8 +2106,8 @@
 <Position>DuplicateItemException</Position>
 <TranslationSet>
 
-	<base loc="en"                            >There is already an item with that name.</base>
-	<tran loc="fr" origin="OldLoc exact match">Il existe déjà un item portant ce nom.</tran>
+    <base loc="en"                            >There is already an item with that name.</base>
+    <tran loc="fr" origin="OldLoc exact match">Il existe déjà un item portant ce nom.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2117,8 +2117,8 @@
 <Position>Message:  %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Message:  %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">Message:  %1%</tran>
+    <base loc="en"                            >Message:  %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">Message:  %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2128,8 +2128,8 @@
 <Position>Message:  %@</Position>
 <TranslationSet>
 
-	<base loc="en"          >Message:  %@</base>
-	<tran loc="fr" origin="">Message:  %@</tran>
+    <base loc="en"          >Message:  %@</base>
+    <tran loc="fr" origin="">Message:  %@</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2139,8 +2139,8 @@
 <Position>Move</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Move</base>
-	<tran loc="fr" origin="OldLoc exact match">Déplacement</tran>
+    <base loc="en"                            >Move</base>
+    <tran loc="fr" origin="OldLoc exact match">Déplacement</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2150,8 +2150,8 @@
 <Position>MoveIntoOffspringException</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t move an item into one of its children.</base>
-	<tran loc="fr" origin="OldLoc exact match">Incapable de déplacer un item vers un de ses enfants.</tran>
+    <base loc="en"                            >Can’t move an item into one of its children.</base>
+    <tran loc="fr" origin="OldLoc exact match">Incapable de déplacer un item vers un de ses enfants.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2161,8 +2161,8 @@
 <Position>Moving into children</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Moving into children</base>
-	<tran loc="fr" origin="OldLoc exact match">Déplacement vers un enfant</tran>
+    <base loc="en"                            >Moving into children</base>
+    <tran loc="fr" origin="OldLoc exact match">Déplacement vers un enfant</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2172,8 +2172,8 @@
 <Position>Name Change</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Name Change</base>
-	<tran loc="fr" origin="OldLoc exact match">Changement de nom</tran>
+    <base loc="en"                            >Name Change</base>
+    <tran loc="fr" origin="OldLoc exact match">Changement de nom</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2183,8 +2183,8 @@
 <Position>New Item</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New Item</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel item</tran>
+    <base loc="en"                            >New Item</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel item</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2194,8 +2194,8 @@
 <Position>New item %1$d</Position>
 <TranslationSet>
 
-	<base loc="en"          >New item %1$d</base>
-	<tran loc="fr" origin="">Nouvel item %1$d</tran>
+    <base loc="en"          >New item %1$d</base>
+    <tran loc="fr" origin="">Nouvel item %1$d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2205,8 +2205,8 @@
 <Position>New item %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New item %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel item %1%</tran>
+    <base loc="en"                            >New item %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel item %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2216,8 +2216,8 @@
 <Position>New item</Position>
 <TranslationSet>
 
-	<base loc="en"                            >New item</base>
-	<tran loc="fr" origin="OldLoc exact match">Nouvel item</tran>
+    <base loc="en"                            >New item</base>
+    <tran loc="fr" origin="OldLoc exact match">Nouvel item</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2227,8 +2227,8 @@
 <Position>No</Position>
 <TranslationSet>
 
-	<base loc="en"                            >No</base>
-	<tran loc="fr" origin="OldLoc exact match">Non</tran>
+    <base loc="en"                            >No</base>
+    <tran loc="fr" origin="OldLoc exact match">Non</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2238,8 +2238,8 @@
 <Position>Rename</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Rename</base>
-	<tran loc="fr" origin="OldLoc exact match">Renommer</tran>
+    <base loc="en"                            >Rename</base>
+    <tran loc="fr" origin="OldLoc exact match">Renommer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2249,8 +2249,8 @@
 <Position>Root</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Root</base>
-	<tran loc="fr" origin="OldLoc exact match">Racine</tran>
+    <base loc="en"                            >Root</base>
+    <tran loc="fr" origin="OldLoc exact match">Racine</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2260,8 +2260,8 @@
 <Position>The key you entered is already present in the dictionary.</Position>
 <TranslationSet>
 
-	<base loc="en"                            >The key you entered is already present in the dictionary.</base>
-	<tran loc="fr" origin="OldLoc exact match">Le nom est déjà présent dans le dictionnaire.</tran>
+    <base loc="en"                            >The key you entered is already present in the dictionary.</base>
+    <tran loc="fr" origin="OldLoc exact match">Le nom est déjà présent dans le dictionnaire.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2271,8 +2271,8 @@
 <Position>There is already an item with that name.</Position>
 <TranslationSet>
 
-	<base loc="en"          >There is already an item with that name.</base>
-	<tran loc="fr" origin="">Il existe déjà un item portant ce nom.</tran>
+    <base loc="en"          >There is already an item with that name.</base>
+    <tran loc="fr" origin="">Il existe déjà un item portant ce nom.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2282,8 +2282,8 @@
 <Position>Value Change</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Value Change</base>
-	<tran loc="fr" origin="OldLoc exact match">Changement de valeur</tran>
+    <base loc="en"                            >Value Change</base>
+    <tran loc="fr" origin="OldLoc exact match">Changement de valeur</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2293,8 +2293,8 @@
 <Position>Yes</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Yes</base>
-	<tran loc="fr" origin="OldLoc exact match">Oui</tran>
+    <base loc="en"                            >Yes</base>
+    <tran loc="fr" origin="OldLoc exact match">Oui</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2312,8 +2312,8 @@
 <Position>180.1</Position>
 <TranslationSet>
 
-	<base loc="en"          >&lt;do not localise Version&gt;</base>
-	<tran loc="fr" origin="">&lt;do not localise Version&gt;</tran>
+    <base loc="en"          >&lt;do not localise Version&gt;</base>
+    <tran loc="fr" origin="">&lt;do not localise Version&gt;</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2323,8 +2323,8 @@
 <Position>183.1</Position>
 <TranslationSet>
 
-	<base loc="en"          >&lt;do not localise Copyright&gt;</base>
-	<tran loc="fr" origin="">&lt;do not localise Copyright&gt;</tran>
+    <base loc="en"          >&lt;do not localise Copyright&gt;</base>
+    <tran loc="fr" origin="">&lt;do not localise Copyright&gt;</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2334,8 +2334,8 @@
 <Position>184.1</Position>
 <TranslationSet>
 
-	<base loc="en"          >&lt;do not localise Description&gt;</base>
-	<tran loc="fr" origin="">&lt;do not localise Description&gt;</tran>
+    <base loc="en"          >&lt;do not localise Description&gt;</base>
+    <tran loc="fr" origin="">&lt;do not localise Description&gt;</tran>
 
 </TranslationSet>
 </TextItem>
@@ -2345,8 +2345,8 @@
 <Position>186.1</Position>
 <TranslationSet>
 
-	<base loc="en"          >&lt;do not localise App Name&gt;</base>
-	<tran loc="fr" origin="">&lt;do not localise App Name&gt;</tran>
+    <base loc="en"          >&lt;do not localise App Name&gt;</base>
+    <tran loc="fr" origin="">&lt;do not localise App Name&gt;</tran>
 
 </TranslationSet>
 </TextItem>

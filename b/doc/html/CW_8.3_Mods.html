@@ -88,7 +88,7 @@ looks like this:
     <pre style="color: rgb(102, 51, 0);">#define TIME2CLOCK(seconds) ((seconds.tv_sec * CLK_TCK) + (seconds.tv_usec / (1000000 / CLK_TCK)))</pre>
   </li>
   <li>Replace it with this:
-    <pre style="color: rgb(102, 51, 0);">#ifndef CLK_TCK<br>	#define CLK_TCK 100<br>#endif<br><br>#define TIME2CLOCK(seconds) ((seconds.tv_sec * CLK_TCK) + (seconds.tv_usec / (1000000 / CLK_TCK)))</pre>
+    <pre style="color: rgb(102, 51, 0);">#ifndef CLK_TCK<br>    #define CLK_TCK 100<br>#endif<br><br>#define TIME2CLOCK(seconds) ((seconds.tv_sec * CLK_TCK) + (seconds.tv_usec / (1000000 / CLK_TCK)))</pre>
   </li>
 </ol>
 <h3><a name="Project_Changes"></a>Project Changes</h3>

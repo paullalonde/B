@@ -1,19 +1,19 @@
 // ==========================================================================================
-//	
-//	Copyright (C) 2004-2005 Paul Lalonde enrg.
-//	
-//	This program is free software;  you can redistribute it and/or modify it under the 
-//	terms of the GNU General Public License as published by the Free Software Foundation;  
-//	either version 2 of the License, or (at your option) any later version.
-//	
-//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//  
+//  Copyright (C) 2004-2005 Paul Lalonde enrg.
+//  
+//  This program is free software;  you can redistribute it and/or modify it under the 
+//  terms of the GNU General Public License as published by the Free Software Foundation;  
+//  either version 2 of the License, or (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//  WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//  PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-//	You should have received a copy of the GNU General Public License along with this 
-//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-//	Suite 330, Boston, MA  02111-1307  USA
-//	
+//  You should have received a copy of the GNU General Public License along with this 
+//  program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//  Suite 330, Boston, MA  02111-1307  USA
+//  
 // ==========================================================================================
 
 namespace B {
@@ -39,8 +39,8 @@ void MyClass::MySendEvent(EventTargetRef target)
 {
     // construct a new event
     B::Event<kMyEventClass, kMyEventKind> event;
-	
-	event.Send(target);
+    
+    event.Send(target);
 }
 @endcode
 
@@ -50,8 +50,8 @@ And you would typically handle the event in a function like this one:
 bool MyClass::MyHandleEvent(B::Event<kMyEventClass, kMyEventKind>& event)
 {
     // do stuff here...
-	
-	return (true);  // the event was handled
+    
+    return (true);  // the event was handled
 }
 @endcode
 
@@ -85,11 +85,11 @@ bool MyClass::MyHandleCmdEvent(B::Event<kEventClassCommand, kEventCommandProcess
     UInt32 keyModifiers = event.mKeyModifiers;
     UInt32 menuContext  = event.mMenuContext;
     bool   handled      = true;
-	
+    
     switch (event.mHICommand.commandID)
     {
         // handle commands here...
-	}
+    }
     
     return (handled);
 }
@@ -195,13 +195,13 @@ MyClass::MyClass(EventTargetRef target)
 void MyClass::InitEventHandler()
 {
     // When a kMyEventClass/kMyEventKind event is received, MyHandleEvent will 
-	// be called.  The first argument ('this') is the object which will be 
-	// called -- in this case, ourselves.
+    // be called.  The first argument ('this') is the object which will be 
+    // called -- in this case, ourselves.
     mEventHandler.Add(this, &MyClass::MyHandleEvent);
     
     // As an optimization, EventHandler starts off in a mode where it merely 
-	// builds up its collection of triples.  The Init() call actually 
-	// sets up the EventHandlerRef.
+    // builds up its collection of triples.  The Init() call actually 
+    // sets up the EventHandlerRef.
     mEventHandler.Init();
 }
 

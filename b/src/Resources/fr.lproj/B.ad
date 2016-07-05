@@ -14,8 +14,8 @@
 <Position>Abort</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Abort</base>
-	<tran loc="fr" origin="OldLoc exact match">Avorter</tran>
+    <base loc="en"                            >Abort</base>
+    <tran loc="fr" origin="OldLoc exact match">Avorter</tran>
 
 </TranslationSet>
 </TextItem>
@@ -25,8 +25,8 @@
 <Position>All Readable Files</Position>
 <TranslationSet>
 
-	<base loc="en"                            >All Readable Files</base>
-	<tran loc="fr" origin="OldLoc exact match">Tous les documents lisibles</tran>
+    <base loc="en"                            >All Readable Files</base>
+    <tran loc="fr" origin="OldLoc exact match">Tous les documents lisibles</tran>
 
 </TranslationSet>
 </TextItem>
@@ -36,8 +36,8 @@
 <Position>Assert Message</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Condition: %s\n\nFunction: %s\nFile: %s\nLine # %d</base>
-	<tran loc="fr" origin="OldLoc exact match">Condition: %s\n\nFonction: %s\nFichier: %s\nLigne # %d</tran>
+    <base loc="en"                            >Condition: %s\n\nFunction: %s\nFile: %s\nLine # %d</base>
+    <tran loc="fr" origin="OldLoc exact match">Condition: %s\n\nFonction: %s\nFichier: %s\nLigne # %d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -47,8 +47,8 @@
 <Position>Asssertion Failed</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Asssertion Failed</base>
-	<tran loc="fr" origin="OldLoc exact match">Asssertion échouée</tran>
+    <base loc="en"                            >Asssertion Failed</base>
+    <tran loc="fr" origin="OldLoc exact match">Asssertion échouée</tran>
 
 </TranslationSet>
 </TextItem>
@@ -58,8 +58,8 @@
 <Position>B::PropertyListCreateException</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t read property list file.</base>
-	<tran loc="fr" origin="OldLoc exact match">Incapable de lire un fichier de propriétés.</tran>
+    <base loc="en"                            >Can’t read property list file.</base>
+    <tran loc="fr" origin="OldLoc exact match">Incapable de lire un fichier de propriétés.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -69,8 +69,8 @@
 <Position>Can't Redo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
+    <base loc="en"                            >Can’t Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Impossible de rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -80,8 +80,8 @@
 <Position>Can't Redo</Position>
 <TranslationSet>
 
-	<base loc="en"          >Can&apos;t Redo</base>
-	<tran loc="fr" origin="">Impossible de rétablir</tran>
+    <base loc="en"          >Can&apos;t Redo</base>
+    <tran loc="fr" origin="">Impossible de rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -91,8 +91,8 @@
 <Position>Can't Undo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Can’t Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
+    <base loc="en"                            >Can’t Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Impossible d’annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -102,8 +102,8 @@
 <Position>Can't Undo</Position>
 <TranslationSet>
 
-	<base loc="en"          >Can&apos;t Undo</base>
-	<tran loc="fr" origin="">Impossible d’annuler</tran>
+    <base loc="en"          >Can&apos;t Undo</base>
+    <tran loc="fr" origin="">Impossible d’annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -113,8 +113,8 @@
 <Position>Continue</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Continue</base>
-	<tran loc="fr" origin="OldLoc exact match">Continuer</tran>
+    <base loc="en"                            >Continue</base>
+    <tran loc="fr" origin="OldLoc exact match">Continuer</tran>
 
 </TranslationSet>
 </TextItem>
@@ -124,8 +124,8 @@
 <Position>Exception Thrown</Position>
 <TranslationSet>
 
-	<base loc="en"          >Exception Thrown</base>
-	<tran loc="fr" origin="">Exception lancée</tran>
+    <base loc="en"          >Exception Thrown</base>
+    <tran loc="fr" origin="">Exception lancée</tran>
 
 </TranslationSet>
 </TextItem>
@@ -135,8 +135,8 @@
 <Position>Line # %d</Position>
 <TranslationSet>
 
-	<base loc="en"          >Line # %d</base>
-	<tran loc="fr" origin="">Ligne # %d</tran>
+    <base loc="en"          >Line # %d</base>
+    <tran loc="fr" origin="">Ligne # %d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -146,8 +146,8 @@
 <Position>Out of memory</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Out of memory</base>
-	<tran loc="fr" origin="OldLoc exact match">Plus de mémoire</tran>
+    <base loc="en"                            >Out of memory</base>
+    <tran loc="fr" origin="OldLoc exact match">Plus de mémoire</tran>
 
 </TranslationSet>
 </TextItem>
@@ -157,8 +157,8 @@
 <Position>Quiet</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Quiet</base>
-	<tran loc="fr" origin="OldLoc exact match">Muet</tran>
+    <base loc="en"                            >Quiet</base>
+    <tran loc="fr" origin="OldLoc exact match">Muet</tran>
 
 </TranslationSet>
 </TextItem>
@@ -168,8 +168,8 @@
 <Position>Redo %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Redo %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir %1%</tran>
+    <base loc="en"                            >Redo %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -179,8 +179,8 @@
 <Position>Redo %@</Position>
 <TranslationSet>
 
-	<base loc="en"          >Redo %@</base>
-	<tran loc="fr" origin="">Rétablir %@</tran>
+    <base loc="en"          >Redo %@</base>
+    <tran loc="fr" origin="">Rétablir %@</tran>
 
 </TranslationSet>
 </TextItem>
@@ -190,8 +190,8 @@
 <Position>Redo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Redo</base>
-	<tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
+    <base loc="en"                            >Redo</base>
+    <tran loc="fr" origin="OldLoc exact match">Rétablir</tran>
 
 </TranslationSet>
 </TextItem>
@@ -201,8 +201,8 @@
 <Position>Throw Message</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Message: %1%\nWhat: %2%\nError: %3%\n\nFunction: %4%\nFile: %5%\nLine # %6%</base>
-	<tran loc="fr" origin="OldLoc exact match">Message: %1%\nQuoi: %2%\nErreur: %3%\n\nFonction: %4%\nFichier: %5%\nLigne # %6%</tran>
+    <base loc="en"                            >Message: %1%\nWhat: %2%\nError: %3%\n\nFunction: %4%\nFile: %5%\nLine # %6%</base>
+    <tran loc="fr" origin="OldLoc exact match">Message: %1%\nQuoi: %2%\nErreur: %3%\n\nFonction: %4%\nFichier: %5%\nLigne # %6%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -212,8 +212,8 @@
 <Position>Undo %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Undo %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">Annuler %1%</tran>
+    <base loc="en"                            >Undo %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">Annuler %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -223,8 +223,8 @@
 <Position>Undo %@</Position>
 <TranslationSet>
 
-	<base loc="en"          >Undo %@</base>
-	<tran loc="fr" origin="">Annuler %@</tran>
+    <base loc="en"          >Undo %@</base>
+    <tran loc="fr" origin="">Annuler %@</tran>
 
 </TranslationSet>
 </TextItem>
@@ -234,8 +234,8 @@
 <Position>Undo</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Undo</base>
-	<tran loc="fr" origin="OldLoc exact match">Annuler</tran>
+    <base loc="en"                            >Undo</base>
+    <tran loc="fr" origin="OldLoc exact match">Annuler</tran>
 
 </TranslationSet>
 </TextItem>
@@ -245,8 +245,8 @@
 <Position>Unknown exception</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown exception.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
+    <base loc="en"                            >Unknown exception.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -256,8 +256,8 @@
 <Position>boost::bad_format_string</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Bad format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Chaîne de format incorrecte.</tran>
+    <base loc="en"                            >Bad format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Chaîne de format incorrecte.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -267,8 +267,8 @@
 <Position>boost::format_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown boost format error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue de boost::format.</tran>
+    <base loc="en"                            >Unknown boost format error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue de boost::format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -278,8 +278,8 @@
 <Position>boost::out_of_range</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Value out of range for format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Valeur hors-norme dans une chaîne de format.</tran>
+    <base loc="en"                            >Value out of range for format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Valeur hors-norme dans une chaîne de format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -289,8 +289,8 @@
 <Position>boost::too_few_args</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Too few arguments for format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Trop peu d&apos;arguments furent fournis à une chaîne de format.</tran>
+    <base loc="en"                            >Too few arguments for format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Trop peu d&apos;arguments furent fournis à une chaîne de format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -300,8 +300,8 @@
 <Position>boost::too_many_args</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Too many arguments for format string.</base>
-	<tran loc="fr" origin="OldLoc exact match">Trop d&apos;arguments furent fournis à une chaîne de format.</tran>
+    <base loc="en"                            >Too many arguments for format string.</base>
+    <tran loc="fr" origin="OldLoc exact match">Trop d&apos;arguments furent fournis à une chaîne de format.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -311,8 +311,8 @@
 <Position>std::domain_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown domain error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue de domaine.</tran>
+    <base loc="en"                            >Unknown domain error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue de domaine.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -322,8 +322,8 @@
 <Position>std::exception</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
+    <base loc="en"                            >Unknown error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -333,8 +333,8 @@
 <Position>std::invalid_argument</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Invalid argument.</base>
-	<tran loc="fr" origin="OldLoc exact match">Argument invalide.</tran>
+    <base loc="en"                            >Invalid argument.</base>
+    <tran loc="fr" origin="OldLoc exact match">Argument invalide.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -344,8 +344,8 @@
 <Position>std::ios_base::failure</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Input/Output error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur d’entrée/sortie.</tran>
+    <base loc="en"                            >Input/Output error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur d’entrée/sortie.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -355,8 +355,8 @@
 <Position>std::length_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Length exceeds maximum.</base>
-	<tran loc="fr" origin="OldLoc exact match">Taille trop grande.</tran>
+    <base loc="en"                            >Length exceeds maximum.</base>
+    <tran loc="fr" origin="OldLoc exact match">Taille trop grande.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -366,8 +366,8 @@
 <Position>std::logic_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown logic error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur de logique inconnue.</tran>
+    <base loc="en"                            >Unknown logic error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur de logique inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -377,8 +377,8 @@
 <Position>std::out_of_range</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Value out of range.</base>
-	<tran loc="fr" origin="OldLoc exact match">Valeur hors-norme.</tran>
+    <base loc="en"                            >Value out of range.</base>
+    <tran loc="fr" origin="OldLoc exact match">Valeur hors-norme.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -388,8 +388,8 @@
 <Position>std::overflow_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Overflow error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Dépassement de capacité.</tran>
+    <base loc="en"                            >Overflow error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Dépassement de capacité.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -399,8 +399,8 @@
 <Position>std::range_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown range error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur inconnue d&apos;étendue.</tran>
+    <base loc="en"                            >Unknown range error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur inconnue d&apos;étendue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -410,8 +410,8 @@
 <Position>std::runtime_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Unknown runtime error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Erreur d’exécution inconnue.</tran>
+    <base loc="en"                            >Unknown runtime error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Erreur d’exécution inconnue.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -421,8 +421,8 @@
 <Position>std::underflow_error</Position>
 <TranslationSet>
 
-	<base loc="en"                            >Underflow error.</base>
-	<tran loc="fr" origin="OldLoc exact match">Soupassement de capacité.</tran>
+    <base loc="en"                            >Underflow error.</base>
+    <tran loc="fr" origin="OldLoc exact match">Soupassement de capacité.</tran>
 
 </TranslationSet>
 </TextItem>
@@ -432,8 +432,8 @@
 <Position>untitled %1%</Position>
 <TranslationSet>
 
-	<base loc="en"                            >untitled %1%</base>
-	<tran loc="fr" origin="OldLoc exact match">sans titre %1%</tran>
+    <base loc="en"                            >untitled %1%</base>
+    <tran loc="fr" origin="OldLoc exact match">sans titre %1%</tran>
 
 </TranslationSet>
 </TextItem>
@@ -443,8 +443,8 @@
 <Position>untitled %d</Position>
 <TranslationSet>
 
-	<base loc="en"                            >untitled %d</base>
-	<tran loc="fr" origin="OldLoc exact match">sans titre %d</tran>
+    <base loc="en"                            >untitled %d</base>
+    <tran loc="fr" origin="OldLoc exact match">sans titre %d</tran>
 
 </TranslationSet>
 </TextItem>
@@ -454,8 +454,8 @@
 <Position>untitled</Position>
 <TranslationSet>
 
-	<base loc="en"                            >untitled</base>
-	<tran loc="fr" origin="OldLoc exact match">sans titre</tran>
+    <base loc="en"                            >untitled</base>
+    <tran loc="fr" origin="OldLoc exact match">sans titre</tran>
 
 </TranslationSet>
 </TextItem>
@@ -473,8 +473,8 @@
 <Position>180.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >&lt;do not localise Version&gt;</base>
-	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise Version&gt;</tran>
+    <base loc="en"                            >&lt;do not localise Version&gt;</base>
+    <tran loc="fr" origin="OldLoc exact match">&lt;do not localise Version&gt;</tran>
 
 </TranslationSet>
 </TextItem>
@@ -484,8 +484,8 @@
 <Position>183.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >&lt;do not localise Copyright&gt;</base>
-	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise Copyright&gt;</tran>
+    <base loc="en"                            >&lt;do not localise Copyright&gt;</base>
+    <tran loc="fr" origin="OldLoc exact match">&lt;do not localise Copyright&gt;</tran>
 
 </TranslationSet>
 </TextItem>
@@ -495,8 +495,8 @@
 <Position>184.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >&lt;do not localise Description&gt;</base>
-	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise Description&gt;</tran>
+    <base loc="en"                            >&lt;do not localise Description&gt;</base>
+    <tran loc="fr" origin="OldLoc exact match">&lt;do not localise Description&gt;</tran>
 
 </TranslationSet>
 </TextItem>
@@ -506,8 +506,8 @@
 <Position>186.1</Position>
 <TranslationSet>
 
-	<base loc="en"                            >&lt;do not localise App Name&gt;</base>
-	<tran loc="fr" origin="OldLoc exact match">&lt;do not localise App Name&gt;</tran>
+    <base loc="en"                            >&lt;do not localise App Name&gt;</base>
+    <tran loc="fr" origin="OldLoc exact match">&lt;do not localise App Name&gt;</tran>
 
 </TranslationSet>
 </TextItem>

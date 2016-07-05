@@ -1,274 +1,274 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 42;
-	objects = {
+    archiveVersion = 1;
+    classes = {
+    };
+    objectVersion = 42;
+    objects = {
 
 /* Begin PBXBuildFile section */
-		6A1005F40559CDE400A236A8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1100AE04980B5F00A8010A /* CoreFoundation.framework */; };
-		6A1005F60559CDE500A236A8 /* libstdc++.6.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0249A663FF388D9811CA2CEA /* libstdc++.6.0.3.dylib */; };
-		6A1005FF0559CDF700A236A8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; };
-		6A1006000559CDF700A236A8 /* strings_parser.ypp in Sources */ = {isa = PBXBuildFile; fileRef = 6A110104049834DB00A8010A /* strings_parser.ypp */; };
-		6A1006010559CDF800A236A8 /* strings_scanner.lpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A1100E004982BD900A8010A /* strings_scanner.lpp */; };
-		6A2EE8D609108BD3002FE50E /* liby.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2EE8D509108BD3002FE50E /* liby.a */; };
-		6A2EE8D709108BEF002FE50E /* libl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADCC3B90559E00500E1F296 /* libl.a */; };
+        6A1005F40559CDE400A236A8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1100AE04980B5F00A8010A /* CoreFoundation.framework */; };
+        6A1005F60559CDE500A236A8 /* libstdc++.6.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0249A663FF388D9811CA2CEA /* libstdc++.6.0.3.dylib */; };
+        6A1005FF0559CDF700A236A8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; };
+        6A1006000559CDF700A236A8 /* strings_parser.ypp in Sources */ = {isa = PBXBuildFile; fileRef = 6A110104049834DB00A8010A /* strings_parser.ypp */; };
+        6A1006010559CDF800A236A8 /* strings_scanner.lpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A1100E004982BD900A8010A /* strings_scanner.lpp */; };
+        6A2EE8D609108BD3002FE50E /* liby.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2EE8D509108BD3002FE50E /* liby.a */; };
+        6A2EE8D709108BEF002FE50E /* libl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADCC3B90559E00500E1F296 /* libl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
-		6A1006060559CE9500A236A8 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			fileType = sourcecode.yacc;
-			isEditable = 1;
-			outputFiles = (
-				"$(DERIVED_FILE_DIR)/Yacc/strings_parser.h",
-				"$(DERIVED_FILE_DIR)/Yacc/strings_parser.cpp",
-			);
-			script = "cd \"$DERIVED_FILE_DIR/Yacc\" && /usr/bin/yacc -o strings_parser.cpp -d \"$INPUT_FILE_PATH\"";
-		};
+        6A1006060559CE9500A236A8 /* PBXBuildRule */ = {
+            isa = PBXBuildRule;
+            compilerSpec = com.apple.compilers.proxy.script;
+            fileType = sourcecode.yacc;
+            isEditable = 1;
+            outputFiles = (
+                "$(DERIVED_FILE_DIR)/Yacc/strings_parser.h",
+                "$(DERIVED_FILE_DIR)/Yacc/strings_parser.cpp",
+            );
+            script = "cd \"$DERIVED_FILE_DIR/Yacc\" && /usr/bin/yacc -o strings_parser.cpp -d \"$INPUT_FILE_PATH\"";
+        };
 /* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
-		0249A663FF388D9811CA2CEA /* libstdc++.6.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.3.dylib"; path = "/usr/lib/libstdc++.6.0.3.dylib"; sourceTree = "<absolute>"; };
-		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
-		6A1005CC0559CDC000A236A8 /* MergeStrings */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MergeStrings; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A1100AE04980B5F00A8010A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		6A1100E004982BD900A8010A /* strings_scanner.lpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = strings_scanner.lpp; sourceTree = SOURCE_ROOT; };
-		6A110104049834DB00A8010A /* strings_parser.ypp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = strings_parser.ypp; sourceTree = SOURCE_ROOT; };
-		6A110106049835E700A8010A /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = SOURCE_ROOT; };
-		6A2EE8D509108BD3002FE50E /* liby.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liby.a; path = /usr/lib/liby.a; sourceTree = "<absolute>"; };
-		6ADCC3B90559E00500E1F296 /* libl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libl.a; path = /usr/lib/libl.a; sourceTree = "<absolute>"; };
+        0249A663FF388D9811CA2CEA /* libstdc++.6.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.3.dylib"; path = "/usr/lib/libstdc++.6.0.3.dylib"; sourceTree = "<absolute>"; };
+        08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+        6A1005CC0559CDC000A236A8 /* MergeStrings */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MergeStrings; sourceTree = BUILT_PRODUCTS_DIR; };
+        6A1100AE04980B5F00A8010A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+        6A1100E004982BD900A8010A /* strings_scanner.lpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = strings_scanner.lpp; sourceTree = SOURCE_ROOT; };
+        6A110104049834DB00A8010A /* strings_parser.ypp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = strings_parser.ypp; sourceTree = SOURCE_ROOT; };
+        6A110106049835E700A8010A /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = SOURCE_ROOT; };
+        6A2EE8D509108BD3002FE50E /* liby.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liby.a; path = /usr/lib/liby.a; sourceTree = "<absolute>"; };
+        6ADCC3B90559E00500E1F296 /* libl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libl.a; path = /usr/lib/libl.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6A1005CA0559CDC000A236A8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A1005F40559CDE400A236A8 /* CoreFoundation.framework in Frameworks */,
-				6A1005F60559CDE500A236A8 /* libstdc++.6.0.3.dylib in Frameworks */,
-				6A2EE8D709108BEF002FE50E /* libl.a in Frameworks */,
-				6A2EE8D609108BD3002FE50E /* liby.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+        6A1005CA0559CDC000A236A8 /* Frameworks */ = {
+            isa = PBXFrameworksBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                6A1005F40559CDE400A236A8 /* CoreFoundation.framework in Frameworks */,
+                6A1005F60559CDE500A236A8 /* libstdc++.6.0.3.dylib in Frameworks */,
+                6A2EE8D709108BEF002FE50E /* libl.a in Frameworks */,
+                6A2EE8D609108BD3002FE50E /* liby.a in Frameworks */,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0249A662FF388D9811CA2CEA /* External Frameworks and Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				6A2EE8D509108BD3002FE50E /* liby.a */,
-				6ADCC3B90559E00500E1F296 /* libl.a */,
-				0249A663FF388D9811CA2CEA /* libstdc++.6.0.3.dylib */,
-				6A1100AE04980B5F00A8010A /* CoreFoundation.framework */,
-			);
-			name = "External Frameworks and Libraries";
-			sourceTree = "<group>";
-		};
-		08FB7794FE84155DC02AAC07 /* MergeStrings */ = {
-			isa = PBXGroup;
-			children = (
-				08FB7795FE84155DC02AAC07 /* Source */,
-				0249A662FF388D9811CA2CEA /* External Frameworks and Libraries */,
-				1AB674ADFE9D54B511CA2CBB /* Products */,
-			);
-			name = MergeStrings;
-			sourceTree = "<group>";
-		};
-		08FB7795FE84155DC02AAC07 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				08FB7796FE84155DC02AAC07 /* main.cpp */,
-				6A110106049835E700A8010A /* main.h */,
-				6A1100E004982BD900A8010A /* strings_scanner.lpp */,
-				6A110104049834DB00A8010A /* strings_parser.ypp */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
-		1AB674ADFE9D54B511CA2CBB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6A1005CC0559CDC000A236A8 /* MergeStrings */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
+        0249A662FF388D9811CA2CEA /* External Frameworks and Libraries */ = {
+            isa = PBXGroup;
+            children = (
+                6A2EE8D509108BD3002FE50E /* liby.a */,
+                6ADCC3B90559E00500E1F296 /* libl.a */,
+                0249A663FF388D9811CA2CEA /* libstdc++.6.0.3.dylib */,
+                6A1100AE04980B5F00A8010A /* CoreFoundation.framework */,
+            );
+            name = "External Frameworks and Libraries";
+            sourceTree = "<group>";
+        };
+        08FB7794FE84155DC02AAC07 /* MergeStrings */ = {
+            isa = PBXGroup;
+            children = (
+                08FB7795FE84155DC02AAC07 /* Source */,
+                0249A662FF388D9811CA2CEA /* External Frameworks and Libraries */,
+                1AB674ADFE9D54B511CA2CBB /* Products */,
+            );
+            name = MergeStrings;
+            sourceTree = "<group>";
+        };
+        08FB7795FE84155DC02AAC07 /* Source */ = {
+            isa = PBXGroup;
+            children = (
+                08FB7796FE84155DC02AAC07 /* main.cpp */,
+                6A110106049835E700A8010A /* main.h */,
+                6A1100E004982BD900A8010A /* strings_scanner.lpp */,
+                6A110104049834DB00A8010A /* strings_parser.ypp */,
+            );
+            name = Source;
+            sourceTree = "<group>";
+        };
+        1AB674ADFE9D54B511CA2CBB /* Products */ = {
+            isa = PBXGroup;
+            children = (
+                6A1005CC0559CDC000A236A8 /* MergeStrings */,
+            );
+            name = Products;
+            sourceTree = "<group>";
+        };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A1005CB0559CDC000A236A8 /* MergeStrings */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6A2EE8A009108978002FE50E /* Build configuration list for PBXNativeTarget "MergeStrings" */;
-			buildPhases = (
-				6A1005C80559CDC000A236A8 /* Sources */,
-				6A1005CA0559CDC000A236A8 /* Frameworks */,
-			);
-			buildRules = (
-				6A1006060559CE9500A236A8 /* PBXBuildRule */,
-			);
-			dependencies = (
-			);
-			name = MergeStrings;
-			productName = MergeStrings;
-			productReference = 6A1005CC0559CDC000A236A8 /* MergeStrings */;
-			productType = "com.apple.product-type.tool";
-		};
+        6A1005CB0559CDC000A236A8 /* MergeStrings */ = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = 6A2EE8A009108978002FE50E /* Build configuration list for PBXNativeTarget "MergeStrings" */;
+            buildPhases = (
+                6A1005C80559CDC000A236A8 /* Sources */,
+                6A1005CA0559CDC000A236A8 /* Frameworks */,
+            );
+            buildRules = (
+                6A1006060559CE9500A236A8 /* PBXBuildRule */,
+            );
+            dependencies = (
+            );
+            name = MergeStrings;
+            productName = MergeStrings;
+            productReference = 6A1005CC0559CDC000A236A8 /* MergeStrings */;
+            productType = "com.apple.product-type.tool";
+        };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		08FB7793FE84155DC02AAC07 /* Project object */ = {
-			isa = PBXProject;
-			buildConfigurationList = 6A2EE8A409108978002FE50E /* Build configuration list for PBXProject "MergeStrings" */;
-			hasScannedForEncodings = 1;
-			mainGroup = 08FB7794FE84155DC02AAC07 /* MergeStrings */;
-			projectDirPath = "";
-			targets = (
-				6A1005CB0559CDC000A236A8 /* MergeStrings */,
-			);
-		};
+        08FB7793FE84155DC02AAC07 /* Project object */ = {
+            isa = PBXProject;
+            buildConfigurationList = 6A2EE8A409108978002FE50E /* Build configuration list for PBXProject "MergeStrings" */;
+            hasScannedForEncodings = 1;
+            mainGroup = 08FB7794FE84155DC02AAC07 /* MergeStrings */;
+            projectDirPath = "";
+            targets = (
+                6A1005CB0559CDC000A236A8 /* MergeStrings */,
+            );
+        };
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6A1005C80559CDC000A236A8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A1005FF0559CDF700A236A8 /* main.cpp in Sources */,
-				6A1006000559CDF700A236A8 /* strings_parser.ypp in Sources */,
-				6A1006010559CDF800A236A8 /* strings_scanner.lpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+        6A1005C80559CDC000A236A8 /* Sources */ = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                6A1005FF0559CDF700A236A8 /* main.cpp in Sources */,
+                6A1006000559CDF700A236A8 /* strings_parser.ypp in Sources */,
+                6A1006010559CDF800A236A8 /* strings_scanner.lpp in Sources */,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		6A2EE8A109108978002FE50E /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "$(DERIVED_FILE_DIR)/Yacc";
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = "";
-				OPTIMIZATION_CFLAGS = "-O0";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Carbon,
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = MergeStrings;
-				REZ_EXECUTABLE = YES;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-				ZERO_LINK = NO;
-			};
-			name = Development;
-		};
-		6A2EE8A209108978002FE50E /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "$(DERIVED_FILE_DIR)/Yacc";
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Carbon,
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = MergeStrings;
-				REZ_EXECUTABLE = YES;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-		6A2EE8A309108978002FE50E /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "$(DERIVED_FILE_DIR)/Yacc";
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Carbon,
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = MergeStrings;
-				REZ_EXECUTABLE = YES;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
-			name = Default;
-		};
-		6A2EE8A509108978002FE50E /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Development;
-		};
-		6A2EE8A609108978002FE50E /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Deployment;
-		};
-		6A2EE8A709108978002FE50E /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Default;
-		};
+        6A2EE8A109108978002FE50E /* Development */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                COPY_PHASE_STRIP = NO;
+                GCC_DYNAMIC_NO_PIC = NO;
+                GCC_ENABLE_FIX_AND_CONTINUE = YES;
+                GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                GCC_OPTIMIZATION_LEVEL = 0;
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h";
+                GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+                GCC_WARN_UNKNOWN_PRAGMAS = NO;
+                HEADER_SEARCH_PATHS = "$(DERIVED_FILE_DIR)/Yacc";
+                INSTALL_PATH = /usr/local/bin;
+                LIBRARY_SEARCH_PATHS = "";
+                OPTIMIZATION_CFLAGS = "-O0";
+                OTHER_CFLAGS = "";
+                OTHER_LDFLAGS = (
+                    "-framework",
+                    Carbon,
+                );
+                OTHER_REZFLAGS = "";
+                PRODUCT_NAME = MergeStrings;
+                REZ_EXECUTABLE = YES;
+                SECTORDER_FLAGS = "";
+                WARNING_CFLAGS = "-Wmost";
+                ZERO_LINK = NO;
+            };
+            name = Development;
+        };
+        6A2EE8A209108978002FE50E /* Deployment */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                COPY_PHASE_STRIP = YES;
+                GCC_ENABLE_FIX_AND_CONTINUE = NO;
+                GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h";
+                GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+                GCC_WARN_UNKNOWN_PRAGMAS = NO;
+                HEADER_SEARCH_PATHS = "$(DERIVED_FILE_DIR)/Yacc";
+                INSTALL_PATH = /usr/local/bin;
+                LIBRARY_SEARCH_PATHS = "";
+                OTHER_CFLAGS = "";
+                OTHER_LDFLAGS = (
+                    "-framework",
+                    Carbon,
+                );
+                OTHER_REZFLAGS = "";
+                PRODUCT_NAME = MergeStrings;
+                REZ_EXECUTABLE = YES;
+                SECTORDER_FLAGS = "";
+                WARNING_CFLAGS = "-Wmost";
+                ZERO_LINK = NO;
+            };
+            name = Deployment;
+        };
+        6A2EE8A309108978002FE50E /* Default */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h";
+                GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+                GCC_WARN_UNKNOWN_PRAGMAS = NO;
+                HEADER_SEARCH_PATHS = "$(DERIVED_FILE_DIR)/Yacc";
+                INSTALL_PATH = /usr/local/bin;
+                LIBRARY_SEARCH_PATHS = "";
+                OTHER_CFLAGS = "";
+                OTHER_LDFLAGS = (
+                    "-framework",
+                    Carbon,
+                );
+                OTHER_REZFLAGS = "";
+                PRODUCT_NAME = MergeStrings;
+                REZ_EXECUTABLE = YES;
+                SECTORDER_FLAGS = "";
+                WARNING_CFLAGS = "-Wmost";
+            };
+            name = Default;
+        };
+        6A2EE8A509108978002FE50E /* Development */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+            };
+            name = Development;
+        };
+        6A2EE8A609108978002FE50E /* Deployment */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+            };
+            name = Deployment;
+        };
+        6A2EE8A709108978002FE50E /* Default */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+            };
+            name = Default;
+        };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A2EE8A009108978002FE50E /* Build configuration list for PBXNativeTarget "MergeStrings" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6A2EE8A109108978002FE50E /* Development */,
-				6A2EE8A209108978002FE50E /* Deployment */,
-				6A2EE8A309108978002FE50E /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		6A2EE8A409108978002FE50E /* Build configuration list for PBXProject "MergeStrings" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6A2EE8A509108978002FE50E /* Development */,
-				6A2EE8A609108978002FE50E /* Deployment */,
-				6A2EE8A709108978002FE50E /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
+        6A2EE8A009108978002FE50E /* Build configuration list for PBXNativeTarget "MergeStrings" */ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (
+                6A2EE8A109108978002FE50E /* Development */,
+                6A2EE8A209108978002FE50E /* Deployment */,
+                6A2EE8A309108978002FE50E /* Default */,
+            );
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Default;
+        };
+        6A2EE8A409108978002FE50E /* Build configuration list for PBXProject "MergeStrings" */ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (
+                6A2EE8A509108978002FE50E /* Development */,
+                6A2EE8A609108978002FE50E /* Deployment */,
+                6A2EE8A709108978002FE50E /* Default */,
+            );
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Default;
+        };
 /* End XCConfigurationList section */
-	};
-	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+    };
+    rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
 }

@@ -1,19 +1,19 @@
 // ==========================================================================================
-//	
-//	Copyright (C) 2003-2005 Paul Lalonde enrg.
-//	
-//	This program is free software;  you can redistribute it and/or modify it under the 
-//	terms of the GNU General Public License as published by the Free Software Foundation;  
-//	either version 2 of the License, or (at your option) any later version.
-//	
-//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//  
+//  Copyright (C) 2003-2005 Paul Lalonde enrg.
+//  
+//  This program is free software;  you can redistribute it and/or modify it under the 
+//  terms of the GNU General Public License as published by the Free Software Foundation;  
+//  either version 2 of the License, or (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//  WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//  PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-//	You should have received a copy of the GNU General Public License along with this 
-//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-//	Suite 330, Boston, MA  02111-1307  USA
-//	
+//  You should have received a copy of the GNU General Public License along with this 
+//  program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//  Suite 330, Boston, MA  02111-1307  USA
+//  
 // ==========================================================================================
 
 // Change this to your bundle identifier string
@@ -23,29 +23,29 @@
 #define kBundleShortVersion __OUTPUT_FILENAME__ " version 1.0"
 
 // Change this to the string to display in the Finder's Get Info window
-#define kBundleGetInfo kBundleShortVersion ", Copyright © 2003-2005 by Paul Lalonde.  All rights reserved."
+#define kBundleGetInfo kBundleShortVersion ", Copyright Â© 2003-2005 by Paul Lalonde.  All rights reserved."
 
 plist
 {
-	dictionary
-	{
-		key "CFBundleIdentifier" value string kBundleIdentifier
-		
-		key "CFBundleName" value string __OUTPUT_FILENAME__
-		key "CFBundleGetInfoString" value string kBundleGetInfo
-		key "CFBundleShortVersionString" value string kBundleShortVersion
-		key "NSHumanReadableCopyright" value string "Copyright © 2003-2005 by Paul Lalonde.  All rights reserved."
-		
-		key "CFBundlePackageType" value string __OUTPUT_TYPE__
-		key "CFBundleSignature" value string __OUTPUT_CREATOR__
-		key "CFBundleExecutable" value string __OUTPUT_FILENAME__
-		key "CFBundleVersion" value string "1.0"
-		
-		key "CFBundleDevelopmentRegion" value string "English"
-		key "CFBundleInfoDictionaryVersion" value string "6.0"
-		key "LSRequiresCarbon" value boolean true
+    dictionary
+    {
+        key "CFBundleIdentifier" value string kBundleIdentifier
+        
+        key "CFBundleName" value string __OUTPUT_FILENAME__
+        key "CFBundleGetInfoString" value string kBundleGetInfo
+        key "CFBundleShortVersionString" value string kBundleShortVersion
+        key "NSHumanReadableCopyright" value string "Copyright Â© 2003-2005 by Paul Lalonde.  All rights reserved."
+        
+        key "CFBundlePackageType" value string __OUTPUT_TYPE__
+        key "CFBundleSignature" value string __OUTPUT_CREATOR__
+        key "CFBundleExecutable" value string __OUTPUT_FILENAME__
+        key "CFBundleVersion" value string "1.0"
+        
+        key "CFBundleDevelopmentRegion" value string "English"
+        key "CFBundleInfoDictionaryVersion" value string "6.0"
+        key "LSRequiresCarbon" value boolean true
 
-		key "NSMainNibFile" value string "Tarabiscoter"
-		key "B::ScriptingDefinition" value string "Tarabiscoter"
-	}
+        key "NSMainNibFile" value string "Tarabiscoter"
+        key "B::ScriptingDefinition" value string "Tarabiscoter"
+    }
 }

@@ -1,19 +1,19 @@
 // ==========================================================================================
-//	
-//	Copyright (C) 2004-2005 Paul Lalonde enrg.
-//	
-//	This program is free software;  you can redistribute it and/or modify it under the 
-//	terms of the GNU General Public License as published by the Free Software Foundation;  
-//	either version 2 of the License, or (at your option) any later version.
-//	
-//	This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-//	WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-//	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//  
+//  Copyright (C) 2004-2005 Paul Lalonde enrg.
+//  
+//  This program is free software;  you can redistribute it and/or modify it under the 
+//  terms of the GNU General Public License as published by the Free Software Foundation;  
+//  either version 2 of the License, or (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+//  WARRANTY;  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//  PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-//	You should have received a copy of the GNU General Public License along with this 
-//	program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-//	Suite 330, Boston, MA  02111-1307  USA
-//	
+//  You should have received a copy of the GNU General Public License along with this 
+//  program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
+//  Suite 330, Boston, MA  02111-1307  USA
+//  
 // ==========================================================================================
 
 namespace B {
@@ -24,21 +24,21 @@ namespace B {
 
 Table of Contents:
 - @ref dialog_modality
-	- @ref dialog_modality_class
-	- @ref generic_lifecycle
-	- @ref generic_example
+    - @ref dialog_modality_class
+    - @ref generic_lifecycle
+    - @ref generic_example
 - @ref dialog_class
-	- @ref dialog_window_mutation
+    - @ref dialog_window_mutation
 - @ref alert_class
 - @ref nav_dialogs
-	- @ref ask_save_changes_dialog_class
-	- @ref ask_discard_changes_dialog_class
-	- @ref ask_review_documents_dialog_class
-	- @ref nav_reply_dialog_class
-	- @ref get_file_dialog_class
-	- @ref put_file_dialog_class
+    - @ref ask_save_changes_dialog_class
+    - @ref ask_discard_changes_dialog_class
+    - @ref ask_review_documents_dialog_class
+    - @ref nav_reply_dialog_class
+    - @ref get_file_dialog_class
+    - @ref put_file_dialog_class
 
-@sa	@ref using_windows
+@sa @ref using_windows
 
 In the present document, dialogs (with a lowercase "d") are defined to be more-or-less 
 short-lived windows, which exist to notify the user of some situation or to receive input 
@@ -78,8 +78,8 @@ There are two ways of constructing a DialogModality object.  The first is to exp
 request a given modality.  For example:
 
 @code
-DialogModality	modality;
-WindowRef		parentWindow;
+DialogModality  modality;
+WindowRef       parentWindow;
 
 // Set up modality for modeless dialog.
 modality = DialogModality::Modeless();
@@ -95,8 +95,8 @@ when the modality is determined elsewhere.  For example:
 @code
 void MyShowDialog(WindowModality windowModality, WindowRef parentWindow)
 {
-	DialogModality modality(windowModality, parentWindow);
-	...
+    DialogModality modality(windowModality, parentWindow);
+    ...
 }
 @endcode
 
@@ -116,20 +116,20 @@ class declaration:
 @code
 class Alert
 {
-	// Instantiates and returns an ALERT with the given arguments.
-	template <class ALERT>
-	static std::auto_ptr<ALERT>
-				Make(
-					const String&									inMessageText, 
-					const String&									inInformativeText,
-					const DialogModality&							inModality,
-					boost::function2<void, const ALERT&, Button>	inFunction());
-	
-	// Displays the nav dialog according to its modality.
-	template <class ALERT>
-	static void	Enter(std::auto_ptr<ALERT> inAlertPtr);
-	
-	...
+    // Instantiates and returns an ALERT with the given arguments.
+    template <class ALERT>
+    static std::auto_ptr<ALERT>
+                Make(
+                    const String&                                   inMessageText, 
+                    const String&                                   inInformativeText,
+                    const DialogModality&                           inModality,
+                    boost::function2<void, const ALERT&, Button>    inFunction());
+    
+    // Displays the nav dialog according to its modality.
+    template <class ALERT>
+    static void Enter(std::auto_ptr<ALERT> inAlertPtr);
+    
+    ...
 };
 @endcode
 
@@ -160,12 +160,12 @@ is typical of dialog classes.  It has the following common characteristics:
 - The exact type of the @c std::auto_ptr is given in a template parameter.  Similarly 
   to Make(), this allows clients to use custom classes.
 - It displays the dialog object, according to its modality.  Specifically, this means:
-	- For a modeless dialog, the dialog is displayed and the function returns 
-	  immediately.
-	- For a modal dialog, the dialog is displayed and then enters a modal event loop.  
-	  The function returns only once the dialog has been dismissed.
-	- For a sheet, the dialog is displayed and the function returns 
-	  immediately.
+    - For a modeless dialog, the dialog is displayed and the function returns 
+      immediately.
+    - For a modal dialog, the dialog is displayed and then enters a modal event loop.  
+      The function returns only once the dialog has been dismissed.
+    - For a sheet, the dialog is displayed and the function returns 
+      immediately.
 
 Finally, step 4 occurs once the dialog is dismissed.  This is done by having the dialog 
 object invoke the callback it was given in step 2.  Recall that for modal dialogs this 
@@ -180,45 +180,45 @@ Here's a simple example of a class that displays an Alert in a modality-neutral 
 @code
 class MyClass
 {
-	// Display a confirmation alert with the given modality.
-	void	MyAskForUserConfirmationBeforeDoingStuff(
-				const DialogModality&	inModality);
-	// Responds to the user's choice.
-	void	MyAlertCallback(
-				const Alert&			alert, 
-				Alert::Button			button);
+    // Display a confirmation alert with the given modality.
+    void    MyAskForUserConfirmationBeforeDoingStuff(
+                const DialogModality&   inModality);
+    // Responds to the user's choice.
+    void    MyAlertCallback(
+                const Alert&            alert, 
+                Alert::Button           button);
 };
 
 void MyClass::MyAskForUserConfirmationBeforeDoingStuff(
-	const DialogModality& inModality)
+    const DialogModality& inModality)
 {
-	// Make the alert, then enter it.  Note the way the callback is set up.  
-	// The boost::bind library is very convenient for passing in member 
-	// functions as callbacks.
-	
-	Alert::Enter(Alert::Make<Alert>(
-		String("A message text"),
-		String("An informative text"),
-		inModality, 
-		boost::bind(&MyClass::MyAlertCallback, this, _1, _2)));
-	
-	// We can't actually "do" the stuff we want to do here, because depending 
-	// on inModality, the alert might not have been dismissed yet.  The 
-	// logical flow of control continues in MyAlertCallback.
-	// 
-	// Veterans of Classic Mac OS will recognise this as similar to asynchronous 
-	// programming with the old File and Device managers.
+    // Make the alert, then enter it.  Note the way the callback is set up.  
+    // The boost::bind library is very convenient for passing in member 
+    // functions as callbacks.
+    
+    Alert::Enter(Alert::Make<Alert>(
+        String("A message text"),
+        String("An informative text"),
+        inModality, 
+        boost::bind(&MyClass::MyAlertCallback, this, _1, _2)));
+    
+    // We can't actually "do" the stuff we want to do here, because depending 
+    // on inModality, the alert might not have been dismissed yet.  The 
+    // logical flow of control continues in MyAlertCallback.
+    // 
+    // Veterans of Classic Mac OS will recognise this as similar to asynchronous 
+    // programming with the old File and Device managers.
 }
 
 void MyClass::MyAlertCallback(
-	const Alert&			alert, 
-	Alert::Button			button)
+    const Alert&            alert, 
+    Alert::Button           button)
 {
-	if (button == Alert::kOK)
-	{
-		// do stuff
-		...
-	}
+    if (button == Alert::kOK)
+    {
+        // do stuff
+        ...
+    }
 }
 @endcode
 
@@ -244,19 +244,19 @@ both functions may be combined by calling Start().  For example:
 @code
 void MyShowDialog(const B::Nib& nib, B::AEObject* container, const DialogModality& modality)
 {
-	// Instantiates a B::Dialog from the given nib, ensures that the dialog's window 
-	// class matches the given modality, then enters the dialog.  The dialog's result 
-	// (i.e. the command that dismissed it) will be passed to MyCallback.
-	
-	B::Dialog::Start<B::Dialog>(nib, "my_dialog_name", container, modality, &MyCallback);
+    // Instantiates a B::Dialog from the given nib, ensures that the dialog's window 
+    // class matches the given modality, then enters the dialog.  The dialog's result 
+    // (i.e. the command that dismissed it) will be passed to MyCallback.
+    
+    B::Dialog::Start<B::Dialog>(nib, "my_dialog_name", container, modality, &MyCallback);
 }
 
 void MyCallback(B::Dialog& dialog, UInt32 command)
 {
-	if (command == kHICommandOK)
-	{
-		// do stuff...
-	}
+    if (command == kHICommandOK)
+    {
+        // do stuff...
+    }
 }
 @endcode
 
@@ -289,7 +289,7 @@ public:
     MyDialog(WindowRef window, B::AEObject* container, const MyInfo& info);
     
     // Perform some more initialisation here.
-    void	MyPostConstructorInitialisation();
+    void    MyPostConstructorInitialisation();
     
 protected:
     
@@ -321,7 +321,7 @@ protected:
     // Override this function to perform input validation on the dialog's contents.  
     // The function should return true if validation succeeded.
     virtual bool Validate(UInt32 inCommand);
-	
+    
 };
 @endcode
 
@@ -330,31 +330,31 @@ The code to display the dialog would look like this:
 @code
 bool MyShowDialogWithState()
 {
-	std::pair<OSPtr<WindowRef>, MyDialog*>	dlgPtr;
-	
-	MyInfo	initialisationInfo;
-	
-	// set up initialisationInfo ...
-	
-	// instantiate the dialog
-	dlgPtr = B::Dialog::MakeWithState<MyDialog>(MyGetNib(), "my_dialog_name", 
-												MyGetContainer(), initialisationInfo, 
-												MyGetModality(), &MyCallback);
-	
-	// more initialisation ...
-	dlgPtr.second->MyPostConstructorInitialisation();
-	
-	// enter the dialog.
-	
-	B::Dialog::Enter(dlgPtr);
+    std::pair<OSPtr<WindowRef>, MyDialog*>  dlgPtr;
+    
+    MyInfo  initialisationInfo;
+    
+    // set up initialisationInfo ...
+    
+    // instantiate the dialog
+    dlgPtr = B::Dialog::MakeWithState<MyDialog>(MyGetNib(), "my_dialog_name", 
+                                                MyGetContainer(), initialisationInfo, 
+                                                MyGetModality(), &MyCallback);
+    
+    // more initialisation ...
+    dlgPtr.second->MyPostConstructorInitialisation();
+    
+    // enter the dialog.
+    
+    B::Dialog::Enter(dlgPtr);
 }
 
 void MyCallback(MyDialog& dialog, UInt32 command)
 {
-	if (command == kHICommandOK)
-	{
-		// do stuff...
-	}
+    if (command == kHICommandOK)
+    {
+        // do stuff...
+    }
 }
 @endcode
 
@@ -413,12 +413,12 @@ alert.
 The simplest overload of Make() is invoked like this:
 
 @code
-std::auto_ptr<B::Alert>	alertPtr;
+std::auto_ptr<B::Alert> alertPtr;
 
 alertPtr = B::Alert::Make<B::Alert>(
-				B::String("Error Message"), 
-				B::String("Something Informative"), 
-				MyGetModality(), &MyCallback);
+                B::String("Error Message"), 
+                B::String("Something Informative"), 
+                MyGetModality(), &MyCallback);
 
 // additional customisation may be performed via individual setters.
 alertPtr->SetButtonText(B::Alert::kOK, B::String("Do It"));
@@ -429,13 +429,13 @@ This will instantiate an Alert which will display a single OK button.
 The next overload of Make() allows for simple two-button alerts:
 
 @code
-std::auto_ptr<B::Alert>	alertPtr;
+std::auto_ptr<B::Alert> alertPtr;
 
 alertPtr = B::Alert::Make<B::Alert>(
-				B::String("Error Message"), 
-				B::String("Something Informative"), 
-				MyGetModality(), &MyCallback,
-				true, true);
+                B::String("Error Message"), 
+                B::String("Something Informative"), 
+                MyGetModality(), &MyCallback,
+                true, true);
 @endcode
 
 This will instantiate an Alert which will display both the OK and Cancel buttons, as 
@@ -447,7 +447,7 @@ cancel buttons, and to change the buttons' text.
 Once an alert is instantiated, it may be entered by calling Enter():
 
 @code
-std::auto_ptr<B::Alert>	alertPtr = ... ;	// one of the Make() functions
+std::auto_ptr<B::Alert> alertPtr = ... ;    // one of the Make() functions
 
 B::Alert::Enter(alertPtr);
 @endcode
@@ -458,9 +458,9 @@ to the three overloads of Make().  For example:
 
 @code
 B::Alert::Start<B::Alert>(
-		B::String("Error Message"), 
-		B::String("Something Informative"), 
-		MyGetModality(), &MyCallback);
+        B::String("Error Message"), 
+        B::String("Something Informative"), 
+        MyGetModality(), &MyCallback);
 @endcode
 
 Finally, there are convenience routines called Run() which allow the developer to 
@@ -471,8 +471,8 @@ alert has been dismissed, and retrieve the dismissing button.  For example:
 B::Alert::Button button;
 
 button = B::Alert::Run<B::Alert>(
-				B::String("Error Message"), 
-				B::String("Something Informative"));
+                B::String("Error Message"), 
+                B::String("Something Informative"));
 @endcode
 
 Note that because the alert's modality is predetermined, and that the function returns 
@@ -520,30 +520,30 @@ Here's a simple example that works for any dialog modality:
 
 @code
 void MyShowAskSaveChangesDialog(
-	const B::String& name, B::AskSaveChangesDialog::Context context)
+    const B::String& name, B::AskSaveChangesDialog::Context context)
 {
-	B::AskSaveChangesDialog::Start<B::AskSaveChangesDialog>(
-		MyGetModality(), name, context, 
-		&MyAskSaveChangesDialogCallback);
+    B::AskSaveChangesDialog::Start<B::AskSaveChangesDialog>(
+        MyGetModality(), name, context, 
+        &MyAskSaveChangesDialogCallback);
 }
 
 void MyAskSaveChangesDialogCallback(
-	const B::AskSaveChangesDialog& dialog, B::AskSaveChangesDialog::Action action)
+    const B::AskSaveChangesDialog& dialog, B::AskSaveChangesDialog::Action action)
 {
-	switch (action)
-	{
-	case B::AskSaveChangesDialog::kSave:
-		// save the file
-		break;
-		
-	case B::AskSaveChangesDialog::kDontSave:
-		// don't save the file
-		break;
-		
-	case B::AskSaveChangesDialog::kCancel:
-		// cancel the close
-		break;
-	}
+    switch (action)
+    {
+    case B::AskSaveChangesDialog::kSave:
+        // save the file
+        break;
+        
+    case B::AskSaveChangesDialog::kDontSave:
+        // don't save the file
+        break;
+        
+    case B::AskSaveChangesDialog::kCancel:
+        // cancel the close
+        break;
+    }
 }
 @endcode
 
@@ -551,26 +551,26 @@ If you specifically require an application-modal alert, the code can be simpler:
 
 @code
 void MyShowAppModalAskSaveChangesDialog(
-	const B::String& name, B::AskSaveChangesDialog::Context context)
+    const B::String& name, B::AskSaveChangesDialog::Context context)
 {
-	B::AskSaveChangesDialog::Action action;
-	
-	action = B::AskSaveChangesDialog::Run<B::AskSaveChangesDialog>(name, context);
-	
-	switch (action)
-	{
-	case B::AskSaveChangesDialog::kSave:
-		// save the file
-		break;
-		
-	case B::AskSaveChangesDialog::kDontSave:
-		// don't save the file
-		break;
-		
-	case B::AskSaveChangesDialog::kCancel:
-		// cancel the close
-		break;
-	}
+    B::AskSaveChangesDialog::Action action;
+    
+    action = B::AskSaveChangesDialog::Run<B::AskSaveChangesDialog>(name, context);
+    
+    switch (action)
+    {
+    case B::AskSaveChangesDialog::kSave:
+        // save the file
+        break;
+        
+    case B::AskSaveChangesDialog::kDontSave:
+        // don't save the file
+        break;
+        
+    case B::AskSaveChangesDialog::kCancel:
+        // cancel the close
+        break;
+    }
 }
 @endcode
 
@@ -589,20 +589,20 @@ Here's a simple example that works for any dialog modality:
 
 @code
 void MyShowAskDiscardChangesDialog(
-	const B::String& name)
+    const B::String& name)
 {
-	B::AskDiscardChangesDialog::Start<B::AskDiscardChangesDialog>(
-		MyGetModality(), name, 
-		&MyAskDiscardChangesDialogCallback);
+    B::AskDiscardChangesDialog::Start<B::AskDiscardChangesDialog>(
+        MyGetModality(), name, 
+        &MyAskDiscardChangesDialogCallback);
 }
 
 void MyAskDiscardChangesDialogCallback(
-	const B::AskDiscardChangesDialog& dialog, bool discard)
+    const B::AskDiscardChangesDialog& dialog, bool discard)
 {
-	if (discard)
-	{
-		// revert the file
-	}
+    if (discard)
+    {
+        // revert the file
+    }
 }
 @endcode
 
@@ -610,12 +610,12 @@ If you specifically require an application-modal alert, the code can be simpler:
 
 @code
 void MyShowAppModalAskDiscardChangesDialog(
-	const B::String& name)
+    const B::String& name)
 {
-	if (B::AskDiscardChangesDialog::Run<B::AskDiscardChangesDialog>(name))
-	{
-		// revert the file
-	}
+    if (B::AskDiscardChangesDialog::Run<B::AskDiscardChangesDialog>(name))
+    {
+        // revert the file
+    }
 }
 @endcode
 
@@ -642,28 +642,28 @@ Here's a simple example that works for any dialog modality:
 @code
 void MyShowAskReviewDocumentsDialog(UInt32 count)
 {
-	B::AskReviewDocumentsDialog::Start<B::AskReviewDocumentsDialog>(
-		MyGetModality(), inDocumentCount, 
-		&MyAskReviewDocumentsDialogCallback);
+    B::AskReviewDocumentsDialog::Start<B::AskReviewDocumentsDialog>(
+        MyGetModality(), inDocumentCount, 
+        &MyAskReviewDocumentsDialogCallback);
 }
 
 void MyAskReviewDocumentsDialogCallback(
-	const B::AskReviewDocumentsDialog& dialog, B::AskReviewDocumentsDialog::Action action)
+    const B::AskReviewDocumentsDialog& dialog, B::AskReviewDocumentsDialog::Action action)
 {
-	switch (action)
-	{
-	case B::AskReviewDocumentsDialog::kReview:
-		// review the changed documents
-		break;
-		
-	case B::AskReviewDocumentsDialog::kDiscard:
-		// discard all changes
-		break;
-		
-	case B::AskReviewDocumentsDialog::kCancel:
-		// cancel the quit
-		break;
-	}
+    switch (action)
+    {
+    case B::AskReviewDocumentsDialog::kReview:
+        // review the changed documents
+        break;
+        
+    case B::AskReviewDocumentsDialog::kDiscard:
+        // discard all changes
+        break;
+        
+    case B::AskReviewDocumentsDialog::kCancel:
+        // cancel the quit
+        break;
+    }
 }
 @endcode
 
@@ -673,20 +673,20 @@ code is simpler:
 @code
 void MyShowAppModalReviewDocumentsDialog(UInt32 count)
 {
-	switch (B::AskReviewDocumentsDialog::Run<B::AskReviewDocumentsDialog>(count))
-	{
-	case B::AskReviewDocumentsDialog::kReview:
-		// review the changed documents
-		break;
-		
-	case B::AskReviewDocumentsDialog::kDiscard:
-		// discard all changes
-		break;
-		
-	case B::AskReviewDocumentsDialog::kCancel:
-		// cancel the quit
-		break;
-	}
+    switch (B::AskReviewDocumentsDialog::Run<B::AskReviewDocumentsDialog>(count))
+    {
+    case B::AskReviewDocumentsDialog::kReview:
+        // review the changed documents
+        break;
+        
+    case B::AskReviewDocumentsDialog::kDiscard:
+        // discard all changes
+        break;
+        
+    case B::AskReviewDocumentsDialog::kCancel:
+        // cancel the quit
+        break;
+    }
 }
 @endcode
 
@@ -736,19 +736,19 @@ Here's a simple example that works for any dialog modality:
 @code
 void MyShowGetFileDialog()
 {
-	B::GetFileDialog::Start<B::GetFileDialog>(
-		MyGetModality(), 
-		&MyGetFileDialogCallback);
+    B::GetFileDialog::Start<B::GetFileDialog>(
+        MyGetModality(), 
+        &MyGetFileDialogCallback);
 }
 
 void MyGetFileDialogCallback(
-	const B::GetFileDialog& dialog, bool good, const NavReplyRecord& reply)
+    const B::GetFileDialog& dialog, bool good, const NavReplyRecord& reply)
 {
-	if (good)
-	{
-		// the user chose a file, open it.
-		MyOpenFile(reply);
-	}
+    if (good)
+    {
+        // the user chose a file, open it.
+        MyOpenFile(reply);
+    }
 }
 @endcode
 
@@ -757,7 +757,7 @@ If you specifically require an application-modal dialog, the code can be simpler
 @code
 bool MyShowAppModalGetFileDialog(NavReplyRecord& reply)
 {
-	return (B::GetFileDialog::Run<B::GetFileDialog>(reply));
+    return (B::GetFileDialog::Run<B::GetFileDialog>(reply));
 }
 @endcode
 
@@ -792,26 +792,26 @@ declared in an application's bundle:
 @code
 void MyShowGetFileDialogForAllFileTypes(const B::String& docType)
 {
-	const B::Bundle&				bundle	= B::Bundle::Main();
-	std::auto_ptr<B::GetFileDialog>	dlgPtr;
-	
-	// Instantiate the dialog.
-	dlgPtr = B::GetFileDialog::Make<B::GetFileDialog>(
-					MyGetModality(), &MyGetFileDialogCallback);
-	
-	// Set the document types from the main bundle.  This will read each doc type's 
-	// localised name from the default table (ie "InfoPlist.strings") in the bundle.
-	// The dialog's filter will then be set up to match files that correspond to any 
-	// of our doc types.
-	dlgPtr->SetDocumentTypes(bundle);
-	
-	// We initially allow opening only those files which match docType.  The user 
-	// will however be able to change the filtering to anything that's in the 
-	// pop-up menu.
-	dlgPtr->SelectDocumentType(docType);
-	
-	// Finally, we are ready to enter the dialog.
-	B::NavDialog::Enter(dlgPtr);
+    const B::Bundle&                bundle  = B::Bundle::Main();
+    std::auto_ptr<B::GetFileDialog> dlgPtr;
+    
+    // Instantiate the dialog.
+    dlgPtr = B::GetFileDialog::Make<B::GetFileDialog>(
+                    MyGetModality(), &MyGetFileDialogCallback);
+    
+    // Set the document types from the main bundle.  This will read each doc type's 
+    // localised name from the default table (ie "InfoPlist.strings") in the bundle.
+    // The dialog's filter will then be set up to match files that correspond to any 
+    // of our doc types.
+    dlgPtr->SetDocumentTypes(bundle);
+    
+    // We initially allow opening only those files which match docType.  The user 
+    // will however be able to change the filtering to anything that's in the 
+    // pop-up menu.
+    dlgPtr->SelectDocumentType(docType);
+    
+    // Finally, we are ready to enter the dialog.
+    B::NavDialog::Enter(dlgPtr);
 }
 @endcode
 
@@ -821,24 +821,24 @@ a single document type:
 @code
 void MyShowGetFileDialogForOneFileType(const B::String& docType)
 {
-	const B::Bundle&				bundle	= B::Bundle::Main();
-	std::auto_ptr<B::GetFileDialog>	dlgPtr;
-	B::Bundle::Iterator				it;
-	
-	// Find the DocumentType struct with the given name.
-	it = bundle.FindDocumentTypeForTypeName(docType);
-	B_ASSERT(it != bundle.end());
-	
-	// Instantiate the dialog.
-	dlgPtr = B::GetFileDialog::Make<B::GetFileDialog>(
-					MyGetModality(), &MyGetFileDialogCallback);
-	
-	// Set the document types.  This will read the doc type's localised name from 
-	// the default table (ie "InfoPlist.strings") in the main bundle.
-	dlgPtr->SetDocumentTypes(bundle, NULL, it, it+1);
-	
-	// Finally, we are ready to enter the dialog.
-	B::NavDialog::Enter(dlgPtr);
+    const B::Bundle&                bundle  = B::Bundle::Main();
+    std::auto_ptr<B::GetFileDialog> dlgPtr;
+    B::Bundle::Iterator             it;
+    
+    // Find the DocumentType struct with the given name.
+    it = bundle.FindDocumentTypeForTypeName(docType);
+    B_ASSERT(it != bundle.end());
+    
+    // Instantiate the dialog.
+    dlgPtr = B::GetFileDialog::Make<B::GetFileDialog>(
+                    MyGetModality(), &MyGetFileDialogCallback);
+    
+    // Set the document types.  This will read the doc type's localised name from 
+    // the default table (ie "InfoPlist.strings") in the main bundle.
+    dlgPtr->SetDocumentTypes(bundle, NULL, it, it+1);
+    
+    // Finally, we are ready to enter the dialog.
+    B::NavDialog::Enter(dlgPtr);
 }
 @endcode
 
@@ -861,20 +861,20 @@ Here's a simple example that works for any dialog modality:
 @code
 void MyShowPutFileDialog(const B::String& filename)
 {
-	// "name" becomes the default file name displayed in the dialog.
-	B::PutFileDialog::Start<B::PutFileDialog>(
-		MyGetModality(), filename, 
-		&MyPutFileDialogCallback);
+    // "name" becomes the default file name displayed in the dialog.
+    B::PutFileDialog::Start<B::PutFileDialog>(
+        MyGetModality(), filename, 
+        &MyPutFileDialogCallback);
 }
 
 void MyPutFileDialogCallback(
-	const B::PutFileDialog& dialog, bool good, NavReplyRecord& reply, const B::String& docType)
+    const B::PutFileDialog& dialog, bool good, NavReplyRecord& reply, const B::String& docType)
 {
-	if (good)
-	{
-		// the user confirmed the dialog, save the file.
-		MySaveFile(reply);
-	}
+    if (good)
+    {
+        // the user confirmed the dialog, save the file.
+        MySaveFile(reply);
+    }
 }
 @endcode
 
@@ -883,7 +883,7 @@ If you specifically require an application-modal dialog, the code can be simpler
 @code
 bool MyShowAppModalPutFileDialog(const B::String& name, NavReplyRecord& reply)
 {
-	return (B::PutFileDialog::Run<B::PutFileDialog>(name, reply));
+    return (B::PutFileDialog::Run<B::PutFileDialog>(name, reply));
 }
 @endcode
 
@@ -907,23 +907,23 @@ of the document types (i.e., file formats) declared in the application's bundle:
 @code
 void MyShowPutFileDialogForAllFileTypes(const B::String& filename, const B::String& docType)
 {
-	const B::Bundle&				bundle	= B::Bundle::Main();
-	std::auto_ptr<B::PutFileDialog>	dlgPtr;
-	
-	// Instantiate the dialog.
-	dlgPtr = B::PutFileDialog::Make<B::PutFileDialog>(
-					MyGetModality(), filename, &MyGetFileDialogCallback);
-	
-	// Set the document types from the main bundle.  This will read each doc type's 
-	// localised name from the default table (ie "InfoPlist.strings") in the bundle.
-	dlgPtr->SetDocumentTypes(bundle);
-	
-	// Initially select the pop-up menu item corresponding to the current doc type of 
-	// our document.
-	dlgPtr->SelectDocumentType(docType);
-	
-	// Finally, we are ready to enter the dialog.
-	B::NavDialog::Enter(dlgPtr);
+    const B::Bundle&                bundle  = B::Bundle::Main();
+    std::auto_ptr<B::PutFileDialog> dlgPtr;
+    
+    // Instantiate the dialog.
+    dlgPtr = B::PutFileDialog::Make<B::PutFileDialog>(
+                    MyGetModality(), filename, &MyGetFileDialogCallback);
+    
+    // Set the document types from the main bundle.  This will read each doc type's 
+    // localised name from the default table (ie "InfoPlist.strings") in the bundle.
+    dlgPtr->SetDocumentTypes(bundle);
+    
+    // Initially select the pop-up menu item corresponding to the current doc type of 
+    // our document.
+    dlgPtr->SelectDocumentType(docType);
+    
+    // Finally, we are ready to enter the dialog.
+    B::NavDialog::Enter(dlgPtr);
 }
 @endcode
 
