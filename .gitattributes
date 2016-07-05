@@ -1,0 +1,4 @@
+3rd/* linguist-vendored
+b/docs/generated_html/* linguist-vendored
+*.h linguist-language=C++
+
