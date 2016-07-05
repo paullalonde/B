@@ -1,4 +1,4 @@
 3rd/* linguist-vendored
-b/docs/generated_html/* linguist-vendored
+b/docs/* linguist-documentation
 *.h linguist-language=C++
 
