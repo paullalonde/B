@@ -4,7 +4,7 @@ I worked on it off and on for a few years. Prior to uploading it to GitHub, I la
 The project's *raison d'être* was to allow me to tinker with various concepts that interested me at the time.
 For example:
 
-- Applying the ideas of [template metaprogramming] (as popularized by the book [Modern C++ Design]).
+- Applying the ideas of [template metaprogramming], as popularized by the book [Modern C++ Design].
 - Design a framework using modern (at the time) concepts such as :
  - Systematic use of exceptions for error detection and propagation
  - Systematic use of the [RAII] pattern for controlling resource lifetime.
