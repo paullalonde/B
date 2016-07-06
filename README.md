@@ -4,7 +4,7 @@ I worked on it off and on for a few years. Prior to uploading it to GitHub, I la
 The project's *raison d'être* was to allow me to tinker with various concepts that interested me at the time.
 For example:
 
-- Applying the ideas of template metaprogramming (as popularized by the book [Modern C++ Design]).
+- Applying the ideas of [template metaprogramming] (as popularized by the book [Modern C++ Design]).
 - Design a framework using modern (at the time) concepts such as :
  - Systematic use of exceptions for error detection and propagation
  - Systematic use of the [RAII] pattern for controlling resource lifetime.
@@ -15,6 +15,7 @@ The original documentation can be found [here].
 
 This project is made available for historical purposes. I'd be very surprised if much of it compiled on today's systems.
 
+[template metaprogramming]: https://en.wikipedia.org/wiki/Template_metaprogramming
 [Modern C++ Design]: https://en.wikipedia.org/wiki/Modern_C%2B%2B_Design
 [RAII]: https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization
 [here]: http://paullalonde.ca/projects/B/
