@@ -15,6 +15,6 @@ The original documentation can be found [here].
 
 This project is made available for historical purposes. I'd be very surprised if much of it compiled on today's systems.
 
-[Modern C++ Design]: https://en.wikipedia.org/wiki/Modern_C%2B%2B_Design.
+[Modern C++ Design]: https://en.wikipedia.org/wiki/Modern_C%2B%2B_Design
 [RAII]: https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization
 [here]: http://paullalonde.ca/projects/B/
